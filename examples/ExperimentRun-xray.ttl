@@ -1,0 +1,33 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:exp_xray_lysozyme_001 a biostride_schema:ExperimentRun ;
+    dcterms:title "Lysozyme crystal X-ray diffraction" ;
+    biostride_schema:data_collection_strategy [ a biostride_schema:DataCollectionStrategy ;
+            biostride_schema:collection_mode "oscillation" ;
+            biostride_schema:dose_per_frame "0.0"^^xsd:float ;
+            biostride_schema:frame_rate "1.0"^^xsd:float ;
+            biostride_schema:total_dose "0.0"^^xsd:float ;
+            biostride_schema:total_frames 360 ] ;
+    biostride_schema:description "X-ray diffraction data collection from lysozyme crystals at ALS beamline 8.3.1" ;
+    biostride_schema:experiment_code "EXP-XRD-LYS-2024-001" ;
+    biostride_schema:experiment_date "2024-04-10T09:30:00" ;
+    biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
+            biostride_schema:atmosphere "Nitrogen stream" ;
+            biostride_schema:humidity "0.0"^^xsd:float ;
+            biostride_schema:pressure "101.325"^^xsd:float ;
+            biostride_schema:temperature "-173.0"^^xsd:float ] ;
+    biostride_schema:instrument_id "biostride:instrument_als_831" ;
+    biostride_schema:operator_id "als_user_042" ;
+    biostride_schema:processing_status "completed" ;
+    biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
+            biostride_schema:completeness "99.8"^^xsd:float ;
+            biostride_schema:r_factor "0.182"^^xsd:float ;
+            biostride_schema:resolution "1.5"^^xsd:float ;
+            biostride_schema:signal_to_noise "15.2"^^xsd:float ] ;
+    biostride_schema:raw_data_location "/data/als/2024/xray/lysozyme/" ;
+    biostride_schema:sample_id "biostride:sample_lysozyme_001" ;
+    biostride_schema:technique "xray_crystallography" .
+

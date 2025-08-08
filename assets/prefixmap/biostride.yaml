@@ -1,0 +1,11 @@
+{
+   "biostride": "https://w3id.org/biostride/",
+   "biostride_schema": "https://w3id.org/biostride/schema/",
+   "dcterms": "http://purl.org/dc/terms/",
+   "linkml": "https://w3id.org/linkml/",
+   "nmdc": "https://w3id.org/nmdc/",
+   "prov": "http://www.w3.org/ns/prov#",
+   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+   "sio": "http://semanticscience.org/resource/",
+   "skos": "http://www.w3.org/2004/02/skos/core#"
+}

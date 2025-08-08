@@ -1,0 +1,35 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:study_hiv_capsid a biostride_schema:Study ;
+    dcterms:title "HIV-1 Capsid Structure Analysis" ;
+    biostride_schema:description "Structural characterization of HIV-1 capsid protein using cryo-EM" ;
+    biostride_schema:samples biostride:sample_hiv_ca_001 .
+
+biostride:sample_hiv_ca_001 a biostride_schema:Sample ;
+    dcterms:title "HIV-1 capsid protein CA" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:additives "5% glycerol" ;
+            biostride_schema:components "1 mM DTT",
+                "150 mM NaCl",
+                "50 mM Tris-HCl" ;
+            biostride_schema:ph "8.0"^^xsd:float ] ;
+    biostride_schema:concentration "2.5"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:description "Purified HIV-1 capsid protein for cryo-EM structural analysis" ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:modifications "N-terminal His6 tag" ;
+            biostride_schema:sequences "MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP" ] ;
+    biostride_schema:molecular_weight "25.6"^^xsd:float ;
+    biostride_schema:preparation_method "E. coli expression followed by Ni-NTA and size exclusion chromatography" ;
+    biostride_schema:purity_percentage "98.5"^^xsd:float ;
+    biostride_schema:sample_code "HIV1-CA-2024-001" ;
+    biostride_schema:sample_type "protein" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:atmosphere "Flash frozen in liquid nitrogen" ;
+            biostride_schema:duration "3 months" ;
+            biostride_schema:temperature "-80.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+

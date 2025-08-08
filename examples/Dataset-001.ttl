@@ -1,0 +1,34 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+biostride:ds001 a biostride_schema:Dataset ;
+    biostride_schema:studies biostride:sty001 .
+
+biostride:irr001 a biostride_schema:ExperimentRun ;
+    dcterms:title "Test Instrument Run" ;
+    biostride_schema:description "Test Instrument Run Description" ;
+    biostride_schema:experiment_code "EXP-TEST-001" ;
+    biostride_schema:instrument_id "biostride:instrument_test_001" ;
+    biostride_schema:sample_id "biostride:sam001" ;
+    biostride_schema:technique "cryo_em" .
+
+biostride:sam001 a biostride_schema:Sample ;
+    dcterms:title "Test Sample" ;
+    biostride_schema:description "Test Sample Description" ;
+    biostride_schema:sample_code "TEST-001" ;
+    biostride_schema:sample_type "protein" .
+
+biostride:spr001 a biostride_schema:SamplePreparation ;
+    dcterms:title "Test Sample Preparation" ;
+    biostride_schema:description "Test Sample Preparation Description" ;
+    biostride_schema:preparation_type "cryo_em" ;
+    biostride_schema:sample_id "biostride:sam001" .
+
+biostride:sty001 a biostride_schema:Study ;
+    dcterms:title "Test Study" ;
+    biostride_schema:description "Test Study Description" ;
+    biostride_schema:instrument_runs biostride:irr001 ;
+    biostride_schema:sample_preparations biostride:spr001 ;
+    biostride_schema:samples biostride:sam001 .
+

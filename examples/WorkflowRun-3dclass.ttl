@@ -1,0 +1,23 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:workflow_3dclass_ribosome_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "3D classification of ribosome particles" ;
+    biostride_schema:completed_at "2024-04-22T08:00:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "48.0"^^xsd:float ;
+            biostride_schema:gpu_hours "96.0"^^xsd:float ;
+            biostride_schema:memory_gb "512.0"^^xsd:float ;
+            biostride_schema:storage_gb "2000.0"^^xsd:float ] ;
+    biostride_schema:description "3D classification to resolve ribosome conformational states" ;
+    biostride_schema:experiment_id "biostride:exp_ribosome_001" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:processing_parameters "--K 8 --iter 30 --tau2_fudge 4 --particle_diameter 300" ;
+    biostride_schema:software_name "RELION" ;
+    biostride_schema:software_version "4.0.1" ;
+    biostride_schema:started_at "2024-04-20T08:00:00" ;
+    biostride_schema:workflow_code "WF-3DCLASS-RIBO-001" ;
+    biostride_schema:workflow_type "classification_3d" .
+

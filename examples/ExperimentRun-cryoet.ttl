@@ -1,0 +1,33 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:exp_cryoet_mito_001 a biostride_schema:ExperimentRun ;
+    dcterms:title "Mitochondrial cryo-electron tomography" ;
+    biostride_schema:data_collection_strategy [ a biostride_schema:DataCollectionStrategy ;
+            biostride_schema:collection_mode "continuous" ;
+            biostride_schema:dose_per_frame "2.0"^^xsd:float ;
+            biostride_schema:frame_rate "0.5"^^xsd:float ;
+            biostride_schema:total_dose "120.0"^^xsd:float ;
+            biostride_schema:total_frames 61 ] ;
+    biostride_schema:description "Cryo-ET tilt series of isolated mitochondria" ;
+    biostride_schema:experiment_code "EXP-CRYOET-MITO-2024-001" ;
+    biostride_schema:experiment_date "2024-05-01T11:00:00" ;
+    biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
+            biostride_schema:atmosphere "High vacuum" ;
+            biostride_schema:humidity "0.0"^^xsd:float ;
+            biostride_schema:pressure "1e-06"^^xsd:float ;
+            biostride_schema:temperature "-180.0"^^xsd:float ] ;
+    biostride_schema:instrument_id "biostride:instrument_titan_krios_002" ;
+    biostride_schema:operator_id "cryoet_specialist_003" ;
+    biostride_schema:processing_status "processing" ;
+    biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
+            biostride_schema:completeness "95.0"^^xsd:float ;
+            biostride_schema:r_factor "0.0"^^xsd:float ;
+            biostride_schema:resolution "8.5"^^xsd:float ;
+            biostride_schema:signal_to_noise "2.1"^^xsd:float ] ;
+    biostride_schema:raw_data_location "/data/berkeley/2024/cryoet/mitochondria/" ;
+    biostride_schema:sample_id "biostride:sample_mitochondria_001" ;
+    biostride_schema:technique "cryo_et" .
+

@@ -1,0 +1,25 @@
+id: biostride:ds001
+studies:
+  - id: biostride:sty001
+    title: Test Study
+    description: Test Study Description
+    samples:
+      - id: biostride:sam001
+        title: Test Sample
+        description: Test Sample Description
+        sample_code: "TEST-001"
+        sample_type: protein
+    sample_preparations:
+      - id: biostride:spr001
+        title: Test Sample Preparation
+        description: Test Sample Preparation Description
+        preparation_type: cryo_em
+        sample_id: "biostride:sam001"
+    instrument_runs:
+      - id: biostride:irr001
+        title: Test Instrument Run
+        description: Test Instrument Run Description
+        experiment_code: "EXP-TEST-001"
+        sample_id: "biostride:sam001"
+        instrument_id: "biostride:instrument_test_001"
+        technique: cryo_em

@@ -1,0 +1,296 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:dataset_berkeley_tfiid_2024 a biostride_schema:Dataset ;
+    dcterms:title "Human TFIID Transcription Complex Structural Analysis" ;
+    biostride_schema:description "Comprehensive structural characterization of human TFIID and transcription pre-initiation complex using cryo-EM at Berkeley Lab" ;
+    biostride_schema:keywords "Berkeley Lab",
+        "TFIID",
+        "cryo-EM",
+        "gene regulation",
+        "transcription" ;
+    biostride_schema:studies biostride:study_tfiid_001 .
+
+biostride:exp_tfiid_001 a biostride_schema:ExperimentRun ;
+    dcterms:title "TFIID complex data collection" ;
+    biostride_schema:data_collection_strategy [ a biostride_schema:DataCollectionStrategy ;
+            biostride_schema:collection_mode "counting" ;
+            biostride_schema:dose_per_frame "1.2"^^xsd:float ;
+            biostride_schema:frame_rate "40.0"^^xsd:float ;
+            biostride_schema:total_dose "40.0"^^xsd:float ;
+            biostride_schema:total_frames 8500 ] ;
+    biostride_schema:description "High-resolution cryo-EM data collection of TFIID" ;
+    biostride_schema:experiment_code "EXP-TFIID-2024-001" ;
+    biostride_schema:experiment_date "2024-03-20T10:00:00" ;
+    biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
+            biostride_schema:atmosphere "High vacuum" ;
+            biostride_schema:humidity "0.0"^^xsd:float ;
+            biostride_schema:pressure "1e-06"^^xsd:float ;
+            biostride_schema:temperature "-180.0"^^xsd:float ] ;
+    biostride_schema:instrument_id "biostride:instrument_titan_krios_001" ;
+    biostride_schema:operator_id "nogales_lab_member_002" ;
+    biostride_schema:processing_status "completed" ;
+    biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
+            biostride_schema:completeness "99.5"^^xsd:float ;
+            biostride_schema:resolution "2.8"^^xsd:float ;
+            biostride_schema:signal_to_noise "4.2"^^xsd:float ] ;
+    biostride_schema:raw_data_location "/data/berkeley/2024/tfiid/raw/" ;
+    biostride_schema:sample_id "biostride:sample_tfiid_001" ;
+    biostride_schema:technique "cryo_em" .
+
+biostride:exp_tfiid_dna_002 a biostride_schema:ExperimentRun ;
+    dcterms:title "TFIID-DNA complex data collection" ;
+    biostride_schema:data_collection_strategy [ a biostride_schema:DataCollectionStrategy ;
+            biostride_schema:collection_mode "super_resolution" ;
+            biostride_schema:dose_per_frame "1.1"^^xsd:float ;
+            biostride_schema:frame_rate "40.0"^^xsd:float ;
+            biostride_schema:total_dose "42.0"^^xsd:float ;
+            biostride_schema:total_frames 12000 ] ;
+    biostride_schema:description "Cryo-EM data collection of TFIID bound to DNA" ;
+    biostride_schema:experiment_code "EXP-TFIID-DNA-2024-002" ;
+    biostride_schema:experiment_date "2024-03-21T14:00:00" ;
+    biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
+            biostride_schema:humidity "0.0"^^xsd:float ;
+            biostride_schema:pressure "1e-06"^^xsd:float ;
+            biostride_schema:temperature "-180.0"^^xsd:float ] ;
+    biostride_schema:instrument_id "biostride:instrument_titan_krios_001" ;
+    biostride_schema:operator_id "nogales_lab_member_002" ;
+    biostride_schema:processing_status "completed" ;
+    biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
+            biostride_schema:completeness "98.0"^^xsd:float ;
+            biostride_schema:resolution "3.1"^^xsd:float ;
+            biostride_schema:signal_to_noise "3.8"^^xsd:float ] ;
+    biostride_schema:sample_id "biostride:sample_tfiid_dna_002" ;
+    biostride_schema:technique "cryo_em" .
+
+biostride:file_map_001 a biostride_schema:DataFile ;
+    dcterms:title "Final refined map TFIID" ;
+    biostride_schema:checksum "b8c3d0a9f1e2b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9" ;
+    biostride_schema:creation_date "2024-03-24T02:00:00" ;
+    biostride_schema:data_type "volume" ;
+    biostride_schema:description "Final 3D reconstruction of TFIID" ;
+    biostride_schema:file_format "mrc" ;
+    biostride_schema:file_name "TFIID_final_map.mrc" ;
+    biostride_schema:file_path "/data/berkeley/2024/tfiid/maps/TFIID_final_map.mrc" ;
+    biostride_schema:file_size_bytes 536870912 .
+
+biostride:file_model_001 a biostride_schema:DataFile ;
+    dcterms:title "Atomic model of TFIID" ;
+    biostride_schema:creation_date "2024-03-25T10:00:00" ;
+    biostride_schema:data_type "model" ;
+    biostride_schema:description "Refined atomic model" ;
+    biostride_schema:file_format "pdb" ;
+    biostride_schema:file_name "TFIID_model.pdb" ;
+    biostride_schema:file_path "/data/berkeley/2024/tfiid/models/TFIID_model.pdb" ;
+    biostride_schema:file_size_bytes 12582912 .
+
+biostride:file_particles_001 a biostride_schema:DataFile ;
+    dcterms:title "Extracted particles TFIID" ;
+    biostride_schema:creation_date "2024-03-21T11:00:00" ;
+    biostride_schema:data_type "particles" ;
+    biostride_schema:description "Particle stack after extraction" ;
+    biostride_schema:file_format "star" ;
+    biostride_schema:file_name "TFIID_particles.star" ;
+    biostride_schema:file_path "/data/berkeley/2024/tfiid/particles/TFIID_particles.star" ;
+    biostride_schema:file_size_bytes 450000000000 .
+
+biostride:file_raw_movies_001 a biostride_schema:DataFile ;
+    dcterms:title "Raw movie stack TFIID" ;
+    biostride_schema:checksum "a7f2c9b8e5d4a1b3c6d9e8f7a4b5c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9" ;
+    biostride_schema:creation_date "2024-03-20T16:00:00" ;
+    biostride_schema:data_type "micrograph" ;
+    biostride_schema:description "Raw cryo-EM movies" ;
+    biostride_schema:file_format "mrc" ;
+    biostride_schema:file_name "TFIID_movies.tar" ;
+    biostride_schema:file_path "/data/berkeley/2024/tfiid/raw/TFIID_movies.tar" ;
+    biostride_schema:file_size_bytes 5400000000000 .
+
+biostride:img_mic_001 a biostride_schema:Image ;
+    dcterms:title "Representative micrograph" ;
+    biostride_schema:acquisition_date "2024-03-20T10:15:00" ;
+    biostride_schema:dimensions_x 5760 ;
+    biostride_schema:dimensions_y 4092 ;
+    biostride_schema:dose "40.0"^^xsd:float ;
+    biostride_schema:exposure_time "2.5"^^xsd:float ;
+    biostride_schema:file_name "mic_001.mrc" ;
+    biostride_schema:pixel_size "0.85"^^xsd:float .
+
+biostride:prep_tfiid_dna_grid_002 a biostride_schema:SamplePreparation ;
+    dcterms:title "TFIID-DNA complex grid preparation" ;
+    biostride_schema:description "Cryo-EM grid preparation for TFIID-DNA complex" ;
+    biostride_schema:operator_id "nogales_lab_member_001" ;
+    biostride_schema:preparation_date "2024-03-16" ;
+    biostride_schema:preparation_type "cryo_em" ;
+    biostride_schema:protocol_description "3 µL of TFIID-DNA complex applied to Quantifoil grids with continuous carbon support, vitrified using Vitrobot Mark IV" ;
+    biostride_schema:sample_id "biostride:sample_tfiid_dna_002" .
+
+biostride:prep_tfiid_grid_001 a biostride_schema:SamplePreparation ;
+    dcterms:title "TFIID complex grid preparation" ;
+    biostride_schema:description "Cryo-EM grid preparation for TFIID complex" ;
+    biostride_schema:operator_id "nogales_lab_member_001" ;
+    biostride_schema:preparation_date "2024-03-15" ;
+    biostride_schema:preparation_type "cryo_em" ;
+    biostride_schema:protocol_description "3 µL of TFIID complex at 0.8 mg/mL applied to glow-discharged Quantifoil R2/1 grids, blotted for 3s at 95% humidity and plunge frozen in liquid ethane" ;
+    biostride_schema:sample_id "biostride:sample_tfiid_001" .
+
+biostride:sample_tfiid_dna_002 a biostride_schema:Sample ;
+    dcterms:title "TFIID-DNA promoter complex" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:additives "1 mM DTT" ;
+            biostride_schema:components "100 mM KCl",
+                "20 mM HEPES",
+                "5 mM MgCl2" ;
+            biostride_schema:ph "7.9"^^xsd:float ] ;
+    biostride_schema:concentration "0.5"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:description "TFIID bound to super core promoter DNA" ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:ligands "TFIID complex" ;
+            biostride_schema:modifications "5' fluorescent label" ;
+            biostride_schema:sequences "GGCTATAAAAGGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCACTTTTCG" ] ;
+    biostride_schema:molecular_weight "1250.0"^^xsd:float ;
+    biostride_schema:parent_sample_id biostride:sample_tfiid_001 ;
+    biostride_schema:purity_percentage "92.0"^^xsd:float ;
+    biostride_schema:sample_code "TFIID-DNA-2024-002" ;
+    biostride_schema:sample_type "complex" .
+
+biostride:study_tfiid_001 a biostride_schema:Study ;
+    dcterms:title "TFIID Conformational Dynamics Study" ;
+    biostride_schema:data_files biostride:file_map_001,
+        biostride:file_model_001,
+        biostride:file_particles_001,
+        biostride:file_raw_movies_001 ;
+    biostride_schema:description "Investigation of TFIID conformational states and DNA binding mechanisms" ;
+    biostride_schema:images biostride:img_mic_001 ;
+    biostride_schema:instrument_runs biostride:exp_tfiid_001,
+        biostride:exp_tfiid_dna_002 ;
+    biostride_schema:sample_preparations biostride:prep_tfiid_dna_grid_002,
+        biostride:prep_tfiid_grid_001 ;
+    biostride_schema:samples biostride:sample_tfiid_001,
+        biostride:sample_tfiid_dna_002 ;
+    biostride_schema:workflow_runs biostride:workflow_2d_class_001,
+        biostride:workflow_3d_refine_001,
+        biostride:workflow_ctf_001,
+        biostride:workflow_motion_001,
+        biostride:workflow_picking_001 .
+
+biostride:workflow_2d_class_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "2D classification of TFIID particles" ;
+    biostride_schema:completed_at "2024-03-22T11:00:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "24.0"^^xsd:float ;
+            biostride_schema:gpu_hours "48.0"^^xsd:float ;
+            biostride_schema:memory_gb "256.0"^^xsd:float ;
+            biostride_schema:storage_gb "800.0"^^xsd:float ] ;
+    biostride_schema:description "2D classification in RELION" ;
+    biostride_schema:experiment_id "biostride:exp_tfiid_001" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:processing_parameters "--K 200 --iter 25 --tau2_fudge 2" ;
+    biostride_schema:software_name "RELION" ;
+    biostride_schema:software_version "4.0.1" ;
+    biostride_schema:started_at "2024-03-21T11:00:00" ;
+    biostride_schema:workflow_code "WF-2D-001" ;
+    biostride_schema:workflow_type "classification_2d" .
+
+biostride:workflow_3d_refine_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "3D refinement of TFIID structure" ;
+    biostride_schema:completed_at "2024-03-24T02:00:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "36.0"^^xsd:float ;
+            biostride_schema:gpu_hours "72.0"^^xsd:float ;
+            biostride_schema:memory_gb "512.0"^^xsd:float ;
+            biostride_schema:storage_gb "1200.0"^^xsd:float ] ;
+    biostride_schema:description "High-resolution 3D refinement" ;
+    biostride_schema:experiment_id "biostride:exp_tfiid_001" ;
+    biostride_schema:processing_level 3 ;
+    biostride_schema:processing_parameters "Non-uniform refinement with C1 symmetry" ;
+    biostride_schema:software_name "cryoSPARC" ;
+    biostride_schema:software_version "4.4.0" ;
+    biostride_schema:started_at "2024-03-22T14:00:00" ;
+    biostride_schema:workflow_code "WF-3D-001" ;
+    biostride_schema:workflow_type "refinement" .
+
+biostride:workflow_ctf_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "CTF estimation for TFIID" ;
+    biostride_schema:completed_at "2024-03-20T21:15:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "4.0"^^xsd:float ;
+            biostride_schema:memory_gb "16.0"^^xsd:float ;
+            biostride_schema:storage_gb "50.0"^^xsd:float ] ;
+    biostride_schema:description "CTF estimation using CTFFIND4" ;
+    biostride_schema:experiment_id "biostride:exp_tfiid_001" ;
+    biostride_schema:processing_level 1 ;
+    biostride_schema:processing_parameters "Resolution 30 5" ;
+    biostride_schema:software_name "CTFFIND4" ;
+    biostride_schema:software_version "4.1.14" ;
+    biostride_schema:started_at "2024-03-20T20:35:00" ;
+    biostride_schema:workflow_code "WF-CTF-001" ;
+    biostride_schema:workflow_type "ctf_estimation" .
+
+biostride:workflow_motion_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Motion correction for TFIID dataset" ;
+    biostride_schema:completed_at "2024-03-20T20:30:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "2.5"^^xsd:float ;
+            biostride_schema:gpu_hours "8.0"^^xsd:float ;
+            biostride_schema:memory_gb "32.0"^^xsd:float ;
+            biostride_schema:storage_gb "450.0"^^xsd:float ] ;
+    biostride_schema:description "Motion correction using MotionCor2" ;
+    biostride_schema:experiment_id "biostride:exp_tfiid_001" ;
+    biostride_schema:processing_level 1 ;
+    biostride_schema:processing_parameters "-Patch 5 5 -Gpu 0 -FmDose 1.2" ;
+    biostride_schema:software_name "MotionCor2" ;
+    biostride_schema:software_version "1.6.4" ;
+    biostride_schema:started_at "2024-03-20T18:00:00" ;
+    biostride_schema:workflow_code "WF-MC-001" ;
+    biostride_schema:workflow_type "motion_correction" .
+
+biostride:workflow_picking_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Particle picking for TFIID" ;
+    biostride_schema:completed_at "2024-03-21T10:30:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "1.5"^^xsd:float ;
+            biostride_schema:gpu_hours "3.0"^^xsd:float ;
+            biostride_schema:memory_gb "24.0"^^xsd:float ;
+            biostride_schema:storage_gb "120.0"^^xsd:float ] ;
+    biostride_schema:description "Automated particle picking using crYOLO" ;
+    biostride_schema:experiment_id "biostride:exp_tfiid_001" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:processing_parameters "Model TFIID_trained threshold 0.3" ;
+    biostride_schema:software_name "crYOLO" ;
+    biostride_schema:software_version "1.9.0" ;
+    biostride_schema:started_at "2024-03-21T09:00:00" ;
+    biostride_schema:workflow_code "WF-PICK-001" ;
+    biostride_schema:workflow_type "particle_picking" .
+
+biostride:sample_tfiid_001 a biostride_schema:Sample ;
+    dcterms:title "Human TFIID complex" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:additives "0.5 mM PMSF",
+                "1 mM DTT" ;
+            biostride_schema:components "10% glycerol",
+                "150 mM KCl",
+                "20 mM HEPES",
+                "5 mM MgCl2" ;
+            biostride_schema:ph "7.9"^^xsd:float ] ;
+    biostride_schema:concentration "0.8"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:description "Purified human TFIID complex for structural analysis" ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:ligands "DNA promoter sequence" ;
+            biostride_schema:modifications "TAF1 phosphorylation at S residues",
+                "TAF7 acetylation" ;
+            biostride_schema:sequences "MSDAEGEKPFKGWEEQVQGRGRVNVLRNKFGGPVTLEQQRWEQAQQGVVEELRCDAVKSMNGFLNLSLPSQEPADLSELQEKLEEILRLNDTFKKNTGLPSTSAELDAAQEELQDWLSKLEENAKAIGEKDQVLEAAAKQLDNEAEAHTQQVYNLKKKGQAAPEEQEEEEDLVAGDEDD" ] ;
+    biostride_schema:molecular_weight "1200.0"^^xsd:float ;
+    biostride_schema:preparation_method "Nuclear extract followed by immunoaffinity purification and glycerol gradient" ;
+    biostride_schema:purity_percentage "95.0"^^xsd:float ;
+    biostride_schema:sample_code "TFIID-2024-001" ;
+    biostride_schema:sample_type "complex" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:atmosphere "Flash frozen in liquid nitrogen" ;
+            biostride_schema:duration "6 months" ;
+            biostride_schema:temperature "-80.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+

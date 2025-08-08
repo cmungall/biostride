@@ -1,0 +1,23 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:workflow_model_proteasome_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Atomic model building for 26S proteasome" ;
+    biostride_schema:completed_at "2024-04-30T17:00:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "120.0"^^xsd:float ;
+            biostride_schema:gpu_hours "0.0"^^xsd:float ;
+            biostride_schema:memory_gb "64.0"^^xsd:float ;
+            biostride_schema:storage_gb "50.0"^^xsd:float ] ;
+    biostride_schema:description "Building and refining atomic model into cryo-EM density" ;
+    biostride_schema:experiment_id "biostride:exp_proteasome_001" ;
+    biostride_schema:processing_level 4 ;
+    biostride_schema:processing_parameters "Real space refinement with secondary structure restraints" ;
+    biostride_schema:software_name "Coot" ;
+    biostride_schema:software_version "0.9.8.92" ;
+    biostride_schema:started_at "2024-04-25T09:00:00" ;
+    biostride_schema:workflow_code "WF-MODEL-PROT-001" ;
+    biostride_schema:workflow_type "model_building" .
+

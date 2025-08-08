@@ -1,0 +1,33 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:xrf_img_001 a biostride_schema:XRFImage ;
+    dcterms:title "Synchrotron XRF elemental map of leaf tissue" ;
+    biostride_schema:acquisition_date "2024-05-25T16:00:00" ;
+    biostride_schema:astigmatism "0.0"^^xsd:float ;
+    biostride_schema:beam_energy "10.0"^^xsd:float ;
+    biostride_schema:beam_size "2.0"^^xsd:float ;
+    biostride_schema:calibration_standard "NIST SRM 1577c Bovine Liver" ;
+    biostride_schema:defocus "0.0"^^xsd:float ;
+    biostride_schema:description "Multi-element XRF map showing distribution of nutrients and trace elements" ;
+    biostride_schema:detector_type "Vortex-ME4 4-element silicon drift detector" ;
+    biostride_schema:dimensions_x 500 ;
+    biostride_schema:dimensions_y 400 ;
+    biostride_schema:dose "0.0"^^xsd:float ;
+    biostride_schema:dwell_time "100.0"^^xsd:float ;
+    biostride_schema:elements_measured "As",
+        "Ca",
+        "Cu",
+        "Fe",
+        "K",
+        "Mn",
+        "Se",
+        "Zn" ;
+    biostride_schema:exposure_time "0.1"^^xsd:float ;
+    biostride_schema:file_name "leaf_xrf_map_2um_resolution.h5" ;
+    biostride_schema:flux "1000000000000.0"^^xsd:float ;
+    biostride_schema:pixel_size "2.0"^^xsd:float ;
+    biostride_schema:source_type "synchrotron" .
+

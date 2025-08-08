@@ -1,0 +1,22 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:instrument_titan_krios_001 a biostride_schema:CryoEMInstrument ;
+    dcterms:title "Titan Krios G4" ;
+    biostride_schema:accelerating_voltage 300 ;
+    biostride_schema:autoloader_capacity 12 ;
+    biostride_schema:cs_corrector true ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "300kV Cryo-EM microscope with Gatan K3 detector" ;
+    biostride_schema:detector_dimensions "5760x4092" ;
+    biostride_schema:detector_type "direct_electron" ;
+    biostride_schema:installation_date "2023-03-15" ;
+    biostride_schema:instrument_code "TK-G4-001" ;
+    biostride_schema:manufacturer "Thermo Fisher Scientific" ;
+    biostride_schema:model "Titan Krios G4" ;
+    biostride_schema:phase_plate false ;
+    biostride_schema:pixel_size_max "2.5"^^xsd:float ;
+    biostride_schema:pixel_size_min "0.5"^^xsd:float .
+

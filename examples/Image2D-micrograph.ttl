@@ -1,0 +1,18 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:img2d_mic_tfiid_042 a biostride_schema:Image2D ;
+    dcterms:title "TFIID micrograph 042" ;
+    biostride_schema:acquisition_date "2024-03-20T10:15:42" ;
+    biostride_schema:astigmatism "0.05"^^xsd:float ;
+    biostride_schema:defocus "-2.1"^^xsd:float ;
+    biostride_schema:description "High-quality micrograph showing TFIID particles" ;
+    biostride_schema:dimensions_x 5760 ;
+    biostride_schema:dimensions_y 4092 ;
+    biostride_schema:dose "40.0"^^xsd:float ;
+    biostride_schema:exposure_time "2.5"^^xsd:float ;
+    biostride_schema:file_name "FoilHole_19234567_Data_19234568_19234569_20240320_101542_fractions.mrc" ;
+    biostride_schema:pixel_size "0.85"^^xsd:float .
+

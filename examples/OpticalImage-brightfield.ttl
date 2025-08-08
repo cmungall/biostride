@@ -1,0 +1,26 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:optical_img_001 a biostride_schema:OpticalImage ;
+    dcterms:title "Brightfield microscopy of tissue section" ;
+    biostride_schema:acquisition_date "2024-05-18T11:45:00" ;
+    biostride_schema:astigmatism "0.0"^^xsd:float ;
+    biostride_schema:color_channels "Blue",
+        "Green",
+        "Red" ;
+    biostride_schema:contrast_method "Köhler illumination with optimized condenser aperture" ;
+    biostride_schema:defocus "0.0"^^xsd:float ;
+    biostride_schema:description "High-resolution brightfield image of stained tissue cross-section" ;
+    biostride_schema:dimensions_x 4096 ;
+    biostride_schema:dimensions_y 3072 ;
+    biostride_schema:dose "0.0"^^xsd:float ;
+    biostride_schema:exposure_time "0.05"^^xsd:float ;
+    biostride_schema:file_name "tissue_section_h&e_10x.tif" ;
+    biostride_schema:illumination_type "brightfield" ;
+    biostride_schema:magnification "10.0"^^xsd:float ;
+    biostride_schema:numerical_aperture "0.25"^^xsd:float ;
+    biostride_schema:pixel_size "0.65"^^xsd:float ;
+    biostride_schema:white_balance "Auto white balance on reference slide" .
+

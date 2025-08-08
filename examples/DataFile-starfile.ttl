@@ -1,0 +1,16 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:datafile_particles_001 a biostride_schema:DataFile ;
+    dcterms:title "TFIID refined particles" ;
+    biostride_schema:checksum "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5" ;
+    biostride_schema:creation_date "2024-03-23T16:45:00" ;
+    biostride_schema:data_type "metadata" ;
+    biostride_schema:description "STAR file containing refined particle coordinates and orientations" ;
+    biostride_schema:file_format "star" ;
+    biostride_schema:file_name "run_data.star" ;
+    biostride_schema:file_path "/data/berkeley/2024/tfiid/relion/Refine3D/job042/run_data.star" ;
+    biostride_schema:file_size_bytes 128974623 .
+

@@ -1,0 +1,27 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:fluor_img_gfp_001 a biostride_schema:FluorescenceImage ;
+    dcterms:title "GFP fluorescence image of stress response proteins" ;
+    biostride_schema:acquisition_date "2024-05-22T09:15:00" ;
+    biostride_schema:astigmatism "0.0"^^xsd:float ;
+    biostride_schema:channel_name "GFP" ;
+    biostride_schema:defocus "0.0"^^xsd:float ;
+    biostride_schema:description "Confocal fluorescence image showing GFP-tagged heat shock proteins" ;
+    biostride_schema:dimensions_x 2048 ;
+    biostride_schema:dimensions_y 2048 ;
+    biostride_schema:dose "0.0"^^xsd:float ;
+    biostride_schema:emission_filter "525/50 nm bandpass" ;
+    biostride_schema:emission_wavelength "509.0"^^xsd:float ;
+    biostride_schema:excitation_filter "488/10 nm bandpass" ;
+    biostride_schema:excitation_wavelength "488.0"^^xsd:float ;
+    biostride_schema:exposure_time "0.2"^^xsd:float ;
+    biostride_schema:file_name "hsp70_gfp_z042.tif" ;
+    biostride_schema:fluorophore "Enhanced GFP (EGFP)" ;
+    biostride_schema:laser_power "2.5"^^xsd:float ;
+    biostride_schema:pinhole_size "1.0"^^xsd:float ;
+    biostride_schema:pixel_size "0.065"^^xsd:float ;
+    biostride_schema:quantum_yield "0.6"^^xsd:float .
+

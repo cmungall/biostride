@@ -1,0 +1,20 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:instrument_sibyls_1231 a biostride_schema:SAXSInstrument ;
+    dcterms:title "SIBYLS Beamline 12.3.1" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "SIBYLS beamline at ALS for SAXS and crystallography" ;
+    biostride_schema:detector_distance_max "5000.0"^^xsd:float ;
+    biostride_schema:detector_distance_min "1500.0"^^xsd:float ;
+    biostride_schema:installation_date "2008-09-01" ;
+    biostride_schema:instrument_code "ALS-12.3.1-SIBYLS" ;
+    biostride_schema:manufacturer "Lawrence Berkeley National Laboratory" ;
+    biostride_schema:model "SIBYLS Dual Endstation" ;
+    biostride_schema:q_range_max "0.6"^^xsd:float ;
+    biostride_schema:q_range_min "0.01"^^xsd:float ;
+    biostride_schema:sample_changer_capacity 96 ;
+    biostride_schema:temperature_control_range "4-60" .
+

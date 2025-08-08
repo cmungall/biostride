@@ -1,0 +1,18 @@
+---
+site_name: "biostride"
+theme:
+  name: material
+  # palette:
+  #  scheme: slate
+  #  primary: cyan
+  features:
+    - content.tabs.link
+plugins:
+  - search
+  - mermaid2
+nav:
+  # - Home: home.md
+  - Index: index.md
+  - About: about.md
+site_url: https://linkml.github.io/biostride
+repo_url: https://github.com/linkml/biostride

@@ -1,0 +1,23 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:workflow_phasing_selmet_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "SAD phasing of selenomethionine derivative" ;
+    biostride_schema:completed_at "2024-05-02T22:00:00" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "24.0"^^xsd:float ;
+            biostride_schema:gpu_hours "0.0"^^xsd:float ;
+            biostride_schema:memory_gb "32.0"^^xsd:float ;
+            biostride_schema:storage_gb "100.0"^^xsd:float ] ;
+    biostride_schema:description "Single-wavelength anomalous dispersion phasing" ;
+    biostride_schema:experiment_id "biostride:exp_xray_selmet_001" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:processing_parameters "autosol wavelength=0.9792 sites=12" ;
+    biostride_schema:software_name "PHENIX" ;
+    biostride_schema:software_version "1.21" ;
+    biostride_schema:started_at "2024-05-02T10:00:00" ;
+    biostride_schema:workflow_code "WF-PHASE-SAD-001" ;
+    biostride_schema:workflow_type "phasing" .
+
