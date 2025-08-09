@@ -12,6 +12,7 @@ test-examples:
 	$(RUN) linkml-run-examples -s $(SCHEMA) -e tests/data/valid -d examples
 
 gendoc: $(DOCDIR)
+	cp -pr src/docs/* $(DOCDIR)
 	$(RUN) gen-doc ${GEN_DARGS} -d $(DOCDIR) $(SCHEMA)
 
 

@@ -23,9 +23,9 @@ Alias: defocus
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [FluorescenceImage](FluorescenceImage.md) | Fluorescence microscopy image capturing specific molecular targets through fl... |  no  |
-| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 | [OpticalImage](OpticalImage.md) | Visible light optical microscopy or photography image |  no  |
 | [Image2D](Image2D.md) | A 2D image (micrograph, diffraction pattern) |  no  |
+| [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
 
 
 
