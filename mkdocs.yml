@@ -23,5 +23,6 @@ nav:
     - DIALS: background/dials.md
     - SASDB: background/sasdb.md
     - Data Lakehouse Strategy: background/biostride-data-lakehouse-strategy.md
+    - Integration with BER: background/ber-doe-facilities.md
 site_url: https://cmungall.github.io/biostride
 repo_url: https://github.com/cmungall/biostride
