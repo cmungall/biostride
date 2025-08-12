@@ -15,7 +15,7 @@ nav:
   - Index: index.md
   - About: about.md
   - Background:
-    - Overview: background/README.md
+    - Overview: background/index.md
     - NEXUS: background/nexus.md
     - mmCIF: background/mmcif.md
     - EMPIAR: background/empiar.md
