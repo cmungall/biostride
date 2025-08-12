@@ -15,10 +15,13 @@ nav:
   - Index: index.md
   - About: about.md
   - Background:
+    - Overview: background/README.md
     - NEXUS: background/nexus.md
     - mmCIF: background/mmcif.md
     - EMPIAR: background/empiar.md
     - EMDB: background/emdb.md
     - DIALS: background/dials.md
+    - SASDB: background/sasdb.md
+    - Data Lakehouse Strategy: background/biostride-data-lakehouse-strategy.md
 site_url: https://cmungall.github.io/biostride
 repo_url: https://github.com/cmungall/biostride

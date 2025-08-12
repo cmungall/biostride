@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-08T14:43:56
+# Generation date: 2025-08-12T09:58:52
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/

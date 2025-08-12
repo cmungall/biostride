@@ -1,0 +1,79 @@
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:study_1EE2_horse_adh a biostride_schema:Study ;
+    dcterms:title "Crystal Structure of Horse Liver Alcohol Dehydrogenase at 1.54 A Resolution" ;
+    biostride_schema:data_files biostride:file_1EE2_coords,
+        biostride:file_1EE2_sf ;
+    biostride_schema:description "The structure of steroid-active alcohol dehydrogenase from Equus caballus (horse) liver, complexed with NAD+ and cholic acid" ;
+    biostride_schema:images biostride:img_1EE2_diffraction_001 ;
+    biostride_schema:instrument_runs biostride:exp_1EE2_xray_001 ;
+    biostride_schema:sample_preparations biostride:prep_1EE2_001 ;
+    biostride_schema:samples biostride:sample_1EE2_001 ;
+    biostride_schema:workflow_runs biostride:wf_1EE2_refinement_001 .
+
+biostride:exp_1EE2_xray_001 a biostride_schema:ExperimentRun ;
+    dcterms:title "X-ray Diffraction Data Collection" ;
+    biostride_schema:experiment_code "1EE2_XRAY_001" ;
+    biostride_schema:experiment_date "1998-11-23" ;
+    biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
+            biostride_schema:temperature "100.0"^^xsd:float ] ;
+    biostride_schema:instrument_id "DESY_BW7B" ;
+    biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
+            biostride_schema:completeness "95.0"^^xsd:float ;
+            biostride_schema:resolution "1.54"^^xsd:float ] ;
+    biostride_schema:sample_id "biostride:sample_1EE2_001" ;
+    biostride_schema:technique "xray_crystallography" .
+
+biostride:file_1EE2_coords a biostride_schema:DataFile ;
+    biostride_schema:creation_date "2000-01-30" ;
+    biostride_schema:data_type "model" ;
+    biostride_schema:file_format "pdb" ;
+    biostride_schema:file_name "1EE2.pdb" .
+
+biostride:file_1EE2_sf a biostride_schema:DataFile ;
+    biostride_schema:creation_date "2000-01-30" ;
+    biostride_schema:data_type "diffraction" ;
+    biostride_schema:file_format "mmcif" ;
+    biostride_schema:file_name "1EE2_sf.cif" .
+
+biostride:img_1EE2_diffraction_001 a biostride_schema:Image ;
+    biostride_schema:acquisition_date "1998-11-23" ;
+    biostride_schema:file_name "1ee2_diffraction_pattern.img" ;
+    biostride_schema:pixel_size "0.15"^^xsd:float .
+
+biostride:prep_1EE2_001 a biostride_schema:SamplePreparation ;
+    biostride_schema:description "Vapor diffusion sitting drop with PEG400/PEG8000, TES/KOH pH 7.0, 277K, NAD+ and Cholic Acid" ;
+    biostride_schema:preparation_date "1998-11-01" ;
+    biostride_schema:preparation_type "xray_crystallography" ;
+    biostride_schema:sample_id "biostride:sample_1EE2_001" .
+
+biostride:sample_1EE2_001 a biostride_schema:Sample ;
+    dcterms:title "Horse Liver Alcohol Dehydrogenase" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:components "TES/KOH" ;
+            biostride_schema:ph "7.0"^^xsd:float ] ;
+    biostride_schema:concentration "10.0"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:ligands "2x Zinc Ion",
+                "Alcohol Dehydrogenase (373 residues)",
+                "Cholic Acid",
+                "NAD+" ] ;
+    biostride_schema:molecular_weight "80.0"^^xsd:float ;
+    biostride_schema:sample_code "1EE2_SAMPLE_001" ;
+    biostride_schema:sample_type "complex" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:temperature "277.0"^^xsd:float ;
+            biostride_schema:temperature_unit "kelvin" ] .
+
+biostride:wf_1EE2_refinement_001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Structure Refinement" ;
+    biostride_schema:experiment_id "biostride:exp_1EE2_xray_001" ;
+    biostride_schema:software_name "CNS" ;
+    biostride_schema:software_version "1.0" ;
+    biostride_schema:workflow_code "1EE2_REFINEMENT_001" ;
+    biostride_schema:workflow_type "refinement" .
+
