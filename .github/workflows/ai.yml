@@ -174,7 +174,6 @@ jobs:
         run: |
           uv venv
           source .venv/bin/activate
-          uv pip install aurelian jinja2-cli "wrapt>=1.17.2"
         
       - name: Create structured Claude prompt
         run: |
@@ -204,8 +203,6 @@ jobs:
       - name: Run Claude Code in headless mode
         id: claude-response
         run: |
-          obo-grep.pl --help
-          obo-checkin.pl --help
 
           export PATH="${{ env.TOOLS_DIR }}:$PATH"
           # Python env
