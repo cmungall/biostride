@@ -1,0 +1,26 @@
+@base <http://example.org/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/kibler2024/sample/hetBGL03-15-18> a biostride_schema:Sample ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:components "25 mM Tris",
+                "300 mM NaCl" ;
+            biostride_schema:ph "8.0"^^xsd:float ] ;
+    biostride_schema:concentration "2.5"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:modifications "6xHis tag (removed after purification)",
+                "TEV protease cleavage site" ;
+            biostride_schema:sequences "MDFYTLPTSHPA...",
+                "MDFYTLPTSHPV...",
+                "MDFYTLPTSNPV..." ] ;
+    biostride_schema:molecular_weight "182.5"^^xsd:float ;
+    biostride_schema:sample_code "hetBGL03-15-18" ;
+    biostride_schema:sample_type "complex" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:duration "< 1 week before measurement" ;
+            biostride_schema:temperature "4.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+
