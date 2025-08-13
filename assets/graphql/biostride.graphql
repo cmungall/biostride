@@ -61,6 +61,7 @@ enum FileFormatEnum
     cbf
     ascii
     thermo_raw
+    zip
   }
 
 enum GridTypeEnum
@@ -173,8 +174,14 @@ enum XRaySourceTypeEnum
     metal_jet
   }
 
+interface AttributeGroup
+  {
+    description: String
+  }
+
 type BufferComposition
   {
+    description: String
     ph: Float
     components: [String]
     additives: [String]
@@ -182,6 +189,7 @@ type BufferComposition
 
 type ComputeResources
   {
+    description: String
     cpuHours: Float
     gpuHours: Float
     memoryGb: Float
@@ -210,6 +218,7 @@ type CryoEMInstrument
 
 type CryoEMPreparation
   {
+    description: String
     gridType: GridTypeEnum
     supportFilm: String
     holeSize: Float
@@ -223,6 +232,7 @@ type CryoEMPreparation
 
 type DataCollectionStrategy
   {
+    description: String
     collectionMode: CollectionModeEnum
     totalFrames: Integer
     frameRate: Float
@@ -255,6 +265,7 @@ type Dataset
 
 type ExperimentalConditions
   {
+    description: String
     temperature: Float
     humidity: Float
     pressure: Float
@@ -376,6 +387,7 @@ type Image3D
 
 type ImageFeature
   {
+    description: String
     terms: OntologyTerm
   }
 
@@ -393,6 +405,7 @@ interface Instrument
 
 type MolecularComposition
   {
+    description: String
     sequences: [String]
     modifications: [String]
     ligands: [String]
@@ -407,7 +420,9 @@ interface NamedThing
 
 type OntologyTerm
   {
-    id: String!
+    id: Uriorcurie!
+    title: String
+    description: String
     label: String
     definition: String
     ontology: String
@@ -437,6 +452,7 @@ type OpticalImage
 
 type QualityMetrics
   {
+    description: String
     resolution: Float
     completeness: Float
     signalToNoise: Float
@@ -496,6 +512,7 @@ type SAXSInstrument
 
 type SAXSPreparation
   {
+    description: String
     concentrationSeries: [Float]
     bufferMatchingProtocol: String
     sampleCellType: String
@@ -505,6 +522,7 @@ type SAXSPreparation
 
 type StorageConditions
   {
+    description: String
     temperature: Float
     temperatureUnit: TemperatureUnitEnum
     duration: String
@@ -526,6 +544,7 @@ type Study
 
 interface TechniqueSpecificPreparation
   {
+    description: String
   }
 
 type WorkflowRun
@@ -569,6 +588,7 @@ type XRayInstrument
 
 type XRayPreparation
   {
+    description: String
     crystallizationMethod: CrystallizationMethodEnum
     crystallizationConditions: String
     crystalSize: String

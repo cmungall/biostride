@@ -4,6 +4,7 @@
 // Buffer composition for sample storage
 message BufferComposition
  {
+  string description = 0
   float ph = 0
  repeated  string components = 0
  repeated  string additives = 0
@@ -11,6 +12,7 @@ message BufferComposition
 // Computational resources used
 message ComputeResources
  {
+  string description = 0
   float cpuHours = 0
   float gpuHours = 0
   float memoryGb = 0
@@ -39,6 +41,7 @@ message CryoEMInstrument
 // Cryo-EM specific sample preparation
 message CryoEMPreparation
  {
+  string description = 0
   gridTypeEnum gridType = 0
   string supportFilm = 0
   float holeSize = 0
@@ -52,6 +55,7 @@ message CryoEMPreparation
 // Strategy for data collection
 message DataCollectionStrategy
  {
+  string description = 0
   collectionModeEnum collectionMode = 0
   integer totalFrames = 0
   float frameRate = 0
@@ -84,6 +88,7 @@ message Dataset
 // Environmental and experimental conditions
 message ExperimentalConditions
  {
+  string description = 0
   float temperature = 0
   float humidity = 0
   float pressure = 0
@@ -204,18 +209,22 @@ message Image3D
  }
 message ImageFeature
  {
+  string description = 0
   ontologyTerm terms = 0
  }
 // Molecular composition of a sample
 message MolecularComposition
  {
+  string description = 0
  repeated  string sequences = 0
  repeated  string modifications = 0
  repeated  string ligands = 0
  }
 message OntologyTerm
  {
-  string id = 0
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
   string label = 0
   string definition = 0
   string ontology = 0
@@ -245,6 +254,7 @@ message OpticalImage
 // Quality metrics for experiments
 message QualityMetrics
  {
+  string description = 0
   float resolution = 0
   float completeness = 0
   float signalToNoise = 0
@@ -304,6 +314,7 @@ message SAXSInstrument
 // SAXS/WAXS specific preparation
 message SAXSPreparation
  {
+  string description = 0
  repeated  float concentrationSeries = 0
   string bufferMatchingProtocol = 0
   string sampleCellType = 0
@@ -313,6 +324,7 @@ message SAXSPreparation
 // Storage conditions for samples
 message StorageConditions
  {
+  string description = 0
   float temperature = 0
   temperatureUnitEnum temperatureUnit = 0
   string duration = 0
@@ -372,6 +384,7 @@ message XRayInstrument
 // X-ray crystallography specific preparation
 message XRayPreparation
  {
+  string description = 0
   crystallizationMethodEnum crystallizationMethod = 0
   string crystallizationConditions = 0
   string crystalSize = 0

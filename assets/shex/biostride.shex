@@ -44,8 +44,21 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
+<AttributeGroup>  (
+    @<BufferComposition> OR @<ComputeResources> OR @<DataCollectionStrategy> OR @<ExperimentalConditions> OR @<ImageFeature> OR
+    @<MolecularComposition> OR @<QualityMetrics> OR @<StorageConditions> OR @<TechniqueSpecificPreparation>
+)
+
+<AttributeGroup_struct> {
+    (  $<AttributeGroup_tes> <description> @linkml:String ? ;
+       rdf:type [ <AttributeGroup> ] ?
+    )
+}
+
 <BufferComposition> CLOSED {
-    (  $<BufferComposition_tes> (  <ph> @linkml:Float ? ;
+    (  $<BufferComposition_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <ph> @linkml:Float ? ;
           <components> @linkml:String * ;
           <additives> @linkml:String *
        ) ;
@@ -54,7 +67,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <ComputeResources> CLOSED {
-    (  $<ComputeResources_tes> (  <cpu_hours> @linkml:Float ? ;
+    (  $<ComputeResources_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <cpu_hours> @linkml:Float ? ;
           <gpu_hours> @linkml:Float ? ;
           <memory_gb> @linkml:Float ? ;
           <storage_gb> @linkml:Float ?
@@ -105,7 +120,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <DataCollectionStrategy> CLOSED {
-    (  $<DataCollectionStrategy_tes> (  <collection_mode> [ <https://w3id.org/biostride/schema/CollectionModeEnum#counting>
+    (  $<DataCollectionStrategy_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <collection_mode> [ <https://w3id.org/biostride/schema/CollectionModeEnum#counting>
              <https://w3id.org/biostride/schema/CollectionModeEnum#super_resolution>
              <https://w3id.org/biostride/schema/CollectionModeEnum#continuous>
              <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation>
@@ -132,7 +149,8 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/FileFormatEnum#star> <https://w3id.org/biostride/schema/FileFormatEnum#pdb>
              <https://w3id.org/biostride/schema/FileFormatEnum#mmcif> <https://w3id.org/biostride/schema/FileFormatEnum#mtz>
              <https://w3id.org/biostride/schema/FileFormatEnum#cbf> <https://w3id.org/biostride/schema/FileFormatEnum#ascii>
-             <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> ] ;
+             <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> <https://w3id.org/biostride/schema/FileFormatEnum#zip> ]
+          ;
           <file_size_bytes> @linkml:Integer ? ;
           <checksum> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
@@ -158,7 +176,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <ExperimentalConditions> CLOSED {
-    (  $<ExperimentalConditions_tes> (  <temperature> @linkml:Float ? ;
+    (  $<ExperimentalConditions_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <temperature> @linkml:Float ? ;
           <humidity> @linkml:Float ? ;
           <pressure> @linkml:Float ? ;
           <atmosphere> @linkml:String ? ;
@@ -270,7 +290,10 @@ linkml:Sparqlpath xsd:string
 }
 
 <ImageFeature> CLOSED {
-    (  $<ImageFeature_tes> <terms> @<OntologyTerm> ? ;
+    (  $<ImageFeature_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <terms> @<OntologyTerm> ?
+       ) ;
        rdf:type [ <ImageFeature> ] ?
     )
 }
@@ -296,7 +319,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <MolecularComposition> CLOSED {
-    (  $<MolecularComposition_tes> (  <sequences> @linkml:String * ;
+    (  $<MolecularComposition_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <sequences> @linkml:String * ;
           <modifications> @linkml:String * ;
           <ligands> @linkml:String *
        ) ;
@@ -305,8 +330,8 @@ linkml:Sparqlpath xsd:string
 }
 
 <NamedThing>  (
-    @<DataFile> OR @<Dataset> OR @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<Sample> OR @<SamplePreparation> OR @<Study> OR
-    @<WorkflowRun>
+    @<DataFile> OR @<Dataset> OR @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<OntologyTerm> OR @<Sample> OR
+    @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
 )
 
 <NamedThing_struct> {
@@ -318,7 +343,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <OntologyTerm> CLOSED {
-    (  $<OntologyTerm_tes> (  <label> @linkml:String ? ;
+    (  $<OntologyTerm_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <label> @linkml:String ? ;
           <definition> @linkml:String ? ;
           <ontology> @linkml:String ?
        ) ;
@@ -348,7 +375,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <QualityMetrics> CLOSED {
-    (  $<QualityMetrics_tes> (  <resolution> @linkml:Float ? ;
+    (  $<QualityMetrics_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <resolution> @linkml:Float ? ;
           <completeness> @linkml:Float ? ;
           <signal_to_noise> @linkml:Float ? ;
           <r_factor> @linkml:Float ? ;
@@ -434,7 +463,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <StorageConditions> CLOSED {
-    (  $<StorageConditions_tes> (  <temperature> @linkml:Float ? ;
+    (  $<StorageConditions_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ? ;
+          <temperature> @linkml:Float ? ;
           <temperature_unit> [ <https://w3id.org/biostride/schema/TemperatureUnitEnum#celsius>
              <https://w3id.org/biostride/schema/TemperatureUnitEnum#kelvin>
              <https://w3id.org/biostride/schema/TemperatureUnitEnum#fahrenheit> ] ? ;
@@ -464,7 +495,9 @@ linkml:Sparqlpath xsd:string
 )
 
 <TechniqueSpecificPreparation_struct> {
-    (  $<TechniqueSpecificPreparation_tes> rdf:type . * ;
+    (  $<TechniqueSpecificPreparation_tes> (  &<AttributeGroup_tes> ;
+          rdf:type [ <AttributeGroup> ] ?
+       ) ;
        rdf:type [ <TechniqueSpecificPreparation> ] ?
     )
 }

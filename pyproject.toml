@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "linkml-runtime>=1.9.4",
+    "requests>=2.32.4",
 ]
 
 [project.scripts]

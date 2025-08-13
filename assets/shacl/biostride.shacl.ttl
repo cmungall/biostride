@@ -4,52 +4,33 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+biostride_schema:AttributeGroup a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A grouping of related data attributes that form a logical unit" ;
+    sh:ignoredProperties ( biostride_schema:resolution biostride_schema:sample_cell_type biostride_schema:collection_mode biostride_schema:mounting_method biostride_schema:temperature_control biostride_schema:crystal_size biostride_schema:dose_per_frame rdf:type biostride_schema:atmosphere biostride_schema:chamber_temperature biostride_schema:support_film biostride_schema:beam_energy biostride_schema:components biostride_schema:flash_cooling_method biostride_schema:total_frames biostride_schema:cryoprotectant biostride_schema:crystallization_method biostride_schema:signal_to_noise biostride_schema:hole_size biostride_schema:sequences biostride_schema:ligands biostride_schema:temperature_unit biostride_schema:rg biostride_schema:blot_force biostride_schema:cpu_hours biostride_schema:terms biostride_schema:humidity_percentage biostride_schema:ph biostride_schema:r_factor biostride_schema:cryoprotectant_concentration biostride_schema:humidity biostride_schema:grid_type biostride_schema:crystallization_conditions biostride_schema:concentration_series biostride_schema:blot_time biostride_schema:buffer_matching_protocol biostride_schema:storage_gb biostride_schema:frame_rate biostride_schema:cell_path_length biostride_schema:gpu_hours biostride_schema:plasma_treatment biostride_schema:exposure_time biostride_schema:additives biostride_schema:pressure biostride_schema:temperature biostride_schema:total_dose biostride_schema:memory_gb biostride_schema:vitrification_method biostride_schema:modifications biostride_schema:completeness biostride_schema:i_zero biostride_schema:duration ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:description ] ;
+    sh:targetClass biostride_schema:AttributeGroup .
+
 biostride_schema:CryoEMInstrument a sh:NodeShape ;
     sh:closed true ;
     sh:description "Cryo-EM microscope specifications" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Instrument model" ;
+            sh:description "Date of instrument installation" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path biostride_schema:model ],
-        [ sh:datatype xsd:float ;
-            sh:description "Maximum pixel size in Angstroms per pixel" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:pixel_size_max ],
-        [ sh:datatype xsd:float ;
-            sh:description "Minimum pixel size in Angstroms per pixel" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:pixel_size_min ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:id ],
-        [ sh:description "Accelerating voltage in kV" ;
-            sh:maxCount 1 ;
-            sh:or ( [ ] [ ] [ ] ) ;
-            sh:order 0 ;
-            sh:path biostride_schema:accelerating_voltage ],
+            sh:order 11 ;
+            sh:path biostride_schema:installation_date ],
         [ sh:datatype xsd:boolean ;
             sh:description "Phase plate available" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:phase_plate ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier code for the instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:instrument_code ],
         [ sh:datatype xsd:boolean ;
             sh:description "Spherical aberration corrector present" ;
             sh:maxCount 1 ;
@@ -61,6 +42,29 @@ biostride_schema:CryoEMInstrument a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:order 12 ;
             sh:path biostride_schema:current_status ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum pixel size in Angstroms per pixel" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:pixel_size_min ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path biostride_schema:model ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path biostride_schema:manufacturer ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path biostride_schema:description ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of grids the autoloader can hold" ;
             sh:maxCount 1 ;
@@ -76,41 +80,60 @@ biostride_schema:CryoEMInstrument a sh:NodeShape ;
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "Instrument manufacturer" ;
+            sh:order 14 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum pixel size in Angstroms per pixel" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:manufacturer ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date of instrument installation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:installation_date ],
+            sh:order 6 ;
+            sh:path biostride_schema:pixel_size_max ],
         [ sh:description "Type of detector" ;
             sh:in ( "direct_electron" "ccd" "cmos" "hybrid_pixel" ) ;
             sh:maxCount 1 ;
             sh:order 3 ;
             sh:path biostride_schema:detector_type ],
-        [ sh:datatype xsd:string ;
+        [ sh:description "Accelerating voltage in kV" ;
             sh:maxCount 1 ;
+            sh:or ( [ ] [ ] [ ] ) ;
+            sh:order 0 ;
+            sh:path biostride_schema:accelerating_voltage ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path dcterms:title ] ;
+            sh:order 13 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier code for the instrument" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:instrument_code ] ;
     sh:targetClass biostride_schema:CryoEMInstrument .
 
 biostride_schema:CryoEMPreparation a sh:NodeShape ;
     sh:closed true ;
     sh:description "Cryo-EM specific sample preparation" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Method used for vitrification" ;
-            sh:in ( "plunge_freezing" "high_pressure_freezing" "slam_freezing" ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path biostride_schema:vitrification_method ],
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Support film type" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:support_film ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Blotting force setting" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:blot_force ],
         [ sh:datatype xsd:float ;
             sh:description "Hole size in micrometers" ;
             sh:maxCount 1 ;
@@ -119,17 +142,25 @@ biostride_schema:CryoEMPreparation a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:hole_size ],
+        [ sh:description "Type of EM grid used" ;
+            sh:in ( "c_flat" "quantifoil" "lacey_carbon" "ultrathin_carbon" "gold" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path biostride_schema:grid_type ],
         [ sh:datatype xsd:string ;
             sh:description "Plasma treatment details" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
             sh:path biostride_schema:plasma_treatment ],
-        [ sh:description "Type of EM grid used" ;
-            sh:in ( "c_flat" "quantifoil" "lacey_carbon" "ultrathin_carbon" "gold" ) ;
+        [ sh:datatype xsd:float ;
+            sh:description "Blotting time in seconds" ;
             sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path biostride_schema:grid_type ],
+            sh:maxInclusive 1e+01 ;
+            sh:minInclusive 5e-01 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:blot_time ],
         [ sh:datatype xsd:float ;
             sh:description "Chamber humidity during vitrification" ;
             sh:maxCount 1 ;
@@ -139,51 +170,31 @@ biostride_schema:CryoEMPreparation a sh:NodeShape ;
             sh:order 6 ;
             sh:path biostride_schema:humidity_percentage ],
         [ sh:datatype xsd:float ;
-            sh:description "Blotting time in seconds" ;
-            sh:maxCount 1 ;
-            sh:maxInclusive 1e+01 ;
-            sh:minInclusive 5e-01 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:blot_time ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Blotting force setting" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:blot_force ],
-        [ sh:datatype xsd:float ;
             sh:description "Chamber temperature in Celsius" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path biostride_schema:chamber_temperature ],
-        [ sh:datatype xsd:string ;
-            sh:description "Support film type" ;
+        [ sh:description "Method used for vitrification" ;
+            sh:in ( "plunge_freezing" "high_pressure_freezing" "slam_freezing" ) ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:support_film ] ;
+            sh:order 3 ;
+            sh:path biostride_schema:vitrification_method ] ;
     sh:targetClass biostride_schema:CryoEMPreparation .
 
 biostride_schema:Dataset a sh:NodeShape ;
     sh:closed true ;
     sh:description "A collection of studies" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class biostride_schema:Study ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path biostride_schema:studies ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path dcterms:title ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:description ],
+        [ sh:class biostride_schema:Study ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path biostride_schema:studies ],
         [ sh:datatype xsd:string ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
@@ -193,55 +204,41 @@ biostride_schema:Dataset a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path biostride_schema:id ] ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:description ] ;
     sh:targetClass biostride_schema:Dataset .
 
 biostride_schema:FTIRImage a sh:NodeShape ;
     sh:closed true ;
     sh:description "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "Minimum wavenumber in cm⁻¹" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:wavenumber_min ],
-        [ sh:datatype xsd:float ;
-            sh:description "Electron dose in e-/Å²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:dose ],
-        [ sh:datatype xsd:float ;
-            sh:description "Exposure time in seconds" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:string ;
-            sh:description "Method used for background correction" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:background_correction ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Image file name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path biostride_schema:file_name ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image width in pixels" ;
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path biostride_schema:dimensions_x ],
+            sh:order 16 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:acquisition_date ],
         [ sh:datatype xsd:float ;
             sh:description "Pixel size in Angstroms" ;
             sh:maxCount 1 ;
@@ -254,35 +251,24 @@ biostride_schema:FTIRImage a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path biostride_schema:number_of_scans ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date image was acquired" ;
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:acquisition_date ],
+            sh:order 13 ;
+            sh:path biostride_schema:dose ],
         [ sh:datatype xsd:float ;
             sh:description "Spectral resolution in cm⁻¹" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:spectral_resolution ],
-        [ sh:datatype xsd:float ;
-            sh:description "Maximum wavenumber in cm⁻¹" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:wavenumber_max ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image height in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:dimensions_y ],
         [ sh:datatype xsd:string ;
             sh:description "Identified molecular signatures or peaks" ;
             sh:nodeKind sh:Literal ;
@@ -294,30 +280,55 @@ biostride_schema:FTIRImage a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path biostride_schema:apodization_function ],
-        [ sh:datatype xsd:anyURI ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path biostride_schema:id ] ;
+            sh:order 11 ;
+            sh:path biostride_schema:dimensions_y ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum wavenumber in cm⁻¹" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:wavenumber_max ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum wavenumber in cm⁻¹" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:wavenumber_min ],
+        [ sh:datatype xsd:string ;
+            sh:description "Method used for background correction" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:background_correction ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path biostride_schema:exposure_time ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path biostride_schema:dimensions_x ] ;
     sh:targetClass biostride_schema:FTIRImage .
 
 biostride_schema:FluorescenceImage a sh:NodeShape ;
     sh:closed true ;
     sh:description "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "Emission wavelength in nanometers" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:emission_wavelength ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pinhole size in Airy units for confocal microscopy" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:pinhole_size ],
+            sh:order 11 ;
+            sh:path biostride_schema:file_name ],
         [ sh:datatype xsd:integer ;
             sh:description "Image height in pixels" ;
             sh:maxCount 1 ;
@@ -325,81 +336,11 @@ biostride_schema:FluorescenceImage a sh:NodeShape ;
             sh:order 15 ;
             sh:path biostride_schema:dimensions_y ],
         [ sh:datatype xsd:float ;
-            sh:description "Electron dose in e-/Å²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path biostride_schema:dose ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:float ;
-            sh:description "Excitation wavelength in nanometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:excitation_wavelength ],
-        [ sh:datatype xsd:float ;
             sh:description "Laser power in milliwatts or percentage" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path biostride_schema:laser_power ],
-        [ sh:datatype xsd:float ;
-            sh:description "Exposure time in seconds" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path biostride_schema:id ],
-        [ sh:datatype xsd:float ;
-            sh:description "Astigmatism value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path biostride_schema:astigmatism ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image width in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path biostride_schema:dimensions_x ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name or type of fluorophore used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:fluorophore ],
-        [ sh:datatype xsd:float ;
-            sh:description "Defocus value in micrometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:defocus ],
-        [ sh:datatype xsd:string ;
-            sh:description "Specifications of the emission filter" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:emission_filter ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size in Angstroms" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:pixel_size ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path dcterms:title ],
         [ sh:datatype xsd:float ;
             sh:description "Quantum yield of the fluorophore" ;
             sh:maxCount 1 ;
@@ -407,60 +348,165 @@ biostride_schema:FluorescenceImage a sh:NodeShape ;
             sh:order 8 ;
             sh:path biostride_schema:quantum_yield ],
         [ sh:datatype xsd:string ;
-            sh:description "Specifications of the excitation filter" ;
+            sh:description "Date image was acquired" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:excitation_filter ],
+            sh:order 12 ;
+            sh:path biostride_schema:acquisition_date ],
+        [ sh:datatype xsd:float ;
+            sh:description "Excitation wavelength in nanometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:excitation_wavelength ],
+        [ sh:datatype xsd:string ;
+            sh:description "Specifications of the emission filter" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:emission_filter ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pinhole size in Airy units for confocal microscopy" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:pinhole_size ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name or type of fluorophore used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:fluorophore ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path biostride_schema:description ],
         [ sh:datatype xsd:string ;
             sh:description "Name of the fluorescence channel (e.g., DAPI, GFP, RFP)" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path biostride_schema:channel_name ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date image was acquired" ;
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:acquisition_date ],
-        [ sh:datatype xsd:string ;
-            sh:description "Image file name" ;
+            sh:order 17 ;
+            sh:path biostride_schema:dose ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:file_name ] ;
+            sh:order 13 ;
+            sh:path biostride_schema:pixel_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "Emission wavelength in nanometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:emission_wavelength ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path biostride_schema:exposure_time ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path biostride_schema:defocus ],
+        [ sh:datatype xsd:string ;
+            sh:description "Specifications of the excitation filter" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path biostride_schema:excitation_filter ],
+        [ sh:datatype xsd:float ;
+            sh:description "Astigmatism value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path biostride_schema:astigmatism ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path biostride_schema:dimensions_x ] ;
     sh:targetClass biostride_schema:FluorescenceImage .
 
 biostride_schema:Image2D a sh:NodeShape ;
     sh:closed true ;
     sh:description "A 2D image (micrograph, diffraction pattern)" ;
-    sh:ignoredProperties ( biostride_schema:excitation_wavelength rdf:type biostride_schema:excitation_filter biostride_schema:emission_filter biostride_schema:contrast_method biostride_schema:elements_measured biostride_schema:flux biostride_schema:pinhole_size biostride_schema:numerical_aperture biostride_schema:dwell_time biostride_schema:detector_type biostride_schema:illumination_type biostride_schema:white_balance biostride_schema:source_type biostride_schema:color_channels biostride_schema:laser_power biostride_schema:beam_size biostride_schema:calibration_standard biostride_schema:magnification biostride_schema:quantum_yield biostride_schema:channel_name biostride_schema:emission_wavelength biostride_schema:fluorophore biostride_schema:beam_energy ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "Exposure time in seconds" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:string ;
+    sh:ignoredProperties ( biostride_schema:emission_wavelength biostride_schema:elements_measured rdf:type biostride_schema:flux biostride_schema:color_channels biostride_schema:excitation_wavelength biostride_schema:beam_energy biostride_schema:beam_size biostride_schema:laser_power biostride_schema:calibration_standard biostride_schema:detector_type biostride_schema:pinhole_size biostride_schema:numerical_aperture biostride_schema:contrast_method biostride_schema:white_balance biostride_schema:source_type biostride_schema:channel_name biostride_schema:illumination_type biostride_schema:excitation_filter biostride_schema:magnification biostride_schema:emission_filter biostride_schema:fluorophore biostride_schema:quantum_yield biostride_schema:dwell_time ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Date image was acquired" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path biostride_schema:acquisition_date ],
         [ sh:datatype xsd:float ;
-            sh:description "Defocus value in micrometers" ;
+            sh:description "Astigmatism value" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:defocus ],
+            sh:order 1 ;
+            sh:path biostride_schema:astigmatism ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path biostride_schema:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:dose ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:defocus ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path biostride_schema:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:exposure_time ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:pixel_size ],
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -477,61 +523,24 @@ biostride_schema:Image2D a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
-            sh:path biostride_schema:dimensions_x ],
-        [ sh:datatype xsd:float ;
-            sh:description "Astigmatism value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:astigmatism ],
-        [ sh:datatype xsd:string ;
-            sh:description "Image file name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:file_name ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:float ;
-            sh:description "Electron dose in e-/Å²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:dose ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size in Angstroms" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:pixel_size ] ;
+            sh:path biostride_schema:dimensions_x ] ;
     sh:targetClass biostride_schema:Image2D .
 
 biostride_schema:Image3D a sh:NodeShape ;
     sh:closed true ;
     sh:description "A 3D volume or tomogram" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:description "Voxel size in Angstroms" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:voxel_size ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image width in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:dimensions_x ],
-        [ sh:datatype xsd:integer ;
+    sh:property [ sh:datatype xsd:integer ;
             sh:description "Image depth in pixels/slices" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path biostride_schema:dimensions_z ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path dcterms:title ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -539,10 +548,47 @@ biostride_schema:Image3D a sh:NodeShape ;
             sh:order 10 ;
             sh:path biostride_schema:id ],
         [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:file_name ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path dcterms:title ],
+            sh:order 5 ;
+            sh:path biostride_schema:pixel_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "Voxel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:voxel_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:dimensions_y ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:acquisition_date ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:dimensions_x ],
         [ sh:datatype xsd:float ;
             sh:description "Electron dose in e-/Å²" ;
             sh:maxCount 1 ;
@@ -555,42 +601,12 @@ biostride_schema:Image3D a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:reconstruction_method ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image height in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:dimensions_y ],
-        [ sh:datatype xsd:string ;
-            sh:description "Image file name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:file_name ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date image was acquired" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:acquisition_date ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:description ],
         [ sh:datatype xsd:float ;
             sh:description "Exposure time in seconds" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
-            sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size in Angstroms" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:pixel_size ] ;
+            sh:path biostride_schema:exposure_time ] ;
     sh:targetClass biostride_schema:Image3D .
 
 biostride_schema:ImageFeature a sh:NodeShape ;
@@ -600,23 +616,40 @@ biostride_schema:ImageFeature a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path biostride_schema:terms ] ;
+            sh:path biostride_schema:terms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:description ] ;
     sh:targetClass biostride_schema:ImageFeature .
 
 biostride_schema:Instrument a sh:NodeShape ;
     sh:closed false ;
     sh:description "An instrument used to collect data" ;
-    sh:ignoredProperties ( rdf:type biostride_schema:phase_plate biostride_schema:pixel_size_max biostride_schema:cs_corrector biostride_schema:beam_size_min biostride_schema:q_range_min biostride_schema:autoloader_capacity biostride_schema:pixel_size_min biostride_schema:q_range_max biostride_schema:monochromator_type biostride_schema:energy_max biostride_schema:beam_size_max biostride_schema:detector_type biostride_schema:source_type biostride_schema:detector_distance_max biostride_schema:goniometer_type biostride_schema:energy_min biostride_schema:detector_distance_min biostride_schema:sample_changer_capacity biostride_schema:flux_density biostride_schema:detector_dimensions biostride_schema:crystal_cooling_capability biostride_schema:temperature_control_range biostride_schema:accelerating_voltage ) ;
+    sh:ignoredProperties ( biostride_schema:crystal_cooling_capability biostride_schema:goniometer_type biostride_schema:autoloader_capacity biostride_schema:detector_distance_min rdf:type biostride_schema:monochromator_type biostride_schema:q_range_max biostride_schema:pixel_size_max biostride_schema:detector_type biostride_schema:detector_distance_max biostride_schema:pixel_size_min biostride_schema:energy_max biostride_schema:temperature_control_range biostride_schema:flux_density biostride_schema:cs_corrector biostride_schema:energy_min biostride_schema:sample_changer_capacity biostride_schema:beam_size_min biostride_schema:q_range_min biostride_schema:accelerating_voltage biostride_schema:phase_plate biostride_schema:source_type biostride_schema:detector_dimensions biostride_schema:beam_size_max ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Date of instrument installation" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:description ],
+            sh:order 3 ;
+            sh:path biostride_schema:installation_date ],
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:manufacturer ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -624,51 +657,39 @@ biostride_schema:Instrument a sh:NodeShape ;
             sh:order 5 ;
             sh:path biostride_schema:id ],
         [ sh:datatype xsd:string ;
-            sh:description "Date of instrument installation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:installation_date ],
-        [ sh:datatype xsd:string ;
-            sh:description "Instrument model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:model ],
-        [ sh:description "Current operational status" ;
-            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path biostride_schema:current_status ],
-        [ sh:datatype xsd:string ;
             sh:description "Unique identifier code for the instrument" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path biostride_schema:instrument_code ],
+        [ sh:description "Current operational status" ;
+            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path biostride_schema:current_status ],
         [ sh:datatype xsd:string ;
-            sh:description "Instrument manufacturer" ;
+            sh:description "Instrument model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:manufacturer ] ;
+            sh:order 2 ;
+            sh:path biostride_schema:model ] ;
     sh:targetClass biostride_schema:Instrument .
 
 biostride_schema:NamedThing a sh:NodeShape ;
     sh:closed false ;
     sh:description "A named thing" ;
-    sh:ignoredProperties ( biostride_schema:excitation_wavelength biostride_schema:completed_at biostride_schema:voxel_size biostride_schema:current_status biostride_schema:processing_status biostride_schema:defocus biostride_schema:contrast_method biostride_schema:elements_measured biostride_schema:file_name biostride_schema:flux biostride_schema:reconstruction_method biostride_schema:file_size_bytes biostride_schema:pinhole_size biostride_schema:apodization_function biostride_schema:autoloader_capacity biostride_schema:data_files biostride_schema:astigmatism biostride_schema:wavenumber_max biostride_schema:monochromator_type biostride_schema:studies biostride_schema:detector_type biostride_schema:white_balance biostride_schema:source_type biostride_schema:wavenumber_min biostride_schema:processing_parameters biostride_schema:energy_min biostride_schema:data_type biostride_schema:manufacturer biostride_schema:buffer_composition biostride_schema:storage_conditions biostride_schema:model biostride_schema:file_path biostride_schema:molecular_composition biostride_schema:detector_distance_min biostride_schema:experiment_id biostride_schema:molecular_weight biostride_schema:background_correction biostride_schema:flux_density biostride_schema:sample_changer_capacity biostride_schema:operator_id biostride_schema:detector_dimensions biostride_schema:software_version biostride_schema:dose biostride_schema:quantum_yield biostride_schema:channel_name biostride_schema:instrument_runs biostride_schema:fluorophore biostride_schema:dimensions_x biostride_schema:temperature_control_range biostride_schema:q_range_max biostride_schema:started_at biostride_schema:pixel_size rdf:type biostride_schema:phase_plate biostride_schema:preparation_method biostride_schema:file_format biostride_schema:concentration biostride_schema:excitation_filter biostride_schema:instrument_code biostride_schema:checksum biostride_schema:dimensions_z biostride_schema:pixel_size_max biostride_schema:emission_filter biostride_schema:cs_corrector biostride_schema:protocol_description biostride_schema:sample_preparations biostride_schema:technique biostride_schema:beam_size_min biostride_schema:keywords biostride_schema:concentration_unit biostride_schema:workflow_type biostride_schema:raw_data_location biostride_schema:q_range_min biostride_schema:workflow_code biostride_schema:sample_id biostride_schema:acquisition_date biostride_schema:molecular_signatures biostride_schema:spectral_resolution biostride_schema:creation_date biostride_schema:numerical_aperture biostride_schema:purity_percentage biostride_schema:sample_code biostride_schema:preparation_type biostride_schema:preparation_date biostride_schema:pixel_size_min biostride_schema:software_name biostride_schema:dwell_time biostride_schema:experimental_conditions biostride_schema:energy_max biostride_schema:beam_size_max biostride_schema:experiment_date biostride_schema:illumination_type biostride_schema:detector_distance_max biostride_schema:sample_type biostride_schema:data_collection_strategy biostride_schema:exposure_time biostride_schema:color_channels biostride_schema:goniometer_type biostride_schema:dimensions_y biostride_schema:output_files biostride_schema:experiment_code biostride_schema:laser_power biostride_schema:images biostride_schema:workflow_runs biostride_schema:samples biostride_schema:instrument_id biostride_schema:beam_size biostride_schema:calibration_standard biostride_schema:number_of_scans biostride_schema:magnification biostride_schema:crystal_cooling_capability biostride_schema:compute_resources biostride_schema:parent_sample_id biostride_schema:emission_wavelength biostride_schema:processing_level biostride_schema:installation_date biostride_schema:beam_energy biostride_schema:quality_metrics biostride_schema:accelerating_voltage ) ;
+    sh:ignoredProperties ( biostride_schema:background_correction biostride_schema:started_at biostride_schema:autoloader_capacity biostride_schema:data_type biostride_schema:emission_wavelength biostride_schema:elements_measured biostride_schema:studies biostride_schema:flux biostride_schema:technique biostride_schema:dimensions_x biostride_schema:excitation_wavelength biostride_schema:purity_percentage biostride_schema:monochromator_type biostride_schema:beam_energy biostride_schema:q_range_max biostride_schema:beam_size biostride_schema:laser_power biostride_schema:calibration_standard biostride_schema:checksum biostride_schema:pixel_size_max biostride_schema:instrument_code biostride_schema:samples biostride_schema:detector_type biostride_schema:processing_level biostride_schema:ontology biostride_schema:apodization_function biostride_schema:definition biostride_schema:detector_distance_max biostride_schema:acquisition_date biostride_schema:reconstruction_method biostride_schema:file_name biostride_schema:energy_max biostride_schema:defocus biostride_schema:cs_corrector biostride_schema:concentration_unit biostride_schema:experiment_code biostride_schema:numerical_aperture biostride_schema:contrast_method biostride_schema:wavenumber_max biostride_schema:dwell_time biostride_schema:quality_metrics biostride_schema:protocol_description biostride_schema:molecular_signatures biostride_schema:phase_plate biostride_schema:source_type biostride_schema:file_format biostride_schema:raw_data_location biostride_schema:illumination_type biostride_schema:excitation_filter biostride_schema:wavenumber_min biostride_schema:exposure_time biostride_schema:dose biostride_schema:storage_conditions biostride_schema:fluorophore biostride_schema:quantum_yield biostride_schema:dimensions_z biostride_schema:model biostride_schema:data_collection_strategy biostride_schema:current_status biostride_schema:astigmatism biostride_schema:crystal_cooling_capability biostride_schema:experimental_conditions biostride_schema:goniometer_type biostride_schema:detector_distance_min biostride_schema:processing_parameters biostride_schema:workflow_code rdf:type biostride_schema:file_path biostride_schema:label biostride_schema:instrument_id biostride_schema:color_channels biostride_schema:workflow_runs biostride_schema:manufacturer biostride_schema:buffer_composition biostride_schema:software_name biostride_schema:file_size_bytes biostride_schema:sample_code biostride_schema:preparation_date biostride_schema:dimensions_y biostride_schema:preparation_method biostride_schema:sample_id biostride_schema:workflow_type biostride_schema:voxel_size biostride_schema:installation_date biostride_schema:experiment_date biostride_schema:keywords biostride_schema:spectral_resolution biostride_schema:operator_id biostride_schema:parent_sample_id biostride_schema:pixel_size_min biostride_schema:temperature_control_range biostride_schema:pinhole_size biostride_schema:flux_density biostride_schema:number_of_scans biostride_schema:energy_min biostride_schema:creation_date biostride_schema:molecular_composition biostride_schema:images biostride_schema:sample_changer_capacity biostride_schema:sample_preparations biostride_schema:sample_type biostride_schema:instrument_runs biostride_schema:beam_size_min biostride_schema:concentration biostride_schema:q_range_min biostride_schema:processing_status biostride_schema:output_files biostride_schema:white_balance biostride_schema:accelerating_voltage biostride_schema:pixel_size biostride_schema:preparation_type biostride_schema:channel_name biostride_schema:detector_dimensions biostride_schema:data_files biostride_schema:completed_at biostride_schema:molecular_weight biostride_schema:magnification biostride_schema:emission_filter biostride_schema:experiment_id biostride_schema:software_version biostride_schema:compute_resources biostride_schema:beam_size_max ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:title ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -681,28 +702,69 @@ biostride_schema:OpticalImage a sh:NodeShape ;
     sh:description "Visible light optical microscopy or photography image" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Optical magnification factor" ;
+            sh:description "Exposure time in seconds" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:magnification ],
+            sh:order 13 ;
+            sh:path biostride_schema:exposure_time ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:defocus ],
+        [ sh:datatype xsd:float ;
+            sh:description "Astigmatism value" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:astigmatism ],
         [ sh:datatype xsd:string ;
             sh:description "Date image was acquired" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path biostride_schema:acquisition_date ],
-        [ sh:datatype xsd:float ;
-            sh:description "Exposure time in seconds" ;
-            sh:maxCount 1 ;
+        [ sh:datatype xsd:string ;
+            sh:description "Color channels present (e.g., RGB, grayscale)" ;
             sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:exposure_time ],
+            sh:order 3 ;
+            sh:path biostride_schema:color_channels ],
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 17 ;
             sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:file_name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path biostride_schema:pixel_size ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image height in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path biostride_schema:dimensions_y ],
+        [ sh:datatype xsd:string ;
+            sh:description "White balance settings" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:white_balance ],
         [ sh:datatype xsd:float ;
             sh:description "Numerical aperture of the objective lens" ;
             sh:maxCount 1 ;
@@ -714,77 +776,36 @@ biostride_schema:OpticalImage a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:order 0 ;
             sh:path biostride_schema:illumination_type ],
-        [ sh:datatype xsd:float ;
-            sh:description "Electron dose in e-/Å²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path biostride_schema:dose ],
         [ sh:datatype xsd:integer ;
             sh:description "Image width in pixels" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 11 ;
             sh:path biostride_schema:dimensions_x ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:string ;
-            sh:description "White balance settings" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:white_balance ],
-        [ sh:datatype xsd:float ;
-            sh:description "Defocus value in micrometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:defocus ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 15 ;
             sh:path biostride_schema:id ],
+        [ sh:datatype xsd:float ;
+            sh:description "Optical magnification factor" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:magnification ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path biostride_schema:dose ],
         [ sh:datatype xsd:string ;
             sh:description "Contrast enhancement method used" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
-            sh:path biostride_schema:contrast_method ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size in Angstroms" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path biostride_schema:pixel_size ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image height in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:dimensions_y ],
-        [ sh:datatype xsd:string ;
-            sh:description "Color channels present (e.g., RGB, grayscale)" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:color_channels ],
-        [ sh:datatype xsd:string ;
-            sh:description "Image file name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:file_name ],
-        [ sh:datatype xsd:float ;
-            sh:description "Astigmatism value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:astigmatism ] ;
+            sh:path biostride_schema:contrast_method ] ;
     sh:targetClass biostride_schema:OpticalImage .
 
 biostride_schema:SAXSInstrument a sh:NodeShape ;
@@ -792,16 +813,11 @@ biostride_schema:SAXSInstrument a sh:NodeShape ;
     sh:description "SAXS/WAXS instrument specifications" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Minimum q value in inverse Angstroms" ;
+            sh:description "Minimum detector distance in mm" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:q_range_min ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:description ],
+            sh:order 2 ;
+            sh:path biostride_schema:detector_distance_min ],
         [ sh:datatype xsd:string ;
             sh:description "Unique identifier code for the instrument" ;
             sh:maxCount 1 ;
@@ -809,6 +825,24 @@ biostride_schema:SAXSInstrument a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path biostride_schema:instrument_code ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument manufacturer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:manufacturer ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of samples in automatic sample changer" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:sample_changer_capacity ],
+        [ sh:datatype xsd:float ;
+            sh:description "Maximum q value in inverse Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:q_range_max ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -821,28 +855,11 @@ biostride_schema:SAXSInstrument a sh:NodeShape ;
             sh:order 10 ;
             sh:path biostride_schema:current_status ],
         [ sh:datatype xsd:string ;
-            sh:description "Instrument model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:model ],
-        [ sh:datatype xsd:string ;
             sh:description "Date of instrument installation" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path biostride_schema:installation_date ],
-        [ sh:datatype xsd:string ;
-            sh:description "Instrument manufacturer" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:manufacturer ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path dcterms:title ],
         [ sh:datatype xsd:string ;
             sh:description "Temperature control range in Celsius" ;
             sh:maxCount 1 ;
@@ -850,29 +867,33 @@ biostride_schema:SAXSInstrument a sh:NodeShape ;
             sh:order 5 ;
             sh:path biostride_schema:temperature_control_range ],
         [ sh:datatype xsd:float ;
+            sh:description "Minimum q value in inverse Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:q_range_min ],
+        [ sh:datatype xsd:float ;
             sh:description "Maximum detector distance in mm" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path biostride_schema:detector_distance_max ],
-        [ sh:datatype xsd:float ;
-            sh:description "Maximum q value in inverse Angstroms" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:q_range_max ],
-        [ sh:datatype xsd:float ;
-            sh:description "Minimum detector distance in mm" ;
+            sh:order 8 ;
+            sh:path biostride_schema:model ],
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:detector_distance_min ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of samples in automatic sample changer" ;
+            sh:order 13 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:sample_changer_capacity ] ;
+            sh:order 12 ;
+            sh:path dcterms:title ] ;
     sh:targetClass biostride_schema:SAXSInstrument .
 
 biostride_schema:SAXSPreparation a sh:NodeShape ;
@@ -880,22 +901,17 @@ biostride_schema:SAXSPreparation a sh:NodeShape ;
     sh:description "SAXS/WAXS specific preparation" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Protocol for buffer matching" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:buffer_matching_protocol ],
-        [ sh:datatype xsd:float ;
-            sh:description "Concentration values for series measurements" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:concentration_series ],
-        [ sh:datatype xsd:string ;
             sh:description "Type of sample cell used" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:sample_cell_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "Path length in mm" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:cell_path_length ],
         [ sh:datatype xsd:string ;
             sh:description "Temperature control settings" ;
             sh:maxCount 1 ;
@@ -903,17 +919,32 @@ biostride_schema:SAXSPreparation a sh:NodeShape ;
             sh:order 4 ;
             sh:path biostride_schema:temperature_control ],
         [ sh:datatype xsd:float ;
-            sh:description "Path length in mm" ;
+            sh:description "Concentration values for series measurements" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:concentration_series ],
+        [ sh:datatype xsd:string ;
+            sh:description "Protocol for buffer matching" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:cell_path_length ] ;
+            sh:order 1 ;
+            sh:path biostride_schema:buffer_matching_protocol ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:description ] ;
     sh:targetClass biostride_schema:SAXSPreparation .
 
 biostride_schema:TechniqueSpecificPreparation a sh:NodeShape ;
     sh:closed false ;
     sh:description "Base class for technique-specific preparation details" ;
-    sh:ignoredProperties ( rdf:type biostride_schema:crystal_size biostride_schema:grid_type biostride_schema:humidity_percentage biostride_schema:chamber_temperature biostride_schema:mounting_method biostride_schema:temperature_control biostride_schema:plasma_treatment biostride_schema:blot_time biostride_schema:vitrification_method biostride_schema:crystallization_method biostride_schema:flash_cooling_method biostride_schema:buffer_matching_protocol biostride_schema:cell_path_length biostride_schema:sample_cell_type biostride_schema:crystallization_conditions biostride_schema:concentration_series biostride_schema:support_film biostride_schema:hole_size biostride_schema:blot_force biostride_schema:cryoprotectant_concentration biostride_schema:cryoprotectant ) ;
+    sh:ignoredProperties ( biostride_schema:sample_cell_type biostride_schema:mounting_method biostride_schema:temperature_control biostride_schema:crystal_size rdf:type biostride_schema:humidity_percentage biostride_schema:cryoprotectant_concentration biostride_schema:chamber_temperature biostride_schema:grid_type biostride_schema:support_film biostride_schema:crystallization_conditions biostride_schema:concentration_series biostride_schema:blot_time biostride_schema:buffer_matching_protocol biostride_schema:cell_path_length biostride_schema:flash_cooling_method biostride_schema:plasma_treatment biostride_schema:cryoprotectant biostride_schema:crystallization_method biostride_schema:hole_size biostride_schema:vitrification_method biostride_schema:blot_force ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:description ] ;
     sh:targetClass biostride_schema:TechniqueSpecificPreparation .
 
 biostride_schema:XRFImage a sh:NodeShape ;
@@ -921,46 +952,17 @@ biostride_schema:XRFImage a sh:NodeShape ;
     sh:description "X-ray fluorescence (XRF) image showing elemental distribution" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Exposure time in seconds" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:float ;
-            sh:description "X-ray beam size in micrometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:beam_size ],
-        [ sh:datatype xsd:float ;
-            sh:description "Astigmatism value" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:astigmatism ],
-        [ sh:datatype xsd:float ;
-            sh:description "Electron dose in e-/Å²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path biostride_schema:dose ],
-        [ sh:datatype xsd:float ;
             sh:description "Dwell time per pixel in milliseconds" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:dwell_time ],
         [ sh:datatype xsd:float ;
-            sh:description "X-ray beam energy in keV" ;
+            sh:description "Astigmatism value" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:beam_energy ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 19 ;
-            sh:path biostride_schema:description ],
+            sh:order 9 ;
+            sh:path biostride_schema:astigmatism ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -968,16 +970,17 @@ biostride_schema:XRFImage a sh:NodeShape ;
             sh:order 17 ;
             sh:path biostride_schema:id ],
         [ sh:datatype xsd:string ;
-            sh:description "Elements detected and measured" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:elements_measured ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date image was acquired" ;
+            sh:description "Reference standard used for calibration" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:acquisition_date ],
+            sh:order 7 ;
+            sh:path biostride_schema:calibration_standard ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of X-ray detector used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:detector_type ],
         [ sh:datatype xsd:string ;
             sh:description "Image file name" ;
             sh:maxCount 1 ;
@@ -986,69 +989,114 @@ biostride_schema:XRFImage a sh:NodeShape ;
             sh:order 10 ;
             sh:path biostride_schema:file_name ],
         [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
+            sh:description "Elements detected and measured" ;
             sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:float ;
-            sh:description "Photon flux in photons/second" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:flux ],
-        [ sh:datatype xsd:string ;
-            sh:description "Type of X-ray detector used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:detector_type ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image width in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:dimensions_x ],
-        [ sh:description "X-ray source type (synchrotron or lab-source)" ;
-            sh:in ( "synchrotron" "rotating_anode" "microfocus" "metal_jet" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path biostride_schema:source_type ],
-        [ sh:datatype xsd:float ;
-            sh:description "Defocus value in micrometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:defocus ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size in Angstroms" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:pixel_size ],
+            sh:order 3 ;
+            sh:path biostride_schema:elements_measured ],
         [ sh:datatype xsd:integer ;
             sh:description "Image height in pixels" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
             sh:path biostride_schema:dimensions_y ],
-        [ sh:datatype xsd:string ;
-            sh:description "Reference standard used for calibration" ;
+        [ sh:description "X-ray source type (synchrotron or lab-source)" ;
+            sh:in ( "synchrotron" "rotating_anode" "microfocus" "metal_jet" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path biostride_schema:source_type ],
+        [ sh:datatype xsd:float ;
+            sh:description "X-ray beam energy in keV" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:calibration_standard ] ;
+            sh:order 0 ;
+            sh:path biostride_schema:beam_energy ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path biostride_schema:exposure_time ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 19 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path biostride_schema:pixel_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path biostride_schema:dose ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path biostride_schema:dimensions_x ],
+        [ sh:datatype xsd:float ;
+            sh:description "Photon flux in photons/second" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:flux ],
+        [ sh:datatype xsd:float ;
+            sh:description "X-ray beam size in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:beam_size ],
+        [ sh:datatype xsd:float ;
+            sh:description "Defocus value in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:defocus ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date image was acquired" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path biostride_schema:acquisition_date ] ;
     sh:targetClass biostride_schema:XRFImage .
 
 biostride_schema:XRayInstrument a sh:NodeShape ;
     sh:closed true ;
     sh:description "X-ray diffractometer or synchrotron beamline specifications" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Type of monochromator" ;
+    sh:property [ sh:description "Type of X-ray source" ;
+            sh:in ( "synchrotron" "rotating_anode" "microfocus" "metal_jet" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path biostride_schema:source_type ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:monochromator_type ],
+            sh:order 16 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier code for the instrument" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path biostride_schema:instrument_code ],
         [ sh:datatype xsd:float ;
             sh:description "Minimum X-ray energy in keV" ;
             sh:maxCount 1 ;
@@ -1056,17 +1104,11 @@ biostride_schema:XRayInstrument a sh:NodeShape ;
             sh:order 1 ;
             sh:path biostride_schema:energy_min ],
         [ sh:datatype xsd:float ;
-            sh:description "Minimum beam size in micrometers" ;
+            sh:description "Maximum beam size in micrometers" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:beam_size_min ],
-        [ sh:datatype xsd:string ;
-            sh:description "Instrument model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:model ],
+            sh:order 4 ;
+            sh:path biostride_schema:beam_size_max ],
         [ sh:datatype xsd:float ;
             sh:description "Maximum X-ray energy in keV" ;
             sh:maxCount 1 ;
@@ -1076,84 +1118,84 @@ biostride_schema:XRayInstrument a sh:NodeShape ;
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier code for the instrument" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:instrument_code ],
-        [ sh:datatype xsd:float ;
-            sh:description "Maximum beam size in micrometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:beam_size_max ],
-        [ sh:datatype xsd:float ;
-            sh:description "Photon flux density in photons/s/mm²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:flux_density ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date of instrument installation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:installation_date ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Crystal cooling system available" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:crystal_cooling_capability ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path biostride_schema:id ],
+            sh:order 15 ;
+            sh:path dcterms:title ],
         [ sh:datatype xsd:string ;
             sh:description "Type of goniometer" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path biostride_schema:goniometer_type ],
-        [ sh:description "Current operational status" ;
-            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
-            sh:maxCount 1 ;
-            sh:order 13 ;
-            sh:path biostride_schema:current_status ],
         [ sh:datatype xsd:string ;
+            sh:description "Date of instrument installation" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path dcterms:title ],
-        [ sh:description "Type of X-ray source" ;
-            sh:in ( "synchrotron" "rotating_anode" "microfocus" "metal_jet" ) ;
+            sh:order 12 ;
+            sh:path biostride_schema:installation_date ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instrument model" ;
             sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path biostride_schema:source_type ],
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path biostride_schema:model ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of monochromator" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:monochromator_type ],
         [ sh:datatype xsd:string ;
             sh:description "Instrument manufacturer" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
-            sh:path biostride_schema:manufacturer ] ;
+            sh:path biostride_schema:manufacturer ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum beam size in micrometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:beam_size_min ],
+        [ sh:datatype xsd:float ;
+            sh:description "Photon flux density in photons/s/mm²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:flux_density ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Crystal cooling system available" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:crystal_cooling_capability ],
+        [ sh:description "Current operational status" ;
+            sh:in ( "operational" "maintenance" "offline" "commissioning" ) ;
+            sh:maxCount 1 ;
+            sh:order 13 ;
+            sh:path biostride_schema:current_status ] ;
     sh:targetClass biostride_schema:XRayInstrument .
 
 biostride_schema:XRayPreparation a sh:NodeShape ;
     sh:closed true ;
     sh:description "X-ray crystallography specific preparation" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Detailed crystallization conditions" ;
+    sh:property [ sh:description "Method used for crystallization" ;
+            sh:in ( "vapor_diffusion_hanging" "vapor_diffusion_sitting" "microbatch" "dialysis" "free_interface_diffusion" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path biostride_schema:crystallization_method ],
+        [ sh:datatype xsd:string ;
+            sh:description "Cryoprotectant used" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:crystallization_conditions ],
+            sh:order 3 ;
+            sh:path biostride_schema:cryoprotectant ],
+        [ sh:datatype xsd:float ;
+            sh:description "Cryoprotectant concentration percentage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:cryoprotectant_concentration ],
         [ sh:datatype xsd:string ;
             sh:description "Crystal mounting method" ;
             sh:maxCount 1 ;
@@ -1161,16 +1203,11 @@ biostride_schema:XRayPreparation a sh:NodeShape ;
             sh:order 5 ;
             sh:path biostride_schema:mounting_method ],
         [ sh:datatype xsd:string ;
-            sh:description "Cryoprotectant used" ;
+            sh:description "Flash cooling protocol" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:cryoprotectant ],
-        [ sh:description "Method used for crystallization" ;
-            sh:in ( "vapor_diffusion_hanging" "vapor_diffusion_sitting" "microbatch" "dialysis" "free_interface_diffusion" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path biostride_schema:crystallization_method ],
+            sh:order 6 ;
+            sh:path biostride_schema:flash_cooling_method ],
         [ sh:datatype xsd:string ;
             sh:description "Crystal dimensions in micrometers" ;
             sh:maxCount 1 ;
@@ -1178,17 +1215,16 @@ biostride_schema:XRayPreparation a sh:NodeShape ;
             sh:order 2 ;
             sh:path biostride_schema:crystal_size ],
         [ sh:datatype xsd:string ;
-            sh:description "Flash cooling protocol" ;
+            sh:description "Detailed crystallization conditions" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:flash_cooling_method ],
-        [ sh:datatype xsd:float ;
-            sh:description "Cryoprotectant concentration percentage" ;
+            sh:order 1 ;
+            sh:path biostride_schema:crystallization_conditions ],
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:cryoprotectant_concentration ] ;
+            sh:order 7 ;
+            sh:path biostride_schema:description ] ;
     sh:targetClass biostride_schema:XRayPreparation .
 
 biostride_schema:BufferComposition a sh:NodeShape ;
@@ -1196,10 +1232,10 @@ biostride_schema:BufferComposition a sh:NodeShape ;
     sh:description "Buffer composition for sample storage" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Additional additives in the buffer" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:additives ],
+            sh:order 3 ;
+            sh:path biostride_schema:description ],
         [ sh:datatype xsd:float ;
             sh:description "pH of the buffer" ;
             sh:maxCount 1 ;
@@ -1208,6 +1244,11 @@ biostride_schema:BufferComposition a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path biostride_schema:ph ],
+        [ sh:datatype xsd:string ;
+            sh:description "Additional additives in the buffer" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path biostride_schema:additives ],
         [ sh:datatype xsd:string ;
             sh:description "Buffer components and their concentrations" ;
             sh:nodeKind sh:Literal ;
@@ -1226,41 +1267,50 @@ biostride_schema:ComputeResources a sh:NodeShape ;
             sh:order 0 ;
             sh:path biostride_schema:cpu_hours ],
         [ sh:datatype xsd:float ;
-            sh:description "GPU hours used" ;
+            sh:description "Storage used in GB" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:gpu_hours ],
+            sh:order 3 ;
+            sh:path biostride_schema:storage_gb ],
         [ sh:datatype xsd:float ;
             sh:description "Maximum memory used in GB" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:memory_gb ],
-        [ sh:datatype xsd:float ;
-            sh:description "Storage used in GB" ;
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:storage_gb ] ;
+            sh:order 4 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "GPU hours used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:gpu_hours ] ;
     sh:targetClass biostride_schema:ComputeResources .
 
 biostride_schema:DataCollectionStrategy a sh:NodeShape ;
     sh:closed true ;
     sh:description "Strategy for data collection" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:description ],
+        [ sh:description "Mode of data collection" ;
+            sh:in ( "counting" "super_resolution" "continuous" "oscillation" "still" "batch" "sec_saxs" "single_particle" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path biostride_schema:collection_mode ],
+        [ sh:datatype xsd:integer ;
             sh:description "Total number of frames/images" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path biostride_schema:total_frames ],
-        [ sh:datatype xsd:float ;
-            sh:description "Frames per second" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:frame_rate ],
         [ sh:datatype xsd:float ;
             sh:description "Dose per frame" ;
             sh:maxCount 1 ;
@@ -1273,11 +1323,12 @@ biostride_schema:DataCollectionStrategy a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path biostride_schema:total_dose ],
-        [ sh:description "Mode of data collection" ;
-            sh:in ( "counting" "super_resolution" "continuous" "oscillation" "still" "batch" "sec_saxs" "single_particle" ) ;
+        [ sh:datatype xsd:float ;
+            sh:description "Frames per second" ;
             sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path biostride_schema:collection_mode ] ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path biostride_schema:frame_rate ] ;
     sh:targetClass biostride_schema:DataCollectionStrategy .
 
 biostride_schema:ExperimentRun a sh:NodeShape ;
@@ -1285,6 +1336,52 @@ biostride_schema:ExperimentRun a sh:NodeShape ;
     sh:description "An experimental data collection session" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path dcterms:title ],
+        [ sh:description "Technique used for data collection" ;
+            sh:in ( "cryo_em" "xray_crystallography" "saxs" "waxs" "sans" "cryo_et" "electron_microscopy" "mass_spectrometry" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path biostride_schema:technique ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of the experiment" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:experiment_date ],
+        [ sh:class biostride_schema:QualityMetrics ;
+            sh:description "Quality metrics for the experiment" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path biostride_schema:quality_metrics ],
+        [ sh:description "Current processing status" ;
+            sh:in ( "raw" "preprocessing" "processing" "completed" "failed" ) ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path biostride_schema:processing_status ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique experiment identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:experiment_code ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path biostride_schema:description ],
+        [ sh:class biostride_schema:ExperimentalConditions ;
+            sh:description "Environmental and experimental conditions" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path biostride_schema:experimental_conditions ],
+        [ sh:datatype xsd:string ;
             sh:description "Reference to the instrument used" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -1297,30 +1394,6 @@ biostride_schema:ExperimentRun a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path biostride_schema:operator_id ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:id ],
-        [ sh:datatype xsd:string ;
-            sh:description "Location of raw data files" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:raw_data_location ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date of the experiment" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:experiment_date ],
-        [ sh:class biostride_schema:DataCollectionStrategy ;
-            sh:description "Strategy for data collection" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path biostride_schema:data_collection_strategy ],
         [ sh:datatype xsd:string ;
             sh:description "Reference to the sample being analyzed" ;
             sh:maxCount 1 ;
@@ -1329,63 +1402,46 @@ biostride_schema:ExperimentRun a sh:NodeShape ;
             sh:order 1 ;
             sh:path biostride_schema:sample_id ],
         [ sh:datatype xsd:string ;
+            sh:description "Location of raw data files" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path dcterms:title ],
-        [ sh:description "Technique used for data collection" ;
-            sh:in ( "cryo_em" "xray_crystallography" "saxs" "waxs" "sans" "cryo_et" "electron_microscopy" "mass_spectrometry" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 5 ;
-            sh:path biostride_schema:technique ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique experiment identifier" ;
+            sh:order 9 ;
+            sh:path biostride_schema:raw_data_location ],
+        [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:experiment_code ],
-        [ sh:description "Current processing status" ;
-            sh:in ( "raw" "preprocessing" "processing" "completed" "failed" ) ;
-            sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path biostride_schema:processing_status ],
-        [ sh:class biostride_schema:ExperimentalConditions ;
-            sh:description "Environmental and experimental conditions" ;
+            sh:order 11 ;
+            sh:path biostride_schema:id ],
+        [ sh:class biostride_schema:DataCollectionStrategy ;
+            sh:description "Strategy for data collection" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path biostride_schema:experimental_conditions ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:description ],
-        [ sh:class biostride_schema:QualityMetrics ;
-            sh:description "Quality metrics for the experiment" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path biostride_schema:quality_metrics ] ;
+            sh:order 7 ;
+            sh:path biostride_schema:data_collection_strategy ] ;
     sh:targetClass biostride_schema:ExperimentRun .
 
 biostride_schema:ExperimentalConditions a sh:NodeShape ;
     sh:closed true ;
     sh:description "Environmental and experimental conditions" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Atmosphere composition" ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Temperature in Celsius" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:atmosphere ],
+            sh:order 0 ;
+            sh:path biostride_schema:temperature ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:description ],
         [ sh:datatype xsd:float ;
-            sh:description "Humidity percentage" ;
+            sh:description "Beam energy in keV" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:humidity ],
+            sh:order 4 ;
+            sh:path biostride_schema:beam_energy ],
         [ sh:datatype xsd:float ;
             sh:description "Pressure in kPa" ;
             sh:maxCount 1 ;
@@ -1398,83 +1454,83 @@ biostride_schema:ExperimentalConditions a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:float ;
-            sh:description "Temperature in Celsius" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Atmosphere composition" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:temperature ],
+            sh:order 3 ;
+            sh:path biostride_schema:atmosphere ],
         [ sh:datatype xsd:float ;
-            sh:description "Beam energy in keV" ;
+            sh:description "Humidity percentage" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:beam_energy ] ;
+            sh:order 1 ;
+            sh:path biostride_schema:humidity ] ;
     sh:targetClass biostride_schema:ExperimentalConditions .
 
 biostride_schema:Image a sh:NodeShape ;
     sh:closed true ;
     sh:description "An image file from structural biology experiments" ;
-    sh:ignoredProperties ( biostride_schema:excitation_wavelength rdf:type biostride_schema:excitation_filter biostride_schema:dimensions_z biostride_schema:voxel_size biostride_schema:emission_filter biostride_schema:defocus biostride_schema:contrast_method biostride_schema:elements_measured biostride_schema:flux biostride_schema:reconstruction_method biostride_schema:pinhole_size biostride_schema:apodization_function biostride_schema:molecular_signatures biostride_schema:spectral_resolution biostride_schema:astigmatism biostride_schema:numerical_aperture biostride_schema:dwell_time biostride_schema:wavenumber_max biostride_schema:detector_type biostride_schema:illumination_type biostride_schema:white_balance biostride_schema:source_type biostride_schema:wavenumber_min biostride_schema:color_channels biostride_schema:laser_power biostride_schema:beam_size biostride_schema:background_correction biostride_schema:calibration_standard biostride_schema:number_of_scans biostride_schema:magnification biostride_schema:quantum_yield biostride_schema:channel_name biostride_schema:emission_wavelength biostride_schema:fluorophore biostride_schema:beam_energy ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Image file name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:file_name ],
-        [ sh:datatype xsd:string ;
+    sh:ignoredProperties ( biostride_schema:astigmatism biostride_schema:background_correction biostride_schema:emission_wavelength biostride_schema:elements_measured rdf:type biostride_schema:flux biostride_schema:color_channels biostride_schema:excitation_wavelength biostride_schema:beam_energy biostride_schema:beam_size biostride_schema:laser_power biostride_schema:calibration_standard biostride_schema:voxel_size biostride_schema:detector_type biostride_schema:spectral_resolution biostride_schema:apodization_function biostride_schema:reconstruction_method biostride_schema:pinhole_size biostride_schema:defocus biostride_schema:number_of_scans biostride_schema:numerical_aperture biostride_schema:contrast_method biostride_schema:wavenumber_max biostride_schema:white_balance biostride_schema:molecular_signatures biostride_schema:source_type biostride_schema:channel_name biostride_schema:illumination_type biostride_schema:excitation_filter biostride_schema:magnification biostride_schema:emission_filter biostride_schema:wavenumber_min biostride_schema:fluorophore biostride_schema:quantum_yield biostride_schema:dimensions_z biostride_schema:dwell_time ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Image width in pixels" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:float ;
-            sh:description "Exposure time in seconds" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:exposure_time ],
-        [ sh:datatype xsd:float ;
-            sh:description "Electron dose in e-/Å²" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:dose ],
+            sh:order 3 ;
+            sh:path biostride_schema:dimensions_x ],
         [ sh:datatype xsd:integer ;
             sh:description "Image height in pixels" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path biostride_schema:dimensions_y ],
+        [ sh:datatype xsd:float ;
+            sh:description "Exposure time in seconds" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:exposure_time ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "Electron dose in e-/Å²" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:dose ],
+        [ sh:datatype xsd:float ;
+            sh:description "Pixel size in Angstroms" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path biostride_schema:pixel_size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path dcterms:title ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path biostride_schema:id ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Image width in pixels" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:dimensions_x ],
         [ sh:datatype xsd:string ;
             sh:description "Date image was acquired" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path biostride_schema:acquisition_date ],
-        [ sh:datatype xsd:float ;
-            sh:description "Pixel size in Angstroms" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Image file name" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:pixel_size ] ;
+            sh:order 0 ;
+            sh:path biostride_schema:file_name ] ;
     sh:targetClass biostride_schema:Image .
 
 biostride_schema:MolecularComposition a sh:NodeShape ;
@@ -1482,11 +1538,6 @@ biostride_schema:MolecularComposition a sh:NodeShape ;
     sh:description "Molecular composition of a sample" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Post-translational modifications or chemical modifications" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:modifications ],
-        [ sh:datatype xsd:string ;
             sh:description "Amino acid or nucleotide sequences" ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
@@ -1495,7 +1546,17 @@ biostride_schema:MolecularComposition a sh:NodeShape ;
             sh:description "Bound ligands or cofactors" ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path biostride_schema:ligands ] ;
+            sh:path biostride_schema:ligands ],
+        [ sh:datatype xsd:string ;
+            sh:description "Post-translational modifications or chemical modifications" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:modifications ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:description ] ;
     sh:targetClass biostride_schema:MolecularComposition .
 
 biostride_schema:OntologyTerm a sh:NodeShape ;
@@ -1504,23 +1565,34 @@ biostride_schema:OntologyTerm a sh:NodeShape ;
     sh:property [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:ontology ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path biostride_schema:id ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
             sh:path biostride_schema:label ],
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path biostride_schema:definition ] ;
+            sh:path biostride_schema:ontology ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:definition ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:title ] ;
     sh:targetClass biostride_schema:OntologyTerm .
 
 biostride_schema:QualityMetrics a sh:NodeShape ;
@@ -1528,11 +1600,17 @@ biostride_schema:QualityMetrics a sh:NodeShape ;
     sh:description "Quality metrics for experiments" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
-            sh:description "Data completeness percentage" ;
+            sh:description "Signal to noise ratio" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:completeness ],
+            sh:order 2 ;
+            sh:path biostride_schema:signal_to_noise ],
+        [ sh:datatype xsd:float ;
+            sh:description "Forward scattering intensity I(0)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:i_zero ],
         [ sh:datatype xsd:float ;
             sh:description "Resolution in Angstroms" ;
             sh:maxCount 1 ;
@@ -1540,71 +1618,35 @@ biostride_schema:QualityMetrics a sh:NodeShape ;
             sh:order 0 ;
             sh:path biostride_schema:resolution ],
         [ sh:datatype xsd:float ;
-            sh:description "Signal to noise ratio" ;
+            sh:description "Data completeness percentage" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:signal_to_noise ],
-        [ sh:datatype xsd:float ;
-            sh:description "R-factor for crystallography" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:r_factor ],
+            sh:order 1 ;
+            sh:path biostride_schema:completeness ],
         [ sh:datatype xsd:float ;
             sh:description "Radius of gyration in Angstroms" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path biostride_schema:rg ],
-        [ sh:datatype xsd:float ;
-            sh:description "Forward scattering intensity I(0)" ;
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:i_zero ] ;
+            sh:order 6 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:float ;
+            sh:description "R-factor for crystallography" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:r_factor ] ;
     sh:targetClass biostride_schema:QualityMetrics .
 
 biostride_schema:SamplePreparation a sh:NodeShape ;
     sh:closed true ;
     sh:description "A process that prepares a sample for imaging" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Person who performed the preparation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:operator_id ],
-        [ sh:description "Type of sample preparation" ;
-            sh:in ( "cryo_em" "xray_crystallography" "saxs" "sans" "protein_expression" "protein_purification" "negative_stain" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path biostride_schema:preparation_type ],
-        [ sh:datatype xsd:string ;
-            sh:description "Reference to the sample being prepared" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:sample_id ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:string ;
-            sh:description "Date of sample preparation" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path biostride_schema:preparation_date ],
-        [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1615,73 +1657,85 @@ biostride_schema:SamplePreparation a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
-            sh:path biostride_schema:protocol_description ] ;
+            sh:path biostride_schema:protocol_description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Reference to the sample being prepared" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path biostride_schema:sample_id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path dcterms:title ],
+        [ sh:description "Type of sample preparation" ;
+            sh:in ( "cryo_em" "xray_crystallography" "saxs" "sans" "protein_expression" "protein_purification" "negative_stain" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path biostride_schema:preparation_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Person who performed the preparation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:operator_id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Date of sample preparation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path biostride_schema:preparation_date ] ;
     sh:targetClass biostride_schema:SamplePreparation .
 
 biostride_schema:StorageConditions a sh:NodeShape ;
     sh:closed true ;
     sh:description "Storage conditions for samples" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Temperature unit" ;
-            sh:in ( "celsius" "kelvin" "fahrenheit" ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path biostride_schema:temperature_unit ],
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:description ],
         [ sh:datatype xsd:string ;
             sh:description "Storage duration" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path biostride_schema:duration ],
-        [ sh:datatype xsd:string ;
-            sh:description "Storage atmosphere conditions" ;
+        [ sh:description "Temperature unit" ;
+            sh:in ( "celsius" "kelvin" "fahrenheit" ) ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:atmosphere ],
+            sh:order 1 ;
+            sh:path biostride_schema:temperature_unit ],
         [ sh:datatype xsd:float ;
             sh:description "Storage temperature in Celsius" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path biostride_schema:temperature ] ;
+            sh:path biostride_schema:temperature ],
+        [ sh:datatype xsd:string ;
+            sh:description "Storage atmosphere conditions" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:atmosphere ] ;
     sh:targetClass biostride_schema:StorageConditions .
 
 biostride_schema:Study a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path dcterms:title ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:description ],
-        [ sh:class biostride_schema:ExperimentRun ;
+    sh:property [ sh:class biostride_schema:ExperimentRun ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
             sh:path biostride_schema:instrument_runs ],
-        [ sh:class biostride_schema:DataFile ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path biostride_schema:data_files ],
-        [ sh:class biostride_schema:WorkflowRun ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path biostride_schema:workflow_runs ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:id ],
-        [ sh:class biostride_schema:Image ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path biostride_schema:images ],
         [ sh:class biostride_schema:SamplePreparation ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
@@ -1689,7 +1743,35 @@ biostride_schema:Study a sh:NodeShape ;
         [ sh:class biostride_schema:Sample ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path biostride_schema:samples ] ;
+            sh:path biostride_schema:samples ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:description ],
+        [ sh:class biostride_schema:Image ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path biostride_schema:images ],
+        [ sh:class biostride_schema:DataFile ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path biostride_schema:data_files ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path dcterms:title ],
+        [ sh:class biostride_schema:WorkflowRun ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path biostride_schema:workflow_runs ] ;
     sh:targetClass biostride_schema:Study .
 
 biostride_schema:WorkflowRun a sh:NodeShape ;
@@ -1697,55 +1779,6 @@ biostride_schema:WorkflowRun a sh:NodeShape ;
     sh:description "A computational processing workflow execution" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Workflow start time" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path biostride_schema:started_at ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:id ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Processing level (0=raw, 1=corrected, 2=derived, 3=model)" ;
-            sh:maxCount 1 ;
-            sh:maxInclusive 4 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:processing_level ],
-        [ sh:datatype xsd:string ;
-            sh:description "Workflow completion time" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path biostride_schema:completed_at ],
-        [ sh:class biostride_schema:ComputeResources ;
-            sh:description "Computational resources used" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path biostride_schema:compute_resources ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique workflow identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path biostride_schema:workflow_code ],
-        [ sh:class biostride_schema:DataFile ;
-            sh:description "Output files generated" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path biostride_schema:output_files ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Reference to the source experiment" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -1766,22 +1799,71 @@ biostride_schema:WorkflowRun a sh:NodeShape ;
             sh:order 4 ;
             sh:path biostride_schema:software_name ],
         [ sh:datatype xsd:string ;
-            sh:description "Parameters used in processing" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path biostride_schema:processing_parameters ],
+            sh:order 13 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique workflow identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path biostride_schema:workflow_code ],
         [ sh:datatype xsd:string ;
             sh:description "Software version" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path biostride_schema:software_version ],
+        [ sh:class biostride_schema:DataFile ;
+            sh:description "Output files generated" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path biostride_schema:output_files ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Workflow start time" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path biostride_schema:started_at ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Processing level (0=raw, 1=corrected, 2=derived, 3=model)" ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 4 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:processing_level ],
+        [ sh:datatype xsd:string ;
+            sh:description "Parameters used in processing" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path biostride_schema:processing_parameters ],
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 12 ;
-            sh:path dcterms:title ] ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "Workflow completion time" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path biostride_schema:completed_at ],
+        [ sh:class biostride_schema:ComputeResources ;
+            sh:description "Computational resources used" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path biostride_schema:compute_resources ] ;
     sh:targetClass biostride_schema:WorkflowRun .
 
 biostride_schema:DataFile a sh:NodeShape ;
@@ -1789,6 +1871,18 @@ biostride_schema:DataFile a sh:NodeShape ;
     sh:description "A data file generated or used in the study" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "File creation date" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path biostride_schema:creation_date ],
+        [ sh:datatype xsd:integer ;
+            sh:description "File size in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:file_size_bytes ],
+        [ sh:datatype xsd:string ;
             sh:description "Name of the file" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -1800,52 +1894,40 @@ biostride_schema:DataFile a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path biostride_schema:description ],
-        [ sh:description "Type of data in the file" ;
-            sh:in ( "micrograph" "diffraction" "scattering" "particles" "volume" "model" "metadata" "raw_data" "processed_data" ) ;
-            sh:maxCount 1 ;
-            sh:order 6 ;
-            sh:path biostride_schema:data_type ],
-        [ sh:datatype xsd:string ;
-            sh:description "Path to the file" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path biostride_schema:file_path ],
         [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
             sh:path dcterms:title ],
         [ sh:datatype xsd:string ;
-            sh:description "File creation date" ;
+            sh:description "Path to the file" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path biostride_schema:creation_date ],
+            sh:order 1 ;
+            sh:path biostride_schema:file_path ],
         [ sh:datatype xsd:anyURI ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path biostride_schema:id ],
-        [ sh:datatype xsd:integer ;
-            sh:description "File size in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:file_size_bytes ],
-        [ sh:description "File format" ;
-            sh:in ( "mrc" "tiff" "hdf5" "star" "pdb" "mmcif" "mtz" "cbf" "ascii" "thermo_raw" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path biostride_schema:file_format ],
         [ sh:datatype xsd:string ;
             sh:description "SHA-256 checksum for data integrity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
-            sh:path biostride_schema:checksum ] ;
+            sh:path biostride_schema:checksum ],
+        [ sh:description "File format" ;
+            sh:in ( "mrc" "tiff" "hdf5" "star" "pdb" "mmcif" "mtz" "cbf" "ascii" "thermo_raw" "zip" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path biostride_schema:file_format ],
+        [ sh:description "Type of data in the file" ;
+            sh:in ( "micrograph" "diffraction" "scattering" "particles" "volume" "model" "metadata" "raw_data" "processed_data" ) ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path biostride_schema:data_type ] ;
     sh:targetClass biostride_schema:DataFile .
 
 biostride_schema:Sample a sh:NodeShape ;
@@ -1853,87 +1935,18 @@ biostride_schema:Sample a sh:NodeShape ;
     sh:description "A biological sample used in structural biology experiments" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Method used to prepare the sample" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path biostride_schema:preparation_method ],
-        [ sh:datatype xsd:string ;
             sh:description "Unique identifier code for the sample" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path biostride_schema:sample_code ],
-        [ sh:datatype xsd:float ;
-            sh:description "Molecular weight in kDa" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path biostride_schema:molecular_weight ],
-        [ sh:datatype xsd:string ;
-            sh:description "Quality control metrics for the sample" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path biostride_schema:quality_metrics ],
-        [ sh:description "Type of biological sample" ;
-            sh:in ( "protein" "nucleic_acid" "complex" "membrane_protein" "virus" "organelle" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path biostride_schema:sample_type ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path dcterms:title ],
-        [ sh:class biostride_schema:StorageConditions ;
-            sh:description "Storage conditions for the sample" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path biostride_schema:storage_conditions ],
         [ sh:class biostride_schema:MolecularComposition ;
             sh:description "Description of molecular composition including sequences, modifications, ligands" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path biostride_schema:molecular_composition ],
-        [ sh:class biostride_schema:BufferComposition ;
-            sh:description "Buffer composition including pH, salts, additives" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path biostride_schema:buffer_composition ],
-        [ sh:description "Unit of concentration measurement" ;
-            sh:in ( "mg_per_ml" "micromolar" "millimolar" "nanomolar" ) ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path biostride_schema:concentration_unit ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path biostride_schema:description ],
-        [ sh:datatype xsd:float ;
-            sh:description "Sample concentration in mg/mL or µM" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path biostride_schema:concentration ],
-        [ sh:datatype xsd:anyURI ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path biostride_schema:id ],
-        [ sh:class biostride_schema:Sample ;
-            sh:description "Reference to parent sample for derivation tracking" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path biostride_schema:parent_sample_id ],
         [ sh:datatype xsd:float ;
             sh:description "Sample purity as percentage" ;
             sh:maxCount 1 ;
@@ -1941,6 +1954,75 @@ biostride_schema:Sample a sh:NodeShape ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
-            sh:path biostride_schema:purity_percentage ] ;
+            sh:path biostride_schema:purity_percentage ],
+        [ sh:description "Type of biological sample" ;
+            sh:in ( "protein" "nucleic_acid" "complex" "membrane_protein" "virus" "organelle" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path biostride_schema:sample_type ],
+        [ sh:description "Unit of concentration measurement" ;
+            sh:in ( "mg_per_ml" "micromolar" "millimolar" "nanomolar" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path biostride_schema:concentration_unit ],
+        [ sh:class biostride_schema:BufferComposition ;
+            sh:description "Buffer composition including pH, salts, additives" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path biostride_schema:buffer_composition ],
+        [ sh:datatype xsd:string ;
+            sh:description "Quality control metrics for the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path biostride_schema:quality_metrics ],
+        [ sh:datatype xsd:float ;
+            sh:description "Sample concentration in mg/mL or µM" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path biostride_schema:concentration ],
+        [ sh:class biostride_schema:StorageConditions ;
+            sh:description "Storage conditions for the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path biostride_schema:storage_conditions ],
+        [ sh:datatype xsd:float ;
+            sh:description "Molecular weight in kDa" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path biostride_schema:molecular_weight ],
+        [ sh:class biostride_schema:Sample ;
+            sh:description "Reference to parent sample for derivation tracking" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path biostride_schema:parent_sample_id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path biostride_schema:description ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path biostride_schema:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "Method used to prepare the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path biostride_schema:preparation_method ] ;
     sh:targetClass biostride_schema:Sample .
 

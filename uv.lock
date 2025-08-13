@@ -90,6 +90,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "linkml-runtime" },
+    { name = "requests" },
 ]
 
 [package.dev-dependencies]
@@ -102,7 +103,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "linkml-runtime", specifier = ">=1.9.4" }]
+requires-dist = [
+    { name = "linkml-runtime", specifier = ">=1.9.4" },
+    { name = "requests", specifier = ">=2.32.4" },
+]
 
 [package.metadata.requires-dev]
 dev = [

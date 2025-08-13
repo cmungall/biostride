@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-12T20:25:31
+# Generation date: 2025-08-13T12:49:41
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -231,7 +231,7 @@ class XRFImageId(Image2DId):
     pass
 
 
-class OntologyTermId(extended_str):
+class OntologyTermId(NamedThingId):
     pass
 
 
@@ -260,6 +260,27 @@ class NamedThing(YAMLRoot):
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
 
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AttributeGroup(YAMLRoot):
+    """
+    A grouping of related data attributes that form a logical unit
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["AttributeGroup"]
+    class_class_curie: ClassVar[str] = "biostride_schema:AttributeGroup"
+    class_name: ClassVar[str] = "AttributeGroup"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.AttributeGroup
+
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
@@ -1209,7 +1230,7 @@ class XRFImage(Image2D):
 
 
 @dataclass(repr=False)
-class ImageFeature(YAMLRoot):
+class ImageFeature(AttributeGroup):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["ImageFeature"]
@@ -1227,7 +1248,7 @@ class ImageFeature(YAMLRoot):
 
 
 @dataclass(repr=False)
-class OntologyTerm(YAMLRoot):
+class OntologyTerm(NamedThing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["OntologyTerm"]
@@ -1259,7 +1280,7 @@ class OntologyTerm(YAMLRoot):
 
 
 @dataclass(repr=False)
-class MolecularComposition(YAMLRoot):
+class MolecularComposition(AttributeGroup):
     """
     Molecular composition of a sample
     """
@@ -1291,7 +1312,7 @@ class MolecularComposition(YAMLRoot):
 
 
 @dataclass(repr=False)
-class BufferComposition(YAMLRoot):
+class BufferComposition(AttributeGroup):
     """
     Buffer composition for sample storage
     """
@@ -1322,7 +1343,7 @@ class BufferComposition(YAMLRoot):
 
 
 @dataclass(repr=False)
-class StorageConditions(YAMLRoot):
+class StorageConditions(AttributeGroup):
     """
     Storage conditions for samples
     """
@@ -1354,7 +1375,7 @@ class StorageConditions(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class TechniqueSpecificPreparation(YAMLRoot):
+class TechniqueSpecificPreparation(AttributeGroup):
     """
     Base class for technique-specific preparation details
     """
@@ -1503,7 +1524,7 @@ class SAXSPreparation(TechniqueSpecificPreparation):
 
 
 @dataclass(repr=False)
-class ExperimentalConditions(YAMLRoot):
+class ExperimentalConditions(AttributeGroup):
     """
     Environmental and experimental conditions
     """
@@ -1544,7 +1565,7 @@ class ExperimentalConditions(YAMLRoot):
 
 
 @dataclass(repr=False)
-class DataCollectionStrategy(YAMLRoot):
+class DataCollectionStrategy(AttributeGroup):
     """
     Strategy for data collection
     """
@@ -1581,7 +1602,7 @@ class DataCollectionStrategy(YAMLRoot):
 
 
 @dataclass(repr=False)
-class QualityMetrics(YAMLRoot):
+class QualityMetrics(AttributeGroup):
     """
     Quality metrics for experiments
     """
@@ -1622,7 +1643,7 @@ class QualityMetrics(YAMLRoot):
 
 
 @dataclass(repr=False)
-class ComputeResources(YAMLRoot):
+class ComputeResources(AttributeGroup):
     """
     Computational resources used
     """
@@ -2032,6 +2053,9 @@ class FileFormatEnum(EnumDefinitionImpl):
     thermo_raw = PermissibleValue(
         text="thermo_raw",
         description="Thermo Fisher RAW format")
+    zip = PermissibleValue(
+        text="zip",
+        description="ZIP compressed archive")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -2155,6 +2179,9 @@ slots.namedThing__title = Slot(uri=DCTERMS.title, name="namedThing__title", curi
 
 slots.namedThing__description = Slot(uri=BIOSTRIDE_SCHEMA.description, name="namedThing__description", curie=BIOSTRIDE_SCHEMA.curie('description'),
                    model_uri=BIOSTRIDE_SCHEMA.namedThing__description, domain=None, range=Optional[str])
+
+slots.attributeGroup__description = Slot(uri=BIOSTRIDE_SCHEMA.description, name="attributeGroup__description", curie=BIOSTRIDE_SCHEMA.curie('description'),
+                   model_uri=BIOSTRIDE_SCHEMA.attributeGroup__description, domain=None, range=Optional[str])
 
 slots.dataset__keywords = Slot(uri=BIOSTRIDE_SCHEMA.keywords, name="dataset__keywords", curie=BIOSTRIDE_SCHEMA.curie('keywords'),
                    model_uri=BIOSTRIDE_SCHEMA.dataset__keywords, domain=None, range=Optional[Union[str, list[str]]])
@@ -2530,9 +2557,6 @@ slots.xRFImage__calibration_standard = Slot(uri=BIOSTRIDE_SCHEMA.calibration_sta
 
 slots.imageFeature__terms = Slot(uri=BIOSTRIDE_SCHEMA.terms, name="imageFeature__terms", curie=BIOSTRIDE_SCHEMA.curie('terms'),
                    model_uri=BIOSTRIDE_SCHEMA.imageFeature__terms, domain=None, range=Optional[Union[str, OntologyTermId]])
-
-slots.ontologyTerm__id = Slot(uri=BIOSTRIDE_SCHEMA.id, name="ontologyTerm__id", curie=BIOSTRIDE_SCHEMA.curie('id'),
-                   model_uri=BIOSTRIDE_SCHEMA.ontologyTerm__id, domain=None, range=URIRef)
 
 slots.ontologyTerm__label = Slot(uri=BIOSTRIDE_SCHEMA.label, name="ontologyTerm__label", curie=BIOSTRIDE_SCHEMA.curie('label'),
                    model_uri=BIOSTRIDE_SCHEMA.ontologyTerm__label, domain=None, range=Optional[str])

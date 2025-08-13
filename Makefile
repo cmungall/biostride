@@ -6,7 +6,7 @@ all: gen-project gendoc test-examples
 test: gen-project test-examples
 
 gen-project:
-	$(RUN) gen-project $(SCHEMA) -d assets
+	$(RUN) gen-project --config-file config.yaml $(SCHEMA) -d assets
 
 test-examples:
 	$(RUN) linkml-run-examples -t yaml -t json -t ttl -s $(SCHEMA) -P conf/prefixes.yaml -e tests/data/valid -d examples

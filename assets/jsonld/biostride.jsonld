@@ -790,6 +790,10 @@
         {
           "text": "thermo_raw",
           "description": "Thermo Fisher RAW format"
+        },
+        {
+          "text": "zip",
+          "description": "ZIP compressed archive"
         }
       ]
     },
@@ -956,6 +960,18 @@
       "owner": "NamedThing",
       "domain_of": [
         "NamedThing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "attributeGroup__description",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/description",
+      "alias": "description",
+      "owner": "AttributeGroup",
+      "domain_of": [
+        "AttributeGroup"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -2648,20 +2664,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "ontologyTerm__id",
-      "from_schema": "https://w3id.org/biostride/",
-      "slot_uri": "https://w3id.org/biostride/schema/id",
-      "identifier": true,
-      "alias": "id",
-      "owner": "OntologyTerm",
-      "domain_of": [
-        "OntologyTerm"
-      ],
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "ontologyTerm__label",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/label",
@@ -3420,6 +3422,26 @@
         }
       ],
       "class_uri": "https://w3id.org/biostride/schema/NamedThing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AttributeGroup",
+      "definition_uri": "https://w3id.org/biostride/schema/AttributeGroup",
+      "description": "A grouping of related data attributes that form a logical unit",
+      "from_schema": "https://w3id.org/biostride/",
+      "abstract": true,
+      "slots": [
+        "attributeGroup__description"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "description",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/biostride/schema/AttributeGroup",
       "@type": "ClassDefinition"
     },
     {
@@ -4693,7 +4715,9 @@
       "name": "ImageFeature",
       "definition_uri": "https://w3id.org/biostride/schema/ImageFeature",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "imageFeature__terms"
       ],
       "slot_usage": {},
@@ -4711,20 +4735,17 @@
       "name": "OntologyTerm",
       "definition_uri": "https://w3id.org/biostride/schema/OntologyTerm",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "NamedThing",
       "slots": [
-        "ontologyTerm__id",
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
         "ontologyTerm__label",
         "ontologyTerm__definition",
         "ontologyTerm__ontology"
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "id",
-          "identifier": true,
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
         {
           "name": "label",
           "range": "string",
@@ -4749,7 +4770,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/MolecularComposition",
       "description": "Molecular composition of a sample",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "molecularComposition__sequences",
         "molecularComposition__modifications",
         "molecularComposition__ligands"
@@ -4786,7 +4809,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/BufferComposition",
       "description": "Buffer composition for sample storage",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "bufferComposition__ph",
         "bufferComposition__components",
         "bufferComposition__additives"
@@ -4824,7 +4849,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/StorageConditions",
       "description": "Storage conditions for samples",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "storageConditions__temperature",
         "storageConditions__temperature_unit",
         "storageConditions__duration",
@@ -4865,7 +4892,11 @@
       "definition_uri": "https://w3id.org/biostride/schema/TechniqueSpecificPreparation",
       "description": "Base class for technique-specific preparation details",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "abstract": true,
+      "slots": [
+        "attributeGroup__description"
+      ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/biostride/schema/TechniqueSpecificPreparation",
       "@type": "ClassDefinition"
@@ -4877,6 +4908,7 @@
       "from_schema": "https://w3id.org/biostride/",
       "is_a": "TechniqueSpecificPreparation",
       "slots": [
+        "attributeGroup__description",
         "cryoEMPreparation__grid_type",
         "cryoEMPreparation__support_film",
         "cryoEMPreparation__hole_size",
@@ -4959,6 +4991,7 @@
       "from_schema": "https://w3id.org/biostride/",
       "is_a": "TechniqueSpecificPreparation",
       "slots": [
+        "attributeGroup__description",
         "xRayPreparation__crystallization_method",
         "xRayPreparation__crystallization_conditions",
         "xRayPreparation__crystal_size",
@@ -5018,6 +5051,7 @@
       "from_schema": "https://w3id.org/biostride/",
       "is_a": "TechniqueSpecificPreparation",
       "slots": [
+        "attributeGroup__description",
         "sAXSPreparation__concentration_series",
         "sAXSPreparation__buffer_matching_protocol",
         "sAXSPreparation__sample_cell_type",
@@ -5063,7 +5097,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/ExperimentalConditions",
       "description": "Environmental and experimental conditions",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "experimentalConditions__temperature",
         "experimentalConditions__humidity",
         "experimentalConditions__pressure",
@@ -5117,7 +5153,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/DataCollectionStrategy",
       "description": "Strategy for data collection",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "dataCollectionStrategy__collection_mode",
         "dataCollectionStrategy__total_frames",
         "dataCollectionStrategy__frame_rate",
@@ -5165,7 +5203,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/QualityMetrics",
       "description": "Quality metrics for experiments",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "qualityMetrics__resolution",
         "qualityMetrics__completeness",
         "qualityMetrics__signal_to_noise",
@@ -5220,7 +5260,9 @@
       "definition_uri": "https://w3id.org/biostride/schema/ComputeResources",
       "description": "Computational resources used",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "AttributeGroup",
       "slots": [
+        "attributeGroup__description",
         "computeResources__cpu_hours",
         "computeResources__gpu_hours",
         "computeResources__memory_gb",
@@ -5259,9 +5301,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-12T20:03:34",
-  "source_file_size": 34972,
-  "generation_date": "2025-08-12T20:25:30",
+  "source_file_date": "2025-08-13T12:47:55",
+  "source_file_size": 35395,
+  "generation_date": "2025-08-13T12:49:40",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",
