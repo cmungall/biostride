@@ -21,9 +21,13 @@ URI: [biostride_schema:QualityMetrics](https://w3id.org/biostride/schema/Quality
     click QualityMetrics href "../QualityMetrics/"
       QualityMetrics : completeness
         
+      QualityMetrics : i_zero
+        
       QualityMetrics : r_factor
         
       QualityMetrics : resolution
+        
+      QualityMetrics : rg
         
       QualityMetrics : signal_to_noise
         
@@ -44,6 +48,8 @@ URI: [biostride_schema:QualityMetrics](https://w3id.org/biostride/schema/Quality
 | [completeness](completeness.md) | 0..1 <br/> [Float](Float.md) | Data completeness percentage | direct |
 | [signal_to_noise](signal_to_noise.md) | 0..1 <br/> [Float](Float.md) | Signal to noise ratio | direct |
 | [r_factor](r_factor.md) | 0..1 <br/> [Float](Float.md) | R-factor for crystallography | direct |
+| [i_zero](i_zero.md) | 0..1 <br/> [Float](Float.md) | Forward scattering intensity I(0) | direct |
+| [rg](rg.md) | 0..1 <br/> [Float](Float.md) | Radius of gyration in Angstroms | direct |
 
 
 
@@ -132,6 +138,22 @@ attributes:
     domain_of:
     - QualityMetrics
     range: float
+  i_zero:
+    name: i_zero
+    description: Forward scattering intensity I(0)
+    from_schema: https://w3id.org/biostride/
+    rank: 1000
+    domain_of:
+    - QualityMetrics
+    range: float
+  rg:
+    name: rg
+    description: Radius of gyration in Angstroms
+    from_schema: https://w3id.org/biostride/
+    rank: 1000
+    domain_of:
+    - QualityMetrics
+    range: float
 
 ```
 </details>
@@ -180,6 +202,26 @@ attributes:
     from_schema: https://w3id.org/biostride/
     rank: 1000
     alias: r_factor
+    owner: QualityMetrics
+    domain_of:
+    - QualityMetrics
+    range: float
+  i_zero:
+    name: i_zero
+    description: Forward scattering intensity I(0)
+    from_schema: https://w3id.org/biostride/
+    rank: 1000
+    alias: i_zero
+    owner: QualityMetrics
+    domain_of:
+    - QualityMetrics
+    range: float
+  rg:
+    name: rg
+    description: Radius of gyration in Angstroms
+    from_schema: https://w3id.org/biostride/
+    rank: 1000
+    alias: rg
     owner: QualityMetrics
     domain_of:
     - QualityMetrics

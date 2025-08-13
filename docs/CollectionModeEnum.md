@@ -18,6 +18,9 @@ URI: [biostride_schema:CollectionModeEnum](https://w3id.org/biostride/schema/Col
 | continuous | None | Continuous collection |
 | oscillation | None | Oscillation method |
 | still | None | Still images |
+| batch | None | Batch mode collection |
+| sec_saxs | None | SEC-SAXS collection mode |
+| single_particle | None | Single particle analysis mode |
 
 
 
@@ -73,6 +76,15 @@ permissible_values:
   still:
     text: still
     description: Still images
+  batch:
+    text: batch
+    description: Batch mode collection
+  sec_saxs:
+    text: sec_saxs
+    description: SEC-SAXS collection mode
+  single_particle:
+    text: single_particle
+    description: Single particle analysis mode
 
 ```
 </details>

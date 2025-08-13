@@ -6,6 +6,9 @@ enum CollectionModeEnum
     continuous
     oscillation
     still
+    batch
+    sec_saxs
+    single_particle
   }
 
 enum ConcentrationUnitEnum
@@ -34,6 +37,8 @@ enum DataTypeEnum
     volume
     model
     metadata
+    raw_data
+    processed_data
   }
 
 enum DetectorTypeEnum
@@ -54,6 +59,8 @@ enum FileFormatEnum
     mmcif
     mtz
     cbf
+    ascii
+    thermo_raw
   }
 
 enum GridTypeEnum
@@ -91,6 +98,9 @@ enum PreparationTypeEnum
     xray_crystallography
     saxs
     sans
+    protein_expression
+    protein_purification
+    negative_stain
   }
 
 enum ProcessingStatusEnum
@@ -120,6 +130,8 @@ enum TechniqueEnum
     waxs
     sans
     cryo_et
+    electron_microscopy
+    mass_spectrometry
   }
 
 enum TemperatureUnitEnum
@@ -148,6 +160,9 @@ enum WorkflowTypeEnum
     phasing
     integration
     scaling
+    saxs_analysis
+    em_2d_classification
+    mass_spec_deconvolution
   }
 
 enum XRaySourceTypeEnum
@@ -244,6 +259,8 @@ type ExperimentalConditions
     humidity: Float
     pressure: Float
     atmosphere: String
+    beamEnergy: Float
+    exposureTime: Float
   }
 
 type ExperimentRun
@@ -424,6 +441,8 @@ type QualityMetrics
     completeness: Float
     signalToNoise: Float
     rFactor: Float
+    iZero: Float
+    rg: Float
   }
 
 type Sample

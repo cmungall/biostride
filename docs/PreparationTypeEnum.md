@@ -17,6 +17,9 @@ URI: [biostride_schema:PreparationTypeEnum](https://w3id.org/biostride/schema/Pr
 | xray_crystallography | None | X-ray crystallography preparation |
 | saxs | None | SAXS/WAXS preparation |
 | sans | None | SANS preparation |
+| protein_expression | None | Protein expression in host cells |
+| protein_purification | None | Protein purification |
+| negative_stain | None | Negative stain EM preparation |
 
 
 
@@ -69,6 +72,15 @@ permissible_values:
   sans:
     text: sans
     description: SANS preparation
+  protein_expression:
+    text: protein_expression
+    description: Protein expression in host cells
+  protein_purification:
+    text: protein_purification
+    description: Protein purification
+  negative_stain:
+    text: negative_stain
+    description: Negative stain EM preparation
 
 ```
 </details>

@@ -411,6 +411,7 @@ attributes:
     owner: FluorescenceImage
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose

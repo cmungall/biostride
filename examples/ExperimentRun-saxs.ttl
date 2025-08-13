@@ -1,33 +1,24 @@
-@prefix biostride: <https://w3id.org/biostride/> .
+@base <http://example.org/> .
 @prefix biostride_schema: <https://w3id.org/biostride/schema/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-biostride:exp_saxs_mbp_001 a biostride_schema:ExperimentRun ;
-    dcterms:title "Maltose binding protein SAXS analysis" ;
+<https://example.org/kibler2024/exp/saxs-main> a biostride_schema:ExperimentRun ;
     biostride_schema:data_collection_strategy [ a biostride_schema:DataCollectionStrategy ;
-            biostride_schema:collection_mode "continuous" ;
-            biostride_schema:dose_per_frame "0.0"^^xsd:float ;
-            biostride_schema:frame_rate "1.0"^^xsd:float ;
-            biostride_schema:total_dose "0.0"^^xsd:float ;
-            biostride_schema:total_frames 10 ] ;
-    biostride_schema:description "Small-angle X-ray scattering of MBP in solution at SIBYLS beamline" ;
-    biostride_schema:experiment_code "EXP-SAXS-MBP-2024-001" ;
-    biostride_schema:experiment_date "2024-04-15T14:00:00Z" ;
+            biostride_schema:collection_mode "batch" ] ;
+    biostride_schema:experiment_code "SIBYLS-2024-02-01-hetBGL" ;
+    biostride_schema:experiment_date "2024-02-01" ;
     biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
-            biostride_schema:atmosphere "Air" ;
-            biostride_schema:humidity "50.0"^^xsd:float ;
-            biostride_schema:pressure "101.325"^^xsd:float ;
+            biostride_schema:beam_energy "9.76"^^xsd:float ;
+            biostride_schema:exposure_time "0.3"^^xsd:float ;
             biostride_schema:temperature "20.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "biostride:instrument_sibyls_1231" ;
-    biostride_schema:operator_id "sibyls_user_015" ;
+    biostride_schema:instrument_id "ALS-12.3.1-SIBYLS" ;
+    biostride_schema:operator_id "Kathryn Burnett" ;
     biostride_schema:processing_status "completed" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
-            biostride_schema:completeness "100.0"^^xsd:float ;
-            biostride_schema:r_factor "0.0"^^xsd:float ;
-            biostride_schema:resolution "25.0"^^xsd:float ;
+            biostride_schema:i_zero "0.045"^^xsd:float ;
+            biostride_schema:rg "42.3"^^xsd:float ;
             biostride_schema:signal_to_noise "50.0"^^xsd:float ] ;
-    biostride_schema:raw_data_location "/data/sibyls/2024/saxs/mbp/" ;
-    biostride_schema:sample_id "biostride:sample_mbp_001" ;
+    biostride_schema:raw_data_location "SIBYLS-HT-SAXS-program" ;
+    biostride_schema:sample_id "https://example.org/kibler2024/sample/hetBGL03-15-18" ;
     biostride_schema:technique "saxs" .
 

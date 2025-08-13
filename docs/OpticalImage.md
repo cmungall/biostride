@@ -357,6 +357,7 @@ attributes:
     owner: OpticalImage
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose

@@ -176,6 +176,8 @@ A multimodal plant imaging study might combine:
  * [➞sample_id](experimentRun__sample_id.md) - Reference to the sample being analyzed
  * [➞technique](experimentRun__technique.md) - Technique used for data collection
  * [➞atmosphere](experimentalConditions__atmosphere.md) - Atmosphere composition
+ * [➞beam_energy](experimentalConditions__beam_energy.md) - Beam energy in keV
+ * [➞exposure_time](experimentalConditions__exposure_time.md) - Exposure time in seconds
  * [➞humidity](experimentalConditions__humidity.md) - Humidity percentage
  * [➞pressure](experimentalConditions__pressure.md) - Pressure in kPa
  * [➞temperature](experimentalConditions__temperature.md) - Temperature in Celsius
@@ -230,8 +232,10 @@ A multimodal plant imaging study might combine:
  * [➞numerical_aperture](opticalImage__numerical_aperture.md) - Numerical aperture of the objective lens
  * [➞white_balance](opticalImage__white_balance.md) - White balance settings
  * [➞completeness](qualityMetrics__completeness.md) - Data completeness percentage
+ * [➞i_zero](qualityMetrics__i_zero.md) - Forward scattering intensity I(0)
  * [➞r_factor](qualityMetrics__r_factor.md) - R-factor for crystallography
  * [➞resolution](qualityMetrics__resolution.md) - Resolution in Angstroms
+ * [➞rg](qualityMetrics__rg.md) - Radius of gyration in Angstroms
  * [➞signal_to_noise](qualityMetrics__signal_to_noise.md) - Signal to noise ratio
  * [➞detector_distance_max](sAXSInstrument__detector_distance_max.md) - Maximum detector distance in mm
  * [➞detector_distance_min](sAXSInstrument__detector_distance_min.md) - Minimum detector distance in mm

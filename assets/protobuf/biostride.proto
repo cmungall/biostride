@@ -88,6 +88,8 @@ message ExperimentalConditions
   float humidity = 0
   float pressure = 0
   string atmosphere = 0
+  float beamEnergy = 0
+  float exposureTime = 0
  }
 // An experimental data collection session
 message ExperimentRun
@@ -247,6 +249,8 @@ message QualityMetrics
   float completeness = 0
   float signalToNoise = 0
   float rFactor = 0
+  float iZero = 0
+  float rg = 0
  }
 // A biological sample used in structural biology experiments
 message Sample

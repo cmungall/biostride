@@ -754,6 +754,12 @@ classes:
         range: float
       atmosphere:
         description: "Atmosphere composition"
+      beam_energy:
+        description: "Beam energy in keV"
+        range: float
+      exposure_time:
+        description: "Exposure time in seconds"
+        range: float
 
   DataCollectionStrategy:
     description: "Strategy for data collection"
@@ -788,6 +794,12 @@ classes:
         range: float
       r_factor:
         description: "R-factor for crystallography"
+        range: float
+      i_zero:
+        description: "Forward scattering intensity I(0)"
+        range: float
+      rg:
+        description: "Radius of gyration in Angstroms"
         range: float
 
   ComputeResources:
@@ -856,6 +868,12 @@ enums:
         description: "SAXS/WAXS preparation"
       sans:
         description: "SANS preparation"
+      protein_expression:
+        description: "Protein expression in host cells"
+      protein_purification:
+        description: "Protein purification"
+      negative_stain:
+        description: "Negative stain EM preparation"
 
   GridTypeEnum:
     description: "Types of EM grids"
@@ -946,6 +964,10 @@ enums:
         description: "Small-angle neutron scattering"
       cryo_et:
         description: "Cryo-electron tomography"
+      electron_microscopy:
+        description: "General electron microscopy"
+      mass_spectrometry:
+        description: "Mass spectrometry"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -984,6 +1006,12 @@ enums:
         description: "Data integration"
       scaling:
         description: "Data scaling"
+      saxs_analysis:
+        description: "SAXS data analysis"
+      em_2d_classification:
+        description: "EM 2D classification"
+      mass_spec_deconvolution:
+        description: "Mass spectrometry deconvolution"
 
   FileFormatEnum:
     description: "File formats"
@@ -1004,6 +1032,10 @@ enums:
         description: "MTZ reflection format"
       cbf:
         description: "Crystallographic Binary Format"
+      ascii:
+        description: "ASCII text format"
+      thermo_raw:
+        description: "Thermo Fisher RAW format"
 
   DataTypeEnum:
     description: "Types of data"
@@ -1022,6 +1054,10 @@ enums:
         description: "Atomic model"
       metadata:
         description: "Metadata file"
+      raw_data:
+        description: "Raw experimental data"
+      processed_data:
+        description: "Processed data"
 
   CollectionModeEnum:
     description: "Data collection modes"
@@ -1036,6 +1072,12 @@ enums:
         description: "Oscillation method"
       still:
         description: "Still images"
+      batch:
+        description: "Batch mode collection"
+      sec_saxs:
+        description: "SEC-SAXS collection mode"
+      single_particle:
+        description: "Single particle analysis mode"
 
   IlluminationTypeEnum:
     description: "Types of illumination for optical microscopy"

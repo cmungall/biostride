@@ -19,6 +19,8 @@ URI: [biostride_schema:TechniqueEnum](https://w3id.org/biostride/schema/Techniqu
 | waxs | None | Wide-angle X-ray scattering |
 | sans | None | Small-angle neutron scattering |
 | cryo_et | None | Cryo-electron tomography |
+| electron_microscopy | None | General electron microscopy |
+| mass_spectrometry | None | Mass spectrometry |
 
 
 
@@ -77,6 +79,12 @@ permissible_values:
   cryo_et:
     text: cryo_et
     description: Cryo-electron tomography
+  electron_microscopy:
+    text: electron_microscopy
+    description: General electron microscopy
+  mass_spectrometry:
+    text: mass_spectrometry
+    description: Mass spectrometry
 
 ```
 </details>

@@ -109,7 +109,10 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/CollectionModeEnum#super_resolution>
              <https://w3id.org/biostride/schema/CollectionModeEnum#continuous>
              <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation>
-             <https://w3id.org/biostride/schema/CollectionModeEnum#still> ] ? ;
+             <https://w3id.org/biostride/schema/CollectionModeEnum#still>
+             <https://w3id.org/biostride/schema/CollectionModeEnum#batch>
+             <https://w3id.org/biostride/schema/CollectionModeEnum#sec_saxs>
+             <https://w3id.org/biostride/schema/CollectionModeEnum#single_particle> ] ? ;
           <total_frames> @linkml:Integer ? ;
           <frame_rate> @linkml:Float ? ;
           <total_dose> @linkml:Float ? ;
@@ -128,7 +131,8 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/FileFormatEnum#tiff> <https://w3id.org/biostride/schema/FileFormatEnum#hdf5>
              <https://w3id.org/biostride/schema/FileFormatEnum#star> <https://w3id.org/biostride/schema/FileFormatEnum#pdb>
              <https://w3id.org/biostride/schema/FileFormatEnum#mmcif> <https://w3id.org/biostride/schema/FileFormatEnum#mtz>
-             <https://w3id.org/biostride/schema/FileFormatEnum#cbf> ] ;
+             <https://w3id.org/biostride/schema/FileFormatEnum#cbf> <https://w3id.org/biostride/schema/FileFormatEnum#ascii>
+             <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> ] ;
           <file_size_bytes> @linkml:Integer ? ;
           <checksum> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
@@ -136,7 +140,8 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/DataTypeEnum#diffraction>
              <https://w3id.org/biostride/schema/DataTypeEnum#scattering> <https://w3id.org/biostride/schema/DataTypeEnum#particles>
              <https://w3id.org/biostride/schema/DataTypeEnum#volume> <https://w3id.org/biostride/schema/DataTypeEnum#model>
-             <https://w3id.org/biostride/schema/DataTypeEnum#metadata> ] ?
+             <https://w3id.org/biostride/schema/DataTypeEnum#metadata> <https://w3id.org/biostride/schema/DataTypeEnum#raw_data>
+             <https://w3id.org/biostride/schema/DataTypeEnum#processed_data> ] ?
        ) ;
        rdf:type [ <DataFile> ]
     )
@@ -156,7 +161,9 @@ linkml:Sparqlpath xsd:string
     (  $<ExperimentalConditions_tes> (  <temperature> @linkml:Float ? ;
           <humidity> @linkml:Float ? ;
           <pressure> @linkml:Float ? ;
-          <atmosphere> @linkml:String ?
+          <atmosphere> @linkml:String ? ;
+          <beam_energy> @linkml:Float ? ;
+          <exposure_time> @linkml:Float ?
        ) ;
        rdf:type [ <ExperimentalConditions> ] ?
     )
@@ -173,7 +180,9 @@ linkml:Sparqlpath xsd:string
           <technique> [ <https://w3id.org/biostride/schema/TechniqueEnum#cryo_em>
              <https://w3id.org/biostride/schema/TechniqueEnum#xray_crystallography>
              <https://w3id.org/biostride/schema/TechniqueEnum#saxs> <https://w3id.org/biostride/schema/TechniqueEnum#waxs>
-             <https://w3id.org/biostride/schema/TechniqueEnum#sans> <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et> ] ;
+             <https://w3id.org/biostride/schema/TechniqueEnum#sans> <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et>
+             <https://w3id.org/biostride/schema/TechniqueEnum#electron_microscopy>
+             <https://w3id.org/biostride/schema/TechniqueEnum#mass_spectrometry> ] ;
           <experimental_conditions> @<ExperimentalConditions> ? ;
           <data_collection_strategy> @<DataCollectionStrategy> ? ;
           <quality_metrics> @<QualityMetrics> ? ;
@@ -342,7 +351,9 @@ linkml:Sparqlpath xsd:string
     (  $<QualityMetrics_tes> (  <resolution> @linkml:Float ? ;
           <completeness> @linkml:Float ? ;
           <signal_to_noise> @linkml:Float ? ;
-          <r_factor> @linkml:Float ?
+          <r_factor> @linkml:Float ? ;
+          <i_zero> @linkml:Float ? ;
+          <rg> @linkml:Float ?
        ) ;
        rdf:type [ <QualityMetrics> ] ?
     )
@@ -382,7 +393,10 @@ linkml:Sparqlpath xsd:string
           <preparation_type> [ <https://w3id.org/biostride/schema/PreparationTypeEnum#cryo_em>
              <https://w3id.org/biostride/schema/PreparationTypeEnum#xray_crystallography>
              <https://w3id.org/biostride/schema/PreparationTypeEnum#saxs>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#sans> ] ;
+             <https://w3id.org/biostride/schema/PreparationTypeEnum#sans>
+             <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_expression>
+             <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_purification>
+             <https://w3id.org/biostride/schema/PreparationTypeEnum#negative_stain> ] ;
           <sample_id> @linkml:String ;
           <preparation_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
@@ -468,7 +482,10 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/WorkflowTypeEnum#model_building>
              <https://w3id.org/biostride/schema/WorkflowTypeEnum#phasing>
              <https://w3id.org/biostride/schema/WorkflowTypeEnum#integration>
-             <https://w3id.org/biostride/schema/WorkflowTypeEnum#scaling> ] ;
+             <https://w3id.org/biostride/schema/WorkflowTypeEnum#scaling>
+             <https://w3id.org/biostride/schema/WorkflowTypeEnum#saxs_analysis>
+             <https://w3id.org/biostride/schema/WorkflowTypeEnum#em_2d_classification>
+             <https://w3id.org/biostride/schema/WorkflowTypeEnum#mass_spec_deconvolution> ] ;
           <experiment_id> @linkml:String ;
           <processing_level> @linkml:Integer ? ;
           <software_name> @linkml:String ;

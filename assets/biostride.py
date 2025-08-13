@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-12T09:58:52
+# Generation date: 2025-08-12T20:25:31
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -1518,6 +1518,8 @@ class ExperimentalConditions(YAMLRoot):
     humidity: Optional[float] = None
     pressure: Optional[float] = None
     atmosphere: Optional[str] = None
+    beam_energy: Optional[float] = None
+    exposure_time: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.temperature is not None and not isinstance(self.temperature, float):
@@ -1531,6 +1533,12 @@ class ExperimentalConditions(YAMLRoot):
 
         if self.atmosphere is not None and not isinstance(self.atmosphere, str):
             self.atmosphere = str(self.atmosphere)
+
+        if self.beam_energy is not None and not isinstance(self.beam_energy, float):
+            self.beam_energy = float(self.beam_energy)
+
+        if self.exposure_time is not None and not isinstance(self.exposure_time, float):
+            self.exposure_time = float(self.exposure_time)
 
         super().__post_init__(**kwargs)
 
@@ -1588,6 +1596,8 @@ class QualityMetrics(YAMLRoot):
     completeness: Optional[float] = None
     signal_to_noise: Optional[float] = None
     r_factor: Optional[float] = None
+    i_zero: Optional[float] = None
+    rg: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.resolution is not None and not isinstance(self.resolution, float):
@@ -1601,6 +1611,12 @@ class QualityMetrics(YAMLRoot):
 
         if self.r_factor is not None and not isinstance(self.r_factor, float):
             self.r_factor = float(self.r_factor)
+
+        if self.i_zero is not None and not isinstance(self.i_zero, float):
+            self.i_zero = float(self.i_zero)
+
+        if self.rg is not None and not isinstance(self.rg, float):
+            self.rg = float(self.rg)
 
         super().__post_init__(**kwargs)
 
@@ -1724,6 +1740,15 @@ class PreparationTypeEnum(EnumDefinitionImpl):
     sans = PermissibleValue(
         text="sans",
         description="SANS preparation")
+    protein_expression = PermissibleValue(
+        text="protein_expression",
+        description="Protein expression in host cells")
+    protein_purification = PermissibleValue(
+        text="protein_purification",
+        description="Protein purification")
+    negative_stain = PermissibleValue(
+        text="negative_stain",
+        description="Negative stain EM preparation")
 
     _defn = EnumDefinition(
         name="PreparationTypeEnum",
@@ -1887,6 +1912,12 @@ class TechniqueEnum(EnumDefinitionImpl):
     cryo_et = PermissibleValue(
         text="cryo_et",
         description="Cryo-electron tomography")
+    electron_microscopy = PermissibleValue(
+        text="electron_microscopy",
+        description="General electron microscopy")
+    mass_spectrometry = PermissibleValue(
+        text="mass_spectrometry",
+        description="Mass spectrometry")
 
     _defn = EnumDefinition(
         name="TechniqueEnum",
@@ -1952,6 +1983,15 @@ class WorkflowTypeEnum(EnumDefinitionImpl):
     scaling = PermissibleValue(
         text="scaling",
         description="Data scaling")
+    saxs_analysis = PermissibleValue(
+        text="saxs_analysis",
+        description="SAXS data analysis")
+    em_2d_classification = PermissibleValue(
+        text="em_2d_classification",
+        description="EM 2D classification")
+    mass_spec_deconvolution = PermissibleValue(
+        text="mass_spec_deconvolution",
+        description="Mass spectrometry deconvolution")
 
     _defn = EnumDefinition(
         name="WorkflowTypeEnum",
@@ -1986,6 +2026,12 @@ class FileFormatEnum(EnumDefinitionImpl):
     cbf = PermissibleValue(
         text="cbf",
         description="Crystallographic Binary Format")
+    ascii = PermissibleValue(
+        text="ascii",
+        description="ASCII text format")
+    thermo_raw = PermissibleValue(
+        text="thermo_raw",
+        description="Thermo Fisher RAW format")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -2017,6 +2063,12 @@ class DataTypeEnum(EnumDefinitionImpl):
     metadata = PermissibleValue(
         text="metadata",
         description="Metadata file")
+    raw_data = PermissibleValue(
+        text="raw_data",
+        description="Raw experimental data")
+    processed_data = PermissibleValue(
+        text="processed_data",
+        description="Processed data")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -2042,6 +2094,15 @@ class CollectionModeEnum(EnumDefinitionImpl):
     still = PermissibleValue(
         text="still",
         description="Still images")
+    batch = PermissibleValue(
+        text="batch",
+        description="Batch mode collection")
+    sec_saxs = PermissibleValue(
+        text="sec_saxs",
+        description="SEC-SAXS collection mode")
+    single_particle = PermissibleValue(
+        text="single_particle",
+        description="Single particle analysis mode")
 
     _defn = EnumDefinition(
         name="CollectionModeEnum",
@@ -2587,6 +2648,12 @@ slots.experimentalConditions__pressure = Slot(uri=BIOSTRIDE_SCHEMA.pressure, nam
 slots.experimentalConditions__atmosphere = Slot(uri=BIOSTRIDE_SCHEMA.atmosphere, name="experimentalConditions__atmosphere", curie=BIOSTRIDE_SCHEMA.curie('atmosphere'),
                    model_uri=BIOSTRIDE_SCHEMA.experimentalConditions__atmosphere, domain=None, range=Optional[str])
 
+slots.experimentalConditions__beam_energy = Slot(uri=BIOSTRIDE_SCHEMA.beam_energy, name="experimentalConditions__beam_energy", curie=BIOSTRIDE_SCHEMA.curie('beam_energy'),
+                   model_uri=BIOSTRIDE_SCHEMA.experimentalConditions__beam_energy, domain=None, range=Optional[float])
+
+slots.experimentalConditions__exposure_time = Slot(uri=BIOSTRIDE_SCHEMA.exposure_time, name="experimentalConditions__exposure_time", curie=BIOSTRIDE_SCHEMA.curie('exposure_time'),
+                   model_uri=BIOSTRIDE_SCHEMA.experimentalConditions__exposure_time, domain=None, range=Optional[float])
+
 slots.dataCollectionStrategy__collection_mode = Slot(uri=BIOSTRIDE_SCHEMA.collection_mode, name="dataCollectionStrategy__collection_mode", curie=BIOSTRIDE_SCHEMA.curie('collection_mode'),
                    model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__collection_mode, domain=None, range=Optional[Union[str, "CollectionModeEnum"]])
 
@@ -2613,6 +2680,12 @@ slots.qualityMetrics__signal_to_noise = Slot(uri=BIOSTRIDE_SCHEMA.signal_to_nois
 
 slots.qualityMetrics__r_factor = Slot(uri=BIOSTRIDE_SCHEMA.r_factor, name="qualityMetrics__r_factor", curie=BIOSTRIDE_SCHEMA.curie('r_factor'),
                    model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_factor, domain=None, range=Optional[float])
+
+slots.qualityMetrics__i_zero = Slot(uri=BIOSTRIDE_SCHEMA.i_zero, name="qualityMetrics__i_zero", curie=BIOSTRIDE_SCHEMA.curie('i_zero'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__i_zero, domain=None, range=Optional[float])
+
+slots.qualityMetrics__rg = Slot(uri=BIOSTRIDE_SCHEMA.rg, name="qualityMetrics__rg", curie=BIOSTRIDE_SCHEMA.curie('rg'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__rg, domain=None, range=Optional[float])
 
 slots.computeResources__cpu_hours = Slot(uri=BIOSTRIDE_SCHEMA.cpu_hours, name="computeResources__cpu_hours", curie=BIOSTRIDE_SCHEMA.curie('cpu_hours'),
                    model_uri=BIOSTRIDE_SCHEMA.computeResources__cpu_hours, domain=None, range=Optional[float])

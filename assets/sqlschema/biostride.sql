@@ -309,6 +309,8 @@
 --     * Slot: humidity Description: Humidity percentage
 --     * Slot: pressure Description: Pressure in kPa
 --     * Slot: atmosphere Description: Atmosphere composition
+--     * Slot: beam_energy Description: Beam energy in keV
+--     * Slot: exposure_time Description: Exposure time in seconds
 -- # Class: DataCollectionStrategy Description: Strategy for data collection
 --     * Slot: id
 --     * Slot: collection_mode Description: Mode of data collection
@@ -322,6 +324,8 @@
 --     * Slot: completeness Description: Data completeness percentage
 --     * Slot: signal_to_noise Description: Signal to noise ratio
 --     * Slot: r_factor Description: R-factor for crystallography
+--     * Slot: i_zero Description: Forward scattering intensity I(0)
+--     * Slot: rg Description: Radius of gyration in Angstroms
 -- # Class: ComputeResources Description: Computational resources used
 --     * Slot: id
 --     * Slot: cpu_hours Description: CPU hours used
@@ -623,6 +627,8 @@ CREATE TABLE "ExperimentalConditions" (
 	humidity FLOAT,
 	pressure FLOAT,
 	atmosphere TEXT,
+	beam_energy FLOAT,
+	exposure_time FLOAT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_ExperimentalConditions_id" ON "ExperimentalConditions" (id);
 CREATE TABLE "DataCollectionStrategy" (
@@ -640,6 +646,8 @@ CREATE TABLE "QualityMetrics" (
 	completeness FLOAT,
 	signal_to_noise FLOAT,
 	r_factor FLOAT,
+	i_zero FLOAT,
+	rg FLOAT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_QualityMetrics_id" ON "QualityMetrics" (id);
 CREATE TABLE "ComputeResources" (
@@ -669,7 +677,7 @@ CREATE TABLE "Dataset_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Dataset_id", keywords),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");
+);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
@@ -681,25 +689,25 @@ CREATE TABLE "OpticalImage_color_channels" (
 	color_channels TEXT,
 	PRIMARY KEY ("OpticalImage_id", color_channels),
 	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
+);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
 CREATE TABLE "XRFImage_elements_measured" (
 	"XRFImage_id" TEXT,
 	elements_measured TEXT,
 	PRIMARY KEY ("XRFImage_id", elements_measured),
 	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
+);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);
 CREATE TABLE "MolecularComposition_sequences" (
 	"MolecularComposition_id" INTEGER,
 	sequences TEXT,
 	PRIMARY KEY ("MolecularComposition_id", sequences),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);
+);CREATE INDEX "ix_MolecularComposition_sequences_sequences" ON "MolecularComposition_sequences" (sequences);CREATE INDEX "ix_MolecularComposition_sequences_MolecularComposition_id" ON "MolecularComposition_sequences" ("MolecularComposition_id");
 CREATE TABLE "MolecularComposition_modifications" (
 	"MolecularComposition_id" INTEGER,
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
@@ -717,7 +725,7 @@ CREATE TABLE "BufferComposition_additives" (
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
 CREATE TABLE "SAXSPreparation_concentration_series" (
 	"SAXSPreparation_id" INTEGER,
 	concentration_series FLOAT,
@@ -785,7 +793,7 @@ CREATE TABLE "ExperimentRun" (
 );CREATE INDEX "ix_ExperimentRun_id" ON "ExperimentRun" (id);
 CREATE TABLE "WorkflowRun" (
 	workflow_code TEXT NOT NULL,
-	workflow_type VARCHAR(17) NOT NULL,
+	workflow_type VARCHAR(23) NOT NULL,
 	experiment_id TEXT NOT NULL,
 	processing_level INTEGER,
 	software_name TEXT NOT NULL,
@@ -805,11 +813,11 @@ CREATE TABLE "WorkflowRun" (
 CREATE TABLE "DataFile" (
 	file_name TEXT NOT NULL,
 	file_path TEXT,
-	file_format VARCHAR(5) NOT NULL,
+	file_format VARCHAR(10) NOT NULL,
 	file_size_bytes INTEGER,
 	checksum TEXT,
 	creation_date TEXT,
-	data_type VARCHAR(11),
+	data_type VARCHAR(14),
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,

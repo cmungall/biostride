@@ -21,6 +21,10 @@ URI: [biostride_schema:ExperimentalConditions](https://w3id.org/biostride/schema
     click ExperimentalConditions href "../ExperimentalConditions/"
       ExperimentalConditions : atmosphere
         
+      ExperimentalConditions : beam_energy
+        
+      ExperimentalConditions : exposure_time
+        
       ExperimentalConditions : humidity
         
       ExperimentalConditions : pressure
@@ -44,6 +48,8 @@ URI: [biostride_schema:ExperimentalConditions](https://w3id.org/biostride/schema
 | [humidity](humidity.md) | 0..1 <br/> [Float](Float.md) | Humidity percentage | direct |
 | [pressure](pressure.md) | 0..1 <br/> [Float](Float.md) | Pressure in kPa | direct |
 | [atmosphere](atmosphere.md) | 0..1 <br/> [String](String.md) | Atmosphere composition | direct |
+| [beam_energy](beam_energy.md) | 0..1 <br/> [Float](Float.md) | Beam energy in keV | direct |
+| [exposure_time](exposure_time.md) | 0..1 <br/> [Float](Float.md) | Exposure time in seconds | direct |
 
 
 
@@ -131,6 +137,22 @@ attributes:
     domain_of:
     - StorageConditions
     - ExperimentalConditions
+  beam_energy:
+    name: beam_energy
+    description: Beam energy in keV
+    from_schema: https://w3id.org/biostride/
+    domain_of:
+    - XRFImage
+    - ExperimentalConditions
+    range: float
+  exposure_time:
+    name: exposure_time
+    description: Exposure time in seconds
+    from_schema: https://w3id.org/biostride/
+    domain_of:
+    - Image
+    - ExperimentalConditions
+    range: float
 
 ```
 </details>
@@ -183,6 +205,26 @@ attributes:
     - StorageConditions
     - ExperimentalConditions
     range: string
+  beam_energy:
+    name: beam_energy
+    description: Beam energy in keV
+    from_schema: https://w3id.org/biostride/
+    alias: beam_energy
+    owner: ExperimentalConditions
+    domain_of:
+    - XRFImage
+    - ExperimentalConditions
+    range: float
+  exposure_time:
+    name: exposure_time
+    description: Exposure time in seconds
+    from_schema: https://w3id.org/biostride/
+    alias: exposure_time
+    owner: ExperimentalConditions
+    domain_of:
+    - Image
+    - ExperimentalConditions
+    range: float
 
 ```
 </details>
