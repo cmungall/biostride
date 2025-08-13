@@ -1036,6 +1036,8 @@ enums:
         description: "ASCII text format"
       thermo_raw:
         description: "Thermo Fisher RAW format"
+      zip:
+        description: "ZIP compressed archive"
 
   DataTypeEnum:
     description: "Types of data"

@@ -5261,7 +5261,7 @@
   "source_file": "biostride.yaml",
   "source_file_date": "2025-08-12T20:03:34",
   "source_file_size": 34972,
-  "generation_date": "2025-08-12T20:25:30",
+  "generation_date": "2025-08-12T20:35:36",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",
