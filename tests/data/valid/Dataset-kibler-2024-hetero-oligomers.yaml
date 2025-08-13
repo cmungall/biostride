@@ -211,7 +211,8 @@ studies:
     # Computational workflows
     workflow_runs:
       # SAXS data processing
-      - workflow_code: "SAXS-processing-2024-02-01"
+      - id: "workflow:saxs-processing"
+        workflow_code: "SAXS-processing-2024-02-01"
         workflow_type: saxs_analysis
         experiment_id: "SIBYLS-2024-02-01-hetBGL"
         processing_level: 2
@@ -233,7 +234,8 @@ studies:
           - "hetBGL03-15-18_kratky_plot.png"
           
       # EM data processing
-      - workflow_code: "nsEM-processing-2024-02-05"
+      - id: "workflow:em-processing"
+        workflow_code: "nsEM-processing-2024-02-05"
         workflow_type: em_2d_classification
         experiment_id: "nsEM-2024-02-05-hetBGL"
         processing_level: 2
@@ -251,7 +253,8 @@ studies:
           - "hetBGL03-15-18_class_averages.png"
           
       # Mass spec data analysis
-      - workflow_code: "nMS-analysis-2024-02-10"
+      - id: "workflow:ms-analysis"
+        workflow_code: "nMS-analysis-2024-02-10"
         workflow_type: mass_spec_deconvolution
         experiment_id: "nMS-2024-02-10-hetBGL"
         processing_level: 2
