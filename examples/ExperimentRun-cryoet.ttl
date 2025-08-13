@@ -20,7 +20,7 @@ biostride:exp_cryoet_mito_001 a biostride_schema:ExperimentRun ;
             biostride_schema:humidity "0.0"^^xsd:float ;
             biostride_schema:pressure "1e-06"^^xsd:float ;
             biostride_schema:temperature "-180.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "biostride:instrument_titan_krios_002" ;
+    biostride_schema:instrument_id biostride:instrument_titan_krios_002 ;
     biostride_schema:operator_id "cryoet_specialist_003" ;
     biostride_schema:processing_status "processing" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;

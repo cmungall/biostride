@@ -990,6 +990,21 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataset__instruments",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/instruments",
+      "alias": "instruments",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "Instrument",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataset__studies",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/studies",
@@ -1745,7 +1760,7 @@
       "domain_of": [
         "ExperimentRun"
       ],
-      "range": "string",
+      "range": "Instrument",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -3455,6 +3470,7 @@
         "namedThing__title",
         "namedThing__description",
         "dataset__keywords",
+        "dataset__instruments",
         "dataset__studies"
       ],
       "slot_usage": {},
@@ -3463,6 +3479,14 @@
           "name": "keywords",
           "range": "string",
           "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "instruments",
+          "range": "Instrument",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -3708,7 +3732,6 @@
       "description": "An instrument used to collect data",
       "from_schema": "https://w3id.org/biostride/",
       "is_a": "NamedThing",
-      "abstract": true,
       "slots": [
         "namedThing__id",
         "namedThing__title",
@@ -4030,7 +4053,7 @@
         {
           "name": "instrument_id",
           "description": "Reference to the instrument used",
-          "range": "string",
+          "range": "Instrument",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -5301,9 +5324,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-13T12:47:55",
-  "source_file_size": 35395,
-  "generation_date": "2025-08-13T12:49:40",
+  "source_file_date": "2025-08-13T21:24:38",
+  "source_file_size": 35503,
+  "generation_date": "2025-08-13T21:25:45",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

@@ -4,13 +4,14 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
 biostride:ds001 a biostride_schema:Dataset ;
+    biostride_schema:instruments biostride:instrument_test_001 ;
     biostride_schema:studies biostride:sty001 .
 
 biostride:irr001 a biostride_schema:ExperimentRun ;
     dcterms:title "Test Instrument Run" ;
     biostride_schema:description "Test Instrument Run Description" ;
     biostride_schema:experiment_code "EXP-TEST-001" ;
-    biostride_schema:instrument_id "biostride:instrument_test_001" ;
+    biostride_schema:instrument_id biostride:instrument_test_001 ;
     biostride_schema:sample_id "biostride:sam001" ;
     biostride_schema:technique "cryo_em" .
 
@@ -32,4 +33,12 @@ biostride:sty001 a biostride_schema:Study ;
     biostride_schema:instrument_runs biostride:irr001 ;
     biostride_schema:sample_preparations biostride:spr001 ;
     biostride_schema:samples biostride:sam001 .
+
+biostride:instrument_test_001 a biostride_schema:Instrument ;
+    dcterms:title "Test Cryo-EM Instrument" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "Test cryo-EM microscope for validation" ;
+    biostride_schema:instrument_code "TEST-EM-001" ;
+    biostride_schema:manufacturer "Test Manufacturer" ;
+    biostride_schema:model "Test Model" .
 

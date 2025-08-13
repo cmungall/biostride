@@ -128,6 +128,11 @@ classes:
       keywords:
         range: string
         multivalued: true
+      instruments:
+        range: Instrument
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       studies:
         range: Study
         multivalued: true
@@ -230,7 +235,6 @@ classes:
 
   Instrument:
     is_a: NamedThing
-    abstract: true
     description: "An instrument used to collect data"
     attributes:
       instrument_code:
@@ -344,7 +348,7 @@ classes:
         required: true
       instrument_id:
         description: "Reference to the instrument used"
-        range: string
+        range: Instrument
         required: true
       experiment_date:
         description: "Date of the experiment"

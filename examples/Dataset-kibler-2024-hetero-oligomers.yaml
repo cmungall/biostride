@@ -11,6 +11,28 @@ keywords:
 - SAXS
 - SEC-SAXS
 - structural biology
+instruments:
+- id: ALS-12.3.1-SIBYLS
+  title: ALS SIBYLS Beamline 12.3.1
+  description: SAXS/WAXS beamline at Advanced Light Source for biological samples
+  instrument_code: ALS-SIBYLS-12.3.1
+  manufacturer: Lawrence Berkeley National Laboratory
+  model: SIBYLS Beamline 12.3.1
+  current_status: operational
+- id: Talos-L120C
+  title: Talos L120C Microscope
+  description: 120kV TEM for negative stain electron microscopy
+  instrument_code: TALOS-L120C-001
+  manufacturer: Thermo Fisher Scientific
+  model: Talos L120C
+  current_status: operational
+- id: QE-UHMR
+  title: Q Exactive UHMR Mass Spectrometer
+  description: Ultra-high mass range mass spectrometer for native MS
+  instrument_code: QE-UHMR-001
+  manufacturer: Thermo Fisher Scientific
+  model: Q Exactive UHMR
+  current_status: operational
 studies:
 - id: https://example.org/kibler2024/study/hetBGL-design-validation
   title: Structural validation of designed hetero-oligomeric BGL complexes

@@ -19,6 +19,15 @@ keywords:
   - oligomerization
   - SIBYLS
 
+instruments:
+  - id: SIBYLS-BL12.3.1
+    title: "SIBYLS Beamline 12.3.1"
+    description: "SAXS/WAXS beamline at Advanced Light Source for biological samples"
+    instrument_code: "SIBYLS-BL12.3.1"
+    manufacturer: "Lawrence Berkeley National Laboratory"
+    model: "SIBYLS Beamline 12.3.1"
+    current_status: operational
+
 studies:
   - id: "https://simplescattering.com/study/glurs-oligomerization"
     title: "Determination of GluRS oligomerization state in solution"

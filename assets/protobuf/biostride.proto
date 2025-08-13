@@ -83,6 +83,7 @@ message Dataset
   string title = 0
   string description = 0
  repeated  string keywords = 0
+ repeated  instrument instruments = 0
  repeated  study studies = 0
  }
 // Environmental and experimental conditions
@@ -104,7 +105,7 @@ message ExperimentRun
   string description = 0
   string experimentCode = 0
   string sampleId = 0
-  string instrumentId = 0
+  instrument instrumentId = 0
   string experimentDate = 0
   string operatorId = 0
   techniqueEnum technique = 0
@@ -211,6 +212,18 @@ message ImageFeature
  {
   string description = 0
   ontologyTerm terms = 0
+ }
+// An instrument used to collect data
+message Instrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+  string instrumentCode = 0
+  string manufacturer = 0
+  string model = 0
+  string installationDate = 0
+  instrumentStatusEnum currentStatus = 0
  }
 // Molecular composition of a sample
 message MolecularComposition

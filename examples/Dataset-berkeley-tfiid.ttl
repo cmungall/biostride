@@ -7,6 +7,7 @@
 biostride:dataset_berkeley_tfiid_2024 a biostride_schema:Dataset ;
     dcterms:title "Human TFIID Transcription Complex Structural Analysis" ;
     biostride_schema:description "Comprehensive structural characterization of human TFIID and transcription pre-initiation complex using cryo-EM at Berkeley Lab" ;
+    biostride_schema:instruments biostride:instrument_titan_krios_001 ;
     biostride_schema:keywords "Berkeley Lab",
         "TFIID",
         "cryo-EM",
@@ -30,7 +31,7 @@ biostride:exp_tfiid_001 a biostride_schema:ExperimentRun ;
             biostride_schema:humidity "0.0"^^xsd:float ;
             biostride_schema:pressure "1e-06"^^xsd:float ;
             biostride_schema:temperature "-180.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "biostride:instrument_titan_krios_001" ;
+    biostride_schema:instrument_id biostride:instrument_titan_krios_001 ;
     biostride_schema:operator_id "nogales_lab_member_002" ;
     biostride_schema:processing_status "completed" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
@@ -56,7 +57,7 @@ biostride:exp_tfiid_dna_002 a biostride_schema:ExperimentRun ;
             biostride_schema:humidity "0.0"^^xsd:float ;
             biostride_schema:pressure "1e-06"^^xsd:float ;
             biostride_schema:temperature "-180.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "biostride:instrument_titan_krios_001" ;
+    biostride_schema:instrument_id biostride:instrument_titan_krios_001 ;
     biostride_schema:operator_id "nogales_lab_member_002" ;
     biostride_schema:processing_status "completed" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
@@ -294,4 +295,13 @@ biostride:sample_tfiid_001 a biostride_schema:Sample ;
             biostride_schema:duration "6 months" ;
             biostride_schema:temperature "-80.0"^^xsd:float ;
             biostride_schema:temperature_unit "celsius" ] .
+
+biostride:instrument_titan_krios_001 a biostride_schema:Instrument ;
+    dcterms:title "Titan Krios G4" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "300kV Cryo-EM microscope with Gatan K3 detector" ;
+    biostride_schema:installation_date "2023-03-15" ;
+    biostride_schema:instrument_code "TK-G4-001" ;
+    biostride_schema:manufacturer "Thermo Fisher Scientific" ;
+    biostride_schema:model "Titan Krios G4" .
 

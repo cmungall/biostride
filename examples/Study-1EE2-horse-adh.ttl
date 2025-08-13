@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix @base: <http://example.org/> .
 @prefix biostride: <https://w3id.org/biostride/> .
 @prefix biostride_schema: <https://w3id.org/biostride/schema/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -21,7 +22,7 @@ biostride:exp_1EE2_xray_001 a biostride_schema:ExperimentRun ;
     biostride_schema:experiment_date "1998-11-23" ;
     biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
             biostride_schema:temperature "100.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "DESY_BW7B" ;
+    biostride_schema:instrument_id <DESY_BW7B> ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
             biostride_schema:completeness "95.0"^^xsd:float ;
             biostride_schema:resolution "1.54"^^xsd:float ] ;

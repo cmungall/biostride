@@ -260,6 +260,7 @@ type Dataset
     title: String
     description: String
     keywords: [String]
+    instruments: [Instrument]
     studies: [Study]
   }
 
@@ -281,7 +282,7 @@ type ExperimentRun
     description: String
     experimentCode: String!
     sampleId: String!
-    instrumentId: String!
+    instrumentId: Instrument!
     experimentDate: String
     operatorId: String
     technique: TechniqueEnum!
@@ -391,7 +392,7 @@ type ImageFeature
     terms: OntologyTerm
   }
 
-interface Instrument
+type Instrument
   {
     id: Uriorcurie!
     title: String

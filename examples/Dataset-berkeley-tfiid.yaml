@@ -8,6 +8,15 @@ keywords:
 - cryo-EM
 - gene regulation
 - Berkeley Lab
+instruments:
+- id: biostride:instrument_titan_krios_001
+  title: Titan Krios G4
+  description: 300kV Cryo-EM microscope with Gatan K3 detector
+  instrument_code: TK-G4-001
+  manufacturer: Thermo Fisher Scientific
+  model: Titan Krios G4
+  installation_date: '2023-03-15'
+  current_status: operational
 studies:
 - id: biostride:study_tfiid_001
   title: TFIID Conformational Dynamics Study
