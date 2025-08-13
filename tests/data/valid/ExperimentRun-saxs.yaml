@@ -15,7 +15,7 @@ data_collection_strategy:
   collection_mode: batch  # This might not validate
 quality_metrics:
   signal_to_noise: 50
-  i_zero: 0.045  # This might not validate
+  i_zero: 0.045  # Validated by schema
   rg: 42.3  # This might not validate
 raw_data_location: "SIBYLS-HT-SAXS-program"
 processing_status: completed  # Using existing enum value
