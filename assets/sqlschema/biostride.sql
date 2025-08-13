@@ -1,21 +1,21 @@
 -- # Abstract Class: NamedThing Description: A named thing
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Abstract Class: AttributeGroup Description: A grouping of related data attributes that form a logical unit
 --     * Slot: id
 --     * Slot: description
 -- # Class: Dataset Description: A collection of studies
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: Study
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Dataset_id Description: Autocreated FK slot
 -- # Class: Sample Description: A biological sample used in structural biology experiments
---     * Slot: sample_code Description: Unique identifier code for the sample
+--     * Slot: sample_code Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 --     * Slot: sample_type Description: Type of biological sample
 --     * Slot: molecular_weight Description: Molecular weight in kDa
 --     * Slot: concentration Description: Sample concentration in mg/mL or µM
@@ -24,7 +24,7 @@
 --     * Slot: parent_sample_id Description: Reference to parent sample for derivation tracking
 --     * Slot: purity_percentage Description: Sample purity as percentage
 --     * Slot: quality_metrics Description: Quality control metrics for the sample
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
@@ -37,17 +37,17 @@
 --     * Slot: preparation_date Description: Date of sample preparation
 --     * Slot: operator_id Description: Person who performed the preparation
 --     * Slot: protocol_description Description: Detailed protocol description
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
 -- # Class: Instrument Description: An instrument used to collect data
---     * Slot: instrument_code Description: Unique identifier code for the instrument
+--     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
 --     * Slot: installation_date Description: Date of instrument installation
 --     * Slot: current_status Description: Current operational status
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Dataset_id Description: Autocreated FK slot
@@ -60,12 +60,12 @@
 --     * Slot: pixel_size_min Description: Minimum pixel size in Angstroms per pixel
 --     * Slot: pixel_size_max Description: Maximum pixel size in Angstroms per pixel
 --     * Slot: autoloader_capacity Description: Number of grids the autoloader can hold
---     * Slot: instrument_code Description: Unique identifier code for the instrument
+--     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
 --     * Slot: installation_date Description: Date of instrument installation
 --     * Slot: current_status Description: Current operational status
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: XRayInstrument Description: X-ray diffractometer or synchrotron beamline specifications
@@ -78,12 +78,12 @@
 --     * Slot: monochromator_type Description: Type of monochromator
 --     * Slot: goniometer_type Description: Type of goniometer
 --     * Slot: crystal_cooling_capability Description: Crystal cooling system available
---     * Slot: instrument_code Description: Unique identifier code for the instrument
+--     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
 --     * Slot: installation_date Description: Date of instrument installation
 --     * Slot: current_status Description: Current operational status
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: SAXSInstrument Description: SAXS/WAXS instrument specifications
@@ -93,16 +93,16 @@
 --     * Slot: detector_distance_max Description: Maximum detector distance in mm
 --     * Slot: sample_changer_capacity Description: Number of samples in automatic sample changer
 --     * Slot: temperature_control_range Description: Temperature control range in Celsius
---     * Slot: instrument_code Description: Unique identifier code for the instrument
+--     * Slot: instrument_code Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 --     * Slot: manufacturer Description: Instrument manufacturer
 --     * Slot: model Description: Instrument model
 --     * Slot: installation_date Description: Date of instrument installation
 --     * Slot: current_status Description: Current operational status
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: ExperimentRun Description: An experimental data collection session
---     * Slot: experiment_code Description: Unique experiment identifier
+--     * Slot: experiment_code Description: Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.
 --     * Slot: sample_id Description: Reference to the sample being analyzed
 --     * Slot: instrument_id Description: Reference to the instrument used
 --     * Slot: experiment_date Description: Date of the experiment
@@ -110,7 +110,7 @@
 --     * Slot: technique Description: Technique used for data collection
 --     * Slot: raw_data_location Description: Location of raw data files
 --     * Slot: processing_status Description: Current processing status
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
@@ -118,7 +118,7 @@
 --     * Slot: data_collection_strategy_id Description: Strategy for data collection
 --     * Slot: quality_metrics_id Description: Quality metrics for the experiment
 -- # Class: WorkflowRun Description: A computational processing workflow execution
---     * Slot: workflow_code Description: Unique workflow identifier
+--     * Slot: workflow_code Description: Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
 --     * Slot: workflow_type Description: Type of processing workflow
 --     * Slot: experiment_id Description: Reference to the source experiment
 --     * Slot: processing_level Description: Processing level (0=raw, 1=corrected, 2=derived, 3=model)
@@ -127,7 +127,7 @@
 --     * Slot: processing_parameters Description: Parameters used in processing
 --     * Slot: started_at Description: Workflow start time
 --     * Slot: completed_at Description: Workflow completion time
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
@@ -140,7 +140,7 @@
 --     * Slot: checksum Description: SHA-256 checksum for data integrity
 --     * Slot: creation_date Description: File creation date
 --     * Slot: data_type Description: Type of data in the file
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
@@ -152,7 +152,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 --     * Slot: Study_id Description: Autocreated FK slot
@@ -166,7 +166,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: Image3D Description: A 3D volume or tomogram
@@ -180,7 +180,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: FTIRImage Description: Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy
@@ -197,7 +197,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: FluorescenceImage Description: Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling
@@ -219,7 +219,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: OpticalImage Description: Visible light optical microscopy or photography image
@@ -237,7 +237,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: XRFImage Description: X-ray fluorescence (XRF) image showing elemental distribution
@@ -257,7 +257,7 @@
 --     * Slot: dimensions_y Description: Image height in pixels
 --     * Slot: exposure_time Description: Exposure time in seconds
 --     * Slot: dose Description: Electron dose in e-/Å²
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: ImageFeature
@@ -268,7 +268,7 @@
 --     * Slot: label
 --     * Slot: definition
 --     * Slot: ontology
---     * Slot: id
+--     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
 -- # Class: MolecularComposition Description: Molecular composition of a sample
@@ -722,7 +722,7 @@ CREATE TABLE "FTIRImage_molecular_signatures" (
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
@@ -746,19 +746,19 @@ CREATE TABLE "MolecularComposition_modifications" (
 	modifications TEXT,
 	PRIMARY KEY ("MolecularComposition_id", modifications),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);
+);CREATE INDEX "ix_MolecularComposition_modifications_modifications" ON "MolecularComposition_modifications" (modifications);CREATE INDEX "ix_MolecularComposition_modifications_MolecularComposition_id" ON "MolecularComposition_modifications" ("MolecularComposition_id");
 CREATE TABLE "MolecularComposition_ligands" (
 	"MolecularComposition_id" INTEGER,
 	ligands TEXT,
 	PRIMARY KEY ("MolecularComposition_id", ligands),
 	FOREIGN KEY("MolecularComposition_id") REFERENCES "MolecularComposition" (id)
-);CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");
+);CREATE INDEX "ix_MolecularComposition_ligands_MolecularComposition_id" ON "MolecularComposition_ligands" ("MolecularComposition_id");CREATE INDEX "ix_MolecularComposition_ligands_ligands" ON "MolecularComposition_ligands" (ligands);
 CREATE TABLE "BufferComposition_components" (
 	"BufferComposition_id" INTEGER,
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
+);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
