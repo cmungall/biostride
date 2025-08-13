@@ -36,12 +36,6 @@ jobs:
       - name: Install python tools
         run: |
           uv sync
-          uv venv
-          source .venv/bin/activate
-
-      - name:  Add MCPs
-        run: |
-          claude mcp add ols -- uvx ols-mcp
 
       - name: Run Claude Code
         id: claude
@@ -52,7 +46,7 @@ jobs:
             {
               "mcpServers": {
                 "ols": {
-                  "command": "uvc",
+                  "command": "uvx",
                   "args": [
                     "ols-mcp"
                   ]
