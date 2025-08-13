@@ -1237,6 +1237,45 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "sample__organism",
+      "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/organism",
+      "alias": "organism",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__anatomy",
+      "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/anatomy",
+      "alias": "anatomy",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample__cell_type",
+      "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cell_type",
+      "alias": "cell_type",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "OntologyTerm",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "sample__parent_sample_id",
       "description": "Reference to parent sample for derivation tracking",
       "from_schema": "https://w3id.org/biostride/",
@@ -3588,6 +3627,9 @@
         "sample__buffer_composition",
         "sample__preparation_method",
         "sample__storage_conditions",
+        "sample__organism",
+        "sample__anatomy",
+        "sample__cell_type",
         "sample__parent_sample_id",
         "sample__purity_percentage",
         "sample__quality_metrics"
@@ -3650,6 +3692,24 @@
           "name": "storage_conditions",
           "description": "Storage conditions for the sample",
           "range": "StorageConditions",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "organism",
+          "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anatomy",
+          "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
+          "range": "OntologyTerm",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cell_type",
+          "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+          "range": "OntologyTerm",
           "@type": "SlotDefinition"
         },
         {
@@ -5326,9 +5386,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-13T22:02:10",
-  "source_file_size": 36305,
-  "generation_date": "2025-08-13T22:02:29",
+  "source_file_date": "2025-08-13T23:17:50",
+  "source_file_size": 36701,
+  "generation_date": "2025-08-13T23:18:48",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

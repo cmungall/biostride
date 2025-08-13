@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-13T22:02:30
+# Generation date: 2025-08-13T23:18:49
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -381,6 +381,9 @@ class Sample(NamedThing):
     buffer_composition: Optional[Union[dict, "BufferComposition"]] = None
     preparation_method: Optional[str] = None
     storage_conditions: Optional[Union[dict, "StorageConditions"]] = None
+    organism: Optional[Union[str, OntologyTermId]] = None
+    anatomy: Optional[Union[str, OntologyTermId]] = None
+    cell_type: Optional[Union[str, OntologyTermId]] = None
     parent_sample_id: Optional[Union[str, SampleId]] = None
     purity_percentage: Optional[float] = None
     quality_metrics: Optional[str] = None
@@ -421,6 +424,15 @@ class Sample(NamedThing):
 
         if self.storage_conditions is not None and not isinstance(self.storage_conditions, StorageConditions):
             self.storage_conditions = StorageConditions(**as_dict(self.storage_conditions))
+
+        if self.organism is not None and not isinstance(self.organism, OntologyTermId):
+            self.organism = OntologyTermId(self.organism)
+
+        if self.anatomy is not None and not isinstance(self.anatomy, OntologyTermId):
+            self.anatomy = OntologyTermId(self.anatomy)
+
+        if self.cell_type is not None and not isinstance(self.cell_type, OntologyTermId):
+            self.cell_type = OntologyTermId(self.cell_type)
 
         if self.parent_sample_id is not None and not isinstance(self.parent_sample_id, SampleId):
             self.parent_sample_id = SampleId(self.parent_sample_id)
@@ -2244,6 +2256,15 @@ slots.sample__preparation_method = Slot(uri=BIOSTRIDE_SCHEMA.preparation_method,
 
 slots.sample__storage_conditions = Slot(uri=BIOSTRIDE_SCHEMA.storage_conditions, name="sample__storage_conditions", curie=BIOSTRIDE_SCHEMA.curie('storage_conditions'),
                    model_uri=BIOSTRIDE_SCHEMA.sample__storage_conditions, domain=None, range=Optional[Union[dict, StorageConditions]])
+
+slots.sample__organism = Slot(uri=BIOSTRIDE_SCHEMA.organism, name="sample__organism", curie=BIOSTRIDE_SCHEMA.curie('organism'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__organism, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.sample__anatomy = Slot(uri=BIOSTRIDE_SCHEMA.anatomy, name="sample__anatomy", curie=BIOSTRIDE_SCHEMA.curie('anatomy'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__anatomy, domain=None, range=Optional[Union[str, OntologyTermId]])
+
+slots.sample__cell_type = Slot(uri=BIOSTRIDE_SCHEMA.cell_type, name="sample__cell_type", curie=BIOSTRIDE_SCHEMA.curie('cell_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__cell_type, domain=None, range=Optional[Union[str, OntologyTermId]])
 
 slots.sample__parent_sample_id = Slot(uri=BIOSTRIDE_SCHEMA.parent_sample_id, name="sample__parent_sample_id", curie=BIOSTRIDE_SCHEMA.curie('parent_sample_id'),
                    model_uri=BIOSTRIDE_SCHEMA.sample__parent_sample_id, domain=None, range=Optional[Union[str, SampleId]])

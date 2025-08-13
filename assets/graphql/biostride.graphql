@@ -476,6 +476,9 @@ type Sample
     bufferComposition: BufferComposition
     preparationMethod: String
     storageConditions: StorageConditions
+    organism: OntologyTerm
+    anatomy: OntologyTerm
+    cellType: OntologyTerm
     parentSampleId: Sample
     purityPercentage: Float
     qualityMetrics: String

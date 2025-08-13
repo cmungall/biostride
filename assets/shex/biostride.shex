@@ -407,6 +407,9 @@ linkml:Sparqlpath xsd:string
           <buffer_composition> @<BufferComposition> ? ;
           <preparation_method> @linkml:String ? ;
           <storage_conditions> @<StorageConditions> ? ;
+          <organism> @<OntologyTerm> ? ;
+          <anatomy> @<OntologyTerm> ? ;
+          <cell_type> @<OntologyTerm> ? ;
           <parent_sample_id> @<Sample> ? ;
           <purity_percentage> @linkml:Float ? ;
           <quality_metrics> @linkml:String ?
