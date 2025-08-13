@@ -2,6 +2,9 @@
 --     * Slot: id
 --     * Slot: title
 --     * Slot: description
+-- # Abstract Class: AttributeGroup Description: A grouping of related data attributes that form a logical unit
+--     * Slot: id
+--     * Slot: description
 -- # Class: Dataset Description: A collection of studies
 --     * Slot: id
 --     * Slot: title
@@ -259,6 +262,7 @@
 -- # Class: ImageFeature
 --     * Slot: id
 --     * Slot: terms
+--     * Slot: description
 -- # Class: OntologyTerm
 --     * Slot: label
 --     * Slot: definition
@@ -268,17 +272,21 @@
 --     * Slot: description
 -- # Class: MolecularComposition Description: Molecular composition of a sample
 --     * Slot: id
+--     * Slot: description
 -- # Class: BufferComposition Description: Buffer composition for sample storage
 --     * Slot: id
 --     * Slot: ph Description: pH of the buffer
+--     * Slot: description
 -- # Class: StorageConditions Description: Storage conditions for samples
 --     * Slot: id
 --     * Slot: temperature Description: Storage temperature in Celsius
 --     * Slot: temperature_unit Description: Temperature unit
 --     * Slot: duration Description: Storage duration
 --     * Slot: atmosphere Description: Storage atmosphere conditions
+--     * Slot: description
 -- # Abstract Class: TechniqueSpecificPreparation Description: Base class for technique-specific preparation details
 --     * Slot: id
+--     * Slot: description
 -- # Class: CryoEMPreparation Description: Cryo-EM specific sample preparation
 --     * Slot: id
 --     * Slot: grid_type Description: Type of EM grid used
@@ -290,6 +298,7 @@
 --     * Slot: humidity_percentage Description: Chamber humidity during vitrification
 --     * Slot: chamber_temperature Description: Chamber temperature in Celsius
 --     * Slot: plasma_treatment Description: Plasma treatment details
+--     * Slot: description
 -- # Class: XRayPreparation Description: X-ray crystallography specific preparation
 --     * Slot: id
 --     * Slot: crystallization_method Description: Method used for crystallization
@@ -299,12 +308,14 @@
 --     * Slot: cryoprotectant_concentration Description: Cryoprotectant concentration percentage
 --     * Slot: mounting_method Description: Crystal mounting method
 --     * Slot: flash_cooling_method Description: Flash cooling protocol
+--     * Slot: description
 -- # Class: SAXSPreparation Description: SAXS/WAXS specific preparation
 --     * Slot: id
 --     * Slot: buffer_matching_protocol Description: Protocol for buffer matching
 --     * Slot: sample_cell_type Description: Type of sample cell used
 --     * Slot: cell_path_length Description: Path length in mm
 --     * Slot: temperature_control Description: Temperature control settings
+--     * Slot: description
 -- # Class: ExperimentalConditions Description: Environmental and experimental conditions
 --     * Slot: id
 --     * Slot: temperature Description: Temperature in Celsius
@@ -313,6 +324,7 @@
 --     * Slot: atmosphere Description: Atmosphere composition
 --     * Slot: beam_energy Description: Beam energy in keV
 --     * Slot: exposure_time Description: Exposure time in seconds
+--     * Slot: description
 -- # Class: DataCollectionStrategy Description: Strategy for data collection
 --     * Slot: id
 --     * Slot: collection_mode Description: Mode of data collection
@@ -320,6 +332,7 @@
 --     * Slot: frame_rate Description: Frames per second
 --     * Slot: total_dose Description: Total electron dose for cryo-EM
 --     * Slot: dose_per_frame Description: Dose per frame
+--     * Slot: description
 -- # Class: QualityMetrics Description: Quality metrics for experiments
 --     * Slot: id
 --     * Slot: resolution Description: Resolution in Angstroms
@@ -328,12 +341,14 @@
 --     * Slot: r_factor Description: R-factor for crystallography
 --     * Slot: i_zero Description: Forward scattering intensity I(0)
 --     * Slot: rg Description: Radius of gyration in Angstroms
+--     * Slot: description
 -- # Class: ComputeResources Description: Computational resources used
 --     * Slot: id
 --     * Slot: cpu_hours Description: CPU hours used
 --     * Slot: gpu_hours Description: GPU hours used
 --     * Slot: memory_gb Description: Maximum memory used in GB
 --     * Slot: storage_gb Description: Storage used in GB
+--     * Slot: description
 -- # Class: Dataset_keywords
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: keywords
@@ -374,6 +389,11 @@ CREATE TABLE "NamedThing" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_NamedThing_id" ON "NamedThing" (id);
+CREATE TABLE "AttributeGroup" (
+	id INTEGER NOT NULL,
+	description TEXT,
+	PRIMARY KEY (id)
+);CREATE INDEX "ix_AttributeGroup_id" ON "AttributeGroup" (id);
 CREATE TABLE "Dataset" (
 	id TEXT NOT NULL,
 	title TEXT,
@@ -574,11 +594,13 @@ CREATE TABLE "OntologyTerm" (
 );CREATE INDEX "ix_OntologyTerm_id" ON "OntologyTerm" (id);
 CREATE TABLE "MolecularComposition" (
 	id INTEGER NOT NULL,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_MolecularComposition_id" ON "MolecularComposition" (id);
 CREATE TABLE "BufferComposition" (
 	id INTEGER NOT NULL,
 	ph FLOAT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_BufferComposition_id" ON "BufferComposition" (id);
 CREATE TABLE "StorageConditions" (
@@ -587,10 +609,12 @@ CREATE TABLE "StorageConditions" (
 	temperature_unit VARCHAR(10),
 	duration TEXT,
 	atmosphere TEXT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_StorageConditions_id" ON "StorageConditions" (id);
 CREATE TABLE "TechniqueSpecificPreparation" (
 	id INTEGER NOT NULL,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_TechniqueSpecificPreparation_id" ON "TechniqueSpecificPreparation" (id);
 CREATE TABLE "CryoEMPreparation" (
@@ -604,6 +628,7 @@ CREATE TABLE "CryoEMPreparation" (
 	humidity_percentage FLOAT,
 	chamber_temperature FLOAT,
 	plasma_treatment TEXT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_CryoEMPreparation_id" ON "CryoEMPreparation" (id);
 CREATE TABLE "XRayPreparation" (
@@ -615,6 +640,7 @@ CREATE TABLE "XRayPreparation" (
 	cryoprotectant_concentration FLOAT,
 	mounting_method TEXT,
 	flash_cooling_method TEXT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_XRayPreparation_id" ON "XRayPreparation" (id);
 CREATE TABLE "SAXSPreparation" (
@@ -623,6 +649,7 @@ CREATE TABLE "SAXSPreparation" (
 	sample_cell_type TEXT,
 	cell_path_length FLOAT,
 	temperature_control TEXT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_SAXSPreparation_id" ON "SAXSPreparation" (id);
 CREATE TABLE "ExperimentalConditions" (
@@ -633,6 +660,7 @@ CREATE TABLE "ExperimentalConditions" (
 	atmosphere TEXT,
 	beam_energy FLOAT,
 	exposure_time FLOAT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_ExperimentalConditions_id" ON "ExperimentalConditions" (id);
 CREATE TABLE "DataCollectionStrategy" (
@@ -642,6 +670,7 @@ CREATE TABLE "DataCollectionStrategy" (
 	frame_rate FLOAT,
 	total_dose FLOAT,
 	dose_per_frame FLOAT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_DataCollectionStrategy_id" ON "DataCollectionStrategy" (id);
 CREATE TABLE "QualityMetrics" (
@@ -652,6 +681,7 @@ CREATE TABLE "QualityMetrics" (
 	r_factor FLOAT,
 	i_zero FLOAT,
 	rg FLOAT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_QualityMetrics_id" ON "QualityMetrics" (id);
 CREATE TABLE "ComputeResources" (
@@ -660,6 +690,7 @@ CREATE TABLE "ComputeResources" (
 	gpu_hours FLOAT,
 	memory_gb FLOAT,
 	storage_gb FLOAT,
+	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_ComputeResources_id" ON "ComputeResources" (id);
 CREATE TABLE "Study" (
@@ -673,6 +704,7 @@ CREATE TABLE "Study" (
 CREATE TABLE "ImageFeature" (
 	id INTEGER NOT NULL,
 	terms TEXT,
+	description TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY(terms) REFERENCES "OntologyTerm" (id)
 );CREATE INDEX "ix_ImageFeature_id" ON "ImageFeature" (id);
@@ -681,25 +713,25 @@ CREATE TABLE "Dataset_keywords" (
 	keywords TEXT,
 	PRIMARY KEY ("Dataset_id", keywords),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);
+);CREATE INDEX "ix_Dataset_keywords_keywords" ON "Dataset_keywords" (keywords);CREATE INDEX "ix_Dataset_keywords_Dataset_id" ON "Dataset_keywords" ("Dataset_id");
 CREATE TABLE "FTIRImage_molecular_signatures" (
 	"FTIRImage_id" TEXT,
 	molecular_signatures TEXT,
 	PRIMARY KEY ("FTIRImage_id", molecular_signatures),
 	FOREIGN KEY("FTIRImage_id") REFERENCES "FTIRImage" (id)
-);CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");
+);CREATE INDEX "ix_FTIRImage_molecular_signatures_FTIRImage_id" ON "FTIRImage_molecular_signatures" ("FTIRImage_id");CREATE INDEX "ix_FTIRImage_molecular_signatures_molecular_signatures" ON "FTIRImage_molecular_signatures" (molecular_signatures);
 CREATE TABLE "OpticalImage_color_channels" (
 	"OpticalImage_id" TEXT,
 	color_channels TEXT,
 	PRIMARY KEY ("OpticalImage_id", color_channels),
 	FOREIGN KEY("OpticalImage_id") REFERENCES "OpticalImage" (id)
-);CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");
+);CREATE INDEX "ix_OpticalImage_color_channels_OpticalImage_id" ON "OpticalImage_color_channels" ("OpticalImage_id");CREATE INDEX "ix_OpticalImage_color_channels_color_channels" ON "OpticalImage_color_channels" (color_channels);
 CREATE TABLE "XRFImage_elements_measured" (
 	"XRFImage_id" TEXT,
 	elements_measured TEXT,
 	PRIMARY KEY ("XRFImage_id", elements_measured),
 	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
+);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);
 CREATE TABLE "MolecularComposition_sequences" (
 	"MolecularComposition_id" INTEGER,
 	sequences TEXT,
@@ -729,13 +761,13 @@ CREATE TABLE "BufferComposition_additives" (
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
 CREATE TABLE "SAXSPreparation_concentration_series" (
 	"SAXSPreparation_id" INTEGER,
 	concentration_series FLOAT,
 	PRIMARY KEY ("SAXSPreparation_id", concentration_series),
 	FOREIGN KEY("SAXSPreparation_id") REFERENCES "SAXSPreparation" (id)
-);CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");
+);CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,

@@ -113,6 +113,13 @@ classes:
       description:
         range: string
 
+  AttributeGroup:
+    description: "A grouping of related data attributes that form a logical unit"
+    abstract: true
+    attributes:
+      description:
+        range: string
+
   Dataset:
     is_a: NamedThing
     tree_root: true
@@ -594,6 +601,7 @@ classes:
         range: string
 
   ImageFeature:
+    is_a: AttributeGroup
     attributes:
       terms:
         range: OntologyTerm
@@ -609,6 +617,7 @@ classes:
         range: string
 
   MolecularComposition:
+    is_a: AttributeGroup
     description: "Molecular composition of a sample"
     attributes:
       sequences:
@@ -625,6 +634,7 @@ classes:
         multivalued: true
 
   BufferComposition:
+    is_a: AttributeGroup
     description: "Buffer composition for sample storage"
     attributes:
       ph:
@@ -642,6 +652,7 @@ classes:
         multivalued: true
 
   StorageConditions:
+    is_a: AttributeGroup
     description: "Storage conditions for samples"
     attributes:
       temperature:
@@ -658,6 +669,7 @@ classes:
         range: string
 
   TechniqueSpecificPreparation:
+    is_a: AttributeGroup
     description: "Base class for technique-specific preparation details"
     abstract: true
 
@@ -739,6 +751,7 @@ classes:
         description: "Temperature control settings"
 
   ExperimentalConditions:
+    is_a: AttributeGroup
     description: "Environmental and experimental conditions"
     attributes:
       temperature:
@@ -760,6 +773,7 @@ classes:
         range: float
 
   DataCollectionStrategy:
+    is_a: AttributeGroup
     description: "Strategy for data collection"
     attributes:
       collection_mode:
@@ -779,6 +793,7 @@ classes:
         range: float
 
   QualityMetrics:
+    is_a: AttributeGroup
     description: "Quality metrics for experiments"
     attributes:
       resolution:
@@ -801,6 +816,7 @@ classes:
         range: float
 
   ComputeResources:
+    is_a: AttributeGroup
     description: "Computational resources used"
     attributes:
       cpu_hours:
