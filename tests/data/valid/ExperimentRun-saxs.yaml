@@ -10,7 +10,7 @@ technique: saxs
 experimental_conditions:
   temperature: 20  # Celsius
   beam_energy: 9.76  # keV - This might not validate
-  exposure_time: 0.3  # seconds - This might not validate
+  exposure_time: 0.3  # seconds
 data_collection_strategy:
   collection_mode: batch  # This might not validate
 quality_metrics:
