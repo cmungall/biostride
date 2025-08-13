@@ -754,6 +754,12 @@ classes:
         range: float
       atmosphere:
         description: "Atmosphere composition"
+      beam_energy:
+        description: "Beam energy in keV"
+        range: float
+      exposure_time:
+        description: "Exposure time in seconds"
+        range: float
 
   DataCollectionStrategy:
     description: "Strategy for data collection"
@@ -788,6 +794,12 @@ classes:
         range: float
       r_factor:
         description: "R-factor for crystallography"
+        range: float
+      i_zero:
+        description: "Forward scattering intensity I(0)"
+        range: float
+      rg:
+        description: "Radius of gyration in Angstroms"
         range: float
 
   ComputeResources:
@@ -856,6 +868,12 @@ enums:
         description: "SAXS/WAXS preparation"
       sans:
         description: "SANS preparation"
+      protein_expression:
+        description: "Protein expression in host cells"
+      protein_purification:
+        description: "Protein purification"
+      negative_stain:
+        description: "Negative stain EM preparation"
 
   GridTypeEnum:
     description: "Types of EM grids"
@@ -1036,6 +1054,8 @@ enums:
         description: "Oscillation method"
       still:
         description: "Still images"
+      batch:
+        description: "Batch mode collection"
 
   IlluminationTypeEnum:
     description: "Types of illumination for optical microscopy"
