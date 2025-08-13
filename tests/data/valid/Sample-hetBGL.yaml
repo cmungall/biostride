@@ -1,7 +1,7 @@
 # Single sample from Kibler 2024 paper
 # Let's get this one sample validating first
 
-id: "sample:hetBGL03-15-18"
+id: "https://example.org/kibler2024/sample/hetBGL03-15-18"
 sample_code: "hetBGL03-15-18"
 sample_type: complex  # Using existing enum value
 description: "Pseudosymmetric hetero-hexamer with three distinct chains"

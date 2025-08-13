@@ -1,8 +1,8 @@
 # SAXS experiment run from Kibler 2024
 
-id: "exp:saxs-main"
+id: "https://example.org/kibler2024/exp/saxs-main"
 experiment_code: "SIBYLS-2024-02-01-hetBGL"
-sample_id: "sample:hetBGL03-15-18"
+sample_id: "https://example.org/kibler2024/sample/hetBGL03-15-18"
 instrument_id: "ALS-12.3.1-SIBYLS"
 experiment_date: "2024-02-01"
 operator_id: "Kathryn Burnett"
