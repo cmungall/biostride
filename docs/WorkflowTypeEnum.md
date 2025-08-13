@@ -23,6 +23,9 @@ URI: [biostride_schema:WorkflowTypeEnum](https://w3id.org/biostride/schema/Workf
 | phasing | None | Phase determination |
 | integration | None | Data integration |
 | scaling | None | Data scaling |
+| saxs_analysis | None | SAXS data analysis |
+| em_2d_classification | None | EM 2D classification |
+| mass_spec_deconvolution | None | Mass spectrometry deconvolution |
 
 
 
@@ -93,6 +96,15 @@ permissible_values:
   scaling:
     text: scaling
     description: Data scaling
+  saxs_analysis:
+    text: saxs_analysis
+    description: SAXS data analysis
+  em_2d_classification:
+    text: em_2d_classification
+    description: EM 2D classification
+  mass_spec_deconvolution:
+    text: mass_spec_deconvolution
+    description: Mass spectrometry deconvolution
 
 ```
 </details>

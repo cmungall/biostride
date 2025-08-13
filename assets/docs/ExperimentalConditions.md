@@ -6,7 +6,7 @@ Environmental and experimental conditions
 URI: [biostride_schema:ExperimentalConditions](https://w3id.org/biostride/schema/ExperimentalConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F],[ExperimentRun])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F],[ExperimentRun])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F;beam_energy:float%20%3F;exposure_time:float%20%3F],[ExperimentRun])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20experimental_conditions%200..1>[ExperimentalConditions&#124;temperature:float%20%3F;humidity:float%20%3F;pressure:float%20%3F;atmosphere:string%20%3F;beam_energy:float%20%3F;exposure_time:float%20%3F],[ExperimentRun])
 
 ## Referenced by Class
 
@@ -29,3 +29,9 @@ URI: [biostride_schema:ExperimentalConditions](https://w3id.org/biostride/schema
  * [➞atmosphere](experimentalConditions__atmosphere.md)  <sub>0..1</sub>
      * Description: Atmosphere composition
      * Range: [String](types/String.md)
+ * [➞beam_energy](experimentalConditions__beam_energy.md)  <sub>0..1</sub>
+     * Description: Beam energy in keV
+     * Range: [Float](types/Float.md)
+ * [➞exposure_time](experimentalConditions__exposure_time.md)  <sub>0..1</sub>
+     * Description: Exposure time in seconds
+     * Range: [Float](types/Float.md)

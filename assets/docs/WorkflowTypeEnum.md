@@ -20,3 +20,6 @@ URI: [biostride_schema:WorkflowTypeEnum](https://w3id.org/biostride/schema/Workf
 | phasing | Phase determination |  |  |
 | integration | Data integration |  |  |
 | scaling | Data scaling |  |  |
+| saxs_analysis | SAXS data analysis |  |  |
+| em_2d_classification | EM 2D classification |  |  |
+| mass_spec_deconvolution | Mass spectrometry deconvolution |  |  |

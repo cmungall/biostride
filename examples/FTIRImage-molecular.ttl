@@ -1,3 +1,4 @@
+@base <http://example.org/> .
 @prefix biostride: <https://w3id.org/biostride/> .
 @prefix biostride_schema: <https://w3id.org/biostride/schema/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .

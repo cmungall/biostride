@@ -167,6 +167,7 @@ attributes:
     rank: 1000
     domain_of:
     - XRFImage
+    - ExperimentalConditions
     range: float
   beam_size:
     name: beam_size
@@ -247,6 +248,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - XRFImage
+    - ExperimentalConditions
     range: float
   beam_size:
     name: beam_size
@@ -399,6 +401,7 @@ attributes:
     owner: XRFImage
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose

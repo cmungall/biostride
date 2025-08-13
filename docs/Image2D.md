@@ -247,6 +247,7 @@ attributes:
     owner: Image2D
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose

@@ -3,11 +3,6 @@
 # Slot: beam_energy 
 
 
-_X-ray beam energy in keV_
-
-
-
-
 
 URI: [biostride_schema:beam_energy](https://w3id.org/biostride/schema/beam_energy)
 Alias: beam_energy
@@ -23,6 +18,7 @@ Alias: beam_energy
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [XRFImage](XRFImage.md) | X-ray fluorescence (XRF) image showing elemental distribution |  no  |
+| [ExperimentalConditions](ExperimentalConditions.md) | Environmental and experimental conditions |  no  |
 
 
 
@@ -31,7 +27,7 @@ Alias: beam_energy
 
 ## Properties
 
-* Range: [Float](Float.md)
+* Range: [String](String.md)
 
 
 
@@ -40,13 +36,6 @@ Alias: beam_energy
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/biostride/
 
 
 
@@ -66,14 +55,11 @@ Alias: beam_energy
 <details>
 ```yaml
 name: beam_energy
-description: X-ray beam energy in keV
-from_schema: https://w3id.org/biostride/
-rank: 1000
 alias: beam_energy
-owner: XRFImage
 domain_of:
 - XRFImage
-range: float
+- ExperimentalConditions
+range: string
 
 ```
 </details>

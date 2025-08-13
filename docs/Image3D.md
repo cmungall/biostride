@@ -255,6 +255,7 @@ attributes:
     owner: Image3D
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose

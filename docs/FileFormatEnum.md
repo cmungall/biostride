@@ -21,6 +21,8 @@ URI: [biostride_schema:FileFormatEnum](https://w3id.org/biostride/schema/FileFor
 | mmcif | None | mmCIF format |
 | mtz | None | MTZ reflection format |
 | cbf | None | Crystallographic Binary Format |
+| ascii | None | ASCII text format |
+| thermo_raw | None | Thermo Fisher RAW format |
 
 
 
@@ -85,6 +87,12 @@ permissible_values:
   cbf:
     text: cbf
     description: Crystallographic Binary Format
+  ascii:
+    text: ascii
+    description: ASCII text format
+  thermo_raw:
+    text: thermo_raw
+    description: Thermo Fisher RAW format
 
 ```
 </details>

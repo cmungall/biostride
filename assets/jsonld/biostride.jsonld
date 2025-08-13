@@ -454,6 +454,18 @@
         {
           "text": "sans",
           "description": "SANS preparation"
+        },
+        {
+          "text": "protein_expression",
+          "description": "Protein expression in host cells"
+        },
+        {
+          "text": "protein_purification",
+          "description": "Protein purification"
+        },
+        {
+          "text": "negative_stain",
+          "description": "Negative stain EM preparation"
         }
       ]
     },
@@ -634,6 +646,14 @@
         {
           "text": "cryo_et",
           "description": "Cryo-electron tomography"
+        },
+        {
+          "text": "electron_microscopy",
+          "description": "General electron microscopy"
+        },
+        {
+          "text": "mass_spectrometry",
+          "description": "Mass spectrometry"
         }
       ]
     },
@@ -710,6 +730,18 @@
         {
           "text": "scaling",
           "description": "Data scaling"
+        },
+        {
+          "text": "saxs_analysis",
+          "description": "SAXS data analysis"
+        },
+        {
+          "text": "em_2d_classification",
+          "description": "EM 2D classification"
+        },
+        {
+          "text": "mass_spec_deconvolution",
+          "description": "Mass spectrometry deconvolution"
         }
       ]
     },
@@ -750,6 +782,14 @@
         {
           "text": "cbf",
           "description": "Crystallographic Binary Format"
+        },
+        {
+          "text": "ascii",
+          "description": "ASCII text format"
+        },
+        {
+          "text": "thermo_raw",
+          "description": "Thermo Fisher RAW format"
         }
       ]
     },
@@ -786,6 +826,14 @@
         {
           "text": "metadata",
           "description": "Metadata file"
+        },
+        {
+          "text": "raw_data",
+          "description": "Raw experimental data"
+        },
+        {
+          "text": "processed_data",
+          "description": "Processed data"
         }
       ]
     },
@@ -814,6 +862,18 @@
         {
           "text": "still",
           "description": "Still images"
+        },
+        {
+          "text": "batch",
+          "description": "Batch mode collection"
+        },
+        {
+          "text": "sec_saxs",
+          "description": "SEC-SAXS collection mode"
+        },
+        {
+          "text": "single_particle",
+          "description": "Single particle analysis mode"
         }
       ]
     },
@@ -3107,6 +3167,32 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentalConditions__beam_energy",
+      "description": "Beam energy in keV",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/beam_energy",
+      "alias": "beam_energy",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentalConditions__exposure_time",
+      "description": "Exposure time in seconds",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/exposure_time",
+      "alias": "exposure_time",
+      "owner": "ExperimentalConditions",
+      "domain_of": [
+        "ExperimentalConditions"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataCollectionStrategy__collection_mode",
       "description": "Mode of data collection",
       "from_schema": "https://w3id.org/biostride/",
@@ -3216,6 +3302,32 @@
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/r_factor",
       "alias": "r_factor",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__i_zero",
+      "description": "Forward scattering intensity I(0)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/i_zero",
+      "alias": "i_zero",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__rg",
+      "description": "Radius of gyration in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/rg",
+      "alias": "rg",
       "owner": "QualityMetrics",
       "domain_of": [
         "QualityMetrics"
@@ -4955,7 +5067,9 @@
         "experimentalConditions__temperature",
         "experimentalConditions__humidity",
         "experimentalConditions__pressure",
-        "experimentalConditions__atmosphere"
+        "experimentalConditions__atmosphere",
+        "experimentalConditions__beam_energy",
+        "experimentalConditions__exposure_time"
       ],
       "slot_usage": {},
       "attributes": [
@@ -4980,6 +5094,18 @@
         {
           "name": "atmosphere",
           "description": "Atmosphere composition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_energy",
+          "description": "Beam energy in keV",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "exposure_time",
+          "description": "Exposure time in seconds",
+          "range": "float",
           "@type": "SlotDefinition"
         }
       ],
@@ -5043,7 +5169,9 @@
         "qualityMetrics__resolution",
         "qualityMetrics__completeness",
         "qualityMetrics__signal_to_noise",
-        "qualityMetrics__r_factor"
+        "qualityMetrics__r_factor",
+        "qualityMetrics__i_zero",
+        "qualityMetrics__rg"
       ],
       "slot_usage": {},
       "attributes": [
@@ -5068,6 +5196,18 @@
         {
           "name": "r_factor",
           "description": "R-factor for crystallography",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "i_zero",
+          "description": "Forward scattering intensity I(0)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rg",
+          "description": "Radius of gyration in Angstroms",
           "range": "float",
           "@type": "SlotDefinition"
         }
@@ -5119,9 +5259,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-08T13:53:07",
-  "source_file_size": 33589,
-  "generation_date": "2025-08-12T17:27:16",
+  "source_file_date": "2025-08-12T20:03:34",
+  "source_file_size": 34972,
+  "generation_date": "2025-08-12T20:25:30",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

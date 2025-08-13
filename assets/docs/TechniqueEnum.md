@@ -16,3 +16,5 @@ URI: [biostride_schema:TechniqueEnum](https://w3id.org/biostride/schema/Techniqu
 | waxs | Wide-angle X-ray scattering |  |  |
 | sans | Small-angle neutron scattering |  |  |
 | cryo_et | Cryo-electron tomography |  |  |
+| electron_microscopy | General electron microscopy |  |  |
+| mass_spectrometry | Mass spectrometry |  |  |

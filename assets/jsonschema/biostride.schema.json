@@ -44,7 +44,10 @@
                 "super_resolution",
                 "continuous",
                 "oscillation",
-                "still"
+                "still",
+                "batch",
+                "sec_saxs",
+                "single_particle"
             ],
             "title": "CollectionModeEnum",
             "type": "string"
@@ -416,7 +419,9 @@
                 "particles",
                 "volume",
                 "model",
-                "metadata"
+                "metadata",
+                "raw_data",
+                "processed_data"
             ],
             "title": "DataTypeEnum",
             "type": "string"
@@ -594,6 +599,20 @@
                         "null"
                     ]
                 },
+                "beam_energy": {
+                    "description": "Beam energy in keV",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "exposure_time": {
+                    "description": "Exposure time in seconds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "humidity": {
                     "description": "Humidity percentage",
                     "type": [
@@ -754,7 +773,9 @@
                 "pdb",
                 "mmcif",
                 "mtz",
-                "cbf"
+                "cbf",
+                "ascii",
+                "thermo_raw"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -1423,7 +1444,10 @@
                 "cryo_em",
                 "xray_crystallography",
                 "saxs",
-                "sans"
+                "sans",
+                "protein_expression",
+                "protein_purification",
+                "negative_stain"
             ],
             "title": "PreparationTypeEnum",
             "type": "string"
@@ -1451,6 +1475,13 @@
                         "null"
                     ]
                 },
+                "i_zero": {
+                    "description": "Forward scattering intensity I(0)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "r_factor": {
                     "description": "R-factor for crystallography",
                     "type": [
@@ -1460,6 +1491,13 @@
                 },
                 "resolution": {
                     "description": "Resolution in Angstroms",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rg": {
+                    "description": "Radius of gyration in Angstroms",
                     "type": [
                         "number",
                         "null"
@@ -1928,7 +1966,9 @@
                 "saxs",
                 "waxs",
                 "sans",
-                "cryo_et"
+                "cryo_et",
+                "electron_microscopy",
+                "mass_spectrometry"
             ],
             "title": "TechniqueEnum",
             "type": "string"
@@ -2069,7 +2109,10 @@
                 "model_building",
                 "phasing",
                 "integration",
-                "scaling"
+                "scaling",
+                "saxs_analysis",
+                "em_2d_classification",
+                "mass_spec_deconvolution"
             ],
             "title": "WorkflowTypeEnum",
             "type": "string"

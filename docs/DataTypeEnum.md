@@ -20,6 +20,8 @@ URI: [biostride_schema:DataTypeEnum](https://w3id.org/biostride/schema/DataTypeE
 | volume | None | 3D volume |
 | model | None | Atomic model |
 | metadata | None | Metadata file |
+| raw_data | None | Raw experimental data |
+| processed_data | None | Processed data |
 
 
 
@@ -81,6 +83,12 @@ permissible_values:
   metadata:
     text: metadata
     description: Metadata file
+  raw_data:
+    text: raw_data
+    description: Raw experimental data
+  processed_data:
+    text: processed_data
+    description: Processed data
 
 ```
 </details>

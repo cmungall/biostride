@@ -18,3 +18,5 @@ URI: [biostride_schema:FileFormatEnum](https://w3id.org/biostride/schema/FileFor
 | mmcif | mmCIF format |  |  |
 | mtz | MTZ reflection format |  |  |
 | cbf | Crystallographic Binary Format |  |  |
+| ascii | ASCII text format |  |  |
+| thermo_raw | Thermo Fisher RAW format |  |  |

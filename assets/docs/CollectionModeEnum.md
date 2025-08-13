@@ -15,3 +15,6 @@ URI: [biostride_schema:CollectionModeEnum](https://w3id.org/biostride/schema/Col
 | continuous | Continuous collection |  |  |
 | oscillation | Oscillation method |  |  |
 | still | Still images |  |  |
+| batch | Batch mode collection |  |  |
+| sec_saxs | SEC-SAXS collection mode |  |  |
+| single_particle | Single particle analysis mode |  |  |

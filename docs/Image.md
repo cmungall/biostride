@@ -185,6 +185,7 @@ attributes:
     rank: 1000
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose
@@ -267,6 +268,7 @@ attributes:
     owner: Image
     domain_of:
     - Image
+    - ExperimentalConditions
     range: float
   dose:
     name: dose

@@ -213,6 +213,7 @@ Name: biostride-schema
 | [hole_size](hole_size.md) | Hole size in micrometers |
 | [humidity](humidity.md) | Humidity percentage |
 | [humidity_percentage](humidity_percentage.md) | Chamber humidity during vitrification |
+| [i_zero](i_zero.md) | Forward scattering intensity I(0) |
 | [id](id.md) |  |
 | [illumination_type](illumination_type.md) | Type of illumination (brightfield, darkfield, phase contrast, DIC) |
 | [images](images.md) |  |
@@ -264,6 +265,7 @@ Name: biostride-schema
 | [raw_data_location](raw_data_location.md) | Location of raw data files |
 | [reconstruction_method](reconstruction_method.md) | Method used for 3D reconstruction |
 | [resolution](resolution.md) | Resolution in Angstroms |
+| [rg](rg.md) | Radius of gyration in Angstroms |
 | [sample_cell_type](sample_cell_type.md) | Type of sample cell used |
 | [sample_changer_capacity](sample_changer_capacity.md) | Number of samples in automatic sample changer |
 | [sample_code](sample_code.md) | Unique identifier code for the sample |

@@ -14,39 +14,6 @@ biostride_schema:CryoEMInstrument a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:accelerating_voltage ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:autoloader_capacity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:phase_plate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:pixel_size_max ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:DetectorTypeEnum ;
-            owl:onProperty biostride_schema:detector_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:cs_corrector ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:detector_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:pixel_size_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:pixel_size_max ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty biostride_schema:cs_corrector ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:detector_dimensions ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:detector_dimensions ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( [ a rdfs:Datatype ;
                                 owl:unionOf ( [ a rdfs:Datatype ;
@@ -67,8 +34,59 @@ biostride_schema:CryoEMInstrument a owl:Class,
                                                         owl:withRestrictions ( [ xsd:maxInclusive 300 ] ) ] ) ] ) ] linkml:Integer ) ] ;
             owl:onProperty biostride_schema:accelerating_voltage ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:pixel_size_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:cs_corrector ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:pixel_size_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:pixel_size_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:detector_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:cs_corrector ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:DetectorTypeEnum ;
+            owl:onProperty biostride_schema:detector_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:pixel_size_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:detector_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:accelerating_voltage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:detector_dimensions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:detector_dimensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty biostride_schema:cs_corrector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:phase_plate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:autoloader_capacity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty biostride_schema:autoloader_capacity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty biostride_schema:phase_plate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:autoloader_capacity ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:pixel_size_min ],
@@ -77,27 +95,9 @@ biostride_schema:CryoEMInstrument a owl:Class,
             owl:onProperty biostride_schema:pixel_size_max ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:cs_corrector ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:detector_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:phase_plate ],
+            owl:onProperty biostride_schema:detector_dimensions ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:accelerating_voltage ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:pixel_size_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:autoloader_capacity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty biostride_schema:autoloader_capacity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
             owl:onProperty biostride_schema:phase_plate ],
         biostride_schema:Instrument ;
     skos:definition "Cryo-EM microscope specifications" ;
@@ -107,78 +107,14 @@ biostride_schema:CryoEMPreparation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "CryoEMPreparation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:float ;
-                                owl:withRestrictions ( [ xsd:minInclusive 5e-01 ] ) ] [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:float ;
-                                owl:withRestrictions ( [ xsd:maxInclusive 5e+00 ] ) ] ) ] ;
-            owl:onProperty biostride_schema:hole_size ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:support_film ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:support_film ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:humidity_percentage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:blot_force ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:chamber_temperature ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:integer ;
-                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:integer ;
-                                owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
-            owl:onProperty biostride_schema:humidity_percentage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:VitrificationMethodEnum ;
-            owl:onProperty biostride_schema:vitrification_method ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:GridTypeEnum ;
             owl:onProperty biostride_schema:grid_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:hole_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:hole_size ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:chamber_temperature ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:humidity_percentage ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:blot_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:grid_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:chamber_temperature ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:plasma_treatment ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty biostride_schema:blot_force ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:plasma_treatment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:blot_time ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:grid_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
@@ -188,19 +124,83 @@ biostride_schema:CryoEMPreparation a owl:Class,
                                 owl:withRestrictions ( [ xsd:maxInclusive 1e+01 ] ) ] ) ] ;
             owl:onProperty biostride_schema:blot_time ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:plasma_treatment ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:vitrification_method ],
+            owl:onProperty biostride_schema:hole_size ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:blot_force ],
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:chamber_temperature ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:support_film ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:support_film ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:hole_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:chamber_temperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:GridTypeEnum ;
+            owl:onProperty biostride_schema:grid_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:minInclusive 5e-01 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:float ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 5e+00 ] ) ] ) ] ;
+            owl:onProperty biostride_schema:hole_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:blot_force ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:blot_force ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:grid_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:humidity_percentage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:humidity_percentage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:chamber_temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:blot_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:VitrificationMethodEnum ;
+            owl:onProperty biostride_schema:vitrification_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:plasma_treatment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:support_film ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
+            owl:onProperty biostride_schema:humidity_percentage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:vitrification_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:plasma_treatment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:vitrification_method ],
         biostride_schema:TechniqueSpecificPreparation ;
     skos:definition "Cryo-EM specific sample preparation" ;
@@ -213,14 +213,14 @@ biostride_schema:Dataset a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:studies ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:Study ;
-            owl:onProperty biostride_schema:studies ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:keywords ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:keywords ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:keywords ],
+            owl:allValuesFrom biostride_schema:Study ;
+            owl:onProperty biostride_schema:studies ],
         biostride_schema:NamedThing ;
     skos:definition "A collection of studies" ;
     skos:inScheme biostride: .
@@ -229,56 +229,32 @@ biostride_schema:FTIRImage a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "FTIRImage" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:background_correction ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:molecular_signatures ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:spectral_resolution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:apodization_function ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:wavenumber_min ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:molecular_signatures ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:spectral_resolution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:spectral_resolution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:apodization_function ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:wavenumber_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:background_correction ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:number_of_scans ],
+            owl:onProperty biostride_schema:spectral_resolution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:spectral_resolution ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:wavenumber_min ],
+            owl:onProperty biostride_schema:spectral_resolution ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:apodization_function ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:wavenumber_max ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:background_correction ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:wavenumber_max ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:number_of_scans ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:apodization_function ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:background_correction ],
@@ -288,6 +264,30 @@ biostride_schema:FTIRImage a owl:Class,
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:wavenumber_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:molecular_signatures ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:number_of_scans ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:number_of_scans ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:wavenumber_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:wavenumber_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:wavenumber_max ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:wavenumber_min ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:wavenumber_min ],
         biostride_schema:Image ;
     skos:definition "Fourier Transform Infrared (FTIR) spectroscopy image capturing molecular composition through vibrational spectroscopy" ;
     skos:inScheme biostride: .
@@ -297,76 +297,10 @@ biostride_schema:FluorescenceImage a owl:Class,
     rdfs:label "FluorescenceImage" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:emission_wavelength ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:emission_wavelength ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:emission_filter ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:pinhole_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:quantum_yield ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:fluorophore ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:channel_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:excitation_filter ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:pinhole_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:channel_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:fluorophore ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:excitation_filter ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:fluorophore ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:excitation_wavelength ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:emission_wavelength ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:excitation_wavelength ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:laser_power ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:laser_power ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:pinhole_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:excitation_filter ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:channel_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:quantum_yield ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:quantum_yield ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:emission_filter ],
+            owl:onProperty biostride_schema:pinhole_size ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:emission_filter ],
@@ -374,8 +308,74 @@ biostride_schema:FluorescenceImage a owl:Class,
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:excitation_wavelength ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:emission_filter ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:laser_power ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:quantum_yield ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:fluorophore ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:fluorophore ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:laser_power ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:quantum_yield ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:fluorophore ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:excitation_wavelength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:excitation_filter ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:laser_power ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:excitation_filter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:excitation_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:pinhole_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:channel_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:emission_filter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:channel_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:pinhole_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:quantum_yield ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:excitation_filter ],
         biostride_schema:Image2D ;
     skos:definition "Fluorescence microscopy image capturing specific molecular targets through fluorescent labeling" ;
     skos:inScheme biostride: .
@@ -384,32 +384,32 @@ biostride_schema:Image3D a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Image3D" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:reconstruction_method ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:dimensions_z ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:voxel_size ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:dimensions_z ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:reconstruction_method ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty biostride_schema:dimensions_z ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:dimensions_z ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:reconstruction_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:voxel_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:dimensions_z ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:reconstruction_method ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:voxel_size ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:reconstruction_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:voxel_size ],
         biostride_schema:Image ;
     skos:definition "A 3D volume or tomogram" ;
     skos:inScheme biostride: .
@@ -418,10 +418,10 @@ biostride_schema:ImageFeature a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ImageFeature" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:OntologyTerm ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:terms ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom biostride_schema:OntologyTerm ;
             owl:onProperty biostride_schema:terms ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -433,55 +433,55 @@ biostride_schema:OpticalImage a owl:Class,
     rdfs:label "OpticalImage" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:color_channels ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:illumination_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:contrast_method ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:numerical_aperture ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:numerical_aperture ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:magnification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:magnification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:white_balance ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:contrast_method ],
+            owl:onProperty biostride_schema:color_channels ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:IlluminationTypeEnum ;
             owl:onProperty biostride_schema:illumination_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:numerical_aperture ],
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:illumination_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:white_balance ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:white_balance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:magnification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:contrast_method ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:contrast_method ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:white_balance ],
+            owl:onProperty biostride_schema:magnification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:illumination_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:color_channels ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:illumination_type ],
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:magnification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:contrast_method ],
         biostride_schema:Image2D ;
     skos:definition "Visible light optical microscopy or photography image" ;
     skos:inScheme biostride: .
@@ -491,58 +491,58 @@ biostride_schema:SAXSInstrument a owl:Class,
     rdfs:label "SAXSInstrument" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:sample_changer_capacity ],
+            owl:onProperty biostride_schema:temperature_control_range ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:q_range_min ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:detector_distance_min ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:temperature_control_range ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:detector_distance_max ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:detector_distance_min ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty biostride_schema:sample_changer_capacity ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:detector_distance_min ],
+            owl:onProperty biostride_schema:temperature_control_range ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:q_range_max ],
+            owl:onProperty biostride_schema:detector_distance_min ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:detector_distance_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:detector_distance_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:q_range_min ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:detector_distance_min ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:sample_changer_capacity ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:detector_distance_max ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:temperature_control_range ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:sample_changer_capacity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:q_range_max ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:q_range_max ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:q_range_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:detector_distance_max ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:temperature_control_range ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:q_range_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:detector_distance_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:q_range_min ],
         biostride_schema:Instrument ;
     skos:definition "SAXS/WAXS instrument specifications" ;
     skos:inScheme biostride: .
@@ -551,47 +551,47 @@ biostride_schema:SAXSPreparation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SAXSPreparation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:sample_cell_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:temperature_control ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:temperature_control ],
+            owl:onProperty biostride_schema:buffer_matching_protocol ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:buffer_matching_protocol ],
+            owl:onProperty biostride_schema:temperature_control ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:concentration_series ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:buffer_matching_protocol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:sample_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:sample_cell_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:cell_path_length ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:temperature_control ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:cell_path_length ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:temperature_control ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:sample_cell_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:cell_path_length ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:buffer_matching_protocol ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:concentration_series ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:sample_cell_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:cell_path_length ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:cell_path_length ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:cell_path_length ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:sample_cell_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:temperature_control ],
         biostride_schema:TechniqueSpecificPreparation ;
     skos:definition "SAXS/WAXS specific preparation" ;
     skos:inScheme biostride: .
@@ -600,11 +600,65 @@ biostride_schema:XRFImage a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "XRFImage" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:calibration_standard ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:flux ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:beam_energy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:calibration_standard ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:flux ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:dwell_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:detector_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:flux ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:source_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:beam_energy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:beam_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:source_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:beam_energy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:elements_measured ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:dwell_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:dwell_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:calibration_standard ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:elements_measured ],
+        [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:XRaySourceTypeEnum ;
             owl:onProperty biostride_schema:source_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:flux ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:detector_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:beam_size ],
@@ -613,61 +667,7 @@ biostride_schema:XRFImage a owl:Class,
             owl:onProperty biostride_schema:detector_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:source_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:beam_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:flux ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:elements_measured ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:detector_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:beam_energy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:dwell_time ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:flux ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:beam_energy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:detector_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:calibration_standard ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:calibration_standard ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:beam_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:dwell_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:elements_measured ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:calibration_standard ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:beam_energy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:dwell_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:source_type ],
         biostride_schema:Image2D ;
     skos:definition "X-ray fluorescence (XRF) image showing elemental distribution" ;
     skos:inScheme biostride: .
@@ -676,23 +676,8 @@ biostride_schema:XRayInstrument a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "XRayInstrument" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:monochromator_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:beam_size_max ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:goniometer_type ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:beam_size_min ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:beam_size_min ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:flux_density ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:energy_max ],
@@ -701,61 +686,76 @@ biostride_schema:XRayInstrument a owl:Class,
             owl:onProperty biostride_schema:monochromator_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:flux_density ],
+            owl:onProperty biostride_schema:source_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:energy_min ],
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:crystal_cooling_capability ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:beam_size_min ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:source_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:flux_density ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:source_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:goniometer_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:energy_max ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:monochromator_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:XRaySourceTypeEnum ;
             owl:onProperty biostride_schema:source_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:energy_min ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:monochromator_type ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:energy_max ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:crystal_cooling_capability ],
+            owl:onProperty biostride_schema:energy_min ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:beam_size_max ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:crystal_cooling_capability ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:goniometer_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:goniometer_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:beam_size_max ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:flux_density ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:beam_size_min ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:energy_max ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:energy_min ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Boolean ;
             owl:onProperty biostride_schema:crystal_cooling_capability ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:energy_min ],
+            owl:onProperty biostride_schema:monochromator_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:source_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:crystal_cooling_capability ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:flux_density ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:energy_max ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:goniometer_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:beam_size_max ],
         biostride_schema:Instrument ;
     skos:definition "X-ray diffractometer or synchrotron beamline specifications" ;
     skos:inScheme biostride: .
@@ -764,68 +764,68 @@ biostride_schema:XRayPreparation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "XRayPreparation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:flash_cooling_method ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:crystallization_conditions ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:crystallization_method ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:cryoprotectant ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:cryoprotectant ],
+            owl:onProperty biostride_schema:crystallization_method ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:mounting_method ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:crystallization_conditions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:cryoprotectant ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:CrystallizationMethodEnum ;
             owl:onProperty biostride_schema:crystallization_method ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:crystal_size ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:crystallization_conditions ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:cryoprotectant_concentration ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:mounting_method ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:mounting_method ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:crystal_size ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:cryoprotectant_concentration ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:flash_cooling_method ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:cryoprotectant_concentration ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:crystallization_conditions ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:cryoprotectant ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:crystallization_method ],
+            owl:onProperty biostride_schema:crystallization_conditions ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:crystal_size ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:crystal_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:mounting_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:cryoprotectant_concentration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:cryoprotectant_concentration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:flash_cooling_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:cryoprotectant_concentration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:flash_cooling_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:mounting_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:cryoprotectant ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:crystallization_method ],
         biostride_schema:TechniqueSpecificPreparation ;
     skos:definition "X-ray crystallography specific preparation" ;
     skos:inScheme biostride: .
@@ -834,14 +834,8 @@ biostride_schema:BufferComposition a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "BufferComposition" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:components ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:ph ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:ph ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:additives ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
@@ -857,8 +851,14 @@ biostride_schema:BufferComposition a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:additives ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:additives ] ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:components ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:ph ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:ph ] ;
     skos:definition "Buffer composition for sample storage" ;
     skos:inScheme biostride: .
 
@@ -866,20 +866,8 @@ biostride_schema:ComputeResources a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ComputeResources" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:cpu_hours ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:cpu_hours ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:memory_gb ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:gpu_hours ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:storage_gb ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:cpu_hours ],
@@ -888,19 +876,31 @@ biostride_schema:ComputeResources a owl:Class,
             owl:onProperty biostride_schema:gpu_hours ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:storage_gb ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:memory_gb ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:storage_gb ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:memory_gb ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:cpu_hours ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:gpu_hours ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:storage_gb ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:memory_gb ],
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:gpu_hours ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:gpu_hours ] ;
+            owl:onProperty biostride_schema:cpu_hours ] ;
     skos:definition "Computational resources used" ;
     skos:inScheme biostride: .
 
@@ -908,49 +908,49 @@ biostride_schema:DataCollectionStrategy a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DataCollectionStrategy" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:total_dose ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:collection_mode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:frame_rate ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:collection_mode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:total_frames ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:dose_per_frame ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:CollectionModeEnum ;
             owl:onProperty biostride_schema:collection_mode ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:total_dose ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:frame_rate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:total_frames ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:dose_per_frame ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:frame_rate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:total_dose ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty biostride_schema:total_frames ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:total_dose ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:total_frames ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:collection_mode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:collection_mode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:frame_rate ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:total_dose ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:dose_per_frame ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:dose_per_frame ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:total_dose ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:dose_per_frame ] ;
     skos:definition "Strategy for data collection" ;
     skos:inScheme biostride: .
@@ -959,104 +959,104 @@ biostride_schema:ExperimentRun a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ExperimentRun" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:raw_data_location ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:data_collection_strategy ],
+            owl:onProperty biostride_schema:processing_status ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:quality_metrics ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:experiment_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty biostride_schema:sample_id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:QualityMetrics ;
-            owl:onProperty biostride_schema:quality_metrics ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:technique ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:experimental_conditions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:processing_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:experiment_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:DataCollectionStrategy ;
             owl:onProperty biostride_schema:data_collection_strategy ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:sample_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:TechniqueEnum ;
-            owl:onProperty biostride_schema:technique ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:data_collection_strategy ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:technique ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:operator_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:quality_metrics ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:experiment_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:instrument_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:instrument_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:experiment_code ],
-        [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:ExperimentalConditions ;
             owl:onProperty biostride_schema:experimental_conditions ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:sample_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:ProcessingStatusEnum ;
             owl:onProperty biostride_schema:processing_status ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:technique ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:instrument_id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:operator_id ],
+            owl:allValuesFrom biostride_schema:TechniqueEnum ;
+            owl:onProperty biostride_schema:technique ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:operator_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:experiment_code ],
+            owl:onProperty biostride_schema:raw_data_location ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:raw_data_location ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:experimental_conditions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:instrument_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:experiment_date ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:processing_status ],
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:raw_data_location ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:experimental_conditions ],
+            owl:allValuesFrom biostride_schema:QualityMetrics ;
+            owl:onProperty biostride_schema:quality_metrics ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:processing_status ],
+            owl:onProperty biostride_schema:experiment_date ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:technique ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:data_collection_strategy ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:experimental_conditions ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:experiment_code ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:raw_data_location ],
+            owl:onProperty biostride_schema:operator_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:experiment_code ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty biostride_schema:experiment_code ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:quality_metrics ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:data_collection_strategy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:operator_id ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:raw_data_location ],
+            owl:onProperty biostride_schema:sample_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:instrument_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:sample_id ],
         biostride_schema:NamedThing ;
     skos:definition "An experimental data collection session" ;
     skos:inScheme biostride: .
@@ -1065,41 +1065,59 @@ biostride_schema:ExperimentalConditions a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ExperimentalConditions" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:exposure_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:pressure ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:beam_energy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:pressure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:humidity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:beam_energy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:temperature ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:humidity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:beam_energy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:exposure_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:temperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:humidity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:exposure_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:temperature ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:atmosphere ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:temperature ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:pressure ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:atmosphere ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:temperature ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:temperature ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:pressure ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:atmosphere ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:humidity ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:pressure ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:humidity ] ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:atmosphere ] ;
     skos:definition "Environmental and experimental conditions" ;
     skos:inScheme biostride: .
 
@@ -1107,22 +1125,22 @@ biostride_schema:MolecularComposition a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MolecularComposition" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:modifications ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:modifications ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:modifications ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:sequences ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:ligands ],
+            owl:onProperty biostride_schema:modifications ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:ligands ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:ligands ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:sequences ] ;
     skos:definition "Molecular composition of a sample" ;
     skos:inScheme biostride: .
@@ -1132,40 +1150,40 @@ biostride_schema:OntologyTerm a owl:Class,
     rdfs:label "OntologyTerm" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:ontology ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:label ],
+            owl:onProperty biostride_schema:definition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:ontology ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:definition ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:ontology ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:label ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty biostride_schema:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:definition ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:definition ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:definition ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:ontology ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:label ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:label ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:ontology ] ;
+            owl:onProperty biostride_schema:label ] ;
     skos:inScheme biostride: .
 
 biostride_schema:QualityMetrics a owl:Class,
@@ -1173,40 +1191,58 @@ biostride_schema:QualityMetrics a owl:Class,
     rdfs:label "QualityMetrics" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:completeness ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:signal_to_noise ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:completeness ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:signal_to_noise ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:r_factor ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:resolution ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:resolution ],
+            owl:onProperty biostride_schema:rg ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:i_zero ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:r_factor ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:r_factor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:i_zero ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:r_factor ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:signal_to_noise ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:rg ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:completeness ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:resolution ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:completeness ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:resolution ] ;
+            owl:onProperty biostride_schema:resolution ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:rg ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:completeness ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:signal_to_noise ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:i_zero ] ;
     skos:definition "Quality metrics for experiments" ;
     skos:inScheme biostride: .
 
@@ -1214,49 +1250,49 @@ biostride_schema:SamplePreparation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SamplePreparation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:preparation_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty biostride_schema:sample_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:preparation_date ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:protocol_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:preparation_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:operator_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:preparation_type ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:preparation_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:sample_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:operator_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:protocol_description ],
+            owl:onProperty biostride_schema:preparation_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:PreparationTypeEnum ;
             owl:onProperty biostride_schema:preparation_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:protocol_description ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:operator_id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:preparation_date ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:operator_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:protocol_description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:protocol_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:preparation_date ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:sample_id ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:preparation_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:sample_id ],
         biostride_schema:NamedThing ;
     skos:definition "A process that prepares a sample for imaging" ;
@@ -1266,41 +1302,41 @@ biostride_schema:StorageConditions a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "StorageConditions" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:temperature_unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:duration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:temperature ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:temperature_unit ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:temperature ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:duration ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:temperature ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:temperature_unit ],
+            owl:onProperty biostride_schema:atmosphere ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:atmosphere ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:TemperatureUnitEnum ;
             owl:onProperty biostride_schema:temperature_unit ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:duration ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:atmosphere ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:duration ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:atmosphere ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:temperature ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:atmosphere ] ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:temperature ] ;
     skos:definition "Storage conditions for samples" ;
     skos:inScheme biostride: .
 
@@ -1308,26 +1344,29 @@ biostride_schema:Study a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Study" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:DataFile ;
+            owl:onProperty biostride_schema:data_files ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:sample_preparations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:SamplePreparation ;
+            owl:onProperty biostride_schema:sample_preparations ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:instrument_runs ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:data_files ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:samples ],
+        [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:WorkflowRun ;
             owl:onProperty biostride_schema:workflow_runs ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:SamplePreparation ;
-            owl:onProperty biostride_schema:sample_preparations ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:sample_preparations ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:workflow_runs ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:Sample ;
-            owl:onProperty biostride_schema:samples ],
+            owl:onProperty biostride_schema:images ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:ExperimentRun ;
             owl:onProperty biostride_schema:instrument_runs ],
@@ -1336,13 +1375,10 @@ biostride_schema:Study a owl:Class,
             owl:onProperty biostride_schema:images ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:images ],
+            owl:onProperty biostride_schema:workflow_runs ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom biostride_schema:Sample ;
             owl:onProperty biostride_schema:samples ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:DataFile ;
-            owl:onProperty biostride_schema:data_files ],
         biostride_schema:NamedThing ;
     skos:inScheme biostride: .
 
@@ -1350,14 +1386,23 @@ biostride_schema:WorkflowRun a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "WorkflowRun" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:completed_at ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:processing_level ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:started_at ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:processing_parameters ],
+            owl:allValuesFrom biostride_schema:DataFile ;
+            owl:onProperty biostride_schema:output_files ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:software_version ],
+            owl:onProperty biostride_schema:workflow_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:software_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
@@ -1367,92 +1412,88 @@ biostride_schema:WorkflowRun a owl:Class,
                                 owl:withRestrictions ( [ xsd:maxInclusive 4 ] ) ] ) ] ;
             owl:onProperty biostride_schema:processing_level ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:processing_parameters ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:completed_at ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:workflow_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:compute_resources ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:software_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:processing_level ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:software_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:compute_resources ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:software_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:processing_parameters ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:output_files ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:WorkflowTypeEnum ;
+            owl:onProperty biostride_schema:workflow_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:started_at ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:workflow_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:experiment_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:experiment_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:software_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:workflow_code ],
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:processing_parameters ],
         [ a owl:Restriction ;
             owl:allValuesFrom biostride_schema:ComputeResources ;
             owl:onProperty biostride_schema:compute_resources ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:completed_at ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:workflow_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:started_at ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:software_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty biostride_schema:workflow_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:experiment_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:software_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:WorkflowTypeEnum ;
-            owl:onProperty biostride_schema:workflow_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:processing_level ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:workflow_code ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:processing_level ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:experiment_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:completed_at ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:processing_parameters ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:experiment_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:processing_parameters ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:completed_at ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:software_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:output_files ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:workflow_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:software_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:started_at ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:compute_resources ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:DataFile ;
-            owl:onProperty biostride_schema:output_files ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:started_at ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:compute_resources ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:workflow_code ],
         biostride_schema:NamedThing ;
     skos:definition "A computational processing workflow execution" ;
     skos:inScheme biostride: .
+
+<https://w3id.org/biostride/schema/CollectionModeEnum#batch> a owl:Class,
+        biostride_schema:CollectionModeEnum ;
+    rdfs:label "batch" ;
+    rdfs:subClassOf biostride_schema:CollectionModeEnum .
 
 <https://w3id.org/biostride/schema/CollectionModeEnum#continuous> a owl:Class,
         biostride_schema:CollectionModeEnum ;
@@ -1467,6 +1508,16 @@ biostride_schema:WorkflowRun a owl:Class,
 <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation> a owl:Class,
         biostride_schema:CollectionModeEnum ;
     rdfs:label "oscillation" ;
+    rdfs:subClassOf biostride_schema:CollectionModeEnum .
+
+<https://w3id.org/biostride/schema/CollectionModeEnum#sec_saxs> a owl:Class,
+        biostride_schema:CollectionModeEnum ;
+    rdfs:label "sec_saxs" ;
+    rdfs:subClassOf biostride_schema:CollectionModeEnum .
+
+<https://w3id.org/biostride/schema/CollectionModeEnum#single_particle> a owl:Class,
+        biostride_schema:CollectionModeEnum ;
+    rdfs:label "single_particle" ;
     rdfs:subClassOf biostride_schema:CollectionModeEnum .
 
 <https://w3id.org/biostride/schema/CollectionModeEnum#still> a owl:Class,
@@ -1528,68 +1579,68 @@ biostride_schema:DataFile a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DataFile" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:DataTypeEnum ;
-            owl:onProperty biostride_schema:data_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:checksum ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:file_format ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:checksum ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:file_path ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:file_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:file_size_bytes ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:data_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:FileFormatEnum ;
+            owl:minCardinality 1 ;
             owl:onProperty biostride_schema:file_format ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:file_path ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty biostride_schema:file_size_bytes ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:file_size_bytes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:file_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:file_path ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:file_size_bytes ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:file_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:checksum ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:file_format ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:checksum ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:DataTypeEnum ;
+            owl:onProperty biostride_schema:data_type ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:data_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:file_path ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:FileFormatEnum ;
+            owl:onProperty biostride_schema:file_format ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:file_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:file_format ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:checksum ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:creation_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:file_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:creation_date ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:creation_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:checksum ],
         biostride_schema:NamedThing ;
     skos:definition "A data file generated or used in the study" ;
     skos:inScheme biostride: .
@@ -1617,6 +1668,16 @@ biostride_schema:DataFile a owl:Class,
 <https://w3id.org/biostride/schema/DataTypeEnum#particles> a owl:Class,
         biostride_schema:DataTypeEnum ;
     rdfs:label "particles" ;
+    rdfs:subClassOf biostride_schema:DataTypeEnum .
+
+<https://w3id.org/biostride/schema/DataTypeEnum#processed_data> a owl:Class,
+        biostride_schema:DataTypeEnum ;
+    rdfs:label "processed_data" ;
+    rdfs:subClassOf biostride_schema:DataTypeEnum .
+
+<https://w3id.org/biostride/schema/DataTypeEnum#raw_data> a owl:Class,
+        biostride_schema:DataTypeEnum ;
+    rdfs:label "raw_data" ;
     rdfs:subClassOf biostride_schema:DataTypeEnum .
 
 <https://w3id.org/biostride/schema/DataTypeEnum#scattering> a owl:Class,
@@ -1648,6 +1709,11 @@ biostride_schema:DataFile a owl:Class,
         biostride_schema:DetectorTypeEnum ;
     rdfs:label "hybrid_pixel" ;
     rdfs:subClassOf biostride_schema:DetectorTypeEnum .
+
+<https://w3id.org/biostride/schema/FileFormatEnum#ascii> a owl:Class,
+        biostride_schema:FileFormatEnum ;
+    rdfs:label "ascii" ;
+    rdfs:subClassOf biostride_schema:FileFormatEnum .
 
 <https://w3id.org/biostride/schema/FileFormatEnum#cbf> a owl:Class,
         biostride_schema:FileFormatEnum ;
@@ -1682,6 +1748,11 @@ biostride_schema:DataFile a owl:Class,
 <https://w3id.org/biostride/schema/FileFormatEnum#star> a owl:Class,
         biostride_schema:FileFormatEnum ;
     rdfs:label "star" ;
+    rdfs:subClassOf biostride_schema:FileFormatEnum .
+
+<https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> a owl:Class,
+        biostride_schema:FileFormatEnum ;
+    rdfs:label "thermo_raw" ;
     rdfs:subClassOf biostride_schema:FileFormatEnum .
 
 <https://w3id.org/biostride/schema/FileFormatEnum#tiff> a owl:Class,
@@ -1779,6 +1850,21 @@ biostride_schema:DataFile a owl:Class,
     rdfs:label "cryo_em" ;
     rdfs:subClassOf biostride_schema:PreparationTypeEnum .
 
+<https://w3id.org/biostride/schema/PreparationTypeEnum#negative_stain> a owl:Class,
+        biostride_schema:PreparationTypeEnum ;
+    rdfs:label "negative_stain" ;
+    rdfs:subClassOf biostride_schema:PreparationTypeEnum .
+
+<https://w3id.org/biostride/schema/PreparationTypeEnum#protein_expression> a owl:Class,
+        biostride_schema:PreparationTypeEnum ;
+    rdfs:label "protein_expression" ;
+    rdfs:subClassOf biostride_schema:PreparationTypeEnum .
+
+<https://w3id.org/biostride/schema/PreparationTypeEnum#protein_purification> a owl:Class,
+        biostride_schema:PreparationTypeEnum ;
+    rdfs:label "protein_purification" ;
+    rdfs:subClassOf biostride_schema:PreparationTypeEnum .
+
 <https://w3id.org/biostride/schema/PreparationTypeEnum#sans> a owl:Class,
         biostride_schema:PreparationTypeEnum ;
     rdfs:label "sans" ;
@@ -1823,41 +1909,26 @@ biostride_schema:Sample a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:storage_conditions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:molecular_weight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:BufferComposition ;
-            owl:onProperty biostride_schema:buffer_composition ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:concentration ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty biostride_schema:sample_type ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:buffer_composition ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:preparation_method ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:sample_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:MolecularComposition ;
-            owl:onProperty biostride_schema:molecular_composition ],
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:preparation_method ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty biostride_schema:sample_code ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:sample_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:Sample ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:parent_sample_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:molecular_weight ],
+            owl:onProperty biostride_schema:molecular_composition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:BufferComposition ;
+            owl:onProperty biostride_schema:buffer_composition ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
@@ -1867,59 +1938,14 @@ biostride_schema:Sample a owl:Class,
                                 owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
             owl:onProperty biostride_schema:purity_percentage ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:ConcentrationUnitEnum ;
-            owl:onProperty biostride_schema:concentration_unit ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:concentration ],
+            owl:allValuesFrom biostride_schema:MolecularComposition ;
+            owl:onProperty biostride_schema:molecular_composition ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:concentration ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:parent_sample_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:preparation_method ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:preparation_method ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:quality_metrics ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:SampleTypeEnum ;
-            owl:onProperty biostride_schema:sample_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:purity_percentage ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:quality_metrics ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:sample_code ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:storage_conditions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:sample_code ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:concentration_unit ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:parent_sample_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:molecular_composition ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:molecular_composition ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:molecular_weight ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:buffer_composition ],
@@ -1927,14 +1953,74 @@ biostride_schema:Sample a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:concentration_unit ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:StorageConditions ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:storage_conditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:sample_code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:parent_sample_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:purity_percentage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty biostride_schema:sample_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:quality_metrics ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:quality_metrics ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:purity_percentage ],
+            owl:onProperty biostride_schema:molecular_weight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:StorageConditions ;
+            owl:onProperty biostride_schema:storage_conditions ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:concentration_unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:storage_conditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:ConcentrationUnitEnum ;
+            owl:onProperty biostride_schema:concentration_unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:sample_code ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:concentration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:preparation_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:preparation_method ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:molecular_composition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:Sample ;
+            owl:onProperty biostride_schema:parent_sample_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom biostride_schema:SampleTypeEnum ;
+            owl:onProperty biostride_schema:sample_type ],
         biostride_schema:NamedThing ;
     skos:definition "A biological sample used in structural biology experiments" ;
     skos:inScheme biostride: .
@@ -1977,6 +2063,16 @@ biostride_schema:Sample a owl:Class,
 <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et> a owl:Class,
         biostride_schema:TechniqueEnum ;
     rdfs:label "cryo_et" ;
+    rdfs:subClassOf biostride_schema:TechniqueEnum .
+
+<https://w3id.org/biostride/schema/TechniqueEnum#electron_microscopy> a owl:Class,
+        biostride_schema:TechniqueEnum ;
+    rdfs:label "electron_microscopy" ;
+    rdfs:subClassOf biostride_schema:TechniqueEnum .
+
+<https://w3id.org/biostride/schema/TechniqueEnum#mass_spectrometry> a owl:Class,
+        biostride_schema:TechniqueEnum ;
+    rdfs:label "mass_spectrometry" ;
     rdfs:subClassOf biostride_schema:TechniqueEnum .
 
 <https://w3id.org/biostride/schema/TechniqueEnum#sans> a owl:Class,
@@ -2044,9 +2140,19 @@ biostride_schema:Sample a owl:Class,
     rdfs:label "ctf_estimation" ;
     rdfs:subClassOf biostride_schema:WorkflowTypeEnum .
 
+<https://w3id.org/biostride/schema/WorkflowTypeEnum#em_2d_classification> a owl:Class,
+        biostride_schema:WorkflowTypeEnum ;
+    rdfs:label "em_2d_classification" ;
+    rdfs:subClassOf biostride_schema:WorkflowTypeEnum .
+
 <https://w3id.org/biostride/schema/WorkflowTypeEnum#integration> a owl:Class,
         biostride_schema:WorkflowTypeEnum ;
     rdfs:label "integration" ;
+    rdfs:subClassOf biostride_schema:WorkflowTypeEnum .
+
+<https://w3id.org/biostride/schema/WorkflowTypeEnum#mass_spec_deconvolution> a owl:Class,
+        biostride_schema:WorkflowTypeEnum ;
+    rdfs:label "mass_spec_deconvolution" ;
     rdfs:subClassOf biostride_schema:WorkflowTypeEnum .
 
 <https://w3id.org/biostride/schema/WorkflowTypeEnum#model_building> a owl:Class,
@@ -2072,6 +2178,11 @@ biostride_schema:Sample a owl:Class,
 <https://w3id.org/biostride/schema/WorkflowTypeEnum#refinement> a owl:Class,
         biostride_schema:WorkflowTypeEnum ;
     rdfs:label "refinement" ;
+    rdfs:subClassOf biostride_schema:WorkflowTypeEnum .
+
+<https://w3id.org/biostride/schema/WorkflowTypeEnum#saxs_analysis> a owl:Class,
+        biostride_schema:WorkflowTypeEnum ;
+    rdfs:label "saxs_analysis" ;
     rdfs:subClassOf biostride_schema:WorkflowTypeEnum .
 
 <https://w3id.org/biostride/schema/WorkflowTypeEnum#scaling> a owl:Class,
@@ -2203,13 +2314,13 @@ biostride_schema:Image2D a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Image2D" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:astigmatism ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:defocus ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:astigmatism ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:astigmatism ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
@@ -2218,7 +2329,7 @@ biostride_schema:Image2D a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:defocus ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:Float ;
             owl:onProperty biostride_schema:astigmatism ],
         biostride_schema:Image ;
     skos:definition "A 2D image (micrograph, diffraction pattern)" ;
@@ -2228,47 +2339,47 @@ biostride_schema:Instrument a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Instrument" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:current_status ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:manufacturer ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:model ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:installation_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom biostride_schema:InstrumentStatusEnum ;
-            owl:onProperty biostride_schema:current_status ],
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:instrument_code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:model ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:installation_date ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:current_status ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:model ],
+            owl:onProperty biostride_schema:manufacturer ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty biostride_schema:instrument_code ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:installation_date ],
+            owl:onProperty biostride_schema:current_status ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:instrument_code ],
+            owl:allValuesFrom biostride_schema:InstrumentStatusEnum ;
+            owl:onProperty biostride_schema:current_status ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:manufacturer ],
+            owl:onProperty biostride_schema:instrument_code ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:manufacturer ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty biostride_schema:model ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:instrument_code ],
+            owl:onProperty biostride_schema:manufacturer ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:installation_date ],
@@ -2316,12 +2427,6 @@ biostride_schema:background_correction a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "background_correction" ;
     skos:definition "Method used for background correction" ;
-    skos:inScheme biostride: .
-
-biostride_schema:beam_energy a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "beam_energy" ;
-    skos:definition "X-ray beam energy in keV" ;
     skos:inScheme biostride: .
 
 biostride_schema:beam_size a owl:ObjectProperty,
@@ -2646,12 +2751,6 @@ biostride_schema:experimental_conditions a owl:ObjectProperty,
     skos:definition "Environmental and experimental conditions" ;
     skos:inScheme biostride: .
 
-biostride_schema:exposure_time a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "exposure_time" ;
-    skos:definition "Exposure time in seconds" ;
-    skos:inScheme biostride: .
-
 biostride_schema:file_format a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "file_format" ;
@@ -2734,6 +2833,12 @@ biostride_schema:humidity_percentage a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "humidity_percentage" ;
     skos:definition "Chamber humidity during vitrification" ;
+    skos:inScheme biostride: .
+
+biostride_schema:i_zero a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "i_zero" ;
+    skos:definition "Forward scattering intensity I(0)" ;
     skos:inScheme biostride: .
 
 biostride_schema:illumination_type a owl:ObjectProperty,
@@ -2980,6 +3085,12 @@ biostride_schema:resolution a owl:ObjectProperty,
     skos:definition "Resolution in Angstroms" ;
     skos:inScheme biostride: .
 
+biostride_schema:rg a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "rg" ;
+    skos:definition "Radius of gyration in Angstroms" ;
+    skos:inScheme biostride: .
+
 biostride_schema:sample_cell_type a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "sample_cell_type" ;
@@ -3144,68 +3255,68 @@ biostride_schema:Image a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Image" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:pixel_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:dose ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty biostride_schema:dimensions_y ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:dimensions_x ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:exposure_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:dimensions_x ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:acquisition_date ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty biostride_schema:dose ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:exposure_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:pixel_size ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:exposure_time ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:acquisition_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty biostride_schema:dimensions_x ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:dimensions_y ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:file_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:dimensions_y ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:pixel_size ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:acquisition_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty biostride_schema:dose ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:file_name ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty biostride_schema:file_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:exposure_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:file_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:dimensions_x ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty biostride_schema:acquisition_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:acquisition_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:exposure_time ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty biostride_schema:dose ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:file_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty biostride_schema:dimensions_y ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:pixel_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:dimensions_y ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:dimensions_y ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:pixel_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty biostride_schema:dimensions_x ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:dose ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:dimensions_x ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:acquisition_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:exposure_time ],
         biostride_schema:NamedThing ;
     skos:definition "An image file from structural biology experiments" ;
     skos:inScheme biostride: .
@@ -3213,7 +3324,13 @@ biostride_schema:Image a owl:Class,
 biostride_schema:atmosphere a owl:ObjectProperty,
         linkml:SlotDefinition .
 
+biostride_schema:beam_energy a owl:ObjectProperty,
+        linkml:SlotDefinition .
+
 biostride_schema:detector_type a owl:ObjectProperty,
+        linkml:SlotDefinition .
+
+biostride_schema:exposure_time a owl:ObjectProperty,
         linkml:SlotDefinition .
 
 biostride_schema:file_name a owl:ObjectProperty,
@@ -3279,42 +3396,34 @@ biostride_schema:NamedThing a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NamedThing" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty biostride_schema:description ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty biostride_schema:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty biostride_schema:title ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty biostride_schema:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty biostride_schema:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty biostride_schema:title ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty biostride_schema:id ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty biostride_schema:description ] ;
+            owl:onProperty biostride_schema:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty biostride_schema:title ] ;
     skos:definition "A named thing" ;
     skos:inScheme biostride: .
-
-biostride_schema:PreparationTypeEnum a owl:Class,
-        linkml:EnumDefinition ;
-    owl:unionOf ( <https://w3id.org/biostride/schema/PreparationTypeEnum#cryo_em> <https://w3id.org/biostride/schema/PreparationTypeEnum#xray_crystallography> <https://w3id.org/biostride/schema/PreparationTypeEnum#saxs> <https://w3id.org/biostride/schema/PreparationTypeEnum#sans> ) ;
-    linkml:permissible_values <https://w3id.org/biostride/schema/PreparationTypeEnum#cryo_em>,
-        <https://w3id.org/biostride/schema/PreparationTypeEnum#sans>,
-        <https://w3id.org/biostride/schema/PreparationTypeEnum#saxs>,
-        <https://w3id.org/biostride/schema/PreparationTypeEnum#xray_crystallography> .
 
 biostride_schema:XRaySourceTypeEnum a owl:Class,
         linkml:EnumDefinition ;
@@ -3323,15 +3432,6 @@ biostride_schema:XRaySourceTypeEnum a owl:Class,
         <https://w3id.org/biostride/schema/XRaySourceTypeEnum#microfocus>,
         <https://w3id.org/biostride/schema/XRaySourceTypeEnum#rotating_anode>,
         <https://w3id.org/biostride/schema/XRaySourceTypeEnum#synchrotron> .
-
-biostride_schema:CollectionModeEnum a owl:Class,
-        linkml:EnumDefinition ;
-    owl:unionOf ( <https://w3id.org/biostride/schema/CollectionModeEnum#counting> <https://w3id.org/biostride/schema/CollectionModeEnum#super_resolution> <https://w3id.org/biostride/schema/CollectionModeEnum#continuous> <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation> <https://w3id.org/biostride/schema/CollectionModeEnum#still> ) ;
-    linkml:permissible_values <https://w3id.org/biostride/schema/CollectionModeEnum#continuous>,
-        <https://w3id.org/biostride/schema/CollectionModeEnum#counting>,
-        <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation>,
-        <https://w3id.org/biostride/schema/CollectionModeEnum#still>,
-        <https://w3id.org/biostride/schema/CollectionModeEnum#super_resolution> .
 
 biostride_schema:CrystallizationMethodEnum a owl:Class,
         linkml:EnumDefinition ;
@@ -3370,38 +3470,28 @@ biostride_schema:SampleTypeEnum a owl:Class,
         <https://w3id.org/biostride/schema/SampleTypeEnum#protein>,
         <https://w3id.org/biostride/schema/SampleTypeEnum#virus> .
 
-biostride_schema:TechniqueEnum a owl:Class,
+biostride_schema:PreparationTypeEnum a owl:Class,
         linkml:EnumDefinition ;
-    owl:unionOf ( <https://w3id.org/biostride/schema/TechniqueEnum#cryo_em> <https://w3id.org/biostride/schema/TechniqueEnum#xray_crystallography> <https://w3id.org/biostride/schema/TechniqueEnum#saxs> <https://w3id.org/biostride/schema/TechniqueEnum#waxs> <https://w3id.org/biostride/schema/TechniqueEnum#sans> <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et> ) ;
-    linkml:permissible_values <https://w3id.org/biostride/schema/TechniqueEnum#cryo_em>,
-        <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et>,
-        <https://w3id.org/biostride/schema/TechniqueEnum#sans>,
-        <https://w3id.org/biostride/schema/TechniqueEnum#saxs>,
-        <https://w3id.org/biostride/schema/TechniqueEnum#waxs>,
-        <https://w3id.org/biostride/schema/TechniqueEnum#xray_crystallography> .
+    owl:unionOf ( <https://w3id.org/biostride/schema/PreparationTypeEnum#cryo_em> <https://w3id.org/biostride/schema/PreparationTypeEnum#xray_crystallography> <https://w3id.org/biostride/schema/PreparationTypeEnum#saxs> <https://w3id.org/biostride/schema/PreparationTypeEnum#sans> <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_expression> <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_purification> <https://w3id.org/biostride/schema/PreparationTypeEnum#negative_stain> ) ;
+    linkml:permissible_values <https://w3id.org/biostride/schema/PreparationTypeEnum#cryo_em>,
+        <https://w3id.org/biostride/schema/PreparationTypeEnum#negative_stain>,
+        <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_expression>,
+        <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_purification>,
+        <https://w3id.org/biostride/schema/PreparationTypeEnum#sans>,
+        <https://w3id.org/biostride/schema/PreparationTypeEnum#saxs>,
+        <https://w3id.org/biostride/schema/PreparationTypeEnum#xray_crystallography> .
 
-biostride_schema:DataTypeEnum a owl:Class,
+biostride_schema:CollectionModeEnum a owl:Class,
         linkml:EnumDefinition ;
-    owl:unionOf ( <https://w3id.org/biostride/schema/DataTypeEnum#micrograph> <https://w3id.org/biostride/schema/DataTypeEnum#diffraction> <https://w3id.org/biostride/schema/DataTypeEnum#scattering> <https://w3id.org/biostride/schema/DataTypeEnum#particles> <https://w3id.org/biostride/schema/DataTypeEnum#volume> <https://w3id.org/biostride/schema/DataTypeEnum#model> <https://w3id.org/biostride/schema/DataTypeEnum#metadata> ) ;
-    linkml:permissible_values <https://w3id.org/biostride/schema/DataTypeEnum#diffraction>,
-        <https://w3id.org/biostride/schema/DataTypeEnum#metadata>,
-        <https://w3id.org/biostride/schema/DataTypeEnum#micrograph>,
-        <https://w3id.org/biostride/schema/DataTypeEnum#model>,
-        <https://w3id.org/biostride/schema/DataTypeEnum#particles>,
-        <https://w3id.org/biostride/schema/DataTypeEnum#scattering>,
-        <https://w3id.org/biostride/schema/DataTypeEnum#volume> .
-
-biostride_schema:FileFormatEnum a owl:Class,
-        linkml:EnumDefinition ;
-    owl:unionOf ( <https://w3id.org/biostride/schema/FileFormatEnum#mrc> <https://w3id.org/biostride/schema/FileFormatEnum#tiff> <https://w3id.org/biostride/schema/FileFormatEnum#hdf5> <https://w3id.org/biostride/schema/FileFormatEnum#star> <https://w3id.org/biostride/schema/FileFormatEnum#pdb> <https://w3id.org/biostride/schema/FileFormatEnum#mmcif> <https://w3id.org/biostride/schema/FileFormatEnum#mtz> <https://w3id.org/biostride/schema/FileFormatEnum#cbf> ) ;
-    linkml:permissible_values <https://w3id.org/biostride/schema/FileFormatEnum#cbf>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#hdf5>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#mmcif>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#mrc>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#mtz>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#pdb>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#star>,
-        <https://w3id.org/biostride/schema/FileFormatEnum#tiff> .
+    owl:unionOf ( <https://w3id.org/biostride/schema/CollectionModeEnum#counting> <https://w3id.org/biostride/schema/CollectionModeEnum#super_resolution> <https://w3id.org/biostride/schema/CollectionModeEnum#continuous> <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation> <https://w3id.org/biostride/schema/CollectionModeEnum#still> <https://w3id.org/biostride/schema/CollectionModeEnum#batch> <https://w3id.org/biostride/schema/CollectionModeEnum#sec_saxs> <https://w3id.org/biostride/schema/CollectionModeEnum#single_particle> ) ;
+    linkml:permissible_values <https://w3id.org/biostride/schema/CollectionModeEnum#batch>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#continuous>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#counting>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#oscillation>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#sec_saxs>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#single_particle>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#still>,
+        <https://w3id.org/biostride/schema/CollectionModeEnum#super_resolution> .
 
 biostride_schema:IlluminationTypeEnum a owl:Class,
         linkml:EnumDefinition ;
@@ -3415,18 +3505,60 @@ biostride_schema:IlluminationTypeEnum a owl:Class,
         <https://w3id.org/biostride/schema/IlluminationTypeEnum#phase_contrast>,
         <https://w3id.org/biostride/schema/IlluminationTypeEnum#polarized> .
 
+biostride_schema:TechniqueEnum a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/biostride/schema/TechniqueEnum#cryo_em> <https://w3id.org/biostride/schema/TechniqueEnum#xray_crystallography> <https://w3id.org/biostride/schema/TechniqueEnum#saxs> <https://w3id.org/biostride/schema/TechniqueEnum#waxs> <https://w3id.org/biostride/schema/TechniqueEnum#sans> <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et> <https://w3id.org/biostride/schema/TechniqueEnum#electron_microscopy> <https://w3id.org/biostride/schema/TechniqueEnum#mass_spectrometry> ) ;
+    linkml:permissible_values <https://w3id.org/biostride/schema/TechniqueEnum#cryo_em>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#electron_microscopy>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#mass_spectrometry>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#sans>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#saxs>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#waxs>,
+        <https://w3id.org/biostride/schema/TechniqueEnum#xray_crystallography> .
+
+biostride_schema:DataTypeEnum a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/biostride/schema/DataTypeEnum#micrograph> <https://w3id.org/biostride/schema/DataTypeEnum#diffraction> <https://w3id.org/biostride/schema/DataTypeEnum#scattering> <https://w3id.org/biostride/schema/DataTypeEnum#particles> <https://w3id.org/biostride/schema/DataTypeEnum#volume> <https://w3id.org/biostride/schema/DataTypeEnum#model> <https://w3id.org/biostride/schema/DataTypeEnum#metadata> <https://w3id.org/biostride/schema/DataTypeEnum#raw_data> <https://w3id.org/biostride/schema/DataTypeEnum#processed_data> ) ;
+    linkml:permissible_values <https://w3id.org/biostride/schema/DataTypeEnum#diffraction>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#metadata>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#micrograph>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#model>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#particles>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#processed_data>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#raw_data>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#scattering>,
+        <https://w3id.org/biostride/schema/DataTypeEnum#volume> .
+
+biostride_schema:FileFormatEnum a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( <https://w3id.org/biostride/schema/FileFormatEnum#mrc> <https://w3id.org/biostride/schema/FileFormatEnum#tiff> <https://w3id.org/biostride/schema/FileFormatEnum#hdf5> <https://w3id.org/biostride/schema/FileFormatEnum#star> <https://w3id.org/biostride/schema/FileFormatEnum#pdb> <https://w3id.org/biostride/schema/FileFormatEnum#mmcif> <https://w3id.org/biostride/schema/FileFormatEnum#mtz> <https://w3id.org/biostride/schema/FileFormatEnum#cbf> <https://w3id.org/biostride/schema/FileFormatEnum#ascii> <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> ) ;
+    linkml:permissible_values <https://w3id.org/biostride/schema/FileFormatEnum#ascii>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#cbf>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#hdf5>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#mmcif>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#mrc>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#mtz>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#pdb>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#star>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw>,
+        <https://w3id.org/biostride/schema/FileFormatEnum#tiff> .
+
 biostride_schema:WorkflowTypeEnum a owl:Class,
         linkml:EnumDefinition ;
-    owl:unionOf ( <https://w3id.org/biostride/schema/WorkflowTypeEnum#motion_correction> <https://w3id.org/biostride/schema/WorkflowTypeEnum#ctf_estimation> <https://w3id.org/biostride/schema/WorkflowTypeEnum#particle_picking> <https://w3id.org/biostride/schema/WorkflowTypeEnum#classification_2d> <https://w3id.org/biostride/schema/WorkflowTypeEnum#classification_3d> <https://w3id.org/biostride/schema/WorkflowTypeEnum#refinement> <https://w3id.org/biostride/schema/WorkflowTypeEnum#model_building> <https://w3id.org/biostride/schema/WorkflowTypeEnum#phasing> <https://w3id.org/biostride/schema/WorkflowTypeEnum#integration> <https://w3id.org/biostride/schema/WorkflowTypeEnum#scaling> ) ;
+    owl:unionOf ( <https://w3id.org/biostride/schema/WorkflowTypeEnum#motion_correction> <https://w3id.org/biostride/schema/WorkflowTypeEnum#ctf_estimation> <https://w3id.org/biostride/schema/WorkflowTypeEnum#particle_picking> <https://w3id.org/biostride/schema/WorkflowTypeEnum#classification_2d> <https://w3id.org/biostride/schema/WorkflowTypeEnum#classification_3d> <https://w3id.org/biostride/schema/WorkflowTypeEnum#refinement> <https://w3id.org/biostride/schema/WorkflowTypeEnum#model_building> <https://w3id.org/biostride/schema/WorkflowTypeEnum#phasing> <https://w3id.org/biostride/schema/WorkflowTypeEnum#integration> <https://w3id.org/biostride/schema/WorkflowTypeEnum#scaling> <https://w3id.org/biostride/schema/WorkflowTypeEnum#saxs_analysis> <https://w3id.org/biostride/schema/WorkflowTypeEnum#em_2d_classification> <https://w3id.org/biostride/schema/WorkflowTypeEnum#mass_spec_deconvolution> ) ;
     linkml:permissible_values <https://w3id.org/biostride/schema/WorkflowTypeEnum#classification_2d>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#classification_3d>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#ctf_estimation>,
+        <https://w3id.org/biostride/schema/WorkflowTypeEnum#em_2d_classification>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#integration>,
+        <https://w3id.org/biostride/schema/WorkflowTypeEnum#mass_spec_deconvolution>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#model_building>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#motion_correction>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#particle_picking>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#phasing>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#refinement>,
+        <https://w3id.org/biostride/schema/WorkflowTypeEnum#saxs_analysis>,
         <https://w3id.org/biostride/schema/WorkflowTypeEnum#scaling> .
 
 biostride: a owl:Ontology ;

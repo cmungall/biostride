@@ -9,7 +9,7 @@ gen-project:
 	$(RUN) gen-project $(SCHEMA) -d assets
 
 test-examples:
-	$(RUN) linkml-run-examples -s $(SCHEMA) -e tests/data/valid -d examples
+	$(RUN) linkml-run-examples -t yaml -t json -t ttl -s $(SCHEMA) -P conf/prefixes.yaml -e tests/data/valid -d examples
 
 gendoc: $(DOCDIR)
 	cp -pr src/docs/* $(DOCDIR)
