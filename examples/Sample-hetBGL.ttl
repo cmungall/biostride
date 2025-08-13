@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix biostride_schema: <https://w3id.org/biostride/schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -17,6 +18,7 @@
                 "MDFYTLPTSHPV...",
                 "MDFYTLPTSNPV..." ] ;
     biostride_schema:molecular_weight "182.5"^^xsd:float ;
+    biostride_schema:organism NCBITaxon:562 ;
     biostride_schema:sample_code "hetBGL03-15-18" ;
     biostride_schema:sample_type "complex" ;
     biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;

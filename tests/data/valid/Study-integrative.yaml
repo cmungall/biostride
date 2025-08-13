@@ -26,6 +26,8 @@ samples:
         - "50 mM NaCl"
       additives:
         - "1 mM DTT"
+    organism: "NCBITaxon:9606"
+    anatomy: "UBERON:0000922"
     purity_percentage: 99.0
     preparation_method: "Salt gradient dialysis reconstitution"
   
@@ -53,6 +55,7 @@ samples:
       additives:
         - "1 mM ATP"
         - "1 mM DTT"
+    organism: "NCBITaxon:4932"
     purity_percentage: 95.0
     preparation_method: "Sf9 insect cell expression with FLAG purification"
   

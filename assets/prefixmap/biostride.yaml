@@ -1,4 +1,7 @@
 {
+   "CL": "http://purl.obolibrary.org/obo/CL_",
+   "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+   "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
    "biostride": "https://w3id.org/biostride/",
    "biostride_schema": "https://w3id.org/biostride/schema/",
    "dcterms": "http://purl.org/dc/terms/",

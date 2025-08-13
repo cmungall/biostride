@@ -25,5 +25,6 @@ storage_conditions:
   temperature_unit: celsius
   duration: "3 months"
   atmosphere: "Flash frozen in liquid nitrogen"
+organism: "NCBITaxon:9606"
 purity_percentage: 98.5
 preparation_method: "E. coli expression followed by Ni-NTA and size exclusion chromatography"

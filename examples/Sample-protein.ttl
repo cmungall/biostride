@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix biostride: <https://w3id.org/biostride/> .
 @prefix biostride_schema: <https://w3id.org/biostride/schema/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -19,6 +20,7 @@ biostride:sample001 a biostride_schema:Sample ;
             biostride_schema:modifications "N-terminal His6 tag" ;
             biostride_schema:sequences "MPIGSGLVPPLSLTTGQIDVEEVKPPAANKKFLQIAKQYPNKKQASKSASPGRERFEKAMQMQLLADIHNQGGIPEDTSHRLQDDQQEDQQQLSKDLEQYRSNWSKAGTNQQAAGSEQNGAEGESEGQLQSLMQSGHQDQTPPPQAYQQEHQQASQRPQPQHNMEQEEEEVWRFATEWEGIENVQTLSEQFQSENEEKLQRLESVTWQCPWSPERGNQANNSGDQQSPYEELLRQKQQLEQSLQSSASSNSEPNKEQHQPSQQDLEEVKHHLRDIQERQEQLQHRLEQQVTAFRKALRAALDALRQCQDIQDLQKILSHAVTQQQQKQMESVLQNMQQSYQGQQPRQEPQGDQGSEDEEDDQWPNEDEIPPVVNIRVEDVREVNVEELEQNKSELHNKVLDMISDRVRVLEAEGDVKPQVP" ] ;
     biostride_schema:molecular_weight "25.6"^^xsd:float ;
+    biostride_schema:organism NCBITaxon:9606 ;
     biostride_schema:preparation_method "E. coli expression followed by Ni-NTA and size exclusion chromatography" ;
     biostride_schema:purity_percentage "98.5"^^xsd:float ;
     biostride_schema:sample_code "HIV1-CA-2024-001" ;

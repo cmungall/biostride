@@ -89,6 +89,9 @@ prefixes:
   prov: http://www.w3.org/ns/prov#
   sio: http://semanticscience.org/resource/
   nmdc: https://w3id.org/nmdc/
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  CL: http://purl.obolibrary.org/obo/CL_
 
 imports:
   - linkml:types

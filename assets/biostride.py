@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-13T23:18:49
+# Generation date: 2025-08-13T23:28:40
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -140,6 +140,9 @@ metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
+CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
+NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
+UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 BIOSTRIDE = CurieNamespace('biostride', 'https://w3id.org/biostride/')
 BIOSTRIDE_SCHEMA = CurieNamespace('biostride_schema', 'https://w3id.org/biostride/schema/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
