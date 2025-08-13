@@ -12,7 +12,7 @@ experimental_conditions:
   beam_energy: 9.76  # keV - This might not validate
   exposure_time: 0.3  # seconds
 data_collection_strategy:
-  collection_mode: batch  # This might not validate
+  collection_mode: batch  # Validated: 'batch' is in CollectionModeEnum
 quality_metrics:
   signal_to_noise: 50
   i_zero: 0.045  # Validated by schema
