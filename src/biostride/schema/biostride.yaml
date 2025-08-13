@@ -599,10 +599,8 @@ classes:
         range: OntologyTerm
 
   OntologyTerm:
+    is_a: NamedThing
     attributes:
-      id:
-        identifier: true
-        range: string
       label:
         range: string
       definition:

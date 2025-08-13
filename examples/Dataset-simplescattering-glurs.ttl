@@ -1,0 +1,180 @@
+@base <http://example.org/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://simplescattering.com/dataset/xsbhevph> a biostride_schema:Dataset ;
+    dcterms:title "SEC-SAXS-MALS of Pseudomonas aeruginosa GluRS" ;
+    biostride_schema:description """Size exclusion chromatography coupled with small angle X-ray scattering 
+and multi-angle light scattering to determine the oligomerization state 
+of Glutamyl tRNA synthetase (GluRS) from Pseudomonas aeruginosa in solution.
+Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
+""" ;
+    biostride_schema:keywords "GluRS",
+        "Glutamyl-tRNA synthetase",
+        "MALS",
+        "Pseudomonas aeruginosa",
+        "SEC-SAXS",
+        "SIBYLS",
+        "oligomerization" ;
+    biostride_schema:studies <https://simplescattering.com/study/glurs-oligomerization> .
+
+<https://simplescattering.com/experiment/glurs-sec-saxs> a biostride_schema:ExperimentRun ;
+    biostride_schema:data_collection_strategy [ a biostride_schema:DataCollectionStrategy ;
+            biostride_schema:collection_mode "sec_saxs" ;
+            biostride_schema:frame_rate "1.0"^^xsd:float ;
+            biostride_schema:total_frames 660 ] ;
+    biostride_schema:experiment_code "SIBYLS-2023-10-24-GluRS" ;
+    biostride_schema:experiment_date "2023-10-24" ;
+    biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
+            biostride_schema:beam_energy "11.0"^^xsd:float ;
+            biostride_schema:exposure_time "1.0"^^xsd:float ;
+            biostride_schema:temperature "20.0"^^xsd:float ] ;
+    biostride_schema:instrument_id "SIBYLS-BL12.3.1" ;
+    biostride_schema:operator_id "S. Tsutakawa" ;
+    biostride_schema:processing_status "completed" ;
+    biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
+            biostride_schema:i_zero "45.0"^^xsd:float ;
+            biostride_schema:resolution "25.0"^^xsd:float ;
+            biostride_schema:rg "32.5"^^xsd:float ;
+            biostride_schema:signal_to_noise "50.0"^^xsd:float ] ;
+    biostride_schema:raw_data_location "SIBYLS data archive" ;
+    biostride_schema:sample_id "https://simplescattering.com/sample/glurs-pa" ;
+    biostride_schema:technique "saxs" .
+
+<https://simplescattering.com/file/glurs-averaged> a biostride_schema:DataFile ;
+    biostride_schema:creation_date "2023-10-24" ;
+    biostride_schema:data_type "processed_data" ;
+    biostride_schema:description "Averaged SAXS profile from peak fractions" ;
+    biostride_schema:file_format "ascii" ;
+    biostride_schema:file_name "A_S_GluRS_1_5.dat" ;
+    biostride_schema:file_size_bytes 107834 .
+
+<https://simplescattering.com/file/glurs-complete> a biostride_schema:DataFile ;
+    biostride_schema:creation_date "2023-10-24" ;
+    biostride_schema:data_type "raw_data" ;
+    biostride_schema:description "Complete SEC-SAXS dataset with all 660 frames" ;
+    biostride_schema:file_format "zip" ;
+    biostride_schema:file_name "GluRS_Results.zip" ;
+    biostride_schema:file_size_bytes 10840982 .
+
+<https://simplescattering.com/file/glurs-frame-001> a biostride_schema:DataFile ;
+    biostride_schema:creation_date "2023-10-20" ;
+    biostride_schema:data_type "scattering" ;
+    biostride_schema:description "First SEC-SAXS frame" ;
+    biostride_schema:file_format "ascii" ;
+    biostride_schema:file_name "GluRS_1_00001.dat" ;
+    biostride_schema:file_size_bytes 35739 .
+
+<https://simplescattering.com/file/glurs-structure> a biostride_schema:DataFile ;
+    biostride_schema:creation_date "2023-12-13" ;
+    biostride_schema:data_type "model" ;
+    biostride_schema:description "Crystal structure of P. aeruginosa GluRS (zinc-bound form)" ;
+    biostride_schema:file_format "pdb" ;
+    biostride_schema:file_name "8vc5.pdb" ;
+    biostride_schema:file_size_bytes 1310256 .
+
+<https://simplescattering.com/img/guinier-plot> a biostride_schema:Image ;
+    biostride_schema:description "Guinier analysis for Rg determination" ;
+    biostride_schema:dimensions_x 800 ;
+    biostride_schema:dimensions_y 600 ;
+    biostride_schema:file_name "GluRS_Guinier_plot.png" .
+
+<https://simplescattering.com/img/sec-chromatogram> a biostride_schema:Image ;
+    biostride_schema:description "SEC elution profile with SAXS intensity" ;
+    biostride_schema:dimensions_x 1200 ;
+    biostride_schema:dimensions_y 800 ;
+    biostride_schema:file_name "GluRS_SEC_chromatogram.png" .
+
+<https://simplescattering.com/prep/glurs-expression> a biostride_schema:SamplePreparation ;
+    biostride_schema:preparation_date "2023-10-01" ;
+    biostride_schema:preparation_type "protein_expression" ;
+    biostride_schema:protocol_description """GluRS expressed in Escherichia coli BL21(DE3) cells.
+Standard IPTG induction protocol.
+""" ;
+    biostride_schema:sample_id "https://simplescattering.com/sample/glurs-pa" .
+
+<https://simplescattering.com/prep/glurs-purification> a biostride_schema:SamplePreparation ;
+    biostride_schema:preparation_date "2023-10-15" ;
+    biostride_schema:preparation_type "protein_purification" ;
+    biostride_schema:protocol_description """Purified using Ni-NTA affinity chromatography followed by
+size exclusion chromatography. Final buffer: 20 mM Tris pH 7.5,
+150 mM NaCl, 5 mM MgCl2, 1 mM DTT.
+""" ;
+    biostride_schema:sample_id "https://simplescattering.com/sample/glurs-pa" .
+
+<https://simplescattering.com/prep/sec-saxs> a biostride_schema:SamplePreparation ;
+    biostride_schema:preparation_date "2023-10-24" ;
+    biostride_schema:preparation_type "saxs" ;
+    biostride_schema:protocol_description """Sample prepared for SEC-SAXS-MALS analysis. Concentrated to 
+approximately 5 mg/mL, filtered through 0.22 μm filter.
+""" ;
+    biostride_schema:sample_id "https://simplescattering.com/sample/glurs-pa" .
+
+<https://simplescattering.com/sample/glurs-pa> a biostride_schema:Sample ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:components "1 mM DTT",
+                "150 mM NaCl",
+                "20 mM Tris-HCl",
+                "5 mM MgCl2" ;
+            biostride_schema:ph "7.5"^^xsd:float ] ;
+    biostride_schema:concentration "5.0"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:description "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa" ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:sequences "Uniprot:Q9XCL6" ] ;
+    biostride_schema:molecular_weight "54.8"^^xsd:float ;
+    biostride_schema:preparation_method "Expressed in E. coli BL21(DE3)" ;
+    biostride_schema:sample_code "PA-GluRS" ;
+    biostride_schema:sample_type "protein" .
+
+<https://simplescattering.com/study/glurs-oligomerization> a biostride_schema:Study ;
+    dcterms:title "Determination of GluRS oligomerization state in solution" ;
+    biostride_schema:data_files <https://simplescattering.com/file/glurs-averaged>,
+        <https://simplescattering.com/file/glurs-complete>,
+        <https://simplescattering.com/file/glurs-frame-001>,
+        <https://simplescattering.com/file/glurs-structure> ;
+    biostride_schema:description """Structural characterization of P. aeruginosa GluRS using SEC-SAXS-MALS
+to determine oligomeric state in solution conditions. Crystal structure
+(PDB: 8VC5) shows zinc-bound form.
+""" ;
+    biostride_schema:images <https://simplescattering.com/img/guinier-plot>,
+        <https://simplescattering.com/img/sec-chromatogram> ;
+    biostride_schema:instrument_runs <https://simplescattering.com/experiment/glurs-sec-saxs> ;
+    biostride_schema:sample_preparations <https://simplescattering.com/prep/glurs-expression>,
+        <https://simplescattering.com/prep/glurs-purification>,
+        <https://simplescattering.com/prep/sec-saxs> ;
+    biostride_schema:samples <https://simplescattering.com/sample/glurs-pa> ;
+    biostride_schema:workflow_runs <https://simplescattering.com/workflow/mals-processing>,
+        <https://simplescattering.com/workflow/saxs-processing> .
+
+<https://simplescattering.com/workflow/mals-processing> a biostride_schema:WorkflowRun ;
+    biostride_schema:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:processing_parameters """molecular_weight_determination=enabled;
+polydispersity_analysis=enabled
+""" ;
+    biostride_schema:software_name "MALS Analysis Software" ;
+    biostride_schema:software_version "2023" ;
+    biostride_schema:workflow_code "GluRS-MALS-processing-2023" ;
+    biostride_schema:workflow_type "saxs_analysis" .
+
+<https://simplescattering.com/workflow/saxs-processing> a biostride_schema:WorkflowRun ;
+    biostride_schema:completed_at "2023-10-24T14:00:00Z" ;
+    biostride_schema:compute_resources [ a biostride_schema:ComputeResources ;
+            biostride_schema:cpu_hours "1.0"^^xsd:float ;
+            biostride_schema:memory_gb "16.0"^^xsd:float ] ;
+    biostride_schema:experiment_id "https://simplescattering.com/experiment/glurs-sec-saxs" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:processing_parameters """q_range=0.0109-0.4729;
+sample_detector_distance=2.1m;
+detector=Pilatus3_2M;
+buffer_subtraction=automated;
+frame_averaging=enabled
+""" ;
+    biostride_schema:software_name "SAXS FrameSlice" ;
+    biostride_schema:software_version "2023" ;
+    biostride_schema:started_at "2023-10-24T12:00:00Z" ;
+    biostride_schema:workflow_code "GluRS-SAXS-processing-2023" ;
+    biostride_schema:workflow_type "saxs_analysis" .
+

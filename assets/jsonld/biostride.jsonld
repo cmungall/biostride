@@ -790,6 +790,10 @@
         {
           "text": "thermo_raw",
           "description": "Thermo Fisher RAW format"
+        },
+        {
+          "text": "zip",
+          "description": "ZIP compressed archive"
         }
       ]
     },
@@ -2645,20 +2649,6 @@
         "ImageFeature"
       ],
       "range": "OntologyTerm",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "ontologyTerm__id",
-      "from_schema": "https://w3id.org/biostride/",
-      "slot_uri": "https://w3id.org/biostride/schema/id",
-      "identifier": true,
-      "alias": "id",
-      "owner": "OntologyTerm",
-      "domain_of": [
-        "OntologyTerm"
-      ],
-      "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4711,20 +4701,17 @@
       "name": "OntologyTerm",
       "definition_uri": "https://w3id.org/biostride/schema/OntologyTerm",
       "from_schema": "https://w3id.org/biostride/",
+      "is_a": "NamedThing",
       "slots": [
-        "ontologyTerm__id",
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
         "ontologyTerm__label",
         "ontologyTerm__definition",
         "ontologyTerm__ontology"
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "id",
-          "identifier": true,
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
         {
           "name": "label",
           "range": "string",
@@ -5259,9 +5246,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-12T20:03:34",
-  "source_file_size": 34972,
-  "generation_date": "2025-08-12T20:35:36",
+  "source_file_date": "2025-08-13T12:40:11",
+  "source_file_size": 34993,
+  "generation_date": "2025-08-13T12:40:21",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

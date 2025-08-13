@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-12T20:35:37
+# Generation date: 2025-08-13T12:40:21
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -231,7 +231,7 @@ class XRFImageId(Image2DId):
     pass
 
 
-class OntologyTermId(extended_str):
+class OntologyTermId(NamedThingId):
     pass
 
 
@@ -1227,7 +1227,7 @@ class ImageFeature(YAMLRoot):
 
 
 @dataclass(repr=False)
-class OntologyTerm(YAMLRoot):
+class OntologyTerm(NamedThing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["OntologyTerm"]
@@ -2032,6 +2032,9 @@ class FileFormatEnum(EnumDefinitionImpl):
     thermo_raw = PermissibleValue(
         text="thermo_raw",
         description="Thermo Fisher RAW format")
+    zip = PermissibleValue(
+        text="zip",
+        description="ZIP compressed archive")
 
     _defn = EnumDefinition(
         name="FileFormatEnum",
@@ -2530,9 +2533,6 @@ slots.xRFImage__calibration_standard = Slot(uri=BIOSTRIDE_SCHEMA.calibration_sta
 
 slots.imageFeature__terms = Slot(uri=BIOSTRIDE_SCHEMA.terms, name="imageFeature__terms", curie=BIOSTRIDE_SCHEMA.curie('terms'),
                    model_uri=BIOSTRIDE_SCHEMA.imageFeature__terms, domain=None, range=Optional[Union[str, OntologyTermId]])
-
-slots.ontologyTerm__id = Slot(uri=BIOSTRIDE_SCHEMA.id, name="ontologyTerm__id", curie=BIOSTRIDE_SCHEMA.curie('id'),
-                   model_uri=BIOSTRIDE_SCHEMA.ontologyTerm__id, domain=None, range=URIRef)
 
 slots.ontologyTerm__label = Slot(uri=BIOSTRIDE_SCHEMA.label, name="ontologyTerm__label", curie=BIOSTRIDE_SCHEMA.curie('label'),
                    model_uri=BIOSTRIDE_SCHEMA.ontologyTerm__label, domain=None, range=Optional[str])

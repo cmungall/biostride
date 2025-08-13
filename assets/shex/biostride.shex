@@ -132,7 +132,8 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/FileFormatEnum#star> <https://w3id.org/biostride/schema/FileFormatEnum#pdb>
              <https://w3id.org/biostride/schema/FileFormatEnum#mmcif> <https://w3id.org/biostride/schema/FileFormatEnum#mtz>
              <https://w3id.org/biostride/schema/FileFormatEnum#cbf> <https://w3id.org/biostride/schema/FileFormatEnum#ascii>
-             <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> ] ;
+             <https://w3id.org/biostride/schema/FileFormatEnum#thermo_raw> <https://w3id.org/biostride/schema/FileFormatEnum#zip> ]
+          ;
           <file_size_bytes> @linkml:Integer ? ;
           <checksum> @linkml:String ? ;
           <creation_date> @linkml:String ? ;
@@ -305,8 +306,8 @@ linkml:Sparqlpath xsd:string
 }
 
 <NamedThing>  (
-    @<DataFile> OR @<Dataset> OR @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<Sample> OR @<SamplePreparation> OR @<Study> OR
-    @<WorkflowRun>
+    @<DataFile> OR @<Dataset> OR @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<OntologyTerm> OR @<Sample> OR
+    @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
 )
 
 <NamedThing_struct> {
@@ -318,7 +319,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <OntologyTerm> CLOSED {
-    (  $<OntologyTerm_tes> (  <label> @linkml:String ? ;
+    (  $<OntologyTerm_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <label> @linkml:String ? ;
           <definition> @linkml:String ? ;
           <ontology> @linkml:String ?
        ) ;

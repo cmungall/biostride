@@ -61,6 +61,7 @@ enum FileFormatEnum
     cbf
     ascii
     thermo_raw
+    zip
   }
 
 enum GridTypeEnum
@@ -407,7 +408,9 @@ interface NamedThing
 
 type OntologyTerm
   {
-    id: String!
+    id: Uriorcurie!
+    title: String
+    description: String
     label: String
     definition: String
     ontology: String

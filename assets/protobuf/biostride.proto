@@ -215,7 +215,9 @@ message MolecularComposition
  }
 message OntologyTerm
  {
-  string id = 0
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
   string label = 0
   string definition = 0
   string ontology = 0

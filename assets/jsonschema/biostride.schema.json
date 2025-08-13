@@ -775,7 +775,8 @@
                 "mtz",
                 "cbf",
                 "ascii",
-                "thermo_raw"
+                "thermo_raw",
+                "zip"
             ],
             "title": "FileFormatEnum",
             "type": "string"
@@ -1284,11 +1285,14 @@
                         "null"
                     ]
                 },
-                "id": {
+                "description": {
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "id": {
+                    "type": "string"
                 },
                 "label": {
                     "type": [
@@ -1297,6 +1301,12 @@
                     ]
                 },
                 "ontology": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
                     "type": [
                         "string",
                         "null"

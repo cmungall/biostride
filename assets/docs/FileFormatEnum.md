@@ -20,3 +20,4 @@ URI: [biostride_schema:FileFormatEnum](https://w3id.org/biostride/schema/FileFor
 | cbf | Crystallographic Binary Format |  |  |
 | ascii | ASCII text format |  |  |
 | thermo_raw | Thermo Fisher RAW format |  |  |
+| zip | ZIP compressed archive |  |  |
