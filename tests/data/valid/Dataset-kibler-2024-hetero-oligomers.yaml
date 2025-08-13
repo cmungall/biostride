@@ -19,7 +19,7 @@ keywords:
   - structural biology
 
 studies:
-  - id: "study:hetBGL-design-validation"
+  - id: "https://example.org/kibler2024/study/hetBGL-design-validation"
     title: "Structural validation of designed hetero-oligomeric BGL complexes"
     description: |
       Comprehensive structural characterization of computationally designed 
@@ -29,7 +29,7 @@ studies:
     # Sample definitions
     samples:
       # Parent BGL design
-      - id: "sample:BGL0"
+      - id: "https://example.org/kibler2024/sample/BGL0"
         sample_code: "BGL0"
         sample_type: protein
         description: "Parent symmetric homo-oligomeric β-glucosidase design"
@@ -47,7 +47,7 @@ studies:
         purity_percentage: 95.0
         
       # Hetero-oligomer design
-      - id: "sample:hetBGL03-15-18"
+      - id: "https://example.org/kibler2024/sample/hetBGL03-15-18"
         sample_code: "hetBGL03-15-18"
         sample_type: complex
         description: "Pseudosymmetric hetero-hexamer with three distinct chains"
@@ -73,7 +73,7 @@ studies:
           duration: "< 1 week before measurement"
           
       # Additional designs tested
-      - id: "sample:hetBGL01-20-22"
+      - id: "https://example.org/kibler2024/sample/hetBGL01-20-22"
         sample_code: "hetBGL01-20-22"
         sample_type: complex
         description: "Alternative hetero-hexamer design"
@@ -89,7 +89,7 @@ studies:
     # Sample preparation protocols
     sample_preparations:
       # Protein expression
-      - id: "prep:expression"
+      - id: "https://example.org/kibler2024/prep/expression"
         preparation_type: protein_expression
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-01-15"
@@ -99,7 +99,7 @@ studies:
           for 18-24 hours with shaking.
           
       # Protein purification
-      - id: "prep:purification"
+      - id: "https://example.org/kibler2024/prep/purification"
         preparation_type: protein_purification
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-01-16"
@@ -110,7 +110,7 @@ studies:
           chromatography in 25 mM Tris, 300 mM NaCl, pH 8.0.
           
       # SAXS sample preparation
-      - id: "prep:saxs"
+      - id: "https://example.org/kibler2024/prep/saxs"
         preparation_type: saxs
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-02-01"
@@ -119,7 +119,7 @@ studies:
           using 10kDa MWCO spin concentrators to 2.5 and 5.0 mg/mL.
           
       # Negative stain EM preparation  
-      - id: "prep:negative-stain"
+      - id: "https://example.org/kibler2024/prep/negative-stain"
         preparation_type: negative_stain
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-02-05"
@@ -130,7 +130,7 @@ studies:
     # Experimental data collection runs
     instrument_runs:
       # SAXS data collection
-      - id: "exp:saxs-main"
+      - id: "https://example.org/kibler2024/exp/saxs-main"
         experiment_code: "SIBYLS-2024-02-01-hetBGL"
         sample_id: "hetBGL03-15-18"
         instrument_id: "ALS-12.3.1-SIBYLS"
@@ -151,7 +151,7 @@ studies:
         processing_status: completed
         
       # SEC-SAXS collection
-      - id: "exp:sec-saxs"
+      - id: "https://example.org/kibler2024/exp/sec-saxs"
         experiment_code: "SIBYLS-2024-02-01-SEC-SAXS"
         sample_id: "hetBGL03-15-18"
         instrument_id: "ALS-12.3.1-SIBYLS"
@@ -165,7 +165,7 @@ studies:
           signal_to_noise: 45  # Placeholder metric
           
       # Negative stain EM
-      - id: "exp:nsem"
+      - id: "https://example.org/kibler2024/exp/nsem"
         experiment_code: "nsEM-2024-02-05-hetBGL"
         sample_id: "hetBGL03-15-18"
         instrument_id: "Talos-L120C"
@@ -180,7 +180,7 @@ studies:
           signal_to_noise: 30  # Placeholder metric
           
       # Native mass spectrometry
-      - id: "exp:native-ms"
+      - id: "https://example.org/kibler2024/exp/native-ms"
         experiment_code: "nMS-2024-02-10-hetBGL"
         sample_id: "hetBGL03-15-18"
         instrument_id: "QE-UHMR"
@@ -194,7 +194,7 @@ studies:
     # Computational workflows
     workflow_runs:
       # SAXS data processing
-      - id: "workflow:saxs-processing"
+      - id: "https://example.org/kibler2024/workflow/saxs-processing"
         workflow_code: "SAXS-processing-2024-02-01"
         workflow_type: saxs_analysis
         experiment_id: "SIBYLS-2024-02-01-hetBGL"
@@ -213,7 +213,7 @@ studies:
           - "hetBGL03-15-18_kratky_plot.png"
           
       # EM data processing
-      - id: "workflow:em-processing"
+      - id: "https://example.org/kibler2024/workflow/em-processing"
         workflow_code: "nsEM-processing-2024-02-05"
         workflow_type: em_2d_classification
         experiment_id: "nsEM-2024-02-05-hetBGL"
@@ -229,7 +229,7 @@ studies:
           - "hetBGL03-15-18_class_averages.png"
           
       # Mass spec data analysis
-      - id: "workflow:ms-analysis"
+      - id: "https://example.org/kibler2024/workflow/ms-analysis"
         workflow_code: "nMS-analysis-2024-02-10"
         workflow_type: mass_spec_deconvolution
         experiment_id: "nMS-2024-02-10-hetBGL"
@@ -244,7 +244,7 @@ studies:
     # Data files generated
     data_files:
       # SAXS data
-      - id: "file:saxs-2p5mgml"
+      - id: "https://example.org/kibler2024/file/saxs-2p5mgml"
         file_name: "hetBGL03-15-18_saxs_2p5mgml.dat"
         file_format: ascii
         file_size_bytes: 45000
@@ -253,7 +253,7 @@ studies:
         creation_date: "2024-02-01"
         description: "Buffer-subtracted SAXS profile at 2.5 mg/mL"
         
-      - id: "file:saxs-5mgml"
+      - id: "https://example.org/kibler2024/file/saxs-5mgml"
         file_name: "hetBGL03-15-18_saxs_5mgml.dat"
         file_format: ascii
         file_size_bytes: 45000
@@ -263,7 +263,7 @@ studies:
         description: "Buffer-subtracted SAXS profile at 5.0 mg/mL"
         
       # EM images
-      - id: "file:em-2d-classes"
+      - id: "https://example.org/kibler2024/file/em-2d-classes"
         file_name: "hetBGL03-15-18_2D_classes.mrcs"
         file_format: mrc
         file_size_bytes: 250000000
@@ -273,7 +273,7 @@ studies:
         description: "2D class averages from negative stain EM"
         
       # Mass spec data
-      - id: "file:ms-raw"
+      - id: "https://example.org/kibler2024/file/ms-raw"
         file_name: "hetBGL03-15-18_native_ms.raw"
         file_format: thermo_raw
         file_size_bytes: 150000000
@@ -282,7 +282,7 @@ studies:
         creation_date: "2024-02-10"
         
       # Design models
-      - id: "file:design-model"
+      - id: "https://example.org/kibler2024/file/design-model"
         file_name: "hetBGL03-15-18_design_model.pdb"
         file_format: pdb
         file_size_bytes: 850000
@@ -294,7 +294,7 @@ studies:
     # Images and visualizations
     images:
       # SAXS profiles
-      - id: "img:saxs-profile"
+      - id: "https://example.org/kibler2024/img/saxs-profile"
         file_name: "hetBGL03-15-18_saxs_profile.png"
         dimensions_x: 1200
         dimensions_y: 800
@@ -302,7 +302,7 @@ studies:
         description: "SAXS scattering profile with Guinier fit"
         
       # EM class averages
-      - id: "img:em-classes"
+      - id: "https://example.org/kibler2024/img/em-classes"
         file_name: "hetBGL03-15-18_class_averages.png"
         dimensions_x: 2048
         dimensions_y: 2048
@@ -310,7 +310,7 @@ studies:
         description: "2D class averages from negative stain EM"
         
       # Structural comparison
-      - id: "img:structural-comparison"
+      - id: "https://example.org/kibler2024/img/structural-comparison"
         file_name: "hetBGL_structural_comparison.png"
         dimensions_x: 1600
         dimensions_y: 1200
