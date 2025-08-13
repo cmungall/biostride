@@ -30,11 +30,42 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+            
+      - name: Install python tools
+        run: |
+          uv sync
+          uv venv
+          source .venv/bin/activate
+
+      - name:  Add MCPs
+        run: |
+          claude mcp add ols -- uvx ols-mcp
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          mcp_config: |
+            {
+              "mcpServers": {
+                "ols": {
+                  "command": "uvc",
+                  "args": [
+                    "ols-mcp"
+                  ]
+                },
+                "sequential-thinking": {
+                  "command": "npx",
+                  "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-sequential-thinking"
+                  ]
+                }
+              }
+            }
 
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
@@ -50,7 +81,7 @@ jobs:
           # assignee_trigger: "claude-bot"
           
           # Optional: Allow Claude to run specific commands
-          # allowed_tools: "Bash(npm install),Bash(npm run build),Bash(npm run test:*),Bash(npm run lint:*)"
+          allowed_tools: "Bash(*),FileEdit,Edit,MultiEdit,WebSearch,WebFetch,mcp__ols_mcp__search_all_ontologies,mcp__ols_mcp__get_terms_from_ontology"
           
           # Optional: Add custom instructions for Claude to customize its behavior for your project
           # custom_instructions: |
