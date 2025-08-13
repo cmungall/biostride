@@ -271,7 +271,8 @@ studies:
     # Data files generated
     data_files:
       # SAXS data
-      - file_name: "hetBGL03-15-18_saxs_2p5mgml.dat"
+      - id: "file:saxs-2p5mgml"
+        file_name: "hetBGL03-15-18_saxs_2p5mgml.dat"
         file_format: ascii
         file_size_bytes: 45000
         checksum: "sha256:abc123..."
@@ -279,7 +280,8 @@ studies:
         creation_date: "2024-02-01"
         description: "Buffer-subtracted SAXS profile at 2.5 mg/mL"
         
-      - file_name: "hetBGL03-15-18_saxs_5mgml.dat"
+      - id: "file:saxs-5mgml"
+        file_name: "hetBGL03-15-18_saxs_5mgml.dat"
         file_format: ascii
         file_size_bytes: 45000
         checksum: "sha256:def456..."
@@ -288,7 +290,8 @@ studies:
         description: "Buffer-subtracted SAXS profile at 5.0 mg/mL"
         
       # EM images
-      - file_name: "hetBGL03-15-18_2D_classes.mrcs"
+      - id: "file:em-2d-classes"
+        file_name: "hetBGL03-15-18_2D_classes.mrcs"
         file_format: mrc
         file_size_bytes: 250000000
         checksum: "sha256:ghi789..."
@@ -297,7 +300,8 @@ studies:
         description: "2D class averages from negative stain EM"
         
       # Mass spec data
-      - file_name: "hetBGL03-15-18_native_ms.raw"
+      - id: "file:ms-raw"
+        file_name: "hetBGL03-15-18_native_ms.raw"
         file_format: thermo_raw
         file_size_bytes: 150000000
         checksum: "sha256:jkl012..."
@@ -305,7 +309,8 @@ studies:
         creation_date: "2024-02-10"
         
       # Design models
-      - file_name: "hetBGL03-15-18_design_model.pdb"
+      - id: "file:design-model"
+        file_name: "hetBGL03-15-18_design_model.pdb"
         file_format: pdb
         file_size_bytes: 850000
         checksum: "sha256:mno345..."
@@ -316,21 +321,24 @@ studies:
     # Images and visualizations
     images:
       # SAXS profiles
-      - file_name: "hetBGL03-15-18_saxs_profile.png"
+      - id: "img:saxs-profile"
+        file_name: "hetBGL03-15-18_saxs_profile.png"
         dimensions_x: 1200
         dimensions_y: 800
         pixel_size: 1
         description: "SAXS scattering profile with Guinier fit"
         
       # EM class averages
-      - file_name: "hetBGL03-15-18_class_averages.png"
+      - id: "img:em-classes"
+        file_name: "hetBGL03-15-18_class_averages.png"
         dimensions_x: 2048
         dimensions_y: 2048
         pixel_size: 1.98
         description: "2D class averages from negative stain EM"
         
       # Structural comparison
-      - file_name: "hetBGL_structural_comparison.png"
+      - id: "img:structural-comparison"
+        file_name: "hetBGL_structural_comparison.png"
         dimensions_x: 1600
         dimensions_y: 1200
         description: "Overlay of design model with SAXS envelope"
