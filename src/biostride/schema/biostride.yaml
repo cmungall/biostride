@@ -964,6 +964,10 @@ enums:
         description: "Small-angle neutron scattering"
       cryo_et:
         description: "Cryo-electron tomography"
+      electron_microscopy:
+        description: "General electron microscopy"
+      mass_spectrometry:
+        description: "Mass spectrometry"
 
   ProcessingStatusEnum:
     description: "Processing status"
@@ -1002,6 +1006,12 @@ enums:
         description: "Data integration"
       scaling:
         description: "Data scaling"
+      saxs_analysis:
+        description: "SAXS data analysis"
+      em_2d_classification:
+        description: "EM 2D classification"
+      mass_spec_deconvolution:
+        description: "Mass spectrometry deconvolution"
 
   FileFormatEnum:
     description: "File formats"
@@ -1022,6 +1032,10 @@ enums:
         description: "MTZ reflection format"
       cbf:
         description: "Crystallographic Binary Format"
+      ascii:
+        description: "ASCII text format"
+      thermo_raw:
+        description: "Thermo Fisher RAW format"
 
   DataTypeEnum:
     description: "Types of data"
@@ -1040,6 +1054,10 @@ enums:
         description: "Atomic model"
       metadata:
         description: "Metadata file"
+      raw_data:
+        description: "Raw experimental data"
+      processed_data:
+        description: "Processed data"
 
   CollectionModeEnum:
     description: "Data collection modes"
@@ -1056,6 +1074,10 @@ enums:
         description: "Still images"
       batch:
         description: "Batch mode collection"
+      sec_saxs:
+        description: "SEC-SAXS collection mode"
+      single_particle:
+        description: "Single particle analysis mode"
 
   IlluminationTypeEnum:
     description: "Types of illumination for optical microscopy"
