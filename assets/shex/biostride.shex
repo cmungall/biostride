@@ -169,6 +169,7 @@ linkml:Sparqlpath xsd:string
     (  $<Dataset_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
           <keywords> @linkml:String * ;
+          <instruments> @<Instrument> * ;
           <studies> @<Study> *
        ) ;
        rdf:type [ <Dataset> ]
@@ -194,7 +195,7 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <NamedThing> ] ? ;
           <experiment_code> @linkml:String ;
           <sample_id> @linkml:String ;
-          <instrument_id> @linkml:String ;
+          <instrument_id> @<Instrument> ;
           <experiment_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
           <technique> [ <https://w3id.org/biostride/schema/TechniqueEnum#cryo_em>
@@ -299,24 +300,22 @@ linkml:Sparqlpath xsd:string
 }
 
 <Instrument>  (
-    @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
+    CLOSED {
+       (  $<Instrument_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ? ;
+             <instrument_code> @linkml:String ;
+             <manufacturer> @linkml:String ? ;
+             <model> @linkml:String ? ;
+             <installation_date> @linkml:String ? ;
+             <current_status> [ <https://w3id.org/biostride/schema/InstrumentStatusEnum#operational>
+                <https://w3id.org/biostride/schema/InstrumentStatusEnum#maintenance>
+                <https://w3id.org/biostride/schema/InstrumentStatusEnum#offline>
+                <https://w3id.org/biostride/schema/InstrumentStatusEnum#commissioning> ] ?
+          ) ;
+          rdf:type [ <Instrument> ]
+       )
+    } OR @<CryoEMInstrument> OR @<SAXSInstrument> OR @<XRayInstrument>
 )
-
-<Instrument_struct> {
-    (  $<Instrument_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <instrument_code> @linkml:String ;
-          <manufacturer> @linkml:String ? ;
-          <model> @linkml:String ? ;
-          <installation_date> @linkml:String ? ;
-          <current_status> [ <https://w3id.org/biostride/schema/InstrumentStatusEnum#operational>
-             <https://w3id.org/biostride/schema/InstrumentStatusEnum#maintenance>
-             <https://w3id.org/biostride/schema/InstrumentStatusEnum#offline>
-             <https://w3id.org/biostride/schema/InstrumentStatusEnum#commissioning> ] ?
-       ) ;
-       rdf:type [ <Instrument> ]
-    )
-}
 
 <MolecularComposition> CLOSED {
     (  $<MolecularComposition_tes> (  &<AttributeGroup_tes> ;

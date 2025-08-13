@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-13T12:49:41
+# Generation date: 2025-08-13T21:25:46
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -301,6 +301,7 @@ class Dataset(NamedThing):
 
     id: Union[str, DatasetId] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
+    instruments: Optional[Union[dict[Union[str, InstrumentId], Union[dict, "Instrument"]], list[Union[dict, "Instrument"]]]] = empty_dict()
     studies: Optional[Union[dict[Union[str, StudyId], Union[dict, "Study"]], list[Union[dict, "Study"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -312,6 +313,8 @@ class Dataset(NamedThing):
         if not isinstance(self.keywords, list):
             self.keywords = [self.keywords] if self.keywords is not None else []
         self.keywords = [v if isinstance(v, str) else str(v) for v in self.keywords]
+
+        self._normalize_inlined_as_list(slot_name="instruments", slot_type=Instrument, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="studies", slot_type=Study, key_name="id", keyed=True)
 
@@ -498,6 +501,11 @@ class Instrument(NamedThing):
     current_status: Optional[Union[str, "InstrumentStatusEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, InstrumentId):
+            self.id = InstrumentId(self.id)
+
         if self._is_empty(self.instrument_code):
             self.MissingRequiredField("instrument_code")
         if not isinstance(self.instrument_code, str):
@@ -697,7 +705,7 @@ class ExperimentRun(NamedThing):
     id: Union[str, ExperimentRunId] = None
     experiment_code: str = None
     sample_id: str = None
-    instrument_id: str = None
+    instrument_id: Union[str, InstrumentId] = None
     technique: Union[str, "TechniqueEnum"] = None
     experiment_date: Optional[str] = None
     operator_id: Optional[str] = None
@@ -725,8 +733,8 @@ class ExperimentRun(NamedThing):
 
         if self._is_empty(self.instrument_id):
             self.MissingRequiredField("instrument_id")
-        if not isinstance(self.instrument_id, str):
-            self.instrument_id = str(self.instrument_id)
+        if not isinstance(self.instrument_id, InstrumentId):
+            self.instrument_id = InstrumentId(self.instrument_id)
 
         if self._is_empty(self.technique):
             self.MissingRequiredField("technique")
@@ -2186,6 +2194,9 @@ slots.attributeGroup__description = Slot(uri=BIOSTRIDE_SCHEMA.description, name=
 slots.dataset__keywords = Slot(uri=BIOSTRIDE_SCHEMA.keywords, name="dataset__keywords", curie=BIOSTRIDE_SCHEMA.curie('keywords'),
                    model_uri=BIOSTRIDE_SCHEMA.dataset__keywords, domain=None, range=Optional[Union[str, list[str]]])
 
+slots.dataset__instruments = Slot(uri=BIOSTRIDE_SCHEMA.instruments, name="dataset__instruments", curie=BIOSTRIDE_SCHEMA.curie('instruments'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataset__instruments, domain=None, range=Optional[Union[dict[Union[str, InstrumentId], Union[dict, Instrument]], list[Union[dict, Instrument]]]])
+
 slots.dataset__studies = Slot(uri=BIOSTRIDE_SCHEMA.studies, name="dataset__studies", curie=BIOSTRIDE_SCHEMA.curie('studies'),
                    model_uri=BIOSTRIDE_SCHEMA.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
@@ -2349,7 +2360,7 @@ slots.experimentRun__sample_id = Slot(uri=BIOSTRIDE_SCHEMA.sample_id, name="expe
                    model_uri=BIOSTRIDE_SCHEMA.experimentRun__sample_id, domain=None, range=str)
 
 slots.experimentRun__instrument_id = Slot(uri=BIOSTRIDE_SCHEMA.instrument_id, name="experimentRun__instrument_id", curie=BIOSTRIDE_SCHEMA.curie('instrument_id'),
-                   model_uri=BIOSTRIDE_SCHEMA.experimentRun__instrument_id, domain=None, range=str)
+                   model_uri=BIOSTRIDE_SCHEMA.experimentRun__instrument_id, domain=None, range=Union[str, InstrumentId])
 
 slots.experimentRun__experiment_date = Slot(uri=BIOSTRIDE_SCHEMA.experiment_date, name="experimentRun__experiment_date", curie=BIOSTRIDE_SCHEMA.curie('experiment_date'),
                    model_uri=BIOSTRIDE_SCHEMA.experimentRun__experiment_date, domain=None, range=Optional[str])

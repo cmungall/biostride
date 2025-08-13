@@ -1,4 +1,5 @@
 @base <http://example.org/> .
+@prefix @base: <http://example.org/> .
 @prefix biostride_schema: <https://w3id.org/biostride/schema/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -10,6 +11,7 @@ and multi-angle light scattering to determine the oligomerization state
 of Glutamyl tRNA synthetase (GluRS) from Pseudomonas aeruginosa in solution.
 Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
 """ ;
+    biostride_schema:instruments <SIBYLS-BL12.3.1> ;
     biostride_schema:keywords "GluRS",
         "Glutamyl-tRNA synthetase",
         "MALS",
@@ -30,7 +32,7 @@ Data collected at SIBYLS beamline BL12.3.1 at Advanced Light Source.
             biostride_schema:beam_energy "11.0"^^xsd:float ;
             biostride_schema:exposure_time "1.0"^^xsd:float ;
             biostride_schema:temperature "20.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "SIBYLS-BL12.3.1" ;
+    biostride_schema:instrument_id <SIBYLS-BL12.3.1> ;
     biostride_schema:operator_id "S. Tsutakawa" ;
     biostride_schema:processing_status "completed" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
@@ -177,4 +179,12 @@ frame_averaging=enabled
     biostride_schema:started_at "2023-10-24T12:00:00Z" ;
     biostride_schema:workflow_code "GluRS-SAXS-processing-2023" ;
     biostride_schema:workflow_type "saxs_analysis" .
+
+<SIBYLS-BL12.3.1> a biostride_schema:Instrument ;
+    dcterms:title "SIBYLS Beamline 12.3.1" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "SAXS/WAXS beamline at Advanced Light Source for biological samples" ;
+    biostride_schema:instrument_code "SIBYLS-BL12.3.1" ;
+    biostride_schema:manufacturer "Lawrence Berkeley National Laboratory" ;
+    biostride_schema:model "SIBYLS Beamline 12.3.1" .
 

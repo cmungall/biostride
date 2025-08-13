@@ -20,7 +20,7 @@ biostride:exp_xray_lysozyme_001 a biostride_schema:ExperimentRun ;
             biostride_schema:humidity "0.0"^^xsd:float ;
             biostride_schema:pressure "101.325"^^xsd:float ;
             biostride_schema:temperature "-173.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "biostride:instrument_als_831" ;
+    biostride_schema:instrument_id biostride:instrument_als_831 ;
     biostride_schema:operator_id "als_user_042" ;
     biostride_schema:processing_status "completed" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;

@@ -1,5 +1,16 @@
 {
   "id": "biostride:ds001",
+  "instruments": [
+    {
+      "id": "biostride:instrument_test_001",
+      "title": "Test Cryo-EM Instrument",
+      "description": "Test cryo-EM microscope for validation",
+      "instrument_code": "TEST-EM-001",
+      "manufacturer": "Test Manufacturer",
+      "model": "Test Model",
+      "current_status": "operational"
+    }
+  ],
   "studies": [
     {
       "id": "biostride:sty001",

@@ -11,6 +11,9 @@ protein hetero-oligomers with three or more unique subunits. The study combines
 divide-and-conquer design strategy with comprehensive structural characterization 
 using SAXS, negative-stain EM, and native mass spectrometry.
 """ ;
+    biostride_schema:instruments <ALS-12.3.1-SIBYLS>,
+        <QE-UHMR>,
+        <Talos-L120C> ;
     biostride_schema:keywords "SAXS",
         "SEC-SAXS",
         "hetero-oligomers",
@@ -24,7 +27,7 @@ using SAXS, negative-stain EM, and native mass spectrometry.
     biostride_schema:experiment_date "2024-02-10" ;
     biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
             biostride_schema:temperature "25.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "QE-UHMR" ;
+    biostride_schema:instrument_id <QE-UHMR> ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
             biostride_schema:signal_to_noise "100.0"^^xsd:float ] ;
     biostride_schema:sample_id "hetBGL03-15-18" ;
@@ -37,7 +40,7 @@ using SAXS, negative-stain EM, and native mass spectrometry.
     biostride_schema:experiment_date "2024-02-05" ;
     biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
             biostride_schema:temperature "20.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "Talos-L120C" ;
+    biostride_schema:instrument_id <Talos-L120C> ;
     biostride_schema:operator_id "University of Washington EM facility" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
             biostride_schema:signal_to_noise "30.0"^^xsd:float ] ;
@@ -53,7 +56,7 @@ using SAXS, negative-stain EM, and native mass spectrometry.
             biostride_schema:beam_energy "9.76"^^xsd:float ;
             biostride_schema:exposure_time "0.3"^^xsd:float ;
             biostride_schema:temperature "20.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "ALS-12.3.1-SIBYLS" ;
+    biostride_schema:instrument_id <ALS-12.3.1-SIBYLS> ;
     biostride_schema:operator_id "Kathryn Burnett" ;
     biostride_schema:processing_status "completed" ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
@@ -71,7 +74,7 @@ using SAXS, negative-stain EM, and native mass spectrometry.
     biostride_schema:experiment_date "2024-02-01" ;
     biostride_schema:experimental_conditions [ a biostride_schema:ExperimentalConditions ;
             biostride_schema:temperature "20.0"^^xsd:float ] ;
-    biostride_schema:instrument_id "ALS-12.3.1-SIBYLS" ;
+    biostride_schema:instrument_id <ALS-12.3.1-SIBYLS> ;
     biostride_schema:quality_metrics [ a biostride_schema:QualityMetrics ;
             biostride_schema:signal_to_noise "45.0"^^xsd:float ] ;
     biostride_schema:sample_id "hetBGL03-15-18" ;
@@ -295,4 +298,28 @@ at LBNL Advanced Light Source SIBYLS beamline and other facilities.
     biostride_schema:started_at "2024-02-01T18:00:00Z" ;
     biostride_schema:workflow_code "SAXS-processing-2024-02-01" ;
     biostride_schema:workflow_type "saxs_analysis" .
+
+<QE-UHMR> a biostride_schema:Instrument ;
+    dcterms:title "Q Exactive UHMR Mass Spectrometer" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "Ultra-high mass range mass spectrometer for native MS" ;
+    biostride_schema:instrument_code "QE-UHMR-001" ;
+    biostride_schema:manufacturer "Thermo Fisher Scientific" ;
+    biostride_schema:model "Q Exactive UHMR" .
+
+<Talos-L120C> a biostride_schema:Instrument ;
+    dcterms:title "Talos L120C Microscope" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "120kV TEM for negative stain electron microscopy" ;
+    biostride_schema:instrument_code "TALOS-L120C-001" ;
+    biostride_schema:manufacturer "Thermo Fisher Scientific" ;
+    biostride_schema:model "Talos L120C" .
+
+<ALS-12.3.1-SIBYLS> a biostride_schema:Instrument ;
+    dcterms:title "ALS SIBYLS Beamline 12.3.1" ;
+    biostride_schema:current_status "operational" ;
+    biostride_schema:description "SAXS/WAXS beamline at Advanced Light Source for biological samples" ;
+    biostride_schema:instrument_code "ALS-SIBYLS-12.3.1" ;
+    biostride_schema:manufacturer "Lawrence Berkeley National Laboratory" ;
+    biostride_schema:model "SIBYLS Beamline 12.3.1" .
 

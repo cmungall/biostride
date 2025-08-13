@@ -466,6 +466,15 @@
                         "null"
                     ]
                 },
+                "instruments": {
+                    "items": {
+                        "$ref": "#/$defs/Instrument"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "keywords": {
                     "items": {
                         "type": "string"
@@ -1260,6 +1269,62 @@
                 }
             },
             "title": "ImageFeature",
+            "type": "object"
+        },
+        "Instrument": {
+            "additionalProperties": false,
+            "description": "An instrument used to collect data",
+            "properties": {
+                "current_status": {
+                    "$ref": "#/$defs/InstrumentStatusEnum",
+                    "description": "Current operational status"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "installation_date": {
+                    "description": "Date of instrument installation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instrument_code": {
+                    "description": "Unique identifier code for the instrument",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "description": "Instrument manufacturer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "model": {
+                    "description": "Instrument model",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "instrument_code",
+                "id"
+            ],
+            "title": "Instrument",
             "type": "object"
         },
         "InstrumentStatusEnum": {
@@ -2533,6 +2598,15 @@
         "id": {
             "type": [
                 "string",
+                "null"
+            ]
+        },
+        "instruments": {
+            "items": {
+                "$ref": "#/$defs/Instrument"
+            },
+            "type": [
+                "array",
                 "null"
             ]
         },
