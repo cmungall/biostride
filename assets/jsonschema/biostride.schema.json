@@ -169,6 +169,7 @@
                     "description": "Type of detector"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "installation_date": {
@@ -179,7 +180,7 @@
                     ]
                 },
                 "instrument_code": {
-                    "description": "Unique identifier code for the instrument",
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -417,6 +418,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "title": {
@@ -461,6 +463,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": [
                         "string",
                         "null"
@@ -539,7 +542,7 @@
                     ]
                 },
                 "experiment_code": {
-                    "description": "Unique experiment identifier",
+                    "description": "Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.",
                     "type": "string"
                 },
                 "experiment_date": {
@@ -561,6 +564,7 @@
                     "description": "Environmental and experimental conditions"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "instrument_id": {
@@ -741,6 +745,7 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "molecular_signatures": {
@@ -926,6 +931,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "laser_power": {
@@ -1047,6 +1053,7 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "pixel_size": {
@@ -1134,6 +1141,7 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "pixel_size": {
@@ -1214,6 +1222,7 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "pixel_size": {
@@ -1286,6 +1295,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "installation_date": {
@@ -1296,7 +1306,7 @@
                     ]
                 },
                 "instrument_code": {
-                    "description": "Unique identifier code for the instrument",
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -1399,6 +1409,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "label": {
@@ -1507,6 +1518,7 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "illumination_type": {
@@ -1666,6 +1678,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "installation_date": {
@@ -1676,7 +1689,7 @@
                     ]
                 },
                 "instrument_code": {
-                    "description": "Unique identifier code for the instrument",
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -1820,6 +1833,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "molecular_composition": {
@@ -1871,7 +1885,7 @@
                     ]
                 },
                 "sample_code": {
-                    "description": "Unique identifier code for the sample",
+                    "description": "Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.",
                     "type": "string"
                 },
                 "sample_type": {
@@ -1915,6 +1929,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "operator_id": {
@@ -2033,6 +2048,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "images": {
@@ -2161,6 +2177,7 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "output_files": {
@@ -2214,7 +2231,7 @@
                     ]
                 },
                 "workflow_code": {
-                    "description": "Unique workflow identifier",
+                    "description": "Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.",
                     "type": "string"
                 },
                 "workflow_type": {
@@ -2368,6 +2385,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "pixel_size": {
@@ -2459,6 +2477,7 @@
                     ]
                 },
                 "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
                 "installation_date": {
@@ -2469,7 +2488,7 @@
                     ]
                 },
                 "instrument_code": {
-                    "description": "Unique identifier code for the instrument",
+                    "description": "Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.",
                     "type": "string"
                 },
                 "manufacturer": {
@@ -2596,6 +2615,7 @@
             ]
         },
         "id": {
+            "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
             "type": [
                 "string",
                 "null"
