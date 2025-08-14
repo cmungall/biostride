@@ -36,6 +36,8 @@
         ]
       },
       "preparation_method": "Salt gradient dialysis reconstitution",
+      "organism": "NCBITaxon:9606",
+      "anatomy": "UBERON:0000922",
       "purity_percentage": 99.0
     },
     {
@@ -71,6 +73,7 @@
         ]
       },
       "preparation_method": "Sf9 insect cell expression with FLAG purification",
+      "organism": "NCBITaxon:4932",
       "purity_percentage": 95.0
     },
     {

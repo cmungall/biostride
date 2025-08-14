@@ -25,3 +25,4 @@ storage_conditions:
   temperature: 4
   temperature_unit: celsius
   duration: "< 1 week before measurement"
+organism: "NCBITaxon:562"

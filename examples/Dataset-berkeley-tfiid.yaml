@@ -55,6 +55,7 @@ studies:
       temperature_unit: celsius
       duration: 6 months
       atmosphere: Flash frozen in liquid nitrogen
+    organism: NCBITaxon:9606
     purity_percentage: 95.0
   - id: biostride:sample_tfiid_dna_002
     title: TFIID-DNA promoter complex
@@ -79,6 +80,7 @@ studies:
       - 5 mM MgCl2
       additives:
       - 1 mM DTT
+    organism: NCBITaxon:9606
     parent_sample_id: biostride:sample_tfiid_001
     purity_percentage: 92.0
   sample_preparations:

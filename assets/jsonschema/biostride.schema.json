@@ -1804,6 +1804,13 @@
             "additionalProperties": false,
             "description": "A biological sample used in structural biology experiments",
             "properties": {
+                "anatomy": {
+                    "description": "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "buffer_composition": {
                     "anyOf": [
                         {
@@ -1814,6 +1821,13 @@
                         }
                     ],
                     "description": "Buffer composition including pH, salts, additives"
+                },
+                "cell_type": {
+                    "description": "Cell type if applicable (e.g., CL:0000057 for fibroblast)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "concentration": {
                     "description": "Sample concentration in mg/mL or \u00b5M",
@@ -1851,6 +1865,13 @@
                     "description": "Molecular weight in kDa",
                     "type": [
                         "number",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "description": "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },

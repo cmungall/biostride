@@ -89,6 +89,9 @@ prefixes:
   prov: http://www.w3.org/ns/prov#
   sio: http://semanticscience.org/resource/
   nmdc: https://w3id.org/nmdc/
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  CL: http://purl.obolibrary.org/obo/CL_
 
 imports:
   - linkml:types
@@ -202,6 +205,15 @@ classes:
       storage_conditions:
         description: "Storage conditions for the sample"
         range: StorageConditions
+      organism:
+        description: "Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)"
+        range: OntologyTerm
+      anatomy:
+        description: "Anatomical part or tissue (e.g., UBERON:0008945 for leaf)"
+        range: OntologyTerm
+      cell_type:
+        description: "Cell type if applicable (e.g., CL:0000057 for fibroblast)"
+        range: OntologyTerm
       parent_sample_id:
         description: "Reference to parent sample for derivation tracking"
         range: Sample

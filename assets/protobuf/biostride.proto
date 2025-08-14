@@ -290,6 +290,9 @@ message Sample
   bufferComposition bufferComposition = 0
   string preparationMethod = 0
   storageConditions storageConditions = 0
+  ontologyTerm organism = 0
+  ontologyTerm anatomy = 0
+  ontologyTerm cellType = 0
   sample parentSampleId = 0
   float purityPercentage = 0
   string qualityMetrics = 0

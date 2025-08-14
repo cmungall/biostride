@@ -29,5 +29,6 @@
     "temperature_unit": "celsius",
     "duration": "< 1 week before measurement"
   },
+  "organism": "NCBITaxon:562",
   "@type": "Sample"
 }
