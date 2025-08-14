@@ -103,7 +103,8 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/biostride/schema/GridTypeEnum#quantifoil>
              <https://w3id.org/biostride/schema/GridTypeEnum#lacey_carbon>
              <https://w3id.org/biostride/schema/GridTypeEnum#ultrathin_carbon>
-             <https://w3id.org/biostride/schema/GridTypeEnum#gold> ] ? ;
+             <https://w3id.org/biostride/schema/GridTypeEnum#gold> <https://w3id.org/biostride/schema/GridTypeEnum#ultraufoil> ] ?
+          ;
           <support_film> @linkml:String ? ;
           <hole_size> @linkml:Float ? ;
           <vitrification_method> [ <https://w3id.org/biostride/schema/VitrificationMethodEnum#plunge_freezing>
@@ -431,7 +432,38 @@ linkml:Sparqlpath xsd:string
           <sample_id> @linkml:String ;
           <preparation_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
-          <protocol_description> @linkml:String ?
+          <protocol_description> @linkml:String ? ;
+          <grid_type> [ <https://w3id.org/biostride/schema/GridTypeEnum#c_flat>
+             <https://w3id.org/biostride/schema/GridTypeEnum#quantifoil>
+             <https://w3id.org/biostride/schema/GridTypeEnum#lacey_carbon>
+             <https://w3id.org/biostride/schema/GridTypeEnum#ultrathin_carbon>
+             <https://w3id.org/biostride/schema/GridTypeEnum#gold> <https://w3id.org/biostride/schema/GridTypeEnum#ultraufoil> ] ?
+          ;
+          <support_film> @linkml:String ? ;
+          <hole_size> @linkml:Float ? ;
+          <vitrification_method> [ <https://w3id.org/biostride/schema/VitrificationMethodEnum#plunge_freezing>
+             <https://w3id.org/biostride/schema/VitrificationMethodEnum#high_pressure_freezing>
+             <https://w3id.org/biostride/schema/VitrificationMethodEnum#slam_freezing> ] ? ;
+          <blot_time> @linkml:Float ? ;
+          <blot_force> @linkml:Integer ? ;
+          <humidity_percentage> @linkml:Float ? ;
+          <plasma_treatment> @linkml:String ? ;
+          <crystallization_method> [ <https://w3id.org/biostride/schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
+             <https://w3id.org/biostride/schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
+             <https://w3id.org/biostride/schema/CrystallizationMethodEnum#microbatch>
+             <https://w3id.org/biostride/schema/CrystallizationMethodEnum#dialysis>
+             <https://w3id.org/biostride/schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          <crystallization_conditions> @linkml:String ? ;
+          <crystal_size> @linkml:String ? ;
+          <cryoprotectant> @linkml:String ? ;
+          <cryoprotectant_concentration> @linkml:Float ? ;
+          <mounting_method> @linkml:String ? ;
+          <flash_cooling_method> @linkml:String ? ;
+          <concentration_series> @linkml:Float * ;
+          <buffer_matching_protocol> @linkml:String ? ;
+          <sample_cell_type> @linkml:String ? ;
+          <cell_path_length> @linkml:Float ? ;
+          <temperature_control> @linkml:String ?
        ) ;
        rdf:type [ <SamplePreparation> ]
     )

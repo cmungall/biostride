@@ -506,6 +506,10 @@
         {
           "text": "gold",
           "description": "Gold grid"
+        },
+        {
+          "text": "ultraufoil",
+          "description": "UltraAuFoil holey gold grid"
         }
       ]
     },
@@ -1388,6 +1392,273 @@
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/protocol_description",
       "alias": "protocol_description",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__grid_type",
+      "description": "Type of EM grid used (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/grid_type",
+      "alias": "grid_type",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "GridTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__support_film",
+      "description": "Support film type (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/support_film",
+      "alias": "support_film",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__hole_size",
+      "description": "Hole size in micrometers (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/hole_size",
+      "alias": "hole_size",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "minimum_value": 0.5,
+      "maximum_value": 5.0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__vitrification_method",
+      "description": "Method used for vitrification (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/vitrification_method",
+      "alias": "vitrification_method",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "VitrificationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__blot_time",
+      "description": "Blotting time in seconds (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/blot_time",
+      "alias": "blot_time",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "minimum_value": 0.5,
+      "maximum_value": 10.0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__blot_force",
+      "description": "Blotting force setting (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/blot_force",
+      "alias": "blot_force",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__humidity_percentage",
+      "description": "Chamber humidity during vitrification (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/humidity_percentage",
+      "alias": "humidity_percentage",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 100,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__plasma_treatment",
+      "description": "Plasma treatment details (for cryo-EM preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/plasma_treatment",
+      "alias": "plasma_treatment",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__crystallization_method",
+      "description": "Method used for crystallization (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/crystallization_method",
+      "alias": "crystallization_method",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "CrystallizationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__crystallization_conditions",
+      "description": "Detailed crystallization conditions (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/crystallization_conditions",
+      "alias": "crystallization_conditions",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__crystal_size",
+      "description": "Crystal dimensions in micrometers (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/crystal_size",
+      "alias": "crystal_size",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__cryoprotectant",
+      "description": "Cryoprotectant used (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cryoprotectant",
+      "alias": "cryoprotectant",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__cryoprotectant_concentration",
+      "description": "Cryoprotectant concentration percentage (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cryoprotectant_concentration",
+      "alias": "cryoprotectant_concentration",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__mounting_method",
+      "description": "Crystal mounting method (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/mounting_method",
+      "alias": "mounting_method",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__flash_cooling_method",
+      "description": "Flash cooling protocol (for X-ray preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/flash_cooling_method",
+      "alias": "flash_cooling_method",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__concentration_series",
+      "description": "Concentration values for series measurements (for SAXS preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/concentration_series",
+      "alias": "concentration_series",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__buffer_matching_protocol",
+      "description": "Protocol for buffer matching (for SAXS preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/buffer_matching_protocol",
+      "alias": "buffer_matching_protocol",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__sample_cell_type",
+      "description": "Type of sample cell used (for SAXS preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/sample_cell_type",
+      "alias": "sample_cell_type",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__cell_path_length",
+      "description": "Path length in mm (for SAXS preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cell_path_length",
+      "alias": "cell_path_length",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__temperature_control",
+      "description": "Temperature control settings (for SAXS preparations)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/temperature_control",
+      "alias": "temperature_control",
       "owner": "SamplePreparation",
       "domain_of": [
         "SamplePreparation"
@@ -3761,7 +4032,27 @@
         "samplePreparation__sample_id",
         "samplePreparation__preparation_date",
         "samplePreparation__operator_id",
-        "samplePreparation__protocol_description"
+        "samplePreparation__protocol_description",
+        "samplePreparation__grid_type",
+        "samplePreparation__support_film",
+        "samplePreparation__hole_size",
+        "samplePreparation__vitrification_method",
+        "samplePreparation__blot_time",
+        "samplePreparation__blot_force",
+        "samplePreparation__humidity_percentage",
+        "samplePreparation__plasma_treatment",
+        "samplePreparation__crystallization_method",
+        "samplePreparation__crystallization_conditions",
+        "samplePreparation__crystal_size",
+        "samplePreparation__cryoprotectant",
+        "samplePreparation__cryoprotectant_concentration",
+        "samplePreparation__mounting_method",
+        "samplePreparation__flash_cooling_method",
+        "samplePreparation__concentration_series",
+        "samplePreparation__buffer_matching_protocol",
+        "samplePreparation__sample_cell_type",
+        "samplePreparation__cell_path_length",
+        "samplePreparation__temperature_control"
       ],
       "slot_usage": {},
       "attributes": [
@@ -3794,6 +4085,133 @@
         {
           "name": "protocol_description",
           "description": "Detailed protocol description",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "grid_type",
+          "description": "Type of EM grid used (for cryo-EM preparations)",
+          "range": "GridTypeEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "support_film",
+          "description": "Support film type (for cryo-EM preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "hole_size",
+          "description": "Hole size in micrometers (for cryo-EM preparations)",
+          "range": "float",
+          "minimum_value": 0.5,
+          "maximum_value": 5.0,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "vitrification_method",
+          "description": "Method used for vitrification (for cryo-EM preparations)",
+          "range": "VitrificationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blot_time",
+          "description": "Blotting time in seconds (for cryo-EM preparations)",
+          "range": "float",
+          "minimum_value": 0.5,
+          "maximum_value": 10.0,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "blot_force",
+          "description": "Blotting force setting (for cryo-EM preparations)",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "humidity_percentage",
+          "description": "Chamber humidity during vitrification (for cryo-EM preparations)",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 100,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "plasma_treatment",
+          "description": "Plasma treatment details (for cryo-EM preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystallization_method",
+          "description": "Method used for crystallization (for X-ray preparations)",
+          "range": "CrystallizationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystallization_conditions",
+          "description": "Detailed crystallization conditions (for X-ray preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystal_size",
+          "description": "Crystal dimensions in micrometers (for X-ray preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryoprotectant",
+          "description": "Cryoprotectant used (for X-ray preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cryoprotectant_concentration",
+          "description": "Cryoprotectant concentration percentage (for X-ray preparations)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mounting_method",
+          "description": "Crystal mounting method (for X-ray preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flash_cooling_method",
+          "description": "Flash cooling protocol (for X-ray preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "concentration_series",
+          "description": "Concentration values for series measurements (for SAXS preparations)",
+          "range": "float",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "buffer_matching_protocol",
+          "description": "Protocol for buffer matching (for SAXS preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sample_cell_type",
+          "description": "Type of sample cell used (for SAXS preparations)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cell_path_length",
+          "description": "Path length in mm (for SAXS preparations)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_control",
+          "description": "Temperature control settings (for SAXS preparations)",
+          "range": "string",
           "@type": "SlotDefinition"
         }
       ],
@@ -5398,9 +5816,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-13T23:27:44",
-  "source_file_size": 36846,
-  "generation_date": "2025-08-13T23:28:38",
+  "source_file_date": "2025-08-14T23:04:52",
+  "source_file_size": 40198,
+  "generation_date": "2025-08-14T23:06:55",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

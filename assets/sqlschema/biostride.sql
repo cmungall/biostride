@@ -40,6 +40,25 @@
 --     * Slot: preparation_date Description: Date of sample preparation
 --     * Slot: operator_id Description: Person who performed the preparation
 --     * Slot: protocol_description Description: Detailed protocol description
+--     * Slot: grid_type Description: Type of EM grid used (for cryo-EM preparations)
+--     * Slot: support_film Description: Support film type (for cryo-EM preparations)
+--     * Slot: hole_size Description: Hole size in micrometers (for cryo-EM preparations)
+--     * Slot: vitrification_method Description: Method used for vitrification (for cryo-EM preparations)
+--     * Slot: blot_time Description: Blotting time in seconds (for cryo-EM preparations)
+--     * Slot: blot_force Description: Blotting force setting (for cryo-EM preparations)
+--     * Slot: humidity_percentage Description: Chamber humidity during vitrification (for cryo-EM preparations)
+--     * Slot: plasma_treatment Description: Plasma treatment details (for cryo-EM preparations)
+--     * Slot: crystallization_method Description: Method used for crystallization (for X-ray preparations)
+--     * Slot: crystallization_conditions Description: Detailed crystallization conditions (for X-ray preparations)
+--     * Slot: crystal_size Description: Crystal dimensions in micrometers (for X-ray preparations)
+--     * Slot: cryoprotectant Description: Cryoprotectant used (for X-ray preparations)
+--     * Slot: cryoprotectant_concentration Description: Cryoprotectant concentration percentage (for X-ray preparations)
+--     * Slot: mounting_method Description: Crystal mounting method (for X-ray preparations)
+--     * Slot: flash_cooling_method Description: Flash cooling protocol (for X-ray preparations)
+--     * Slot: buffer_matching_protocol Description: Protocol for buffer matching (for SAXS preparations)
+--     * Slot: sample_cell_type Description: Type of sample cell used (for SAXS preparations)
+--     * Slot: cell_path_length Description: Path length in mm (for SAXS preparations)
+--     * Slot: temperature_control Description: Temperature control settings (for SAXS preparations)
 --     * Slot: id Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
 --     * Slot: title
 --     * Slot: description
@@ -356,6 +375,9 @@
 -- # Class: Dataset_keywords
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: keywords
+-- # Class: SamplePreparation_concentration_series
+--     * Slot: SamplePreparation_id Description: Autocreated FK slot
+--     * Slot: concentration_series Description: Concentration values for series measurements (for SAXS preparations)
 -- # Class: WorkflowRun_output_files
 --     * Slot: WorkflowRun_id Description: Autocreated FK slot
 --     * Slot: output_files_id Description: Output files generated
@@ -737,7 +759,7 @@ CREATE TABLE "XRFImage_elements_measured" (
 	elements_measured TEXT,
 	PRIMARY KEY ("XRFImage_id", elements_measured),
 	FOREIGN KEY("XRFImage_id") REFERENCES "XRFImage" (id)
-);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);
+);CREATE INDEX "ix_XRFImage_elements_measured_elements_measured" ON "XRFImage_elements_measured" (elements_measured);CREATE INDEX "ix_XRFImage_elements_measured_XRFImage_id" ON "XRFImage_elements_measured" ("XRFImage_id");
 CREATE TABLE "MolecularComposition_sequences" (
 	"MolecularComposition_id" INTEGER,
 	sequences TEXT,
@@ -761,19 +783,19 @@ CREATE TABLE "BufferComposition_components" (
 	components TEXT,
 	PRIMARY KEY ("BufferComposition_id", components),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");
+);CREATE INDEX "ix_BufferComposition_components_BufferComposition_id" ON "BufferComposition_components" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_components_components" ON "BufferComposition_components" (components);
 CREATE TABLE "BufferComposition_additives" (
 	"BufferComposition_id" INTEGER,
 	additives TEXT,
 	PRIMARY KEY ("BufferComposition_id", additives),
 	FOREIGN KEY("BufferComposition_id") REFERENCES "BufferComposition" (id)
-);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);
+);CREATE INDEX "ix_BufferComposition_additives_additives" ON "BufferComposition_additives" (additives);CREATE INDEX "ix_BufferComposition_additives_BufferComposition_id" ON "BufferComposition_additives" ("BufferComposition_id");
 CREATE TABLE "SAXSPreparation_concentration_series" (
 	"SAXSPreparation_id" INTEGER,
 	concentration_series FLOAT,
 	PRIMARY KEY ("SAXSPreparation_id", concentration_series),
 	FOREIGN KEY("SAXSPreparation_id") REFERENCES "SAXSPreparation" (id)
-);CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");
+);CREATE INDEX "ix_SAXSPreparation_concentration_series_SAXSPreparation_id" ON "SAXSPreparation_concentration_series" ("SAXSPreparation_id");CREATE INDEX "ix_SAXSPreparation_concentration_series_concentration_series" ON "SAXSPreparation_concentration_series" (concentration_series);
 CREATE TABLE "Sample" (
 	sample_code TEXT NOT NULL,
 	sample_type VARCHAR(16) NOT NULL,
@@ -810,6 +832,25 @@ CREATE TABLE "SamplePreparation" (
 	preparation_date TEXT,
 	operator_id TEXT,
 	protocol_description TEXT,
+	grid_type VARCHAR(16),
+	support_film TEXT,
+	hole_size FLOAT,
+	vitrification_method VARCHAR(22),
+	blot_time FLOAT,
+	blot_force INTEGER,
+	humidity_percentage FLOAT,
+	plasma_treatment TEXT,
+	crystallization_method VARCHAR(24),
+	crystallization_conditions TEXT,
+	crystal_size TEXT,
+	cryoprotectant TEXT,
+	cryoprotectant_concentration FLOAT,
+	mounting_method TEXT,
+	flash_cooling_method TEXT,
+	buffer_matching_protocol TEXT,
+	sample_cell_type TEXT,
+	cell_path_length FLOAT,
+	temperature_control TEXT,
 	id TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
@@ -889,10 +930,16 @@ CREATE TABLE "Image" (
 	PRIMARY KEY (id),
 	FOREIGN KEY("Study_id") REFERENCES "Study" (id)
 );CREATE INDEX "ix_Image_id" ON "Image" (id);
+CREATE TABLE "SamplePreparation_concentration_series" (
+	"SamplePreparation_id" TEXT,
+	concentration_series FLOAT,
+	PRIMARY KEY ("SamplePreparation_id", concentration_series),
+	FOREIGN KEY("SamplePreparation_id") REFERENCES "SamplePreparation" (id)
+);CREATE INDEX "ix_SamplePreparation_concentration_series_SamplePreparation_id" ON "SamplePreparation_concentration_series" ("SamplePreparation_id");CREATE INDEX "ix_SamplePreparation_concentration_series_concentration_series" ON "SamplePreparation_concentration_series" (concentration_series);
 CREATE TABLE "WorkflowRun_output_files" (
 	"WorkflowRun_id" TEXT,
 	output_files_id TEXT,
 	PRIMARY KEY ("WorkflowRun_id", output_files_id),
 	FOREIGN KEY("WorkflowRun_id") REFERENCES "WorkflowRun" (id),
 	FOREIGN KEY(output_files_id) REFERENCES "DataFile" (id)
-);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);
+);CREATE INDEX "ix_WorkflowRun_output_files_output_files_id" ON "WorkflowRun_output_files" (output_files_id);CREATE INDEX "ix_WorkflowRun_output_files_WorkflowRun_id" ON "WorkflowRun_output_files" ("WorkflowRun_id");

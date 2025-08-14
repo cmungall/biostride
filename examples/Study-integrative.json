@@ -119,7 +119,10 @@
       "sample_id": "biostride:sample_nucleosome_001",
       "preparation_date": "2024-05-10",
       "operator_id": "chromatin_lab_member_001",
-      "protocol_description": "Quantifoil R2/2 grids, glow discharged, 3µL sample applied, blotted 3s"
+      "protocol_description": "Quantifoil R2/2 grids, glow discharged, 3µL sample applied, blotted 3s",
+      "grid_type": "quantifoil",
+      "vitrification_method": "plunge_freezing",
+      "blot_time": 3.0
     },
     {
       "id": "biostride:prep_chd1_saxs_001",
@@ -129,7 +132,13 @@
       "sample_id": "biostride:sample_chd1_001",
       "preparation_date": "2024-05-11",
       "operator_id": "saxs_specialist_001",
-      "protocol_description": "Concentration series 0.5, 1.0, 2.0 mg/mL prepared"
+      "protocol_description": "Concentration series 0.5, 1.0, 2.0 mg/mL prepared",
+      "concentration_series": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "buffer_matching_protocol": "Automated SEC protocol"
     },
     {
       "id": "biostride:prep_complex_cryo_001",
@@ -139,7 +148,10 @@
       "sample_id": "biostride:sample_chd1_ncp_complex_001",
       "preparation_date": "2024-05-12",
       "operator_id": "chromatin_lab_member_001",
-      "protocol_description": "UltrAuFoil grids to reduce preferred orientation"
+      "protocol_description": "UltrAuFoil grids to reduce preferred orientation",
+      "grid_type": "ultraufoil",
+      "vitrification_method": "plunge_freezing",
+      "blot_time": 4.0
     }
   ],
   "instrument_runs": [

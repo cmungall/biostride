@@ -71,6 +71,7 @@ enum GridTypeEnum
     lacey_carbon
     ultrathin_carbon
     gold
+    ultraufoil
   }
 
 enum IlluminationTypeEnum
@@ -494,6 +495,26 @@ type SamplePreparation
     preparationDate: String
     operatorId: String
     protocolDescription: String
+    gridType: GridTypeEnum
+    supportFilm: String
+    holeSize: Float
+    vitrificationMethod: VitrificationMethodEnum
+    blotTime: Float
+    blotForce: Integer
+    humidityPercentage: Float
+    plasmaTreatment: String
+    crystallizationMethod: CrystallizationMethodEnum
+    crystallizationConditions: String
+    crystalSize: String
+    cryoprotectant: String
+    cryoprotectantConcentration: Float
+    mountingMethod: String
+    flashCoolingMethod: String
+    concentrationSeries: [Float]
+    bufferMatchingProtocol: String
+    sampleCellType: String
+    cellPathLength: Float
+    temperatureControl: String
   }
 
 type SAXSInstrument

@@ -94,6 +94,10 @@ biostride:exp_ncp_cryoem_001 a biostride_schema:ExperimentRun ;
 
 biostride:prep_chd1_saxs_001 a biostride_schema:SamplePreparation ;
     dcterms:title "CHD1 SAXS sample preparation" ;
+    biostride_schema:buffer_matching_protocol "Automated SEC protocol" ;
+    biostride_schema:concentration_series "0.5"^^xsd:float,
+        "1.0"^^xsd:float,
+        "2.0"^^xsd:float ;
     biostride_schema:description "Preparation for SAXS analysis of CHD1" ;
     biostride_schema:operator_id "saxs_specialist_001" ;
     biostride_schema:preparation_date "2024-05-11" ;
@@ -103,21 +107,27 @@ biostride:prep_chd1_saxs_001 a biostride_schema:SamplePreparation ;
 
 biostride:prep_complex_cryo_001 a biostride_schema:SamplePreparation ;
     dcterms:title "CHD1-nucleosome complex grid preparation" ;
+    biostride_schema:blot_time "4.0"^^xsd:float ;
     biostride_schema:description "Cryo-EM grid preparation for complex" ;
+    biostride_schema:grid_type "ultraufoil" ;
     biostride_schema:operator_id "chromatin_lab_member_001" ;
     biostride_schema:preparation_date "2024-05-12" ;
     biostride_schema:preparation_type "cryo_em" ;
     biostride_schema:protocol_description "UltrAuFoil grids to reduce preferred orientation" ;
-    biostride_schema:sample_id "biostride:sample_chd1_ncp_complex_001" .
+    biostride_schema:sample_id "biostride:sample_chd1_ncp_complex_001" ;
+    biostride_schema:vitrification_method "plunge_freezing" .
 
 biostride:prep_ncp_grid_001 a biostride_schema:SamplePreparation ;
     dcterms:title "Nucleosome grid preparation for cryo-EM" ;
+    biostride_schema:blot_time "3.0"^^xsd:float ;
     biostride_schema:description "Grid preparation for nucleosome imaging" ;
+    biostride_schema:grid_type "quantifoil" ;
     biostride_schema:operator_id "chromatin_lab_member_001" ;
     biostride_schema:preparation_date "2024-05-10" ;
     biostride_schema:preparation_type "cryo_em" ;
     biostride_schema:protocol_description "Quantifoil R2/2 grids, glow discharged, 3µL sample applied, blotted 3s" ;
-    biostride_schema:sample_id "biostride:sample_nucleosome_001" .
+    biostride_schema:sample_id "biostride:sample_nucleosome_001" ;
+    biostride_schema:vitrification_method "plunge_freezing" .
 
 biostride:sample_chd1_001 a biostride_schema:Sample ;
     dcterms:title "Chromodomain helicase CHD1" ;

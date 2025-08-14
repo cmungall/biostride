@@ -245,6 +245,96 @@ classes:
         range: string
       protocol_description:
         description: "Detailed protocol description"
+      # Cryo-EM specific fields
+      grid_type:
+        description: "Type of EM grid used (for cryo-EM preparations)"
+        range: GridTypeEnum
+        required: false
+      support_film:
+        description: "Support film type (for cryo-EM preparations)"
+        range: string
+        required: false
+      hole_size:
+        description: "Hole size in micrometers (for cryo-EM preparations)"
+        range: float
+        minimum_value: 0.5
+        maximum_value: 5.0
+        required: false
+      vitrification_method:
+        description: "Method used for vitrification (for cryo-EM preparations)"
+        range: VitrificationMethodEnum
+        required: false
+      blot_time:
+        description: "Blotting time in seconds (for cryo-EM preparations)"
+        range: float
+        minimum_value: 0.5
+        maximum_value: 10.0
+        required: false
+      blot_force:
+        description: "Blotting force setting (for cryo-EM preparations)"
+        range: integer
+        required: false
+      humidity_percentage:
+        description: "Chamber humidity during vitrification (for cryo-EM preparations)"
+        range: float
+        minimum_value: 0
+        maximum_value: 100
+        required: false
+      plasma_treatment:
+        description: "Plasma treatment details (for cryo-EM preparations)"
+        range: string
+        required: false
+      # X-ray crystallography specific fields
+      crystallization_method:
+        description: "Method used for crystallization (for X-ray preparations)"
+        range: CrystallizationMethodEnum
+        required: false
+      crystallization_conditions:
+        description: "Detailed crystallization conditions (for X-ray preparations)"
+        range: string
+        required: false
+      crystal_size:
+        description: "Crystal dimensions in micrometers (for X-ray preparations)"
+        range: string
+        required: false
+      cryoprotectant:
+        description: "Cryoprotectant used (for X-ray preparations)"
+        range: string
+        required: false
+      cryoprotectant_concentration:
+        description: "Cryoprotectant concentration percentage (for X-ray preparations)"
+        range: float
+        required: false
+      mounting_method:
+        description: "Crystal mounting method (for X-ray preparations)"
+        range: string
+        required: false
+      flash_cooling_method:
+        description: "Flash cooling protocol (for X-ray preparations)"
+        range: string
+        required: false
+      # SAXS/WAXS specific fields
+      concentration_series:
+        description: "Concentration values for series measurements (for SAXS preparations)"
+        range: float
+        multivalued: true
+        required: false
+      buffer_matching_protocol:
+        description: "Protocol for buffer matching (for SAXS preparations)"
+        range: string
+        required: false
+      sample_cell_type:
+        description: "Type of sample cell used (for SAXS preparations)"
+        range: string
+        required: false
+      cell_path_length:
+        description: "Path length in mm (for SAXS preparations)"
+        range: float
+        required: false
+      temperature_control:
+        description: "Temperature control settings (for SAXS preparations)"
+        range: string
+        required: false
 
   Instrument:
     is_a: NamedThing
@@ -919,6 +1009,8 @@ enums:
         description: "Ultrathin carbon film"
       gold:
         description: "Gold grid"
+      ultraufoil:
+        description: "UltraAuFoil holey gold grid"
 
   VitrificationMethodEnum:
     description: "Methods for vitrification"

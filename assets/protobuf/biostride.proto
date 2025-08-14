@@ -308,6 +308,26 @@ message SamplePreparation
   string preparationDate = 0
   string operatorId = 0
   string protocolDescription = 0
+  gridTypeEnum gridType = 0
+  string supportFilm = 0
+  float holeSize = 0
+  vitrificationMethodEnum vitrificationMethod = 0
+  float blotTime = 0
+  integer blotForce = 0
+  float humidityPercentage = 0
+  string plasmaTreatment = 0
+  crystallizationMethodEnum crystallizationMethod = 0
+  string crystallizationConditions = 0
+  string crystalSize = 0
+  string cryoprotectant = 0
+  float cryoprotectantConcentration = 0
+  string mountingMethod = 0
+  string flashCoolingMethod = 0
+ repeated  float concentrationSeries = 0
+  string bufferMatchingProtocol = 0
+  string sampleCellType = 0
+  float cellPathLength = 0
+  string temperatureControl = 0
  }
 // SAXS/WAXS instrument specifications
 message SAXSInstrument

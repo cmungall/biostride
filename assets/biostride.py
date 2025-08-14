@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-13T23:28:40
+# Generation date: 2025-08-14T23:06:56
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -467,6 +467,26 @@ class SamplePreparation(NamedThing):
     preparation_date: Optional[str] = None
     operator_id: Optional[str] = None
     protocol_description: Optional[str] = None
+    grid_type: Optional[Union[str, "GridTypeEnum"]] = None
+    support_film: Optional[str] = None
+    hole_size: Optional[float] = None
+    vitrification_method: Optional[Union[str, "VitrificationMethodEnum"]] = None
+    blot_time: Optional[float] = None
+    blot_force: Optional[int] = None
+    humidity_percentage: Optional[float] = None
+    plasma_treatment: Optional[str] = None
+    crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
+    crystallization_conditions: Optional[str] = None
+    crystal_size: Optional[str] = None
+    cryoprotectant: Optional[str] = None
+    cryoprotectant_concentration: Optional[float] = None
+    mounting_method: Optional[str] = None
+    flash_cooling_method: Optional[str] = None
+    concentration_series: Optional[Union[float, list[float]]] = empty_list()
+    buffer_matching_protocol: Optional[str] = None
+    sample_cell_type: Optional[str] = None
+    cell_path_length: Optional[float] = None
+    temperature_control: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -492,6 +512,67 @@ class SamplePreparation(NamedThing):
 
         if self.protocol_description is not None and not isinstance(self.protocol_description, str):
             self.protocol_description = str(self.protocol_description)
+
+        if self.grid_type is not None and not isinstance(self.grid_type, GridTypeEnum):
+            self.grid_type = GridTypeEnum(self.grid_type)
+
+        if self.support_film is not None and not isinstance(self.support_film, str):
+            self.support_film = str(self.support_film)
+
+        if self.hole_size is not None and not isinstance(self.hole_size, float):
+            self.hole_size = float(self.hole_size)
+
+        if self.vitrification_method is not None and not isinstance(self.vitrification_method, VitrificationMethodEnum):
+            self.vitrification_method = VitrificationMethodEnum(self.vitrification_method)
+
+        if self.blot_time is not None and not isinstance(self.blot_time, float):
+            self.blot_time = float(self.blot_time)
+
+        if self.blot_force is not None and not isinstance(self.blot_force, int):
+            self.blot_force = int(self.blot_force)
+
+        if self.humidity_percentage is not None and not isinstance(self.humidity_percentage, float):
+            self.humidity_percentage = float(self.humidity_percentage)
+
+        if self.plasma_treatment is not None and not isinstance(self.plasma_treatment, str):
+            self.plasma_treatment = str(self.plasma_treatment)
+
+        if self.crystallization_method is not None and not isinstance(self.crystallization_method, CrystallizationMethodEnum):
+            self.crystallization_method = CrystallizationMethodEnum(self.crystallization_method)
+
+        if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, str):
+            self.crystallization_conditions = str(self.crystallization_conditions)
+
+        if self.crystal_size is not None and not isinstance(self.crystal_size, str):
+            self.crystal_size = str(self.crystal_size)
+
+        if self.cryoprotectant is not None and not isinstance(self.cryoprotectant, str):
+            self.cryoprotectant = str(self.cryoprotectant)
+
+        if self.cryoprotectant_concentration is not None and not isinstance(self.cryoprotectant_concentration, float):
+            self.cryoprotectant_concentration = float(self.cryoprotectant_concentration)
+
+        if self.mounting_method is not None and not isinstance(self.mounting_method, str):
+            self.mounting_method = str(self.mounting_method)
+
+        if self.flash_cooling_method is not None and not isinstance(self.flash_cooling_method, str):
+            self.flash_cooling_method = str(self.flash_cooling_method)
+
+        if not isinstance(self.concentration_series, list):
+            self.concentration_series = [self.concentration_series] if self.concentration_series is not None else []
+        self.concentration_series = [v if isinstance(v, float) else float(v) for v in self.concentration_series]
+
+        if self.buffer_matching_protocol is not None and not isinstance(self.buffer_matching_protocol, str):
+            self.buffer_matching_protocol = str(self.buffer_matching_protocol)
+
+        if self.sample_cell_type is not None and not isinstance(self.sample_cell_type, str):
+            self.sample_cell_type = str(self.sample_cell_type)
+
+        if self.cell_path_length is not None and not isinstance(self.cell_path_length, float):
+            self.cell_path_length = float(self.cell_path_length)
+
+        if self.temperature_control is not None and not isinstance(self.temperature_control, str):
+            self.temperature_control = str(self.temperature_control)
 
         super().__post_init__(**kwargs)
 
@@ -1818,6 +1899,9 @@ class GridTypeEnum(EnumDefinitionImpl):
     gold = PermissibleValue(
         text="gold",
         description="Gold grid")
+    ultraufoil = PermissibleValue(
+        text="ultraufoil",
+        description="UltraAuFoil holey gold grid")
 
     _defn = EnumDefinition(
         name="GridTypeEnum",
@@ -2292,6 +2376,66 @@ slots.samplePreparation__operator_id = Slot(uri=BIOSTRIDE_SCHEMA.operator_id, na
 
 slots.samplePreparation__protocol_description = Slot(uri=BIOSTRIDE_SCHEMA.protocol_description, name="samplePreparation__protocol_description", curie=BIOSTRIDE_SCHEMA.curie('protocol_description'),
                    model_uri=BIOSTRIDE_SCHEMA.samplePreparation__protocol_description, domain=None, range=Optional[str])
+
+slots.samplePreparation__grid_type = Slot(uri=BIOSTRIDE_SCHEMA.grid_type, name="samplePreparation__grid_type", curie=BIOSTRIDE_SCHEMA.curie('grid_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__grid_type, domain=None, range=Optional[Union[str, "GridTypeEnum"]])
+
+slots.samplePreparation__support_film = Slot(uri=BIOSTRIDE_SCHEMA.support_film, name="samplePreparation__support_film", curie=BIOSTRIDE_SCHEMA.curie('support_film'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__support_film, domain=None, range=Optional[str])
+
+slots.samplePreparation__hole_size = Slot(uri=BIOSTRIDE_SCHEMA.hole_size, name="samplePreparation__hole_size", curie=BIOSTRIDE_SCHEMA.curie('hole_size'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__hole_size, domain=None, range=Optional[float])
+
+slots.samplePreparation__vitrification_method = Slot(uri=BIOSTRIDE_SCHEMA.vitrification_method, name="samplePreparation__vitrification_method", curie=BIOSTRIDE_SCHEMA.curie('vitrification_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__vitrification_method, domain=None, range=Optional[Union[str, "VitrificationMethodEnum"]])
+
+slots.samplePreparation__blot_time = Slot(uri=BIOSTRIDE_SCHEMA.blot_time, name="samplePreparation__blot_time", curie=BIOSTRIDE_SCHEMA.curie('blot_time'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__blot_time, domain=None, range=Optional[float])
+
+slots.samplePreparation__blot_force = Slot(uri=BIOSTRIDE_SCHEMA.blot_force, name="samplePreparation__blot_force", curie=BIOSTRIDE_SCHEMA.curie('blot_force'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__blot_force, domain=None, range=Optional[int])
+
+slots.samplePreparation__humidity_percentage = Slot(uri=BIOSTRIDE_SCHEMA.humidity_percentage, name="samplePreparation__humidity_percentage", curie=BIOSTRIDE_SCHEMA.curie('humidity_percentage'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__humidity_percentage, domain=None, range=Optional[float])
+
+slots.samplePreparation__plasma_treatment = Slot(uri=BIOSTRIDE_SCHEMA.plasma_treatment, name="samplePreparation__plasma_treatment", curie=BIOSTRIDE_SCHEMA.curie('plasma_treatment'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__plasma_treatment, domain=None, range=Optional[str])
+
+slots.samplePreparation__crystallization_method = Slot(uri=BIOSTRIDE_SCHEMA.crystallization_method, name="samplePreparation__crystallization_method", curie=BIOSTRIDE_SCHEMA.curie('crystallization_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__crystallization_method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+
+slots.samplePreparation__crystallization_conditions = Slot(uri=BIOSTRIDE_SCHEMA.crystallization_conditions, name="samplePreparation__crystallization_conditions", curie=BIOSTRIDE_SCHEMA.curie('crystallization_conditions'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__crystallization_conditions, domain=None, range=Optional[str])
+
+slots.samplePreparation__crystal_size = Slot(uri=BIOSTRIDE_SCHEMA.crystal_size, name="samplePreparation__crystal_size", curie=BIOSTRIDE_SCHEMA.curie('crystal_size'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__crystal_size, domain=None, range=Optional[str])
+
+slots.samplePreparation__cryoprotectant = Slot(uri=BIOSTRIDE_SCHEMA.cryoprotectant, name="samplePreparation__cryoprotectant", curie=BIOSTRIDE_SCHEMA.curie('cryoprotectant'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__cryoprotectant, domain=None, range=Optional[str])
+
+slots.samplePreparation__cryoprotectant_concentration = Slot(uri=BIOSTRIDE_SCHEMA.cryoprotectant_concentration, name="samplePreparation__cryoprotectant_concentration", curie=BIOSTRIDE_SCHEMA.curie('cryoprotectant_concentration'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__cryoprotectant_concentration, domain=None, range=Optional[float])
+
+slots.samplePreparation__mounting_method = Slot(uri=BIOSTRIDE_SCHEMA.mounting_method, name="samplePreparation__mounting_method", curie=BIOSTRIDE_SCHEMA.curie('mounting_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__mounting_method, domain=None, range=Optional[str])
+
+slots.samplePreparation__flash_cooling_method = Slot(uri=BIOSTRIDE_SCHEMA.flash_cooling_method, name="samplePreparation__flash_cooling_method", curie=BIOSTRIDE_SCHEMA.curie('flash_cooling_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__flash_cooling_method, domain=None, range=Optional[str])
+
+slots.samplePreparation__concentration_series = Slot(uri=BIOSTRIDE_SCHEMA.concentration_series, name="samplePreparation__concentration_series", curie=BIOSTRIDE_SCHEMA.curie('concentration_series'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__concentration_series, domain=None, range=Optional[Union[float, list[float]]])
+
+slots.samplePreparation__buffer_matching_protocol = Slot(uri=BIOSTRIDE_SCHEMA.buffer_matching_protocol, name="samplePreparation__buffer_matching_protocol", curie=BIOSTRIDE_SCHEMA.curie('buffer_matching_protocol'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__buffer_matching_protocol, domain=None, range=Optional[str])
+
+slots.samplePreparation__sample_cell_type = Slot(uri=BIOSTRIDE_SCHEMA.sample_cell_type, name="samplePreparation__sample_cell_type", curie=BIOSTRIDE_SCHEMA.curie('sample_cell_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__sample_cell_type, domain=None, range=Optional[str])
+
+slots.samplePreparation__cell_path_length = Slot(uri=BIOSTRIDE_SCHEMA.cell_path_length, name="samplePreparation__cell_path_length", curie=BIOSTRIDE_SCHEMA.curie('cell_path_length'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__cell_path_length, domain=None, range=Optional[float])
+
+slots.samplePreparation__temperature_control = Slot(uri=BIOSTRIDE_SCHEMA.temperature_control, name="samplePreparation__temperature_control", curie=BIOSTRIDE_SCHEMA.curie('temperature_control'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__temperature_control, domain=None, range=Optional[str])
 
 slots.instrument__instrument_code = Slot(uri=BIOSTRIDE_SCHEMA.instrument_code, name="instrument__instrument_code", curie=BIOSTRIDE_SCHEMA.curie('instrument_code'),
                    model_uri=BIOSTRIDE_SCHEMA.instrument__instrument_code, domain=None, range=str)

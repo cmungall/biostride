@@ -983,7 +983,8 @@
                 "quantifoil",
                 "lacey_carbon",
                 "ultrathin_carbon",
-                "gold"
+                "gold",
+                "ultraufoil"
             ],
             "title": "GridTypeEnum",
             "type": "string"
@@ -1943,9 +1944,110 @@
             "additionalProperties": false,
             "description": "A process that prepares a sample for imaging",
             "properties": {
+                "blot_force": {
+                    "description": "Blotting force setting (for cryo-EM preparations)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "blot_time": {
+                    "description": "Blotting time in seconds (for cryo-EM preparations)",
+                    "maximum": 10.0,
+                    "minimum": 0.5,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "buffer_matching_protocol": {
+                    "description": "Protocol for buffer matching (for SAXS preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cell_path_length": {
+                    "description": "Path length in mm (for SAXS preparations)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "concentration_series": {
+                    "description": "Concentration values for series measurements (for SAXS preparations)",
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "cryoprotectant": {
+                    "description": "Cryoprotectant used (for X-ray preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cryoprotectant_concentration": {
+                    "description": "Cryoprotectant concentration percentage (for X-ray preparations)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "crystal_size": {
+                    "description": "Crystal dimensions in micrometers (for X-ray preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystallization_conditions": {
+                    "description": "Detailed crystallization conditions (for X-ray preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "crystallization_method": {
+                    "$ref": "#/$defs/CrystallizationMethodEnum",
+                    "description": "Method used for crystallization (for X-ray preparations)"
+                },
                 "description": {
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "flash_cooling_method": {
+                    "description": "Flash cooling protocol (for X-ray preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grid_type": {
+                    "$ref": "#/$defs/GridTypeEnum",
+                    "description": "Type of EM grid used (for cryo-EM preparations)"
+                },
+                "hole_size": {
+                    "description": "Hole size in micrometers (for cryo-EM preparations)",
+                    "maximum": 5.0,
+                    "minimum": 0.5,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "humidity_percentage": {
+                    "description": "Chamber humidity during vitrification (for cryo-EM preparations)",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": [
+                        "number",
                         "null"
                     ]
                 },
@@ -1953,8 +2055,22 @@
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
                 },
+                "mounting_method": {
+                    "description": "Crystal mounting method (for X-ray preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "operator_id": {
                     "description": "Person who performed the preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "plasma_treatment": {
+                    "description": "Plasma treatment details (for cryo-EM preparations)",
                     "type": [
                         "string",
                         "null"
@@ -1978,15 +2094,40 @@
                         "null"
                     ]
                 },
+                "sample_cell_type": {
+                    "description": "Type of sample cell used (for SAXS preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "sample_id": {
                     "description": "Reference to the sample being prepared",
                     "type": "string"
+                },
+                "support_film": {
+                    "description": "Support film type (for cryo-EM preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temperature_control": {
+                    "description": "Temperature control settings (for SAXS preparations)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "title": {
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "vitrification_method": {
+                    "$ref": "#/$defs/VitrificationMethodEnum",
+                    "description": "Method used for vitrification (for cryo-EM preparations)"
                 }
             },
             "required": [
