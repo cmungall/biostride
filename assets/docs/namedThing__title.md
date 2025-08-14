@@ -19,6 +19,7 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Used by
 
  * [CryoEMInstrument](CryoEMInstrument.md)
+ * [CryoEMPreparation](CryoEMPreparation.md)
  * [DataFile](DataFile.md)
  * [Dataset](Dataset.md)
  * [ExperimentRun](ExperimentRun.md)
@@ -29,14 +30,17 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
  * [Image3D](Image3D.md)
  * [Instrument](Instrument.md)
  * [NamedThing](NamedThing.md)
+ * [OntologyTerm](OntologyTerm.md)
  * [OpticalImage](OpticalImage.md)
  * [SAXSInstrument](SAXSInstrument.md)
+ * [SAXSPreparation](SAXSPreparation.md)
  * [Sample](Sample.md)
  * [SamplePreparation](SamplePreparation.md)
  * [Study](Study.md)
  * [WorkflowRun](WorkflowRun.md)
  * [XRFImage](XRFImage.md)
  * [XRayInstrument](XRayInstrument.md)
+ * [XRayPreparation](XRayPreparation.md)
 
 ## Other properties
 

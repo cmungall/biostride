@@ -8,7 +8,7 @@ URI: [biostride_schema:experimentRun__instrument_id](https://w3id.org/biostride/
 
 ## Domain and Range
 
-None &#8594;  <sub>1..1</sub> [String](types/String.md)
+None &#8594;  <sub>1..1</sub> [Instrument](Instrument.md)
 
 ## Parents
 

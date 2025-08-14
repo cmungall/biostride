@@ -2,7 +2,7 @@
 # Testing protein expression preparation
 
 id: "https://example.org/kibler2024/prep/expression"
-preparation_type: protein_expression
+preparation_type: SamplePreparation
 sample_id: "https://example.org/kibler2024/sample/hetBGL03-15-18"
 preparation_date: "2024-01-15"
 protocol_description: |

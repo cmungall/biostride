@@ -6,7 +6,11 @@ Storage conditions for samples
 URI: [biostride_schema:StorageConditions](https://w3id.org/biostride/schema/StorageConditions)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20storage_conditions%200..1>[StorageConditions&#124;temperature:float%20%3F;temperature_unit:TemperatureUnitEnum%20%3F;duration:string%20%3F;atmosphere:string%20%3F],[Sample])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20storage_conditions%200..1>[StorageConditions&#124;temperature:float%20%3F;temperature_unit:TemperatureUnitEnum%20%3F;duration:string%20%3F;atmosphere:string%20%3F],[Sample])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20storage_conditions%200..1>[StorageConditions&#124;temperature:float%20%3F;temperature_unit:TemperatureUnitEnum%20%3F;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[StorageConditions],[Sample],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20storage_conditions%200..1>[StorageConditions&#124;temperature:float%20%3F;temperature_unit:TemperatureUnitEnum%20%3F;duration:string%20%3F;atmosphere:string%20%3F;description(i):string%20%3F],[AttributeGroup]^-[StorageConditions],[Sample],[AttributeGroup])
+
+## Parents
+
+ *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
 
 ## Referenced by Class
 
@@ -28,4 +32,9 @@ URI: [biostride_schema:StorageConditions](https://w3id.org/biostride/schema/Stor
      * Range: [String](types/String.md)
  * [➞atmosphere](storageConditions__atmosphere.md)  <sub>0..1</sub>
      * Description: Storage atmosphere conditions
+     * Range: [String](types/String.md)
+
+### Inherited from AttributeGroup:
+
+ * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

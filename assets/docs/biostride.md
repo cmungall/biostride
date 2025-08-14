@@ -88,12 +88,16 @@ A multimodal plant imaging study might combine:
 
 ### Classes
 
- * [BufferComposition](BufferComposition.md) - Buffer composition for sample storage
- * [ComputeResources](ComputeResources.md) - Computational resources used
- * [DataCollectionStrategy](DataCollectionStrategy.md) - Strategy for data collection
- * [ExperimentalConditions](ExperimentalConditions.md) - Environmental and experimental conditions
- * [ImageFeature](ImageFeature.md)
- * [MolecularComposition](MolecularComposition.md) - Molecular composition of a sample
+ * [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
+     * [BufferComposition](BufferComposition.md) - Buffer composition for sample storage
+     * [ComputeResources](ComputeResources.md) - Computational resources used
+     * [DataCollectionStrategy](DataCollectionStrategy.md) - Strategy for data collection
+     * [ExperimentalConditions](ExperimentalConditions.md) - Environmental and experimental conditions
+     * [ImageFeature](ImageFeature.md)
+     * [MolecularComposition](MolecularComposition.md) - Molecular composition of a sample
+     * [QualityMetrics](QualityMetrics.md) - Quality metrics for experiments
+     * [StorageConditions](StorageConditions.md) - Storage conditions for samples
+     * [TechniqueSpecificPreparation](TechniqueSpecificPreparation.md) - Base class for technique-specific preparation details
  * [NamedThing](NamedThing.md) - A named thing
      * [DataFile](DataFile.md) - A data file generated or used in the study
      * [Dataset](Dataset.md) - A collection of studies
@@ -109,23 +113,21 @@ A multimodal plant imaging study might combine:
          * [CryoEMInstrument](CryoEMInstrument.md) - Cryo-EM microscope specifications
          * [SAXSInstrument](SAXSInstrument.md) - SAXS/WAXS instrument specifications
          * [XRayInstrument](XRayInstrument.md) - X-ray diffractometer or synchrotron beamline specifications
+     * [OntologyTerm](OntologyTerm.md)
      * [Sample](Sample.md) - A biological sample used in structural biology experiments
      * [SamplePreparation](SamplePreparation.md) - A process that prepares a sample for imaging
+         * [CryoEMPreparation](CryoEMPreparation.md) - Cryo-EM specific sample preparation
+         * [SAXSPreparation](SAXSPreparation.md) - SAXS/WAXS specific preparation
+         * [XRayPreparation](XRayPreparation.md) - X-ray crystallography specific preparation
      * [Study](Study.md)
      * [WorkflowRun](WorkflowRun.md) - A computational processing workflow execution
- * [OntologyTerm](OntologyTerm.md)
- * [QualityMetrics](QualityMetrics.md) - Quality metrics for experiments
- * [StorageConditions](StorageConditions.md) - Storage conditions for samples
- * [TechniqueSpecificPreparation](TechniqueSpecificPreparation.md) - Base class for technique-specific preparation details
-     * [CryoEMPreparation](CryoEMPreparation.md) - Cryo-EM specific sample preparation
-     * [SAXSPreparation](SAXSPreparation.md) - SAXS/WAXS specific preparation
-     * [XRayPreparation](XRayPreparation.md) - X-ray crystallography specific preparation
 
 ### Mixins
 
 
 ### Slots
 
+ * [➞description](attributeGroup__description.md)
  * [➞additives](bufferComposition__additives.md) - Additional additives in the buffer
  * [➞components](bufferComposition__components.md) - Buffer components and their concentrations
  * [➞ph](bufferComposition__ph.md) - pH of the buffer
@@ -162,10 +164,11 @@ A multimodal plant imaging study might combine:
  * [➞file_name](dataFile__file_name.md) - Name of the file
  * [➞file_path](dataFile__file_path.md) - Path to the file
  * [➞file_size_bytes](dataFile__file_size_bytes.md) - File size in bytes
+ * [➞instruments](dataset__instruments.md)
  * [➞keywords](dataset__keywords.md)
  * [➞studies](dataset__studies.md)
  * [➞data_collection_strategy](experimentRun__data_collection_strategy.md) - Strategy for data collection
- * [➞experiment_code](experimentRun__experiment_code.md) - Unique experiment identifier
+ * [➞experiment_code](experimentRun__experiment_code.md) - Human-friendly laboratory or facility identifier for the experiment (e.g., 'SIBYLS-2024-02-01-hetBGL', 'CRYOEM-RUN-240815-001'). Used for local tracking and cross-referencing within laboratory systems.
  * [➞experiment_date](experimentRun__experiment_date.md) - Date of the experiment
  * [➞experimental_conditions](experimentRun__experimental_conditions.md) - Environmental and experimental conditions
  * [➞instrument_id](experimentRun__instrument_id.md) - Reference to the instrument used
@@ -212,17 +215,16 @@ A multimodal plant imaging study might combine:
  * [➞pixel_size](image__pixel_size.md) - Pixel size in Angstroms
  * [➞current_status](instrument__current_status.md) - Current operational status
  * [➞installation_date](instrument__installation_date.md) - Date of instrument installation
- * [➞instrument_code](instrument__instrument_code.md) - Unique identifier code for the instrument
+ * [➞instrument_code](instrument__instrument_code.md) - Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
  * [➞manufacturer](instrument__manufacturer.md) - Instrument manufacturer
  * [➞model](instrument__model.md) - Instrument model
  * [➞ligands](molecularComposition__ligands.md) - Bound ligands or cofactors
  * [➞modifications](molecularComposition__modifications.md) - Post-translational modifications or chemical modifications
  * [➞sequences](molecularComposition__sequences.md) - Amino acid or nucleotide sequences
  * [➞description](namedThing__description.md)
- * [➞id](namedThing__id.md)
+ * [➞id](namedThing__id.md) - Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
  * [➞title](namedThing__title.md)
  * [➞definition](ontologyTerm__definition.md)
- * [➞id](ontologyTerm__id.md)
  * [➞label](ontologyTerm__label.md)
  * [➞ontology](ontologyTerm__ontology.md)
  * [➞color_channels](opticalImage__color_channels.md) - Color channels present (e.g., RGB, grayscale)
@@ -253,16 +255,19 @@ A multimodal plant imaging study might combine:
  * [➞preparation_type](samplePreparation__preparation_type.md) - Type of sample preparation
  * [➞protocol_description](samplePreparation__protocol_description.md) - Detailed protocol description
  * [➞sample_id](samplePreparation__sample_id.md) - Reference to the sample being prepared
+ * [➞anatomy](sample__anatomy.md) - Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
  * [➞buffer_composition](sample__buffer_composition.md) - Buffer composition including pH, salts, additives
+ * [➞cell_type](sample__cell_type.md) - Cell type if applicable (e.g., CL:0000057 for fibroblast)
  * [➞concentration](sample__concentration.md) - Sample concentration in mg/mL or µM
  * [➞concentration_unit](sample__concentration_unit.md) - Unit of concentration measurement
  * [➞molecular_composition](sample__molecular_composition.md) - Description of molecular composition including sequences, modifications, ligands
  * [➞molecular_weight](sample__molecular_weight.md) - Molecular weight in kDa
+ * [➞organism](sample__organism.md) - Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)
  * [➞parent_sample_id](sample__parent_sample_id.md) - Reference to parent sample for derivation tracking
  * [➞preparation_method](sample__preparation_method.md) - Method used to prepare the sample
  * [➞purity_percentage](sample__purity_percentage.md) - Sample purity as percentage
  * [➞quality_metrics](sample__quality_metrics.md) - Quality control metrics for the sample
- * [➞sample_code](sample__sample_code.md) - Unique identifier code for the sample
+ * [➞sample_code](sample__sample_code.md) - Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
  * [➞sample_type](sample__sample_type.md) - Type of biological sample
  * [➞storage_conditions](sample__storage_conditions.md) - Storage conditions for the sample
  * [➞atmosphere](storageConditions__atmosphere.md) - Storage atmosphere conditions
@@ -284,7 +289,7 @@ A multimodal plant imaging study might combine:
  * [➞software_name](workflowRun__software_name.md) - Software used for processing
  * [➞software_version](workflowRun__software_version.md) - Software version
  * [➞started_at](workflowRun__started_at.md) - Workflow start time
- * [➞workflow_code](workflowRun__workflow_code.md) - Unique workflow identifier
+ * [➞workflow_code](workflowRun__workflow_code.md) - Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
  * [➞workflow_type](workflowRun__workflow_type.md) - Type of processing workflow
  * [➞beam_energy](xRFImage__beam_energy.md) - X-ray beam energy in keV
  * [➞beam_size](xRFImage__beam_size.md) - X-ray beam size in micrometers

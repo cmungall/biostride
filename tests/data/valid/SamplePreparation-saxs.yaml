@@ -1,0 +1,17 @@
+id: biostride:sample_prep_saxs_001
+title: "SAXS sample preparation"
+description: "Buffer-matched SAXS sample preparation with concentration series"
+preparation_type: SAXSPreparation
+sample_id: "biostride:sample_protein_001"
+preparation_date: "2024-01-25"
+operator_id: "researcher_003"
+protocol_description: "Serial dilution series with buffer matching for background subtraction"
+concentration_series:
+  - 1.0
+  - 2.0
+  - 5.0
+  - 10.0
+buffer_matching_protocol: "Identical buffer used for sample and background measurements"
+sample_cell_type: "Quartz capillary"
+cell_path_length: 1.5
+temperature_control: "20°C ± 0.1°C with Peltier cooling"

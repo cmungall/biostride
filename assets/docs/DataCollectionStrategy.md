@@ -6,7 +6,11 @@ Strategy for data collection
 URI: [biostride_schema:DataCollectionStrategy](https://w3id.org/biostride/schema/DataCollectionStrategy)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20data_collection_strategy%200..1>[DataCollectionStrategy&#124;collection_mode:CollectionModeEnum%20%3F;total_frames:integer%20%3F;frame_rate:float%20%3F;total_dose:float%20%3F;dose_per_frame:float%20%3F],[ExperimentRun])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20data_collection_strategy%200..1>[DataCollectionStrategy&#124;collection_mode:CollectionModeEnum%20%3F;total_frames:integer%20%3F;frame_rate:float%20%3F;total_dose:float%20%3F;dose_per_frame:float%20%3F],[ExperimentRun])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20data_collection_strategy%200..1>[DataCollectionStrategy&#124;collection_mode:CollectionModeEnum%20%3F;total_frames:integer%20%3F;frame_rate:float%20%3F;total_dose:float%20%3F;dose_per_frame:float%20%3F;description(i):string%20%3F],[AttributeGroup]^-[DataCollectionStrategy],[ExperimentRun],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[ExperimentRun]++-%20data_collection_strategy%200..1>[DataCollectionStrategy&#124;collection_mode:CollectionModeEnum%20%3F;total_frames:integer%20%3F;frame_rate:float%20%3F;total_dose:float%20%3F;dose_per_frame:float%20%3F;description(i):string%20%3F],[AttributeGroup]^-[DataCollectionStrategy],[ExperimentRun],[AttributeGroup])
+
+## Parents
+
+ *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
 
 ## Referenced by Class
 
@@ -32,3 +36,8 @@ URI: [biostride_schema:DataCollectionStrategy](https://w3id.org/biostride/schema
  * [➞dose_per_frame](dataCollectionStrategy__dose_per_frame.md)  <sub>0..1</sub>
      * Description: Dose per frame
      * Range: [Float](types/Float.md)
+
+### Inherited from AttributeGroup:
+
+ * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
+     * Range: [String](types/String.md)

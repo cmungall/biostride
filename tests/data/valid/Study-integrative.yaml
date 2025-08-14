@@ -92,29 +92,55 @@ sample_preparations:
   - id: biostride:prep_ncp_grid_001
     title: "Nucleosome grid preparation for cryo-EM"
     description: "Grid preparation for nucleosome imaging"
-    preparation_type: cryo_em
+    preparation_type: CryoEMPreparation
     sample_id: "biostride:sample_nucleosome_001"
     preparation_date: "2024-05-10"
     operator_id: "chromatin_lab_member_001"
     protocol_description: "Quantifoil R2/2 grids, glow discharged, 3µL sample applied, blotted 3s"
+    grid_type: quantifoil
+    support_film: "Holey carbon film"
+    hole_size: 2.0
+    vitrification_method: plunge_freezing
+    blot_time: 3.0
+    blot_force: 2
+    humidity_percentage: 100
+    chamber_temperature: 4
+    plasma_treatment: "Glow discharged at 20 mA for 20 seconds"
   
   - id: biostride:prep_chd1_saxs_001
     title: "CHD1 SAXS sample preparation"
     description: "Preparation for SAXS analysis of CHD1"
-    preparation_type: saxs
+    preparation_type: SAXSPreparation
     sample_id: "biostride:sample_chd1_001"
     preparation_date: "2024-05-11"
     operator_id: "saxs_specialist_001"
     protocol_description: "Concentration series 0.5, 1.0, 2.0 mg/mL prepared"
+    concentration_series:
+      - 0.5
+      - 1.0
+      - 2.0
+    buffer_matching_protocol: "Buffer blanks measured for each concentration"
+    sample_cell_type: "Quartz capillary"
+    cell_path_length: 1.0
+    temperature_control: "20°C ± 0.1°C"
   
   - id: biostride:prep_complex_cryo_001
     title: "CHD1-nucleosome complex grid preparation"
     description: "Cryo-EM grid preparation for complex"
-    preparation_type: cryo_em
+    preparation_type: CryoEMPreparation
     sample_id: "biostride:sample_chd1_ncp_complex_001"
     preparation_date: "2024-05-12"
     operator_id: "chromatin_lab_member_001"
     protocol_description: "UltrAuFoil grids to reduce preferred orientation"
+    grid_type: ultrathin_carbon
+    support_film: "Ultrathin continuous carbon"
+    hole_size: 1.2
+    vitrification_method: plunge_freezing
+    blot_time: 2.5
+    blot_force: 3
+    humidity_percentage: 95
+    chamber_temperature: 4
+    plasma_treatment: "Glow discharged at 15 mA for 30 seconds"
 
 instrument_runs:
   - id: biostride:exp_ncp_cryoem_001

@@ -6,7 +6,7 @@ An instrument used to collect data
 URI: [biostride_schema:Instrument](https://w3id.org/biostride/schema/Instrument)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayInstrument],[SAXSInstrument],[NamedThing],[Instrument&#124;instrument_code:string;manufacturer:string%20%3F;model:string%20%3F;installation_date:string%20%3F;current_status:InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F]^-[XRayInstrument],[Instrument]^-[SAXSInstrument],[Instrument]^-[CryoEMInstrument],[NamedThing]^-[Instrument],[CryoEMInstrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayInstrument],[SAXSInstrument],[NamedThing],[Instrument&#124;instrument_code:string;manufacturer:string%20%3F;model:string%20%3F;installation_date:string%20%3F;current_status:InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F]^-[XRayInstrument],[Instrument]^-[SAXSInstrument],[Instrument]^-[CryoEMInstrument],[NamedThing]^-[Instrument],[CryoEMInstrument])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayInstrument],[SAXSInstrument],[NamedThing],[Dataset]++-%20instruments%200..*>[Instrument&#124;instrument_code:string;manufacturer:string%20%3F;model:string%20%3F;installation_date:string%20%3F;current_status:InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[ExperimentRun]-%20instrument_id%201..1>[Instrument],[Instrument]^-[XRayInstrument],[Instrument]^-[SAXSInstrument],[Instrument]^-[CryoEMInstrument],[NamedThing]^-[Instrument],[ExperimentRun],[Dataset],[CryoEMInstrument])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayInstrument],[SAXSInstrument],[NamedThing],[Dataset]++-%20instruments%200..*>[Instrument&#124;instrument_code:string;manufacturer:string%20%3F;model:string%20%3F;installation_date:string%20%3F;current_status:InstrumentStatusEnum%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[ExperimentRun]-%20instrument_id%201..1>[Instrument],[Instrument]^-[XRayInstrument],[Instrument]^-[SAXSInstrument],[Instrument]^-[CryoEMInstrument],[NamedThing]^-[Instrument],[ExperimentRun],[Dataset],[CryoEMInstrument])
 
 ## Parents
 
@@ -20,6 +20,8 @@ URI: [biostride_schema:Instrument](https://w3id.org/biostride/schema/Instrument)
 
 ## Referenced by Class
 
+ *  **None** *[➞instruments](dataset__instruments.md)*  <sub>0..\*</sub>  **[Instrument](Instrument.md)**
+ *  **None** *[➞instrument_id](experimentRun__instrument_id.md)*  <sub>1..1</sub>  **[Instrument](Instrument.md)**
 
 ## Attributes
 
@@ -27,7 +29,7 @@ URI: [biostride_schema:Instrument](https://w3id.org/biostride/schema/Instrument)
 ### Own
 
  * [➞instrument_code](instrument__instrument_code.md)  <sub>1..1</sub>
-     * Description: Unique identifier code for the instrument
+     * Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
      * Range: [String](types/String.md)
  * [➞manufacturer](instrument__manufacturer.md)  <sub>0..1</sub>
      * Description: Instrument manufacturer
@@ -45,6 +47,7 @@ URI: [biostride_schema:Instrument](https://w3id.org/biostride/schema/Instrument)
 ### Inherited from NamedThing:
 
  * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
      * Range: [Uriorcurie](types/Uriorcurie.md)
  * [➞title](namedThing__title.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

@@ -22,7 +22,7 @@ URI: [biostride_schema:WorkflowRun](https://w3id.org/biostride/schema/WorkflowRu
 ### Own
 
  * [➞workflow_code](workflowRun__workflow_code.md)  <sub>1..1</sub>
-     * Description: Unique workflow identifier
+     * Description: Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
      * Range: [String](types/String.md)
  * [➞workflow_type](workflowRun__workflow_type.md)  <sub>1..1</sub>
      * Description: Type of processing workflow
@@ -58,6 +58,7 @@ URI: [biostride_schema:WorkflowRun](https://w3id.org/biostride/schema/WorkflowRu
 ### Inherited from NamedThing:
 
  * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
      * Range: [Uriorcurie](types/Uriorcurie.md)
  * [➞title](namedThing__title.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

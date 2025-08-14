@@ -1,7 +1,7 @@
 
 # Slot: workflow_code
 
-Unique workflow identifier
+Human-friendly identifier for the computational workflow run (e.g., 'MOTION-CORR-RUN-001', 'RELION-REFINE-240815'). Used for tracking processing pipelines and computational provenance.
 
 URI: [biostride_schema:workflowRun__workflow_code](https://w3id.org/biostride/schema/workflowRun__workflow_code)
 

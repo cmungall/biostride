@@ -52,6 +52,7 @@ URI: [biostride_schema:Image](https://w3id.org/biostride/schema/Image)
 ### Inherited from NamedThing:
 
  * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
      * Range: [Uriorcurie](types/Uriorcurie.md)
  * [➞title](namedThing__title.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

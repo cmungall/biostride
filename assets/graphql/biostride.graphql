@@ -218,7 +218,14 @@ type CryoEMInstrument
 
 type CryoEMPreparation
   {
+    id: Uriorcurie!
+    title: String
     description: String
+    preparationType: String!
+    sampleId: String!
+    preparationDate: String
+    operatorId: String
+    protocolDescription: String
     gridType: GridTypeEnum
     supportFilm: String
     holeSize: Float
@@ -489,7 +496,7 @@ type SamplePreparation
     id: Uriorcurie!
     title: String
     description: String
-    preparationType: PreparationTypeEnum!
+    preparationType: String!
     sampleId: String!
     preparationDate: String
     operatorId: String
@@ -516,7 +523,14 @@ type SAXSInstrument
 
 type SAXSPreparation
   {
+    id: Uriorcurie!
+    title: String
     description: String
+    preparationType: String!
+    sampleId: String!
+    preparationDate: String
+    operatorId: String
+    protocolDescription: String
     concentrationSeries: [Float]
     bufferMatchingProtocol: String
     sampleCellType: String
@@ -592,7 +606,14 @@ type XRayInstrument
 
 type XRayPreparation
   {
+    id: Uriorcurie!
+    title: String
     description: String
+    preparationType: String!
+    sampleId: String!
+    preparationDate: String
+    operatorId: String
+    protocolDescription: String
     crystallizationMethod: CrystallizationMethodEnum
     crystallizationConditions: String
     crystalSize: String

@@ -8,7 +8,7 @@ URI: [biostride_schema:samplePreparation__preparation_type](https://w3id.org/bio
 
 ## Domain and Range
 
-None &#8594;  <sub>1..1</sub> [PreparationTypeEnum](PreparationTypeEnum.md)
+None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Parents
 
@@ -18,4 +18,7 @@ None &#8594;  <sub>1..1</sub> [PreparationTypeEnum](PreparationTypeEnum.md)
 
 ## Used by
 
+ * [CryoEMPreparation](CryoEMPreparation.md)
+ * [SAXSPreparation](SAXSPreparation.md)
  * [SamplePreparation](SamplePreparation.md)
+ * [XRayPreparation](XRayPreparation.md)

@@ -6,11 +6,17 @@ A process that prepares a sample for imaging
 URI: [biostride_schema:SamplePreparation](https://w3id.org/biostride/schema/SamplePreparation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]++-%20sample_preparations%200..*>[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[NamedThing]^-[SamplePreparation],[Study],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[Study]++-%20sample_preparations%200..*>[SamplePreparation&#124;preparation_type:PreparationTypeEnum;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[NamedThing]^-[SamplePreparation],[Study],[NamedThing])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation],[Study]++-%20sample_preparations%200..*>[SamplePreparation&#124;preparation_type:string;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[SamplePreparation]^-[XRayPreparation],[SamplePreparation]^-[SAXSPreparation],[SamplePreparation]^-[CryoEMPreparation],[NamedThing]^-[SamplePreparation],[Study],[SAXSPreparation],[NamedThing],[CryoEMPreparation])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation],[Study]++-%20sample_preparations%200..*>[SamplePreparation&#124;preparation_type:string;sample_id:string;preparation_date:string%20%3F;operator_id:string%20%3F;protocol_description:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[SamplePreparation]^-[XRayPreparation],[SamplePreparation]^-[SAXSPreparation],[SamplePreparation]^-[CryoEMPreparation],[NamedThing]^-[SamplePreparation],[Study],[SAXSPreparation],[NamedThing],[CryoEMPreparation])
 
 ## Parents
 
  *  is_a: [NamedThing](NamedThing.md) - A named thing
+
+## Children
+
+ * [CryoEMPreparation](CryoEMPreparation.md) - Cryo-EM specific sample preparation
+ * [SAXSPreparation](SAXSPreparation.md) - SAXS/WAXS specific preparation
+ * [XRayPreparation](XRayPreparation.md) - X-ray crystallography specific preparation
 
 ## Referenced by Class
 
@@ -23,7 +29,7 @@ URI: [biostride_schema:SamplePreparation](https://w3id.org/biostride/schema/Samp
 
  * [➞preparation_type](samplePreparation__preparation_type.md)  <sub>1..1</sub>
      * Description: Type of sample preparation
-     * Range: [PreparationTypeEnum](PreparationTypeEnum.md)
+     * Range: [String](types/String.md)
  * [➞sample_id](samplePreparation__sample_id.md)  <sub>1..1</sub>
      * Description: Reference to the sample being prepared
      * Range: [String](types/String.md)
@@ -40,6 +46,7 @@ URI: [biostride_schema:SamplePreparation](https://w3id.org/biostride/schema/Samp
 ### Inherited from NamedThing:
 
  * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
      * Range: [Uriorcurie](types/Uriorcurie.md)
  * [➞title](namedThing__title.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

@@ -39,13 +39,14 @@ URI: [biostride_schema:SAXSInstrument](https://w3id.org/biostride/schema/SAXSIns
 ### Inherited from Instrument:
 
  * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
      * Range: [Uriorcurie](types/Uriorcurie.md)
  * [➞title](namedThing__title.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
  * [➞description](namedThing__description.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
  * [➞instrument_code](instrument__instrument_code.md)  <sub>1..1</sub>
-     * Description: Unique identifier code for the instrument
+     * Description: Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
      * Range: [String](types/String.md)
  * [➞manufacturer](instrument__manufacturer.md)  <sub>0..1</sub>
      * Description: Instrument manufacturer

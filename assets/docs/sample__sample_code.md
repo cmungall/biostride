@@ -1,7 +1,7 @@
 
 # Slot: sample_code
 
-Unique identifier code for the sample
+Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
 
 URI: [biostride_schema:sample__sample_code](https://w3id.org/biostride/schema/sample__sample_code)
 

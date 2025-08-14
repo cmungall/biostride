@@ -6,7 +6,7 @@ A biological sample used in structural biology experiments
 URI: [biostride_schema:Sample](https://w3id.org/biostride/schema/Sample)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StorageConditions],[Sample]<parent_sample_id%200..1-%20[Sample&#124;sample_code:string;sample_type:SampleTypeEnum;molecular_weight:float%20%3F;concentration:float%20%3F;concentration_unit:ConcentrationUnitEnum%20%3F;preparation_method:string%20%3F;purity_percentage:float%20%3F;quality_metrics:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[StorageConditions]<storage_conditions%200..1-++[Sample],[BufferComposition]<buffer_composition%200..1-++[Sample],[MolecularComposition]<molecular_composition%200..1-++[Sample],[Study]++-%20samples%200..*>[Sample],[NamedThing]^-[Sample],[Study],[NamedThing],[MolecularComposition],[BufferComposition])](https://yuml.me/diagram/nofunky;dir:TB/class/[StorageConditions],[Sample]<parent_sample_id%200..1-%20[Sample&#124;sample_code:string;sample_type:SampleTypeEnum;molecular_weight:float%20%3F;concentration:float%20%3F;concentration_unit:ConcentrationUnitEnum%20%3F;preparation_method:string%20%3F;purity_percentage:float%20%3F;quality_metrics:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[StorageConditions]<storage_conditions%200..1-++[Sample],[BufferComposition]<buffer_composition%200..1-++[Sample],[MolecularComposition]<molecular_composition%200..1-++[Sample],[Study]++-%20samples%200..*>[Sample],[NamedThing]^-[Sample],[Study],[NamedThing],[MolecularComposition],[BufferComposition])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[StorageConditions],[Sample]<parent_sample_id%200..1-%20[Sample&#124;sample_code:string;sample_type:SampleTypeEnum;molecular_weight:float%20%3F;concentration:float%20%3F;concentration_unit:ConcentrationUnitEnum%20%3F;preparation_method:string%20%3F;purity_percentage:float%20%3F;quality_metrics:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[OntologyTerm]<cell_type%200..1-%20[Sample],[OntologyTerm]<anatomy%200..1-%20[Sample],[OntologyTerm]<organism%200..1-%20[Sample],[StorageConditions]<storage_conditions%200..1-++[Sample],[BufferComposition]<buffer_composition%200..1-++[Sample],[MolecularComposition]<molecular_composition%200..1-++[Sample],[Study]++-%20samples%200..*>[Sample],[NamedThing]^-[Sample],[Study],[OntologyTerm],[NamedThing],[MolecularComposition],[BufferComposition])](https://yuml.me/diagram/nofunky;dir:TB/class/[StorageConditions],[Sample]<parent_sample_id%200..1-%20[Sample&#124;sample_code:string;sample_type:SampleTypeEnum;molecular_weight:float%20%3F;concentration:float%20%3F;concentration_unit:ConcentrationUnitEnum%20%3F;preparation_method:string%20%3F;purity_percentage:float%20%3F;quality_metrics:string%20%3F;id(i):uriorcurie;title(i):string%20%3F;description(i):string%20%3F],[OntologyTerm]<cell_type%200..1-%20[Sample],[OntologyTerm]<anatomy%200..1-%20[Sample],[OntologyTerm]<organism%200..1-%20[Sample],[StorageConditions]<storage_conditions%200..1-++[Sample],[BufferComposition]<buffer_composition%200..1-++[Sample],[MolecularComposition]<molecular_composition%200..1-++[Sample],[Study]++-%20samples%200..*>[Sample],[NamedThing]^-[Sample],[Study],[OntologyTerm],[NamedThing],[MolecularComposition],[BufferComposition])
 
 ## Parents
 
@@ -23,7 +23,7 @@ URI: [biostride_schema:Sample](https://w3id.org/biostride/schema/Sample)
 ### Own
 
  * [➞sample_code](sample__sample_code.md)  <sub>1..1</sub>
-     * Description: Unique identifier code for the sample
+     * Description: Human-friendly laboratory identifier or facility code for the sample (e.g., 'ALS-12.3.1-SAMPLE-001', 'LAB-PROT-2024-01'). Used for local reference and tracking within laboratory workflows.
      * Range: [String](types/String.md)
  * [➞sample_type](sample__sample_type.md)  <sub>1..1</sub>
      * Description: Type of biological sample
@@ -49,6 +49,15 @@ URI: [biostride_schema:Sample](https://w3id.org/biostride/schema/Sample)
  * [➞storage_conditions](sample__storage_conditions.md)  <sub>0..1</sub>
      * Description: Storage conditions for the sample
      * Range: [StorageConditions](StorageConditions.md)
+ * [➞organism](sample__organism.md)  <sub>0..1</sub>
+     * Description: Source organism for the sample (e.g., NCBITaxon:3702 for Arabidopsis thaliana)
+     * Range: [OntologyTerm](OntologyTerm.md)
+ * [➞anatomy](sample__anatomy.md)  <sub>0..1</sub>
+     * Description: Anatomical part or tissue (e.g., UBERON:0008945 for leaf)
+     * Range: [OntologyTerm](OntologyTerm.md)
+ * [➞cell_type](sample__cell_type.md)  <sub>0..1</sub>
+     * Description: Cell type if applicable (e.g., CL:0000057 for fibroblast)
+     * Range: [OntologyTerm](OntologyTerm.md)
  * [➞parent_sample_id](sample__parent_sample_id.md)  <sub>0..1</sub>
      * Description: Reference to parent sample for derivation tracking
      * Range: [Sample](Sample.md)
@@ -62,6 +71,7 @@ URI: [biostride_schema:Sample](https://w3id.org/biostride/schema/Sample)
 ### Inherited from NamedThing:
 
  * [➞id](namedThing__id.md)  <sub>1..1</sub>
+     * Description: Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.
      * Range: [Uriorcurie](types/Uriorcurie.md)
  * [➞title](namedThing__title.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

@@ -18,4 +18,7 @@ None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Used by
 
+ * [CryoEMPreparation](CryoEMPreparation.md)
+ * [SAXSPreparation](SAXSPreparation.md)
  * [SamplePreparation](SamplePreparation.md)
+ * [XRayPreparation](XRayPreparation.md)

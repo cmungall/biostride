@@ -6,7 +6,11 @@ Buffer composition for sample storage
 URI: [biostride_schema:BufferComposition](https://w3id.org/biostride/schema/BufferComposition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*],[Sample])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*],[Sample])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*;description(i):string%20%3F],[AttributeGroup]^-[BufferComposition],[Sample],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20buffer_composition%200..1>[BufferComposition&#124;ph:float%20%3F;components:string%20*;additives:string%20*;description(i):string%20%3F],[AttributeGroup]^-[BufferComposition],[Sample],[AttributeGroup])
+
+## Parents
+
+ *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
 
 ## Referenced by Class
 
@@ -25,4 +29,9 @@ URI: [biostride_schema:BufferComposition](https://w3id.org/biostride/schema/Buff
      * Range: [String](types/String.md)
  * [➞additives](bufferComposition__additives.md)  <sub>0..\*</sub>
      * Description: Additional additives in the buffer
+     * Range: [String](types/String.md)
+
+### Inherited from AttributeGroup:
+
+ * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

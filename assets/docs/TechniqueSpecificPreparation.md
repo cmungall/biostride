@@ -6,15 +6,16 @@ Base class for technique-specific preparation details
 URI: [biostride_schema:TechniqueSpecificPreparation](https://w3id.org/biostride/schema/TechniqueSpecificPreparation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation],[TechniqueSpecificPreparation]^-[XRayPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation],[TechniqueSpecificPreparation]^-[CryoEMPreparation],[SAXSPreparation],[CryoEMPreparation])](https://yuml.me/diagram/nofunky;dir:TB/class/[XRayPreparation],[TechniqueSpecificPreparation]^-[XRayPreparation],[TechniqueSpecificPreparation]^-[SAXSPreparation],[TechniqueSpecificPreparation]^-[CryoEMPreparation],[SAXSPreparation],[CryoEMPreparation])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[AttributeGroup]^-[TechniqueSpecificPreparation&#124;description(i):string%20%3F],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[AttributeGroup]^-[TechniqueSpecificPreparation&#124;description(i):string%20%3F],[AttributeGroup])
 
-## Children
+## Parents
 
- * [CryoEMPreparation](CryoEMPreparation.md) - Cryo-EM specific sample preparation
- * [SAXSPreparation](SAXSPreparation.md) - SAXS/WAXS specific preparation
- * [XRayPreparation](XRayPreparation.md) - X-ray crystallography specific preparation
-
-## Referenced by Class
-
+ *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
 
 ## Attributes
+
+
+### Inherited from AttributeGroup:
+
+ * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
+     * Range: [String](types/String.md)

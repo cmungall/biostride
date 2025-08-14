@@ -1,0 +1,15 @@
+id: biostride:sample_prep_xray_001
+title: "X-ray crystallization preparation"
+description: "Crystallization of protein for X-ray diffraction studies"
+preparation_type: XRayPreparation
+sample_id: "biostride:sample_protein_001"
+preparation_date: "2024-01-20"
+operator_id: "researcher_002"
+protocol_description: "Vapor diffusion hanging drop crystallization using PEG 3350 as precipitant"
+crystallization_method: vapor_diffusion_hanging
+crystallization_conditions: "0.1 M HEPES pH 7.5, 20% PEG 3350, 0.2 M ammonium sulfate"
+crystal_size: "150 x 100 x 75 micrometers"
+cryoprotectant: "Glycerol"
+cryoprotectant_concentration: 25.0
+mounting_method: "Loop mounted in cryoprotectant"
+flash_cooling_method: "Direct plunge into liquid nitrogen"

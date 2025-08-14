@@ -1,7 +1,7 @@
 # Protein purification preparation from Kibler 2024
 
 id: "https://example.org/kibler2024/prep/purification"
-preparation_type: protein_purification
+preparation_type: SamplePreparation
 sample_id: "https://example.org/kibler2024/sample/hetBGL03-15-18"
 preparation_date: "2024-01-16"
 protocol_description: |

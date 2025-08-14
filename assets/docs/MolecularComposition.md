@@ -6,7 +6,11 @@ Molecular composition of a sample
 URI: [biostride_schema:MolecularComposition](https://w3id.org/biostride/schema/MolecularComposition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20molecular_composition%200..1>[MolecularComposition&#124;sequences:string%20*;modifications:string%20*;ligands:string%20*],[Sample])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20molecular_composition%200..1>[MolecularComposition&#124;sequences:string%20*;modifications:string%20*;ligands:string%20*],[Sample])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20molecular_composition%200..1>[MolecularComposition&#124;sequences:string%20*;modifications:string%20*;ligands:string%20*;description(i):string%20%3F],[AttributeGroup]^-[MolecularComposition],[Sample],[AttributeGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[Sample]++-%20molecular_composition%200..1>[MolecularComposition&#124;sequences:string%20*;modifications:string%20*;ligands:string%20*;description(i):string%20%3F],[AttributeGroup]^-[MolecularComposition],[Sample],[AttributeGroup])
+
+## Parents
+
+ *  is_a: [AttributeGroup](AttributeGroup.md) - A grouping of related data attributes that form a logical unit
 
 ## Referenced by Class
 
@@ -25,4 +29,9 @@ URI: [biostride_schema:MolecularComposition](https://w3id.org/biostride/schema/M
      * Range: [String](types/String.md)
  * [➞ligands](molecularComposition__ligands.md)  <sub>0..\*</sub>
      * Description: Bound ligands or cofactors
+     * Range: [String](types/String.md)
+
+### Inherited from AttributeGroup:
+
+ * [➞description](attributeGroup__description.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

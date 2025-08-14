@@ -1,7 +1,7 @@
 
 # Slot: instrument_code
 
-Unique identifier code for the instrument
+Human-friendly facility or laboratory identifier for the instrument (e.g., 'TITAN-KRIOS-1', 'ALS-12.3.1-SIBYLS', 'RIGAKU-FR-E'). Used for local reference and equipment tracking.
 
 URI: [biostride_schema:instrument__instrument_code](https://w3id.org/biostride/schema/instrument__instrument_code)
 

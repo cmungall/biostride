@@ -231,8 +231,9 @@ classes:
     attributes:
       preparation_type:
         description: "Type of sample preparation"
-        range: PreparationTypeEnum
+        range: string
         required: true
+        designates_type: true
       sample_id:
         description: "Reference to the sample being prepared"
         range: string
@@ -691,7 +692,7 @@ classes:
     abstract: true
 
   CryoEMPreparation:
-    is_a: TechniqueSpecificPreparation
+    is_a: SamplePreparation
     description: "Cryo-EM specific sample preparation"
     attributes:
       grid_type:
@@ -728,7 +729,7 @@ classes:
         description: "Plasma treatment details"
 
   XRayPreparation:
-    is_a: TechniqueSpecificPreparation
+    is_a: SamplePreparation
     description: "X-ray crystallography specific preparation"
     attributes:
       crystallization_method:
@@ -750,7 +751,7 @@ classes:
         description: "Flash cooling protocol"
 
   SAXSPreparation:
-    is_a: TechniqueSpecificPreparation
+    is_a: SamplePreparation
     description: "SAXS/WAXS specific preparation"
     attributes:
       concentration_series:
