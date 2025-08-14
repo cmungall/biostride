@@ -97,8 +97,8 @@ linkml:Sparqlpath xsd:string
 }
 
 <CryoEMPreparation> CLOSED {
-    (  $<CryoEMPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
-          rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+    (  $<CryoEMPreparation_tes> (  &<SamplePreparation_tes> ;
+          rdf:type [ <SamplePreparation> ] ? ;
           <grid_type> [ <https://w3id.org/biostride/schema/GridTypeEnum#c_flat>
              <https://w3id.org/biostride/schema/GridTypeEnum#quantifoil>
              <https://w3id.org/biostride/schema/GridTypeEnum#lacey_carbon>
@@ -115,7 +115,7 @@ linkml:Sparqlpath xsd:string
           <chamber_temperature> @linkml:Float ? ;
           <plasma_treatment> @linkml:String ?
        ) ;
-       rdf:type [ <CryoEMPreparation> ] ?
+       rdf:type [ <CryoEMPreparation> ]
     )
 }
 
@@ -418,24 +418,20 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<SamplePreparation> CLOSED {
-    (  $<SamplePreparation_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ? ;
-          <preparation_type> [ <https://w3id.org/biostride/schema/PreparationTypeEnum#cryo_em>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#xray_crystallography>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#saxs>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#sans>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_expression>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#protein_purification>
-             <https://w3id.org/biostride/schema/PreparationTypeEnum#negative_stain> ] ;
-          <sample_id> @linkml:String ;
-          <preparation_date> @linkml:String ? ;
-          <operator_id> @linkml:String ? ;
-          <protocol_description> @linkml:String ?
-       ) ;
-       rdf:type [ <SamplePreparation> ]
-    )
-}
+<SamplePreparation>  (
+    CLOSED {
+       (  $<SamplePreparation_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ? ;
+             <type> @linkml:String ;
+             <sample_id> @linkml:String ;
+             <preparation_date> @linkml:String ? ;
+             <operator_id> @linkml:String ? ;
+             <protocol_description> @linkml:String ?
+          ) ;
+          rdf:type [ <SamplePreparation> ]
+       )
+    } OR @<CryoEMPreparation> OR @<SAXSPreparation> OR @<XRayPreparation>
+)
 
 <SAXSInstrument> CLOSED {
     (  $<SAXSInstrument_tes> (  &<Instrument_tes> ;
@@ -452,15 +448,15 @@ linkml:Sparqlpath xsd:string
 }
 
 <SAXSPreparation> CLOSED {
-    (  $<SAXSPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
-          rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+    (  $<SAXSPreparation_tes> (  &<SamplePreparation_tes> ;
+          rdf:type [ <SamplePreparation> ] ? ;
           <concentration_series> @linkml:Float * ;
           <buffer_matching_protocol> @linkml:String ? ;
           <sample_cell_type> @linkml:String ? ;
           <cell_path_length> @linkml:Float ? ;
           <temperature_control> @linkml:String ?
        ) ;
-       rdf:type [ <SAXSPreparation> ] ?
+       rdf:type [ <SAXSPreparation> ]
     )
 }
 
@@ -492,11 +488,7 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<TechniqueSpecificPreparation>  (
-    @<CryoEMPreparation> OR @<SAXSPreparation> OR @<XRayPreparation>
-)
-
-<TechniqueSpecificPreparation_struct> {
+<TechniqueSpecificPreparation> {
     (  $<TechniqueSpecificPreparation_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ?
        ) ;
@@ -556,8 +548,8 @@ linkml:Sparqlpath xsd:string
 }
 
 <XRayPreparation> CLOSED {
-    (  $<XRayPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
-          rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+    (  $<XRayPreparation_tes> (  &<SamplePreparation_tes> ;
+          rdf:type [ <SamplePreparation> ] ? ;
           <crystallization_method> [ <https://w3id.org/biostride/schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
              <https://w3id.org/biostride/schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
              <https://w3id.org/biostride/schema/CrystallizationMethodEnum#microbatch>
@@ -570,7 +562,7 @@ linkml:Sparqlpath xsd:string
           <mounting_method> @linkml:String ? ;
           <flash_cooling_method> @linkml:String ?
        ) ;
-       rdf:type [ <XRayPreparation> ] ?
+       rdf:type [ <XRayPreparation> ]
     )
 }
 

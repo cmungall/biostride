@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-13T23:28:40
+# Generation date: 2025-08-14T19:41:02
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -238,6 +238,18 @@ class OntologyTermId(NamedThingId):
     pass
 
 
+class CryoEMPreparationId(SamplePreparationId):
+    pass
+
+
+class XRayPreparationId(SamplePreparationId):
+    pass
+
+
+class SAXSPreparationId(SamplePreparationId):
+    pass
+
+
 @dataclass(repr=False)
 class NamedThing(YAMLRoot):
     """
@@ -462,7 +474,7 @@ class SamplePreparation(NamedThing):
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.SamplePreparation
 
     id: Union[str, SamplePreparationId] = None
-    preparation_type: Union[str, "PreparationTypeEnum"] = None
+    type: str = None
     sample_id: str = None
     preparation_date: Optional[str] = None
     operator_id: Optional[str] = None
@@ -474,10 +486,9 @@ class SamplePreparation(NamedThing):
         if not isinstance(self.id, SamplePreparationId):
             self.id = SamplePreparationId(self.id)
 
-        if self._is_empty(self.preparation_type):
-            self.MissingRequiredField("preparation_type")
-        if not isinstance(self.preparation_type, PreparationTypeEnum):
-            self.preparation_type = PreparationTypeEnum(self.preparation_type)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_name)
 
         if self._is_empty(self.sample_id):
             self.MissingRequiredField("sample_id")
@@ -494,6 +505,26 @@ class SamplePreparation(NamedThing):
             self.protocol_description = str(self.protocol_description)
 
         super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_type):
+            self.MissingRequiredField("unknown_type")
+        self.unknown_type = str(self.class_name)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
 
 
 @dataclass(repr=False)
@@ -1411,7 +1442,7 @@ class TechniqueSpecificPreparation(AttributeGroup):
 
 
 @dataclass(repr=False)
-class CryoEMPreparation(TechniqueSpecificPreparation):
+class CryoEMPreparation(SamplePreparation):
     """
     Cryo-EM specific sample preparation
     """
@@ -1422,6 +1453,9 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "CryoEMPreparation"
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.CryoEMPreparation
 
+    id: Union[str, CryoEMPreparationId] = None
+    type: str = None
+    sample_id: str = None
     grid_type: Optional[Union[str, "GridTypeEnum"]] = None
     support_film: Optional[str] = None
     hole_size: Optional[float] = None
@@ -1433,6 +1467,11 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
     plasma_treatment: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CryoEMPreparationId):
+            self.id = CryoEMPreparationId(self.id)
+
         if self.grid_type is not None and not isinstance(self.grid_type, GridTypeEnum):
             self.grid_type = GridTypeEnum(self.grid_type)
 
@@ -1461,10 +1500,13 @@ class CryoEMPreparation(TechniqueSpecificPreparation):
             self.plasma_treatment = str(self.plasma_treatment)
 
         super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_type):
+            self.MissingRequiredField("unknown_type")
+        self.unknown_type = str(self.class_name)
 
 
 @dataclass(repr=False)
-class XRayPreparation(TechniqueSpecificPreparation):
+class XRayPreparation(SamplePreparation):
     """
     X-ray crystallography specific preparation
     """
@@ -1475,6 +1517,9 @@ class XRayPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "XRayPreparation"
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.XRayPreparation
 
+    id: Union[str, XRayPreparationId] = None
+    type: str = None
+    sample_id: str = None
     crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
     crystallization_conditions: Optional[str] = None
     crystal_size: Optional[str] = None
@@ -1484,6 +1529,11 @@ class XRayPreparation(TechniqueSpecificPreparation):
     flash_cooling_method: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, XRayPreparationId):
+            self.id = XRayPreparationId(self.id)
+
         if self.crystallization_method is not None and not isinstance(self.crystallization_method, CrystallizationMethodEnum):
             self.crystallization_method = CrystallizationMethodEnum(self.crystallization_method)
 
@@ -1506,10 +1556,13 @@ class XRayPreparation(TechniqueSpecificPreparation):
             self.flash_cooling_method = str(self.flash_cooling_method)
 
         super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_type):
+            self.MissingRequiredField("unknown_type")
+        self.unknown_type = str(self.class_name)
 
 
 @dataclass(repr=False)
-class SAXSPreparation(TechniqueSpecificPreparation):
+class SAXSPreparation(SamplePreparation):
     """
     SAXS/WAXS specific preparation
     """
@@ -1520,6 +1573,9 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "SAXSPreparation"
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.SAXSPreparation
 
+    id: Union[str, SAXSPreparationId] = None
+    type: str = None
+    sample_id: str = None
     concentration_series: Optional[Union[float, list[float]]] = empty_list()
     buffer_matching_protocol: Optional[str] = None
     sample_cell_type: Optional[str] = None
@@ -1527,6 +1583,11 @@ class SAXSPreparation(TechniqueSpecificPreparation):
     temperature_control: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SAXSPreparationId):
+            self.id = SAXSPreparationId(self.id)
+
         if not isinstance(self.concentration_series, list):
             self.concentration_series = [self.concentration_series] if self.concentration_series is not None else []
         self.concentration_series = [v if isinstance(v, float) else float(v) for v in self.concentration_series]
@@ -1544,6 +1605,9 @@ class SAXSPreparation(TechniqueSpecificPreparation):
             self.temperature_control = str(self.temperature_control)
 
         super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_type):
+            self.MissingRequiredField("unknown_type")
+        self.unknown_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -1766,37 +1830,6 @@ class TemperatureUnitEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="TemperatureUnitEnum",
         description="Units for temperature measurement",
-    )
-
-class PreparationTypeEnum(EnumDefinitionImpl):
-    """
-    Types of sample preparation
-    """
-    cryo_em = PermissibleValue(
-        text="cryo_em",
-        description="Cryo-EM preparation")
-    xray_crystallography = PermissibleValue(
-        text="xray_crystallography",
-        description="X-ray crystallography preparation")
-    saxs = PermissibleValue(
-        text="saxs",
-        description="SAXS/WAXS preparation")
-    sans = PermissibleValue(
-        text="sans",
-        description="SANS preparation")
-    protein_expression = PermissibleValue(
-        text="protein_expression",
-        description="Protein expression in host cells")
-    protein_purification = PermissibleValue(
-        text="protein_purification",
-        description="Protein purification")
-    negative_stain = PermissibleValue(
-        text="negative_stain",
-        description="Negative stain EM preparation")
-
-    _defn = EnumDefinition(
-        name="PreparationTypeEnum",
-        description="Types of sample preparation",
     )
 
 class GridTypeEnum(EnumDefinitionImpl):
@@ -2278,8 +2311,8 @@ slots.sample__purity_percentage = Slot(uri=BIOSTRIDE_SCHEMA.purity_percentage, n
 slots.sample__quality_metrics = Slot(uri=BIOSTRIDE_SCHEMA.quality_metrics, name="sample__quality_metrics", curie=BIOSTRIDE_SCHEMA.curie('quality_metrics'),
                    model_uri=BIOSTRIDE_SCHEMA.sample__quality_metrics, domain=None, range=Optional[str])
 
-slots.samplePreparation__preparation_type = Slot(uri=BIOSTRIDE_SCHEMA.preparation_type, name="samplePreparation__preparation_type", curie=BIOSTRIDE_SCHEMA.curie('preparation_type'),
-                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
+slots.samplePreparation__type = Slot(uri=BIOSTRIDE_SCHEMA.type, name="samplePreparation__type", curie=BIOSTRIDE_SCHEMA.curie('type'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__type, domain=None, range=str)
 
 slots.samplePreparation__sample_id = Slot(uri=BIOSTRIDE_SCHEMA.sample_id, name="samplePreparation__sample_id", curie=BIOSTRIDE_SCHEMA.curie('sample_id'),
                    model_uri=BIOSTRIDE_SCHEMA.samplePreparation__sample_id, domain=None, range=str)

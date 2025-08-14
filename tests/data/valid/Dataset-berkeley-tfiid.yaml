@@ -87,7 +87,10 @@ studies:
       - id: biostride:prep_tfiid_grid_001
         title: "TFIID complex grid preparation"
         description: "Cryo-EM grid preparation for TFIID complex"
-        preparation_type: cryo_em
+        type: CryoEMPreparation
+        grid_type: quantifoil
+        blot_time: 3.0
+        vitrification_method: plunge_freezing
         sample_id: "biostride:sample_tfiid_001"
         preparation_date: "2024-03-15"
         operator_id: "nogales_lab_member_001"
@@ -96,7 +99,10 @@ studies:
       - id: biostride:prep_tfiid_dna_grid_002
         title: "TFIID-DNA complex grid preparation"
         description: "Cryo-EM grid preparation for TFIID-DNA complex"
-        preparation_type: cryo_em
+        type: CryoEMPreparation
+        grid_type: quantifoil
+        blot_time: 3.0
+        vitrification_method: plunge_freezing
         sample_id: "biostride:sample_tfiid_dna_002"
         preparation_date: "2024-03-16"
         operator_id: "nogales_lab_member_001"

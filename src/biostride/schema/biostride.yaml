@@ -229,10 +229,11 @@ classes:
     is_a: NamedThing
     description: "A process that prepares a sample for imaging"
     attributes:
-      preparation_type:
+      type:
         description: "Type of sample preparation"
-        range: PreparationTypeEnum
+        range: string
         required: true
+        designates_type: true
       sample_id:
         description: "Reference to the sample being prepared"
         range: string
@@ -691,7 +692,7 @@ classes:
     abstract: true
 
   CryoEMPreparation:
-    is_a: TechniqueSpecificPreparation
+    is_a: SamplePreparation
     description: "Cryo-EM specific sample preparation"
     attributes:
       grid_type:
@@ -728,7 +729,7 @@ classes:
         description: "Plasma treatment details"
 
   XRayPreparation:
-    is_a: TechniqueSpecificPreparation
+    is_a: SamplePreparation
     description: "X-ray crystallography specific preparation"
     attributes:
       crystallization_method:
@@ -750,7 +751,7 @@ classes:
         description: "Flash cooling protocol"
 
   SAXSPreparation:
-    is_a: TechniqueSpecificPreparation
+    is_a: SamplePreparation
     description: "SAXS/WAXS specific preparation"
     attributes:
       concentration_series:
@@ -888,23 +889,6 @@ enums:
       fahrenheit:
         description: "Degrees Fahrenheit"
 
-  PreparationTypeEnum:
-    description: "Types of sample preparation"
-    permissible_values:
-      cryo_em:
-        description: "Cryo-EM preparation"
-      xray_crystallography:
-        description: "X-ray crystallography preparation"
-      saxs:
-        description: "SAXS/WAXS preparation"
-      sans:
-        description: "SANS preparation"
-      protein_expression:
-        description: "Protein expression in host cells"
-      protein_purification:
-        description: "Protein purification"
-      negative_stain:
-        description: "Negative stain EM preparation"
 
   GridTypeEnum:
     description: "Types of EM grids"

@@ -41,7 +41,14 @@ message CryoEMInstrument
 // Cryo-EM specific sample preparation
 message CryoEMPreparation
  {
+  uriorcurie id = 0
+  string title = 0
   string description = 0
+  string type = 0
+  string sampleId = 0
+  string preparationDate = 0
+  string operatorId = 0
+  string protocolDescription = 0
   gridTypeEnum gridType = 0
   string supportFilm = 0
   float holeSize = 0
@@ -303,7 +310,7 @@ message SamplePreparation
   uriorcurie id = 0
   string title = 0
   string description = 0
-  preparationTypeEnum preparationType = 0
+  string type = 0
   string sampleId = 0
   string preparationDate = 0
   string operatorId = 0
@@ -330,7 +337,14 @@ message SAXSInstrument
 // SAXS/WAXS specific preparation
 message SAXSPreparation
  {
+  uriorcurie id = 0
+  string title = 0
   string description = 0
+  string type = 0
+  string sampleId = 0
+  string preparationDate = 0
+  string operatorId = 0
+  string protocolDescription = 0
  repeated  float concentrationSeries = 0
   string bufferMatchingProtocol = 0
   string sampleCellType = 0
@@ -400,7 +414,14 @@ message XRayInstrument
 // X-ray crystallography specific preparation
 message XRayPreparation
  {
+  uriorcurie id = 0
+  string title = 0
   string description = 0
+  string type = 0
+  string sampleId = 0
+  string preparationDate = 0
+  string operatorId = 0
+  string protocolDescription = 0
   crystallizationMethodEnum crystallizationMethod = 0
   string crystallizationConditions = 0
   string crystalSize = 0
