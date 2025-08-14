@@ -113,7 +113,7 @@ studies:
     sample_preparations:
       # Protein expression
       - id: "https://example.org/kibler2024/prep/expression"
-        preparation_type: protein_expression
+        type: SamplePreparation
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-01-15"
         protocol_description: |
@@ -123,7 +123,7 @@ studies:
           
       # Protein purification
       - id: "https://example.org/kibler2024/prep/purification"
-        preparation_type: protein_purification
+        type: SamplePreparation
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-01-16"
         protocol_description: |
@@ -134,7 +134,9 @@ studies:
           
       # SAXS sample preparation
       - id: "https://example.org/kibler2024/prep/saxs"
-        preparation_type: saxs
+        type: SAXSPreparation
+        concentration_series: [2.5, 5.0]
+        sample_cell_type: capillary
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-02-01"
         protocol_description: |
@@ -143,7 +145,7 @@ studies:
           
       # Negative stain EM preparation  
       - id: "https://example.org/kibler2024/prep/negative-stain"
-        preparation_type: negative_stain
+        type: SamplePreparation
         sample_id: "hetBGL03-15-18"
         preparation_date: "2024-02-05"
         protocol_description: |

@@ -92,7 +92,10 @@ sample_preparations:
   - id: biostride:prep_ncp_grid_001
     title: "Nucleosome grid preparation for cryo-EM"
     description: "Grid preparation for nucleosome imaging"
-    preparation_type: cryo_em
+    type: CryoEMPreparation
+    grid_type: quantifoil
+    blot_time: 3.0
+    vitrification_method: plunge_freezing
     sample_id: "biostride:sample_nucleosome_001"
     preparation_date: "2024-05-10"
     operator_id: "chromatin_lab_member_001"
@@ -101,7 +104,10 @@ sample_preparations:
   - id: biostride:prep_chd1_saxs_001
     title: "CHD1 SAXS sample preparation"
     description: "Preparation for SAXS analysis of CHD1"
-    preparation_type: saxs
+    type: SAXSPreparation
+    concentration_series: [0.5, 1.0, 2.0]
+    sample_cell_type: quartz
+    cell_path_length: 1.0
     sample_id: "biostride:sample_chd1_001"
     preparation_date: "2024-05-11"
     operator_id: "saxs_specialist_001"
@@ -110,7 +116,10 @@ sample_preparations:
   - id: biostride:prep_complex_cryo_001
     title: "CHD1-nucleosome complex grid preparation"
     description: "Cryo-EM grid preparation for complex"
-    preparation_type: cryo_em
+    type: CryoEMPreparation
+    grid_type: quantifoil
+    blot_time: 3.0
+    vitrification_method: plunge_freezing
     sample_id: "biostride:sample_chd1_ncp_complex_001"
     preparation_date: "2024-05-12"
     operator_id: "chromatin_lab_member_001"

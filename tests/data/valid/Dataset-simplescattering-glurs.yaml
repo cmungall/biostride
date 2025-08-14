@@ -62,7 +62,7 @@ studies:
     sample_preparations:
       # Expression and purification
       - id: "https://simplescattering.com/prep/glurs-expression"
-        preparation_type: protein_expression
+        type: SamplePreparation
         sample_id: "https://simplescattering.com/sample/glurs-pa"
         preparation_date: "2023-10-01"
         protocol_description: |
@@ -70,7 +70,7 @@ studies:
           Standard IPTG induction protocol.
           
       - id: "https://simplescattering.com/prep/glurs-purification"
-        preparation_type: protein_purification
+        type: SamplePreparation
         sample_id: "https://simplescattering.com/sample/glurs-pa"
         preparation_date: "2023-10-15"
         protocol_description: |
@@ -80,7 +80,9 @@ studies:
           
       # SEC-SAXS preparation
       - id: "https://simplescattering.com/prep/sec-saxs"
-        preparation_type: saxs
+        type: SAXSPreparation
+        sample_cell_type: capillary
+        cell_path_length: 1.5
         sample_id: "https://simplescattering.com/sample/glurs-pa"
         preparation_date: "2023-10-24"
         protocol_description: |

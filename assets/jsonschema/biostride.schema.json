@@ -287,12 +287,41 @@
                         "null"
                     ]
                 },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "operator_id": {
+                    "description": "Person who performed the preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "plasma_treatment": {
                     "description": "Plasma treatment details",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "preparation_date": {
+                    "description": "Date of sample preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_description": {
+                    "description": "Detailed protocol description",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_id": {
+                    "description": "Reference to the sample being prepared",
+                    "type": "string"
                 },
                 "support_film": {
                     "description": "Support film type",
@@ -301,11 +330,29 @@
                         "null"
                     ]
                 },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "Type of sample preparation",
+                    "enum": [
+                        "CryoEMPreparation"
+                    ],
+                    "type": "string"
+                },
                 "vitrification_method": {
                     "$ref": "#/$defs/VitrificationMethodEnum",
                     "description": "Method used for vitrification"
                 }
             },
+            "required": [
+                "type",
+                "sample_id",
+                "id"
+            ],
             "title": "CryoEMPreparation",
             "type": "object"
         },
@@ -1567,20 +1614,6 @@
             "title": "OpticalImage",
             "type": "object"
         },
-        "PreparationTypeEnum": {
-            "description": "Types of sample preparation",
-            "enum": [
-                "cryo_em",
-                "xray_crystallography",
-                "saxs",
-                "sans",
-                "protein_expression",
-                "protein_purification",
-                "negative_stain"
-            ],
-            "title": "PreparationTypeEnum",
-            "type": "string"
-        },
         "ProcessingStatusEnum": {
             "description": "Processing status",
             "enum": [
@@ -1782,6 +1815,31 @@
                         "null"
                     ]
                 },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "operator_id": {
+                    "description": "Person who performed the preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preparation_date": {
+                    "description": "Date of sample preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_description": {
+                    "description": "Detailed protocol description",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "sample_cell_type": {
                     "description": "Type of sample cell used",
                     "type": [
@@ -1789,14 +1847,36 @@
                         "null"
                     ]
                 },
+                "sample_id": {
+                    "description": "Reference to the sample being prepared",
+                    "type": "string"
+                },
                 "temperature_control": {
                     "description": "Temperature control settings",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "Type of sample preparation",
+                    "enum": [
+                        "SAXSPreparation"
+                    ],
+                    "type": "string"
                 }
             },
+            "required": [
+                "type",
+                "sample_id",
+                "id"
+            ],
             "title": "SAXSPreparation",
             "type": "object"
         },
@@ -1967,10 +2047,6 @@
                         "null"
                     ]
                 },
-                "preparation_type": {
-                    "$ref": "#/$defs/PreparationTypeEnum",
-                    "description": "Type of sample preparation"
-                },
                 "protocol_description": {
                     "description": "Detailed protocol description",
                     "type": [
@@ -1987,10 +2063,17 @@
                         "string",
                         "null"
                     ]
+                },
+                "type": {
+                    "description": "Type of sample preparation",
+                    "enum": [
+                        "SamplePreparation"
+                    ],
+                    "type": "string"
                 }
             },
             "required": [
-                "preparation_type",
+                "type",
                 "sample_id",
                 "id"
             ],
@@ -2092,7 +2175,20 @@
                 },
                 "sample_preparations": {
                     "items": {
-                        "$ref": "#/$defs/SamplePreparation"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SamplePreparation"
+                            },
+                            {
+                                "$ref": "#/$defs/CryoEMPreparation"
+                            },
+                            {
+                                "$ref": "#/$defs/XRayPreparation"
+                            },
+                            {
+                                "$ref": "#/$defs/SAXSPreparation"
+                            }
+                        ]
                     },
                     "type": [
                         "array",
@@ -2600,14 +2696,61 @@
                         "null"
                     ]
                 },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
                 "mounting_method": {
                     "description": "Crystal mounting method",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "operator_id": {
+                    "description": "Person who performed the preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preparation_date": {
+                    "description": "Date of sample preparation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_description": {
+                    "description": "Detailed protocol description",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_id": {
+                    "description": "Reference to the sample being prepared",
+                    "type": "string"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "Type of sample preparation",
+                    "enum": [
+                        "XRayPreparation"
+                    ],
+                    "type": "string"
                 }
             },
+            "required": [
+                "type",
+                "sample_id",
+                "id"
+            ],
             "title": "XRayPreparation",
             "type": "object"
         },
