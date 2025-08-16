@@ -5398,9 +5398,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-13T23:27:44",
+  "source_file_date": "2025-08-13T20:16:37",
   "source_file_size": 36846,
-  "generation_date": "2025-08-13T23:28:38",
+  "generation_date": "2025-08-15T18:02:57",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",
