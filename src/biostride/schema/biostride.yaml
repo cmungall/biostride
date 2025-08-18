@@ -654,11 +654,28 @@ classes:
     is_a: AttributeGroup
     description: "Buffer composition for sample storage"
     attributes:
-      ph:
-        description: "pH of the buffer"
+      buffer_ph:
+        description: "pH of the buffer before sample addition"
         range: float
         minimum_value: 0
         maximum_value: 14
+      final_sample_ph:
+        description: "pH of the complete sample after all components added"
+        range: float
+        minimum_value: 0
+        maximum_value: 14
+      ph_measurement_temperature:
+        description: "Temperature at which pH was measured (°C)"
+        range: float
+      ph_measurement_method:
+        description: "Method used for pH measurement (electrode type, calibration)"
+        range: string
+      ph_stability_notes:
+        description: "Notes on pH stability during experiment duration"
+        range: string
+      ionic_strength:
+        description: "Ionic strength at pH measurement (mM)"
+        range: float
       components:
         description: "Buffer components and their concentrations"
         range: string

@@ -38,7 +38,7 @@ studies:
         concentration: 0.8
         concentration_unit: mg_per_ml
         buffer_composition:
-          ph: 7.9
+          buffer_ph: 7.9
           components:
             - "20 mM HEPES"
             - "150 mM KCl"
@@ -73,7 +73,7 @@ studies:
         concentration_unit: mg_per_ml
         parent_sample_id: "biostride:sample_tfiid_001"
         buffer_composition:
-          ph: 7.9
+          buffer_ph: 7.9
           components:
             - "20 mM HEPES"
             - "100 mM KCl"

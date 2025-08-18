@@ -50,7 +50,7 @@ studies:
         concentration: 5.0  # Typical for SEC-SAXS
         concentration_unit: mg_per_ml
         buffer_composition:
-          ph: 7.5  # Typical for tRNA synthetases
+          buffer_ph: 7.5  # Typical for tRNA synthetases
           components:
             - "20 mM Tris-HCl"
             - "150 mM NaCl"

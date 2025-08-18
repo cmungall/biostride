@@ -63,7 +63,7 @@ studies:
         concentration: 5.0
         concentration_unit: mg_per_ml
         buffer_composition:
-          ph: 8.0
+          buffer_ph: 8.0
           components:
             - "25 mM Tris"
             - "300 mM NaCl"
@@ -86,7 +86,7 @@ studies:
         concentration: 2.5
         concentration_unit: mg_per_ml
         buffer_composition:
-          ph: 8.0
+          buffer_ph: 8.0
           components:
             - "25 mM Tris"
             - "300 mM NaCl"
@@ -104,7 +104,7 @@ studies:
         concentration: 2.5
         concentration_unit: mg_per_ml
         buffer_composition:
-          ph: 8.0
+          buffer_ph: 8.0
           components:
             - "25 mM Tris"
             - "300 mM NaCl"

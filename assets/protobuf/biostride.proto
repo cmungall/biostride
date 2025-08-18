@@ -5,7 +5,12 @@
 message BufferComposition
  {
   string description = 0
-  float ph = 0
+  float bufferPh = 0
+  float finalSamplePh = 0
+  float phMeasurementTemperature = 0
+  string phMeasurementMethod = 0
+  string phStabilityNotes = 0
+  float ionicStrength = 0
  repeated  string components = 0
  repeated  string additives = 0
  }

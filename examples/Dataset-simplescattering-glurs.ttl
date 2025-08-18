@@ -115,11 +115,11 @@ approximately 5 mg/mL, filtered through 0.22 μm filter.
 
 <https://simplescattering.com/sample/glurs-pa> a biostride_schema:Sample ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:buffer_ph "7.5"^^xsd:float ;
             biostride_schema:components "1 mM DTT",
                 "150 mM NaCl",
                 "20 mM Tris-HCl",
-                "5 mM MgCl2" ;
-            biostride_schema:ph "7.5"^^xsd:float ] ;
+                "5 mM MgCl2" ] ;
     biostride_schema:concentration "5.0"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "Glutamyl-tRNA synthetase from Pseudomonas aeruginosa" ;

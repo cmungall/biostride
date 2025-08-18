@@ -142,10 +142,10 @@ biostride:sample_tfiid_dna_002 a biostride_schema:Sample ;
     dcterms:title "TFIID-DNA promoter complex" ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
             biostride_schema:additives "1 mM DTT" ;
+            biostride_schema:buffer_ph "7.9"^^xsd:float ;
             biostride_schema:components "100 mM KCl",
                 "20 mM HEPES",
-                "5 mM MgCl2" ;
-            biostride_schema:ph "7.9"^^xsd:float ] ;
+                "5 mM MgCl2" ] ;
     biostride_schema:concentration "0.5"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "TFIID bound to super core promoter DNA" ;
@@ -274,11 +274,11 @@ biostride:sample_tfiid_001 a biostride_schema:Sample ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
             biostride_schema:additives "0.5 mM PMSF",
                 "1 mM DTT" ;
+            biostride_schema:buffer_ph "7.9"^^xsd:float ;
             biostride_schema:components "10% glycerol",
                 "150 mM KCl",
                 "20 mM HEPES",
-                "5 mM MgCl2" ;
-            biostride_schema:ph "7.9"^^xsd:float ] ;
+                "5 mM MgCl2" ] ;
     biostride_schema:concentration "0.8"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "Purified human TFIID complex for structural analysis" ;

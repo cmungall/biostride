@@ -42,7 +42,7 @@ studies:
     concentration: 5.0
     concentration_unit: mg_per_ml
     buffer_composition:
-      ph: 7.5
+      buffer_ph: 7.5
       components:
       - 20 mM Tris-HCl
       - 150 mM NaCl

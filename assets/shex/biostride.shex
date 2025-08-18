@@ -58,7 +58,12 @@ linkml:Sparqlpath xsd:string
 <BufferComposition> CLOSED {
     (  $<BufferComposition_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
-          <ph> @linkml:Float ? ;
+          <buffer_ph> @linkml:Float ? ;
+          <final_sample_ph> @linkml:Float ? ;
+          <ph_measurement_temperature> @linkml:Float ? ;
+          <ph_measurement_method> @linkml:String ? ;
+          <ph_stability_notes> @linkml:String ? ;
+          <ionic_strength> @linkml:Float ? ;
           <components> @linkml:String * ;
           <additives> @linkml:String *
        ) ;

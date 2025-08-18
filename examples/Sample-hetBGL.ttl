@@ -5,9 +5,9 @@
 
 <https://example.org/kibler2024/sample/hetBGL03-15-18> a biostride_schema:Sample ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:buffer_ph "8.0"^^xsd:float ;
             biostride_schema:components "25 mM Tris",
-                "300 mM NaCl" ;
-            biostride_schema:ph "8.0"^^xsd:float ] ;
+                "300 mM NaCl" ] ;
     biostride_schema:concentration "2.5"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "Pseudosymmetric hetero-hexamer with three distinct chains" ;

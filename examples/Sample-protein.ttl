@@ -9,10 +9,10 @@ biostride:sample001 a biostride_schema:Sample ;
     dcterms:title "HIV-1 capsid protein CA" ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
             biostride_schema:additives "5% glycerol" ;
+            biostride_schema:buffer_ph "8.0"^^xsd:float ;
             biostride_schema:components "1 mM DTT",
                 "150 mM NaCl",
-                "50 mM Tris-HCl" ;
-            biostride_schema:ph "8.0"^^xsd:float ] ;
+                "50 mM Tris-HCl" ] ;
     biostride_schema:concentration "2.5"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "Purified HIV-1 capsid protein for cryo-EM structural analysis" ;

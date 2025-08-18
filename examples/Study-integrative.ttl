@@ -124,10 +124,10 @@ biostride:sample_chd1_001 a biostride_schema:Sample ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
             biostride_schema:additives "1 mM ATP",
                 "1 mM DTT" ;
+            biostride_schema:buffer_ph "7.8"^^xsd:float ;
             biostride_schema:components "150 mM KCl",
                 "2 mM MgCl2",
-                "25 mM HEPES" ;
-            biostride_schema:ph "7.8"^^xsd:float ] ;
+                "25 mM HEPES" ] ;
     biostride_schema:concentration "2.0"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "Full-length yeast CHD1 protein" ;
@@ -148,10 +148,10 @@ biostride:sample_chd1_ncp_complex_001 a biostride_schema:Sample ;
             biostride_schema:additives "1 mM ADP",
                 "1 mM BeCl2",
                 "5 mM NaF" ;
+            biostride_schema:buffer_ph "7.5"^^xsd:float ;
             biostride_schema:components "100 mM KCl",
                 "2 mM MgCl2",
-                "20 mM HEPES" ;
-            biostride_schema:ph "7.5"^^xsd:float ] ;
+                "20 mM HEPES" ] ;
     biostride_schema:concentration "0.5"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "CHD1 bound to nucleosome core particle" ;
@@ -171,10 +171,10 @@ biostride:sample_nucleosome_001 a biostride_schema:Sample ;
     biostride_schema:anatomy UBERON:0000922 ;
     biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
             biostride_schema:additives "1 mM DTT" ;
+            biostride_schema:buffer_ph "7.5"^^xsd:float ;
             biostride_schema:components "1 mM EDTA",
                 "10 mM Tris-HCl",
-                "50 mM NaCl" ;
-            biostride_schema:ph "7.5"^^xsd:float ] ;
+                "50 mM NaCl" ] ;
     biostride_schema:concentration "5.0"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:description "Nucleosome with 147bp Widom 601 DNA" ;

@@ -16,7 +16,7 @@ samples:
     concentration: 10.0
     concentration_unit: mg_per_ml
     buffer_composition:
-      ph: 7.0
+      buffer_ph: 7.0
       components:
         - "TES/KOH"
     storage_conditions:

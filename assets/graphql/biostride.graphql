@@ -182,7 +182,12 @@ interface AttributeGroup
 type BufferComposition
   {
     description: String
-    ph: Float
+    bufferPh: Float
+    finalSamplePh: Float
+    phMeasurementTemperature: Float
+    phMeasurementMethod: String
+    phStabilityNotes: String
+    ionicStrength: Float
     components: [String]
     additives: [String]
   }

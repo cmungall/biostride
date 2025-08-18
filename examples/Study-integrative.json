@@ -25,7 +25,7 @@
       "concentration": 5.0,
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
-        "ph": 7.5,
+        "buffer_ph": 7.5,
         "components": [
           "10 mM Tris-HCl",
           "1 mM EDTA",
@@ -61,7 +61,7 @@
       "concentration": 2.0,
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
-        "ph": 7.8,
+        "buffer_ph": 7.8,
         "components": [
           "25 mM HEPES",
           "150 mM KCl",
@@ -93,7 +93,7 @@
       "concentration": 0.5,
       "concentration_unit": "mg_per_ml",
       "buffer_composition": {
-        "ph": 7.5,
+        "buffer_ph": 7.5,
         "components": [
           "20 mM HEPES",
           "100 mM KCl",

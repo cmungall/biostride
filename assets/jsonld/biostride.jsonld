@@ -2809,11 +2809,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "bufferComposition__ph",
-      "description": "pH of the buffer",
+      "name": "bufferComposition__buffer_ph",
+      "description": "pH of the buffer before sample addition",
       "from_schema": "https://w3id.org/biostride/",
-      "slot_uri": "https://w3id.org/biostride/schema/ph",
-      "alias": "ph",
+      "slot_uri": "https://w3id.org/biostride/schema/buffer_ph",
+      "alias": "buffer_ph",
       "owner": "BufferComposition",
       "domain_of": [
         "BufferComposition"
@@ -2821,6 +2821,73 @@
       "range": "float",
       "minimum_value": 0,
       "maximum_value": 14,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__final_sample_ph",
+      "description": "pH of the complete sample after all components added",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/final_sample_ph",
+      "alias": "final_sample_ph",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "float",
+      "minimum_value": 0,
+      "maximum_value": 14,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__ph_measurement_temperature",
+      "description": "Temperature at which pH was measured (\u00b0C)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ph_measurement_temperature",
+      "alias": "ph_measurement_temperature",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__ph_measurement_method",
+      "description": "Method used for pH measurement (electrode type, calibration)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ph_measurement_method",
+      "alias": "ph_measurement_method",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__ph_stability_notes",
+      "description": "Notes on pH stability during experiment duration",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ph_stability_notes",
+      "alias": "ph_stability_notes",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bufferComposition__ionic_strength",
+      "description": "Ionic strength at pH measurement (mM)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ionic_strength",
+      "alias": "ionic_strength",
+      "owner": "BufferComposition",
+      "domain_of": [
+        "BufferComposition"
+      ],
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
@@ -4909,18 +4976,55 @@
       "is_a": "AttributeGroup",
       "slots": [
         "attributeGroup__description",
-        "bufferComposition__ph",
+        "bufferComposition__buffer_ph",
+        "bufferComposition__final_sample_ph",
+        "bufferComposition__ph_measurement_temperature",
+        "bufferComposition__ph_measurement_method",
+        "bufferComposition__ph_stability_notes",
+        "bufferComposition__ionic_strength",
         "bufferComposition__components",
         "bufferComposition__additives"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "ph",
-          "description": "pH of the buffer",
+          "name": "buffer_ph",
+          "description": "pH of the buffer before sample addition",
           "range": "float",
           "minimum_value": 0,
           "maximum_value": 14,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "final_sample_ph",
+          "description": "pH of the complete sample after all components added",
+          "range": "float",
+          "minimum_value": 0,
+          "maximum_value": 14,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ph_measurement_temperature",
+          "description": "Temperature at which pH was measured (\u00b0C)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ph_measurement_method",
+          "description": "Method used for pH measurement (electrode type, calibration)",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ph_stability_notes",
+          "description": "Notes on pH stability during experiment duration",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ionic_strength",
+          "description": "Ionic strength at pH measurement (mM)",
+          "range": "float",
           "@type": "SlotDefinition"
         },
         {
@@ -5398,9 +5502,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-13T20:16:37",
-  "source_file_size": 36846,
-  "generation_date": "2025-08-15T18:02:57",
+  "source_file_date": "2025-08-18T19:52:41",
+  "source_file_size": 37527,
+  "generation_date": "2025-08-18T19:53:15",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

@@ -14,6 +14,15 @@
                         "null"
                     ]
                 },
+                "buffer_ph": {
+                    "description": "pH of the buffer before sample addition",
+                    "maximum": 14,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "components": {
                     "description": "Buffer components and their concentrations",
                     "items": {
@@ -30,12 +39,40 @@
                         "null"
                     ]
                 },
-                "ph": {
-                    "description": "pH of the buffer",
+                "final_sample_ph": {
+                    "description": "pH of the complete sample after all components added",
                     "maximum": 14,
                     "minimum": 0,
                     "type": [
                         "number",
+                        "null"
+                    ]
+                },
+                "ionic_strength": {
+                    "description": "Ionic strength at pH measurement (mM)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ph_measurement_method": {
+                    "description": "Method used for pH measurement (electrode type, calibration)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ph_measurement_temperature": {
+                    "description": "Temperature at which pH was measured (\u00b0C)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ph_stability_notes": {
+                    "description": "Notes on pH stability during experiment duration",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 }

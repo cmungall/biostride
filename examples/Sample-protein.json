@@ -16,7 +16,7 @@
   "concentration": 2.5,
   "concentration_unit": "mg_per_ml",
   "buffer_composition": {
-    "ph": 8.0,
+    "buffer_ph": 8.0,
     "components": [
       "50 mM Tris-HCl",
       "150 mM NaCl",

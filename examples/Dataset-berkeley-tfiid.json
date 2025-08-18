@@ -49,7 +49,7 @@
           "concentration": 0.8,
           "concentration_unit": "mg_per_ml",
           "buffer_composition": {
-            "ph": 7.9,
+            "buffer_ph": 7.9,
             "components": [
               "20 mM HEPES",
               "150 mM KCl",
@@ -92,7 +92,7 @@
           "concentration": 0.5,
           "concentration_unit": "mg_per_ml",
           "buffer_composition": {
-            "ph": 7.9,
+            "buffer_ph": 7.9,
             "components": [
               "20 mM HEPES",
               "100 mM KCl",

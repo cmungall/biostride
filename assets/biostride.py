@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-15T18:02:57
+# Generation date: 2025-08-18T19:53:17
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -1346,13 +1346,33 @@ class BufferComposition(AttributeGroup):
     class_name: ClassVar[str] = "BufferComposition"
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.BufferComposition
 
-    ph: Optional[float] = None
+    buffer_ph: Optional[float] = None
+    final_sample_ph: Optional[float] = None
+    ph_measurement_temperature: Optional[float] = None
+    ph_measurement_method: Optional[str] = None
+    ph_stability_notes: Optional[str] = None
+    ionic_strength: Optional[float] = None
     components: Optional[Union[str, list[str]]] = empty_list()
     additives: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.ph is not None and not isinstance(self.ph, float):
-            self.ph = float(self.ph)
+        if self.buffer_ph is not None and not isinstance(self.buffer_ph, float):
+            self.buffer_ph = float(self.buffer_ph)
+
+        if self.final_sample_ph is not None and not isinstance(self.final_sample_ph, float):
+            self.final_sample_ph = float(self.final_sample_ph)
+
+        if self.ph_measurement_temperature is not None and not isinstance(self.ph_measurement_temperature, float):
+            self.ph_measurement_temperature = float(self.ph_measurement_temperature)
+
+        if self.ph_measurement_method is not None and not isinstance(self.ph_measurement_method, str):
+            self.ph_measurement_method = str(self.ph_measurement_method)
+
+        if self.ph_stability_notes is not None and not isinstance(self.ph_stability_notes, str):
+            self.ph_stability_notes = str(self.ph_stability_notes)
+
+        if self.ionic_strength is not None and not isinstance(self.ionic_strength, float):
+            self.ionic_strength = float(self.ionic_strength)
 
         if not isinstance(self.components, list):
             self.components = [self.components] if self.components is not None else []
@@ -2611,8 +2631,23 @@ slots.molecularComposition__modifications = Slot(uri=BIOSTRIDE_SCHEMA.modificati
 slots.molecularComposition__ligands = Slot(uri=BIOSTRIDE_SCHEMA.ligands, name="molecularComposition__ligands", curie=BIOSTRIDE_SCHEMA.curie('ligands'),
                    model_uri=BIOSTRIDE_SCHEMA.molecularComposition__ligands, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.bufferComposition__ph = Slot(uri=BIOSTRIDE_SCHEMA.ph, name="bufferComposition__ph", curie=BIOSTRIDE_SCHEMA.curie('ph'),
-                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__ph, domain=None, range=Optional[float])
+slots.bufferComposition__buffer_ph = Slot(uri=BIOSTRIDE_SCHEMA.buffer_ph, name="bufferComposition__buffer_ph", curie=BIOSTRIDE_SCHEMA.curie('buffer_ph'),
+                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__buffer_ph, domain=None, range=Optional[float])
+
+slots.bufferComposition__final_sample_ph = Slot(uri=BIOSTRIDE_SCHEMA.final_sample_ph, name="bufferComposition__final_sample_ph", curie=BIOSTRIDE_SCHEMA.curie('final_sample_ph'),
+                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__final_sample_ph, domain=None, range=Optional[float])
+
+slots.bufferComposition__ph_measurement_temperature = Slot(uri=BIOSTRIDE_SCHEMA.ph_measurement_temperature, name="bufferComposition__ph_measurement_temperature", curie=BIOSTRIDE_SCHEMA.curie('ph_measurement_temperature'),
+                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__ph_measurement_temperature, domain=None, range=Optional[float])
+
+slots.bufferComposition__ph_measurement_method = Slot(uri=BIOSTRIDE_SCHEMA.ph_measurement_method, name="bufferComposition__ph_measurement_method", curie=BIOSTRIDE_SCHEMA.curie('ph_measurement_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__ph_measurement_method, domain=None, range=Optional[str])
+
+slots.bufferComposition__ph_stability_notes = Slot(uri=BIOSTRIDE_SCHEMA.ph_stability_notes, name="bufferComposition__ph_stability_notes", curie=BIOSTRIDE_SCHEMA.curie('ph_stability_notes'),
+                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__ph_stability_notes, domain=None, range=Optional[str])
+
+slots.bufferComposition__ionic_strength = Slot(uri=BIOSTRIDE_SCHEMA.ionic_strength, name="bufferComposition__ionic_strength", curie=BIOSTRIDE_SCHEMA.curie('ionic_strength'),
+                   model_uri=BIOSTRIDE_SCHEMA.bufferComposition__ionic_strength, domain=None, range=Optional[float])
 
 slots.bufferComposition__components = Slot(uri=BIOSTRIDE_SCHEMA.components, name="bufferComposition__components", curie=BIOSTRIDE_SCHEMA.curie('components'),
                    model_uri=BIOSTRIDE_SCHEMA.bufferComposition__components, domain=None, range=Optional[Union[str, list[str]]])
