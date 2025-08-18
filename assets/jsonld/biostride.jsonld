@@ -1371,7 +1371,7 @@
     },
     {
       "name": "samplePreparation__operator_id",
-      "description": "Person who performed the preparation",
+      "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/operator_id",
       "alias": "operator_id",
@@ -1831,7 +1831,7 @@
     },
     {
       "name": "experimentRun__operator_id",
-      "description": "Person who performed the experiment",
+      "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/operator_id",
       "alias": "operator_id",
@@ -3558,6 +3558,7 @@
     {
       "name": "Study",
       "definition_uri": "https://w3id.org/biostride/schema/Study",
+      "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
       "from_schema": "https://w3id.org/biostride/",
       "is_a": "NamedThing",
       "slots": [
@@ -3787,7 +3788,7 @@
         },
         {
           "name": "operator_id",
-          "description": "Person who performed the preparation",
+          "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -4139,7 +4140,7 @@
         },
         {
           "name": "operator_id",
-          "description": "Person who performed the experiment",
+          "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
           "range": "string",
           "@type": "SlotDefinition"
         },
@@ -4811,6 +4812,7 @@
     {
       "name": "ImageFeature",
       "definition_uri": "https://w3id.org/biostride/schema/ImageFeature",
+      "description": "Semantic annotations describing features identified in images using controlled vocabulary terms",
       "from_schema": "https://w3id.org/biostride/",
       "is_a": "AttributeGroup",
       "slots": [
@@ -5398,9 +5400,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-08-13T20:16:37",
-  "source_file_size": 36846,
-  "generation_date": "2025-08-15T18:02:57",
+  "source_file_date": "2025-08-18T19:57:42",
+  "source_file_size": 37298,
+  "generation_date": "2025-08-18T19:58:11",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

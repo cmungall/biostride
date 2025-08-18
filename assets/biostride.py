@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-15T18:02:57
+# Generation date: 2025-08-18T19:58:13
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -326,6 +326,10 @@ class Dataset(NamedThing):
 
 @dataclass(repr=False)
 class Study(NamedThing):
+    """
+    A focused research investigation that groups related samples, experiments, and data collection around a specific
+    biological question or hypothesis
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["Study"]
@@ -1254,6 +1258,9 @@ class XRFImage(Image2D):
 
 @dataclass(repr=False)
 class ImageFeature(AttributeGroup):
+    """
+    Semantic annotations describing features identified in images using controlled vocabulary terms
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["ImageFeature"]
