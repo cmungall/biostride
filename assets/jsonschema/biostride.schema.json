@@ -572,7 +572,7 @@
                     "type": "string"
                 },
                 "operator_id": {
-                    "description": "Person who performed the experiment",
+                    "description": "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)",
                     "type": [
                         "string",
                         "null"
@@ -1262,7 +1262,7 @@
         },
         "ImageFeature": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Semantic annotations describing features identified in images using controlled vocabulary terms",
             "properties": {
                 "description": {
                     "type": [
@@ -1954,7 +1954,7 @@
                     "type": "string"
                 },
                 "operator_id": {
-                    "description": "Person who performed the preparation",
+                    "description": "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)",
                     "type": [
                         "string",
                         "null"
@@ -2051,7 +2051,7 @@
         },
         "Study": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
             "properties": {
                 "data_files": {
                     "items": {

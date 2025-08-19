@@ -145,6 +145,7 @@ classes:
 
   Study:
     is_a: NamedThing
+    description: "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis"
     attributes:
       samples:
         range: Sample
@@ -241,7 +242,7 @@ classes:
         description: "Date of sample preparation"
         range: string
       operator_id:
-        description: "Person who performed the preparation"
+        description: "Identifier or name of the person who performed the sample preparation (e.g., 'jsmith', 'John Smith', or personnel ID)"
         range: string
       protocol_description:
         description: "Detailed protocol description"
@@ -367,7 +368,7 @@ classes:
         description: "Date of the experiment"
         range: string
       operator_id:
-        description: "Person who performed the experiment"
+        description: "Identifier or name of the person who performed the experiment data collection (e.g., 'jsmith', 'John Smith', or personnel ID)"
         range: string
       technique:
         description: "Technique used for data collection"
@@ -619,6 +620,7 @@ classes:
 
   ImageFeature:
     is_a: AttributeGroup
+    description: "Semantic annotations describing features identified in images using controlled vocabulary terms"
     attributes:
       terms:
         range: OntologyTerm
