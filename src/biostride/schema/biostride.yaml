@@ -95,6 +95,7 @@ prefixes:
 
 imports:
   - linkml:types
+  - functional_annotation
 
 default_range: string
 default_prefix: biostride_schema
@@ -172,6 +173,11 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+      aggregated_protein_views:
+        description: "Aggregated functional and structural annotations for proteins in this study"
+        range: AggregatedProteinView
+        multivalued: true
+        inlined_as_list: true
 
   Sample:
     is_a: NamedThing
@@ -225,6 +231,53 @@ classes:
         maximum_value: 100
       quality_metrics:
         description: "Quality control metrics for the sample"
+      # Functional annotations from knowledge bases
+      functional_sites:
+        description: "Functional site annotations for proteins in the sample"
+        range: FunctionalSite
+        multivalued: true
+        inlined_as_list: true
+      structural_features:
+        description: "Structural feature annotations"
+        range: StructuralFeature
+        multivalued: true
+        inlined_as_list: true
+      protein_interactions:
+        description: "Protein-protein interaction annotations"
+        range: ProteinProteinInteraction
+        multivalued: true
+        inlined_as_list: true
+      ligand_interactions:
+        description: "Small molecule interaction annotations"
+        range: LigandInteraction
+        multivalued: true
+        inlined_as_list: true
+      mutation_effects:
+        description: "Effects of mutations present in the sample"
+        range: MutationEffect
+        multivalued: true
+        inlined_as_list: true
+      ptm_annotations:
+        description: "Post-translational modification annotations"
+        range: PostTranslationalModification
+        multivalued: true
+        inlined_as_list: true
+      biophysical_properties:
+        description: "Measured or predicted biophysical properties"
+        range: BiophysicalProperty
+        multivalued: true
+        inlined_as_list: true
+      evolutionary_conservation:
+        description: "Evolutionary conservation data"
+        range: EvolutionaryConservation
+      conformational_ensemble:
+        description: "Conformational states and dynamics"
+        range: ConformationalEnsemble
+      database_cross_references:
+        description: "Cross-references to external databases"
+        range: DatabaseCrossReference
+        multivalued: true
+        inlined_as_list: true
 
   SamplePreparation:
     is_a: NamedThing

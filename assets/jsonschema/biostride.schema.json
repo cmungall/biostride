@@ -1,5 +1,338 @@
 {
     "$defs": {
+        "AffinityUnitEnum": {
+            "description": "Units for affinity measurements",
+            "enum": [
+                "molar",
+                "millimolar",
+                "micromolar",
+                "nanomolar",
+                "picomolar"
+            ],
+            "title": "AffinityUnitEnum",
+            "type": "string"
+        },
+        "AggregatedProteinView": {
+            "additionalProperties": false,
+            "description": "Aggregated view of all structural and functional data for a protein",
+            "properties": {
+                "biophysical_properties": {
+                    "description": "All biophysical properties",
+                    "items": {
+                        "$ref": "#/$defs/BiophysicalProperty"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conformational_ensemble": {
+                    "description": "Conformational ensemble data",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cross_references": {
+                    "description": "Database cross-references",
+                    "items": {
+                        "$ref": "#/$defs/DatabaseCrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evolutionary_conservation": {
+                    "description": "Conservation analysis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "functional_sites": {
+                    "description": "All functional site annotations",
+                    "items": {
+                        "$ref": "#/$defs/FunctionalSite"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "ligand_interactions": {
+                    "description": "All ligand interactions",
+                    "items": {
+                        "$ref": "#/$defs/LigandInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "mutations": {
+                    "description": "All mutation annotations",
+                    "items": {
+                        "$ref": "#/$defs/MutationEffect"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "organism": {
+                    "description": "Source organism",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organism_id": {
+                    "description": "NCBI taxonomy ID",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pdb_entries": {
+                    "description": "All PDB entries for this protein",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "protein_interactions": {
+                    "description": "All protein-protein interactions",
+                    "items": {
+                        "$ref": "#/$defs/ProteinProteinInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "protein_name": {
+                    "description": "Protein name",
+                    "type": "string"
+                },
+                "ptms": {
+                    "description": "All post-translational modifications",
+                    "items": {
+                        "$ref": "#/$defs/PostTranslationalModification"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "structural_features": {
+                    "description": "All structural feature annotations",
+                    "items": {
+                        "$ref": "#/$defs/StructuralFeature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "uniprot_id": {
+                    "description": "UniProt accession",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "uniprot_id",
+                "protein_name",
+                "id"
+            ],
+            "title": "AggregatedProteinView",
+            "type": "object"
+        },
+        "AnnotationSourceEnum": {
+            "description": "Sources of functional annotations",
+            "enum": [
+                "pdbe",
+                "pdbe_kb",
+                "uniprot",
+                "pfam",
+                "cath",
+                "scop",
+                "interpro",
+                "channelsdb",
+                "dynamine",
+                "foldx",
+                "p2rank",
+                "3dligandsite",
+                "arpeggio",
+                "covalentizer",
+                "depth",
+                "elmpdb",
+                "frustration",
+                "kincore",
+                "membranome",
+                "missense3d",
+                "mobi",
+                "nucleos",
+                "14_3_3_pred",
+                "akid",
+                "camkinet",
+                "cansar",
+                "credo",
+                "klifs",
+                "m_csm",
+                "moondb",
+                "pocketome",
+                "propka",
+                "proteins_api",
+                "validation",
+                "alphafold",
+                "modbase",
+                "swiss_model"
+            ],
+            "title": "AnnotationSourceEnum",
+            "type": "string"
+        },
+        "BindingAffinityTypeEnum": {
+            "description": "Types of binding affinity measurements",
+            "enum": [
+                "kd",
+                "ki",
+                "ic50",
+                "ec50",
+                "ka",
+                "km"
+            ],
+            "title": "BindingAffinityTypeEnum",
+            "type": "string"
+        },
+        "BiophysicalMethodEnum": {
+            "description": "Methods for biophysical measurements",
+            "enum": [
+                "differential_scanning_calorimetry",
+                "isothermal_titration_calorimetry",
+                "circular_dichroism",
+                "fluorescence_spectroscopy",
+                "surface_plasmon_resonance",
+                "dynamic_light_scattering",
+                "analytical_ultracentrifugation",
+                "nuclear_magnetic_resonance",
+                "mass_spectrometry"
+            ],
+            "title": "BiophysicalMethodEnum",
+            "type": "string"
+        },
+        "BiophysicalProperty": {
+            "additionalProperties": false,
+            "description": "Measured or calculated biophysical properties",
+            "properties": {
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "error": {
+                    "description": "Experimental error or uncertainty",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "experimental_method": {
+                    "$ref": "#/$defs/BiophysicalMethodEnum",
+                    "description": "Method used for measurement"
+                },
+                "ionic_strength": {
+                    "description": "Ionic strength in molar",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "measurement_conditions": {
+                    "description": "Conditions under which measurement was made",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ph": {
+                    "description": "pH value",
+                    "maximum": 14,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "property_type": {
+                    "$ref": "#/$defs/BiophysicalPropertyEnum",
+                    "description": "Type of biophysical property"
+                },
+                "temperature": {
+                    "description": "Temperature in Kelvin",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "Unit of measurement",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Numerical value of the property",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "property_type",
+                "value",
+                "unit"
+            ],
+            "title": "BiophysicalProperty",
+            "type": "object"
+        },
+        "BiophysicalPropertyEnum": {
+            "description": "Types of biophysical properties",
+            "enum": [
+                "melting_temperature",
+                "stability",
+                "folding_rate",
+                "unfolding_rate",
+                "aggregation_propensity",
+                "solubility",
+                "hydrophobicity",
+                "isoelectric_point",
+                "extinction_coefficient",
+                "molecular_weight",
+                "diffusion_coefficient",
+                "sedimentation_coefficient",
+                "radius_of_gyration",
+                "hydrodynamic_radius"
+            ],
+            "title": "BiophysicalPropertyEnum",
+            "type": "string"
+        },
         "BufferComposition": {
             "additionalProperties": false,
             "description": "Buffer composition for sample storage",
@@ -43,6 +376,18 @@
             "title": "BufferComposition",
             "type": "object"
         },
+        "ClinicalSignificanceEnum": {
+            "description": "Clinical significance of variants",
+            "enum": [
+                "pathogenic",
+                "likely_pathogenic",
+                "benign",
+                "likely_benign",
+                "uncertain_significance"
+            ],
+            "title": "ClinicalSignificanceEnum",
+            "type": "string"
+        },
         "CollectionModeEnum": {
             "description": "Data collection modes",
             "enum": [
@@ -56,6 +401,19 @@
                 "single_particle"
             ],
             "title": "CollectionModeEnum",
+            "type": "string"
+        },
+        "ComplexStabilityEnum": {
+            "description": "Stability of protein complexes",
+            "enum": [
+                "stable",
+                "transient",
+                "weak",
+                "strong",
+                "obligate",
+                "non_obligate"
+            ],
+            "title": "ComplexStabilityEnum",
             "type": "string"
         },
         "ComputeResources": {
@@ -109,6 +467,176 @@
                 "nanomolar"
             ],
             "title": "ConcentrationUnitEnum",
+            "type": "string"
+        },
+        "ConformationalEnsemble": {
+            "additionalProperties": false,
+            "description": "Ensemble of conformational states for a protein",
+            "properties": {
+                "clustering_method": {
+                    "description": "Method used for conformational clustering",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "conformational_states": {
+                    "description": "Individual conformational states",
+                    "items": {
+                        "$ref": "#/$defs/ConformationalState"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "energy_landscape": {
+                    "description": "Description of the energy landscape",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "principal_motions": {
+                    "description": "Description of principal motions",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession",
+                    "type": "string"
+                },
+                "rmsd_threshold": {
+                    "description": "RMSD threshold for clustering (Angstroms)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "transition_pathways": {
+                    "description": "Description of transition pathways between states",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "protein_id",
+                "id"
+            ],
+            "title": "ConformationalEnsemble",
+            "type": "object"
+        },
+        "ConformationalState": {
+            "additionalProperties": false,
+            "description": "Individual conformational state",
+            "properties": {
+                "characteristic_features": {
+                    "description": "Key features of this conformation",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "free_energy": {
+                    "description": "Relative free energy (kcal/mol)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "pdb_entries": {
+                    "description": "PDB entries representing this state",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "population": {
+                    "description": "Relative population of this state",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "rmsd_from_reference": {
+                    "description": "RMSD from reference structure",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "state_id": {
+                    "description": "Identifier for this state",
+                    "type": "string"
+                },
+                "state_name": {
+                    "description": "Descriptive name (e.g., 'open', 'closed')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "state_id"
+            ],
+            "title": "ConformationalState",
+            "type": "object"
+        },
+        "ConformationalStateEnum": {
+            "description": "Conformational states",
+            "enum": [
+                "open",
+                "closed",
+                "intermediate",
+                "active",
+                "inactive",
+                "apo",
+                "holo",
+                "substrate_bound",
+                "product_bound",
+                "inhibitor_bound",
+                "partially_open",
+                "partially_closed"
+            ],
+            "title": "ConformationalStateEnum",
             "type": "string"
         },
         "CryoEMInstrument": {
@@ -452,6 +980,73 @@
             "title": "DataTypeEnum",
             "type": "string"
         },
+        "DatabaseCrossReference": {
+            "additionalProperties": false,
+            "description": "Cross-references to external databases",
+            "properties": {
+                "database_id": {
+                    "description": "Identifier in the external database",
+                    "type": "string"
+                },
+                "database_name": {
+                    "$ref": "#/$defs/DatabaseNameEnum",
+                    "description": "Name of the external database"
+                },
+                "database_url": {
+                    "description": "URL to the database entry",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "last_updated": {
+                    "description": "Date of last update",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "database_name",
+                "database_id"
+            ],
+            "title": "DatabaseCrossReference",
+            "type": "object"
+        },
+        "DatabaseNameEnum": {
+            "description": "External database names",
+            "enum": [
+                "uniprot",
+                "pdb",
+                "pfam",
+                "cath",
+                "scop",
+                "interpro",
+                "chembl",
+                "chebi",
+                "pubchem",
+                "drugbank",
+                "omim",
+                "clinvar",
+                "cosmic",
+                "gnomad",
+                "intact",
+                "string",
+                "biogrid",
+                "reactome",
+                "kegg",
+                "go"
+            ],
+            "title": "DatabaseNameEnum",
+            "type": "string"
+        },
         "Dataset": {
             "additionalProperties": false,
             "description": "A collection of studies",
@@ -464,10 +1059,7 @@
                 },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "instruments": {
                     "items": {
@@ -519,6 +1111,177 @@
             ],
             "title": "DetectorTypeEnum",
             "type": "string"
+        },
+        "EvidenceTypeEnum": {
+            "description": "Types of evidence",
+            "enum": [
+                "experimental",
+                "predicted",
+                "inferred",
+                "literature",
+                "author_statement",
+                "curator_inference"
+            ],
+            "title": "EvidenceTypeEnum",
+            "type": "string"
+        },
+        "EvolutionaryConservation": {
+            "additionalProperties": false,
+            "description": "Evolutionary conservation information",
+            "properties": {
+                "alignment_depth": {
+                    "description": "Number of sequences in alignment",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "coevolved_residues": {
+                    "description": "Pairs of coevolved residues",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "conservation_method": {
+                    "description": "Method used for conservation analysis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "conservation_score": {
+                    "description": "Overall conservation score",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "conserved_residues": {
+                    "description": "Highly conserved residues",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "taxonomic_range": {
+                    "description": "Taxonomic range of conservation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "variable_residues": {
+                    "description": "Highly variable residues",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "protein_id",
+                "id"
+            ],
+            "title": "EvolutionaryConservation",
+            "type": "object"
         },
         "ExperimentRun": {
             "additionalProperties": false,
@@ -976,6 +1739,209 @@
             "title": "FluorescenceImage",
             "type": "object"
         },
+        "FunctionalEffectEnum": {
+            "description": "Effect on protein function",
+            "enum": [
+                "loss_of_function",
+                "gain_of_function",
+                "altered_function",
+                "no_effect",
+                "partial_loss",
+                "enhanced_function"
+            ],
+            "title": "FunctionalEffectEnum",
+            "type": "string"
+        },
+        "FunctionalSite": {
+            "additionalProperties": false,
+            "description": "Functional sites including catalytic, binding, and regulatory sites",
+            "properties": {
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "conservation_score": {
+                    "description": "Evolutionary conservation score",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ec_number": {
+                    "description": "Enzyme Commission number for catalytic sites",
+                    "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "functional_importance": {
+                    "description": "Description of functional importance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "go_terms": {
+                    "description": "Associated Gene Ontology terms",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "ligand_interactions": {
+                    "description": "Ligands that interact with this site",
+                    "items": {
+                        "$ref": "#/$defs/LigandInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "residues": {
+                    "description": "List of residues forming the functional site",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "site_name": {
+                    "description": "Common name for this site",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "site_type": {
+                    "$ref": "#/$defs/FunctionalSiteTypeEnum",
+                    "description": "Type of functional site"
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "site_type",
+                "protein_id",
+                "id"
+            ],
+            "title": "FunctionalSite",
+            "type": "object"
+        },
+        "FunctionalSiteTypeEnum": {
+            "description": "Types of functional sites in proteins",
+            "enum": [
+                "active_site",
+                "catalytic_site",
+                "binding_site",
+                "allosteric_site",
+                "substrate_binding",
+                "cofactor_binding",
+                "inhibitor_binding",
+                "metal_binding",
+                "nucleotide_binding",
+                "phosphorylation_site",
+                "glycosylation_site",
+                "ubiquitination_site",
+                "sumoylation_site",
+                "acetylation_site",
+                "methylation_site",
+                "protein_binding",
+                "dna_binding",
+                "rna_binding",
+                "lipid_binding"
+            ],
+            "title": "FunctionalSiteTypeEnum",
+            "type": "string"
+        },
         "GridTypeEnum": {
             "description": "Types of EM grids",
             "enum": [
@@ -1348,6 +2314,130 @@
             "title": "InstrumentStatusEnum",
             "type": "string"
         },
+        "InteractionEvidenceEnum": {
+            "description": "Evidence for interactions",
+            "enum": [
+                "experimental",
+                "predicted",
+                "homology",
+                "coexpression",
+                "colocalization",
+                "genetic",
+                "physical",
+                "functional"
+            ],
+            "title": "InteractionEvidenceEnum",
+            "type": "string"
+        },
+        "InteractionTypeEnum": {
+            "description": "Types of molecular interactions",
+            "enum": [
+                "covalent",
+                "hydrogen_bond",
+                "ionic",
+                "van_der_waals",
+                "hydrophobic",
+                "aromatic",
+                "pi_stacking",
+                "cation_pi",
+                "metal_coordination",
+                "disulfide"
+            ],
+            "title": "InteractionTypeEnum",
+            "type": "string"
+        },
+        "LigandInteraction": {
+            "additionalProperties": false,
+            "description": "Small molecule/ligand interactions with proteins",
+            "properties": {
+                "binding_affinity": {
+                    "description": "Binding affinity value",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "binding_affinity_type": {
+                    "$ref": "#/$defs/BindingAffinityTypeEnum",
+                    "description": "Type of binding measurement (Kd, Ki, IC50)"
+                },
+                "binding_affinity_unit": {
+                    "$ref": "#/$defs/AffinityUnitEnum",
+                    "description": "Unit of binding affinity"
+                },
+                "binding_site_residues": {
+                    "description": "Residues involved in ligand binding",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "druggability_score": {
+                    "description": "Druggability score of the binding site",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "interaction_distance": {
+                    "description": "Distance criteria for interaction (Angstroms)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "interaction_type": {
+                    "$ref": "#/$defs/InteractionTypeEnum",
+                    "description": "Type of interaction"
+                },
+                "is_cofactor": {
+                    "description": "Whether the ligand is a cofactor",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_drug_like": {
+                    "description": "Whether the ligand has drug-like properties",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ligand_id": {
+                    "description": "Ligand identifier (ChEMBL, ChEBI, PubChem)",
+                    "type": "string"
+                },
+                "ligand_name": {
+                    "description": "Common name of the ligand",
+                    "type": "string"
+                },
+                "ligand_smiles": {
+                    "description": "SMILES representation of the ligand",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "ligand_id",
+                "ligand_name"
+            ],
+            "title": "LigandInteraction",
+            "type": "object"
+        },
         "MolecularComposition": {
             "additionalProperties": false,
             "description": "Molecular composition of a sample",
@@ -1391,6 +2481,178 @@
             },
             "title": "MolecularComposition",
             "type": "object"
+        },
+        "MutationEffect": {
+            "additionalProperties": false,
+            "description": "Effects of mutations and variants on protein structure and function",
+            "properties": {
+                "allele_frequency": {
+                    "description": "Population allele frequency",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "clinical_significance": {
+                    "$ref": "#/$defs/ClinicalSignificanceEnum",
+                    "description": "Clinical significance"
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "delta_delta_g": {
+                    "description": "Change in folding free energy (kcal/mol)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "disease_association": {
+                    "description": "Associated disease or phenotype",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "effect_on_function": {
+                    "$ref": "#/$defs/FunctionalEffectEnum",
+                    "description": "Effect on protein function"
+                },
+                "effect_on_stability": {
+                    "$ref": "#/$defs/StabilityEffectEnum",
+                    "description": "Effect on protein stability"
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "functional_impact_description": {
+                    "description": "Description of functional impact",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "mutation": {
+                    "description": "Mutation in standard notation (e.g., 'A123V')",
+                    "pattern": "^[A-Z][0-9]+[A-Z]$",
+                    "type": "string"
+                },
+                "mutation_type": {
+                    "$ref": "#/$defs/MutationTypeEnum",
+                    "description": "Type of mutation"
+                },
+                "omim_id": {
+                    "description": "OMIM database identifier",
+                    "pattern": "^[0-9]{6}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "mutation",
+                "protein_id",
+                "id"
+            ],
+            "title": "MutationEffect",
+            "type": "object"
+        },
+        "MutationTypeEnum": {
+            "description": "Types of mutations",
+            "enum": [
+                "missense",
+                "nonsense",
+                "frameshift",
+                "deletion",
+                "insertion",
+                "duplication",
+                "substitution"
+            ],
+            "title": "MutationTypeEnum",
+            "type": "string"
         },
         "OntologyTerm": {
             "additionalProperties": false,
@@ -1567,6 +2829,178 @@
             "title": "OpticalImage",
             "type": "object"
         },
+        "PTMTypeEnum": {
+            "description": "Types of post-translational modifications",
+            "enum": [
+                "phosphorylation",
+                "acetylation",
+                "methylation",
+                "ubiquitination",
+                "sumoylation",
+                "glycosylation",
+                "palmitoylation",
+                "myristoylation",
+                "prenylation",
+                "nitrosylation",
+                "oxidation",
+                "hydroxylation",
+                "proteolysis",
+                "deamidation",
+                "adp_ribosylation"
+            ],
+            "title": "PTMTypeEnum",
+            "type": "string"
+        },
+        "PostTranslationalModification": {
+            "additionalProperties": false,
+            "description": "Post-translational modifications observed or predicted",
+            "properties": {
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "enzyme": {
+                    "description": "Enzyme responsible for modification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "functional_effect": {
+                    "description": "Known functional effect of this PTM",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "mass_shift": {
+                    "description": "Mass change due to modification (Da)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "modification_group": {
+                    "description": "Chemical group added (e.g., 'phosphate', 'methyl')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modification_type": {
+                    "$ref": "#/$defs/PTMTypeEnum",
+                    "description": "Type of PTM"
+                },
+                "modified_residue": {
+                    "description": "Residue that is modified",
+                    "type": "string"
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "regulatory_role": {
+                    "description": "Role in regulation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "removal_enzyme": {
+                    "description": "Enzyme that removes modification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "modification_type",
+                "modified_residue",
+                "protein_id",
+                "id"
+            ],
+            "title": "PostTranslationalModification",
+            "type": "object"
+        },
         "PreparationTypeEnum": {
             "description": "Types of sample preparation",
             "enum": [
@@ -1592,6 +3026,279 @@
             ],
             "title": "ProcessingStatusEnum",
             "type": "string"
+        },
+        "ProteinAnnotation": {
+            "additionalProperties": false,
+            "description": "Base class for all protein-related functional and structural annotations",
+            "properties": {
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "protein_id",
+                "id"
+            ],
+            "title": "ProteinAnnotation",
+            "type": "object"
+        },
+        "ProteinProteinInteraction": {
+            "additionalProperties": false,
+            "description": "Protein-protein interactions and interfaces",
+            "properties": {
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "binding_energy": {
+                    "description": "Calculated binding energy (kcal/mol)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "biological_assembly": {
+                    "description": "Whether this represents a biological assembly",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "complex_stability": {
+                    "$ref": "#/$defs/ComplexStabilityEnum",
+                    "description": "Stability assessment of the complex"
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dissociation_constant": {
+                    "description": "Experimental Kd if available",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "interaction_evidence": {
+                    "description": "Evidence for this interaction",
+                    "items": {
+                        "$ref": "#/$defs/InteractionEvidenceEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "interface_area": {
+                    "description": "Buried surface area at interface (\u0172)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "interface_residues": {
+                    "description": "Residues at the interaction interface",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "partner_chain_id": {
+                    "description": "Chain ID of interacting partner",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "partner_interface_residues": {
+                    "description": "Partner residues at the interaction interface",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "partner_protein_id": {
+                    "description": "UniProt ID of interacting partner",
+                    "type": "string"
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "partner_protein_id",
+                "protein_id",
+                "id"
+            ],
+            "title": "ProteinProteinInteraction",
+            "type": "object"
         },
         "QualityMetrics": {
             "additionalProperties": false,
@@ -1811,6 +3518,16 @@
                         "null"
                     ]
                 },
+                "biophysical_properties": {
+                    "description": "Measured or predicted biophysical properties",
+                    "items": {
+                        "$ref": "#/$defs/BiophysicalProperty"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "buffer_composition": {
                     "anyOf": [
                         {
@@ -1840,15 +3557,59 @@
                     "$ref": "#/$defs/ConcentrationUnitEnum",
                     "description": "Unit of concentration measurement"
                 },
+                "conformational_ensemble": {
+                    "description": "Conformational states and dynamics",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "database_cross_references": {
+                    "description": "Cross-references to external databases",
+                    "items": {
+                        "$ref": "#/$defs/DatabaseCrossReference"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "type": [
                         "string",
                         "null"
                     ]
                 },
+                "evolutionary_conservation": {
+                    "description": "Evolutionary conservation data",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "functional_sites": {
+                    "description": "Functional site annotations for proteins in the sample",
+                    "items": {
+                        "$ref": "#/$defs/FunctionalSite"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
                     "type": "string"
+                },
+                "ligand_interactions": {
+                    "description": "Small molecule interaction annotations",
+                    "items": {
+                        "$ref": "#/$defs/LigandInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "molecular_composition": {
                     "anyOf": [
@@ -1865,6 +3626,16 @@
                     "description": "Molecular weight in kDa",
                     "type": [
                         "number",
+                        "null"
+                    ]
+                },
+                "mutation_effects": {
+                    "description": "Effects of mutations present in the sample",
+                    "items": {
+                        "$ref": "#/$defs/MutationEffect"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -1886,6 +3657,26 @@
                     "description": "Method used to prepare the sample",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "protein_interactions": {
+                    "description": "Protein-protein interaction annotations",
+                    "items": {
+                        "$ref": "#/$defs/ProteinProteinInteraction"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "ptm_annotations": {
+                    "description": "Post-translational modification annotations",
+                    "items": {
+                        "$ref": "#/$defs/PostTranslationalModification"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -1923,6 +3714,16 @@
                         }
                     ],
                     "description": "Storage conditions for the sample"
+                },
+                "structural_features": {
+                    "description": "Structural feature annotations",
+                    "items": {
+                        "$ref": "#/$defs/StructuralFeature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "title": {
                     "type": [
@@ -2010,6 +3811,33 @@
             "title": "SampleTypeEnum",
             "type": "string"
         },
+        "SecondaryStructureEnum": {
+            "description": "Secondary structure types",
+            "enum": [
+                "helix",
+                "sheet",
+                "turn",
+                "coil",
+                "helix_310",
+                "helix_pi",
+                "bend",
+                "bridge"
+            ],
+            "title": "SecondaryStructureEnum",
+            "type": "string"
+        },
+        "StabilityEffectEnum": {
+            "description": "Effect on protein stability",
+            "enum": [
+                "stabilizing",
+                "destabilizing",
+                "neutral",
+                "highly_stabilizing",
+                "highly_destabilizing"
+            ],
+            "title": "StabilityEffectEnum",
+            "type": "string"
+        },
         "StorageConditions": {
             "additionalProperties": false,
             "description": "Storage conditions for samples",
@@ -2049,10 +3877,203 @@
             "title": "StorageConditions",
             "type": "object"
         },
+        "StructuralFeature": {
+            "additionalProperties": false,
+            "description": "Structural features and properties of protein regions",
+            "properties": {
+                "annotation_method": {
+                    "description": "Computational or experimental method used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "backbone_flexibility": {
+                    "description": "B-factor or flexibility measure",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "chain_id": {
+                    "description": "Chain identifier in the PDB structure",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "confidence_score": {
+                    "description": "Confidence score for the annotation (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "conformational_state": {
+                    "$ref": "#/$defs/ConformationalStateEnum",
+                    "description": "Conformational state descriptor"
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "disorder_probability": {
+                    "description": "Probability of disorder (0-1)",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "domain_assignment": {
+                    "description": "Domain database assignment (CATH, SCOP, Pfam)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "domain_id": {
+                    "description": "Domain identifier from domain database",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_code": {
+                    "description": "Evidence and Conclusion Ontology (ECO) code",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "$ref": "#/$defs/EvidenceTypeEnum",
+                    "description": "Type of evidence supporting this annotation"
+                },
+                "feature_type": {
+                    "$ref": "#/$defs/StructuralFeatureTypeEnum",
+                    "description": "Type of structural feature"
+                },
+                "id": {
+                    "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
+                    "type": "string"
+                },
+                "pdb_entry": {
+                    "description": "PDB identifier",
+                    "pattern": "^[0-9][A-Za-z0-9]{3}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "UniProt accession number",
+                    "pattern": "^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$",
+                    "type": "string"
+                },
+                "publication_ids": {
+                    "description": "PubMed IDs supporting this annotation",
+                    "items": {
+                        "pattern": "^PMID:[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "residue_range": {
+                    "description": "Range of residues (e.g., '1-100', '25,27,30-35')",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "secondary_structure": {
+                    "$ref": "#/$defs/SecondaryStructureEnum",
+                    "description": "Secondary structure assignment"
+                },
+                "solvent_accessibility": {
+                    "description": "Relative solvent accessible surface area",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "$ref": "#/$defs/AnnotationSourceEnum",
+                    "description": "Source database or resource that provided this annotation"
+                },
+                "structural_motif": {
+                    "description": "Known structural motif",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "feature_type",
+                "protein_id",
+                "id"
+            ],
+            "title": "StructuralFeature",
+            "type": "object"
+        },
+        "StructuralFeatureTypeEnum": {
+            "description": "Types of structural features",
+            "enum": [
+                "alpha_helix",
+                "beta_sheet",
+                "beta_strand",
+                "turn",
+                "coil",
+                "disordered_region",
+                "transmembrane_helix",
+                "signal_peptide",
+                "transit_peptide",
+                "domain",
+                "repeat",
+                "zinc_finger",
+                "coiled_coil",
+                "motif",
+                "cavity",
+                "channel",
+                "pore",
+                "hinge",
+                "linker"
+            ],
+            "title": "StructuralFeatureTypeEnum",
+            "type": "string"
+        },
         "Study": {
             "additionalProperties": false,
             "description": "A focused research investigation that groups related samples, experiments, and data collection around a specific biological question or hypothesis",
             "properties": {
+                "aggregated_protein_views": {
+                    "description": "Aggregated functional and structural annotations for proteins in this study",
+                    "items": {
+                        "$ref": "#/$defs/AggregatedProteinView"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "data_files": {
                     "items": {
                         "$ref": "#/$defs/DataFile"
@@ -2637,10 +4658,7 @@
         },
         "id": {
             "description": "Globally unique identifier as an IRI or CURIE for machine processing and external references. Used for linking data across systems and semantic web integration.",
-            "type": [
-                "string",
-                "null"
-            ]
+            "type": "string"
         },
         "instruments": {
             "items": {

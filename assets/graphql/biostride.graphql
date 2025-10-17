@@ -1,4 +1,104 @@
 # metamodel_version: 1.7.0
+enum AffinityUnitEnum
+  {
+    molar
+    millimolar
+    micromolar
+    nanomolar
+    picomolar
+  }
+
+enum AnnotationSourceEnum
+  {
+    pdbe
+    pdbe_kb
+    uniprot
+    pfam
+    cath
+    scop
+    interpro
+    channelsdb
+    dynamine
+    foldx
+    p2rank
+    __3dligandsite
+    arpeggio
+    covalentizer
+    depth
+    elmpdb
+    frustration
+    kincore
+    membranome
+    missense3d
+    mobi
+    nucleos
+    __14_3_3_pred
+    akid
+    camkinet
+    cansar
+    credo
+    klifs
+    m_csm
+    moondb
+    pocketome
+    propka
+    proteins_api
+    validation
+    alphafold
+    modbase
+    swiss_model
+  }
+
+enum BindingAffinityTypeEnum
+  {
+    kd
+    ki
+    ic50
+    ec50
+    ka
+    km
+  }
+
+enum BiophysicalMethodEnum
+  {
+    differential_scanning_calorimetry
+    isothermal_titration_calorimetry
+    circular_dichroism
+    fluorescence_spectroscopy
+    surface_plasmon_resonance
+    dynamic_light_scattering
+    analytical_ultracentrifugation
+    nuclear_magnetic_resonance
+    mass_spectrometry
+  }
+
+enum BiophysicalPropertyEnum
+  {
+    melting_temperature
+    stability
+    folding_rate
+    unfolding_rate
+    aggregation_propensity
+    solubility
+    hydrophobicity
+    isoelectric_point
+    extinction_coefficient
+    molecular_weight
+    diffusion_coefficient
+    sedimentation_coefficient
+    radius_of_gyration
+    hydrodynamic_radius
+  }
+
+enum ClinicalSignificanceEnum
+  {
+    pathogenic
+    likely_pathogenic
+    benign
+    likely_benign
+    uncertain_significance
+  }
+
 enum CollectionModeEnum
   {
     counting
@@ -11,12 +111,38 @@ enum CollectionModeEnum
     single_particle
   }
 
+enum ComplexStabilityEnum
+  {
+    stable
+    transient
+    weak
+    strong
+    obligate
+    non_obligate
+  }
+
 enum ConcentrationUnitEnum
   {
     mg_per_ml
     micromolar
     millimolar
     nanomolar
+  }
+
+enum ConformationalStateEnum
+  {
+    open
+    closed
+    intermediate
+    active
+    inactive
+    apo
+    holo
+    substrate_bound
+    product_bound
+    inhibitor_bound
+    partially_open
+    partially_closed
   }
 
 enum CrystallizationMethodEnum
@@ -26,6 +152,30 @@ enum CrystallizationMethodEnum
     microbatch
     dialysis
     free_interface_diffusion
+  }
+
+enum DatabaseNameEnum
+  {
+    uniprot
+    pdb
+    pfam
+    cath
+    scop
+    interpro
+    chembl
+    chebi
+    pubchem
+    drugbank
+    omim
+    clinvar
+    cosmic
+    gnomad
+    intact
+    string
+    biogrid
+    reactome
+    kegg
+    go
   }
 
 enum DataTypeEnum
@@ -49,6 +199,16 @@ enum DetectorTypeEnum
     hybrid_pixel
   }
 
+enum EvidenceTypeEnum
+  {
+    experimental
+    predicted
+    inferred
+    literature
+    author_statement
+    curator_inference
+  }
+
 enum FileFormatEnum
   {
     mrc
@@ -62,6 +222,39 @@ enum FileFormatEnum
     ascii
     thermo_raw
     zip
+  }
+
+enum FunctionalEffectEnum
+  {
+    loss_of_function
+    gain_of_function
+    altered_function
+    no_effect
+    partial_loss
+    enhanced_function
+  }
+
+enum FunctionalSiteTypeEnum
+  {
+    active_site
+    catalytic_site
+    binding_site
+    allosteric_site
+    substrate_binding
+    cofactor_binding
+    inhibitor_binding
+    metal_binding
+    nucleotide_binding
+    phosphorylation_site
+    glycosylation_site
+    ubiquitination_site
+    sumoylation_site
+    acetylation_site
+    methylation_site
+    protein_binding
+    dna_binding
+    rna_binding
+    lipid_binding
   }
 
 enum GridTypeEnum
@@ -93,6 +286,43 @@ enum InstrumentStatusEnum
     commissioning
   }
 
+enum InteractionEvidenceEnum
+  {
+    experimental
+    predicted
+    homology
+    coexpression
+    colocalization
+    genetic
+    physical
+    functional
+  }
+
+enum InteractionTypeEnum
+  {
+    covalent
+    hydrogen_bond
+    ionic
+    van_der_waals
+    hydrophobic
+    aromatic
+    pi_stacking
+    cation_pi
+    metal_coordination
+    disulfide
+  }
+
+enum MutationTypeEnum
+  {
+    missense
+    nonsense
+    frameshift
+    deletion
+    insertion
+    duplication
+    substitution
+  }
+
 enum PreparationTypeEnum
   {
     cryo_em
@@ -113,6 +343,25 @@ enum ProcessingStatusEnum
     failed
   }
 
+enum PTMTypeEnum
+  {
+    phosphorylation
+    acetylation
+    methylation
+    ubiquitination
+    sumoylation
+    glycosylation
+    palmitoylation
+    myristoylation
+    prenylation
+    nitrosylation
+    oxidation
+    hydroxylation
+    proteolysis
+    deamidation
+    adp_ribosylation
+  }
+
 enum SampleTypeEnum
   {
     protein
@@ -121,6 +370,50 @@ enum SampleTypeEnum
     membrane_protein
     virus
     organelle
+  }
+
+enum SecondaryStructureEnum
+  {
+    helix
+    sheet
+    turn
+    coil
+    helix_310
+    helix_pi
+    bend
+    bridge
+  }
+
+enum StabilityEffectEnum
+  {
+    stabilizing
+    destabilizing
+    neutral
+    highly_stabilizing
+    highly_destabilizing
+  }
+
+enum StructuralFeatureTypeEnum
+  {
+    alpha_helix
+    beta_sheet
+    beta_strand
+    turn
+    coil
+    disordered_region
+    transmembrane_helix
+    signal_peptide
+    transit_peptide
+    domain
+    repeat
+    zinc_finger
+    coiled_coil
+    motif
+    cavity
+    channel
+    pore
+    hinge
+    linker
   }
 
 enum TechniqueEnum
@@ -174,9 +467,45 @@ enum XRaySourceTypeEnum
     metal_jet
   }
 
+type AggregatedProteinView
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    uniprotId: String!
+    proteinName: String!
+    organism: String
+    organismId: Integer
+    pdbEntries: [String]
+    functionalSites: [FunctionalSite]
+    structuralFeatures: [StructuralFeature]
+    proteinInteractions: [ProteinProteinInteraction]
+    ligandInteractions: [LigandInteraction]
+    mutations: [MutationEffect]
+    ptms: [PostTranslationalModification]
+    biophysicalProperties: [BiophysicalProperty]
+    conformationalEnsemble: ConformationalEnsemble
+    evolutionaryConservation: EvolutionaryConservation
+    crossReferences: [DatabaseCrossReference]
+  }
+
 interface AttributeGroup
   {
     description: String
+  }
+
+type BiophysicalProperty
+  {
+    description: String
+    propertyType: BiophysicalPropertyEnum!
+    value: Float!
+    unit: String!
+    error: Float
+    measurementConditions: String
+    temperature: Float
+    ph: Float
+    ionicStrength: Float
+    experimentalMethod: BiophysicalMethodEnum
   }
 
 type BufferComposition
@@ -194,6 +523,32 @@ type ComputeResources
     gpuHours: Float
     memoryGb: Float
     storageGb: Float
+  }
+
+type ConformationalEnsemble
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    conformationalStates: [ConformationalState]
+    clusteringMethod: String
+    rmsdThreshold: Float
+    transitionPathways: String
+    energyLandscape: String
+    principalMotions: [String]
+  }
+
+type ConformationalState
+  {
+    description: String
+    stateId: String!
+    stateName: String
+    pdbEntries: [String]
+    population: Float
+    freeEnergy: Float
+    rmsdFromReference: Float
+    characteristicFeatures: [String]
   }
 
 type CryoEMInstrument
@@ -230,6 +585,15 @@ type CryoEMPreparation
     plasmaTreatment: String
   }
 
+type DatabaseCrossReference
+  {
+    description: String
+    databaseName: DatabaseNameEnum!
+    databaseId: String!
+    databaseUrl: Uri
+    lastUpdated: String
+  }
+
 type DataCollectionStrategy
   {
     description: String
@@ -262,6 +626,30 @@ type Dataset
     keywords: [String]
     instruments: [Instrument]
     studies: [Study]
+  }
+
+type EvolutionaryConservation
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+    conservationScore: Float
+    conservedResidues: [String]
+    variableResidues: [String]
+    conservationMethod: String
+    alignmentDepth: Integer
+    taxonomicRange: String
+    coevolvedResidues: [String]
   }
 
 type ExperimentalConditions
@@ -339,6 +727,31 @@ type FTIRImage
     backgroundCorrection: String
   }
 
+type FunctionalSite
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+    siteType: FunctionalSiteTypeEnum!
+    siteName: String
+    residues: [String]
+    ligandInteractions: [LigandInteraction]
+    conservationScore: Float
+    functionalImportance: String
+    goTerms: [Uriorcurie]
+    ecNumber: String
+  }
+
 type Image
   {
     id: Uriorcurie!
@@ -404,12 +817,56 @@ type Instrument
     currentStatus: InstrumentStatusEnum
   }
 
+type LigandInteraction
+  {
+    description: String
+    ligandId: String!
+    ligandName: String!
+    ligandSmiles: String
+    bindingAffinity: Float
+    bindingAffinityType: BindingAffinityTypeEnum
+    bindingAffinityUnit: AffinityUnitEnum
+    interactionType: InteractionTypeEnum
+    bindingSiteResidues: [String]
+    isCofactor: Boolean
+    isDrugLike: Boolean
+    druggabilityScore: Float
+    interactionDistance: Float
+  }
+
 type MolecularComposition
   {
     description: String
     sequences: [String]
     modifications: [String]
     ligands: [String]
+  }
+
+type MutationEffect
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+    mutation: String!
+    mutationType: MutationTypeEnum
+    effectOnStability: StabilityEffectEnum
+    deltaDeltaG: Float
+    effectOnFunction: FunctionalEffectEnum
+    functionalImpactDescription: String
+    diseaseAssociation: String
+    omimId: String
+    clinicalSignificance: ClinicalSignificanceEnum
+    alleleFrequency: Float
   }
 
 interface NamedThing
@@ -451,6 +908,75 @@ type OpticalImage
     contrastMethod: String
   }
 
+type PostTranslationalModification
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+    modificationType: PTMTypeEnum!
+    modifiedResidue: String!
+    modificationGroup: String
+    massShift: Float
+    functionalEffect: String
+    regulatoryRole: String
+    enzyme: String
+    removalEnzyme: String
+  }
+
+type ProteinAnnotation
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+  }
+
+type ProteinProteinInteraction
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+    partnerProteinId: String!
+    partnerChainId: String
+    interfaceResidues: [String]
+    partnerInterfaceResidues: [String]
+    interfaceArea: Float
+    bindingEnergy: Float
+    dissociationConstant: Float
+    complexStability: ComplexStabilityEnum
+    biologicalAssembly: Boolean
+    interactionEvidence: [InteractionEvidenceEnum]
+  }
+
 type QualityMetrics
   {
     description: String
@@ -482,6 +1008,16 @@ type Sample
     parentSampleId: Sample
     purityPercentage: Float
     qualityMetrics: String
+    functionalSites: [FunctionalSite]
+    structuralFeatures: [StructuralFeature]
+    proteinInteractions: [ProteinProteinInteraction]
+    ligandInteractions: [LigandInteraction]
+    mutationEffects: [MutationEffect]
+    ptmAnnotations: [PostTranslationalModification]
+    biophysicalProperties: [BiophysicalProperty]
+    evolutionaryConservation: EvolutionaryConservation
+    conformationalEnsemble: ConformationalEnsemble
+    databaseCrossReferences: [DatabaseCrossReference]
   }
 
 type SamplePreparation
@@ -533,6 +1069,32 @@ type StorageConditions
     atmosphere: String
   }
 
+type StructuralFeature
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    proteinId: String!
+    pdbEntry: String
+    chainId: String
+    residueRange: String
+    confidenceScore: Float
+    evidenceType: EvidenceTypeEnum
+    evidenceCode: Uriorcurie
+    sourceDatabase: AnnotationSourceEnum
+    annotationMethod: String
+    publicationIds: [String]
+    featureType: StructuralFeatureTypeEnum!
+    secondaryStructure: SecondaryStructureEnum
+    solventAccessibility: Float
+    backboneFlexibility: Float
+    disorderProbability: Float
+    conformationalState: ConformationalStateEnum
+    structuralMotif: String
+    domainAssignment: String
+    domainId: String
+  }
+
 type Study
   {
     id: Uriorcurie!
@@ -544,6 +1106,7 @@ type Study
     workflowRuns: [WorkflowRun]
     dataFiles: [DataFile]
     images: [Image]
+    aggregatedProteinViews: [AggregatedProteinView]
   }
 
 interface TechniqueSpecificPreparation
