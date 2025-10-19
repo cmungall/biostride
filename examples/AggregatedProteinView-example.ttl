@@ -1,0 +1,349 @@
+@base <http://example.org/> .
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_func: <https://w3id.org/biostride/functional-annotation/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:protein-p53-view a biostride_func:AggregatedProteinView ;
+    dcterms:title "Aggregated structural and functional data for human p53" ;
+    biostride_func:biophysical_properties [ a biostride_func:BiophysicalProperty ;
+            biostride_func:measurement_conditions "Predicted for unfolded state" ;
+            biostride_func:property_type "aggregation_propensity" ;
+            biostride_func:unit "probability" ;
+            biostride_func:value "0.68"^^xsd:float ],
+        [ a biostride_func:BiophysicalProperty ;
+            biostride_func:experimental_method "differential_scanning_calorimetry" ;
+            biostride_func:measurement_conditions "DNA-binding domain, pH 7.0, 20°C" ;
+            biostride_func:property_type "stability" ;
+            biostride_func:unit "kcal/mol" ;
+            biostride_func:value "42.5"^^xsd:float ],
+        [ a biostride_func:BiophysicalProperty ;
+            biostride_func:error "1.2"^^xsd:float ;
+            biostride_func:experimental_method "circular_dichroism" ;
+            biostride_func:measurement_conditions "Full-length protein" ;
+            biostride_func:ph "7.4"^^xsd:float ;
+            biostride_func:property_type "melting_temperature" ;
+            biostride_func:unit "K" ;
+            biostride_func:value "315.8"^^xsd:float ] ;
+    biostride_func:conformational_ensemble biostride:p53-confens-001 ;
+    biostride_func:cross_references [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "191170" ;
+            biostride_func:database_name "omim" ;
+            biostride_func:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "CHEMBL4096" ;
+            biostride_func:database_name "chembl" ;
+            biostride_func:database_url "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL4096/"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "P04637" ;
+            biostride_func:database_name "uniprot" ;
+            biostride_func:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ;
+            biostride_func:last_updated "2024-01-15" ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "COSM10662" ;
+            biostride_func:database_name "cosmic" ;
+            biostride_func:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "PF00870" ;
+            biostride_func:database_name "pfam" ;
+            biostride_func:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ] ;
+    biostride_func:evolutionary_conservation biostride:p53-evol-001 ;
+    biostride_func:functional_sites biostride:p53-func-001,
+        biostride:p53-func-002,
+        biostride:p53-func-003 ;
+    biostride_func:ligand_interactions [ a biostride_func:LigandInteraction ;
+            biostride_func:binding_affinity "0.001"^^xsd:float ;
+            biostride_func:binding_affinity_type "kd" ;
+            biostride_func:binding_affinity_unit "micromolar" ;
+            biostride_func:binding_site_residues "176",
+                "179",
+                "238",
+                "242" ;
+            biostride_func:interaction_type "metal_coordination" ;
+            biostride_func:is_cofactor true ;
+            biostride_func:is_drug_like false ;
+            biostride_func:ligand_id "CHEBI:30413" ;
+            biostride_func:ligand_name "Zinc ion" ],
+        [ a biostride_func:LigandInteraction ;
+            biostride_func:binding_affinity "0.09"^^xsd:float ;
+            biostride_func:binding_affinity_type "ki" ;
+            biostride_func:binding_affinity_unit "micromolar" ;
+            biostride_func:binding_site_residues "19",
+                "23",
+                "26" ;
+            biostride_func:druggability_score "0.75"^^xsd:float ;
+            biostride_func:interaction_type "hydrophobic" ;
+            biostride_func:is_drug_like true ;
+            biostride_func:ligand_id "CHEMBL3545110" ;
+            biostride_func:ligand_name "Nutlin-3a" ] ;
+    biostride_func:mutations biostride:p53-mut-001,
+        biostride:p53-mut-002,
+        biostride:p53-mut-003 ;
+    biostride_func:organism "Homo sapiens" ;
+    biostride_func:organism_id 9606 ;
+    biostride_func:pdb_entries "1TSR",
+        "1TUP",
+        "2AC0",
+        "2ADY",
+        "2AHI",
+        "2ATA",
+        "2B3G",
+        "2BIM",
+        "2FOJ",
+        "2GEQ" ;
+    biostride_func:protein_interactions biostride:p53-ppi-001,
+        biostride:p53-ppi-002 ;
+    biostride_func:protein_name "Cellular tumor antigen p53" ;
+    biostride_func:ptms biostride:p53-ptm-001,
+        biostride:p53-ptm-002,
+        biostride:p53-ptm-003 ;
+    biostride_func:structural_features biostride:p53-struct-001,
+        biostride:p53-struct-002,
+        biostride:p53-struct-003,
+        biostride:p53-struct-004 ;
+    biostride_func:uniprot_id "P04637" ;
+    biostride_schema:description "Complete functional annotation profile for p53 tumor suppressor aggregated from multiple PDB structures and annotation databases" .
+
+biostride:p53-confens-001 a biostride_func:ConformationalEnsemble ;
+    biostride_func:clustering_method "Structure-based clustering of DNA-binding domain" ;
+    biostride_func:conformational_states [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "DNA contacts formed",
+                "L1 loop ordered" ;
+            biostride_func:free_energy "-2.3"^^xsd:float ;
+            biostride_func:pdb_entries "1TSR",
+                "1TUP" ;
+            biostride_func:population "0.6"^^xsd:float ;
+            biostride_func:rmsd_from_reference "2.1"^^xsd:float ;
+            biostride_func:state_id "dna_bound" ;
+            biostride_func:state_name "DNA-bound" ],
+        [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "DNA-binding surface exposed",
+                "L1 loop flexible" ;
+            biostride_func:free_energy "0.0"^^xsd:float ;
+            biostride_func:pdb_entries "2AC0",
+                "2ADY" ;
+            biostride_func:population "0.4"^^xsd:float ;
+            biostride_func:state_id "dna_free" ;
+            biostride_func:state_name "DNA-free" ] ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:rmsd_threshold "1.5"^^xsd:float ;
+    biostride_func:transition_pathways "DNA-free <-> DNA-bound conformations" .
+
+biostride:p53-evol-001 a biostride_func:EvolutionaryConservation ;
+    biostride_func:alignment_depth 250 ;
+    biostride_func:coevolved_residues "175-238",
+        "179-242" ;
+    biostride_func:conservation_method "ConSurf" ;
+    biostride_func:conservation_score "0.78"^^xsd:float ;
+    biostride_func:conserved_residues "120",
+        "175",
+        "176",
+        "179",
+        "238",
+        "241",
+        "242",
+        "248",
+        "273",
+        "276",
+        "277",
+        "280",
+        "283" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "pdbe_kb" ;
+    biostride_func:taxonomic_range "Vertebrata" ;
+    biostride_func:variable_residues "1-40",
+        "360-393" .
+
+biostride:p53-func-001 a biostride_func:FunctionalSite ;
+    biostride_func:chain_id "A" ;
+    biostride_func:confidence_score "1.0"^^xsd:float ;
+    biostride_func:conservation_score "0.95"^^xsd:float ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_importance "Sequence-specific DNA binding for transcriptional regulation" ;
+    biostride_func:go_terms "GO:0003677"^^xsd:anyURI,
+        "GO:0003700"^^xsd:anyURI ;
+    biostride_func:pdb_entry "1TUP" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residue_range "94-292" ;
+    biostride_func:residues "120",
+        "241",
+        "248",
+        "273",
+        "276",
+        "277",
+        "280",
+        "283" ;
+    biostride_func:site_name "DNA-binding domain" ;
+    biostride_func:site_type "dna_binding" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:p53-func-002 a biostride_func:FunctionalSite ;
+    biostride_func:confidence_score "0.98"^^xsd:float ;
+    biostride_func:conservation_score "0.88"^^xsd:float ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_importance "Negative regulation through MDM2 interaction" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residue_range "17-29" ;
+    biostride_func:residues "19",
+        "23",
+        "26" ;
+    biostride_func:site_name "MDM2 binding site" ;
+    biostride_func:site_type "protein_binding" ;
+    biostride_func:source_database "intact" .
+
+biostride:p53-func-003 a biostride_func:FunctionalSite ;
+    biostride_func:conservation_score "1.0"^^xsd:float ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_importance "Structural stability of DNA-binding domain" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residues "176",
+        "179",
+        "238",
+        "242" ;
+    biostride_func:site_name "Zinc coordination site" ;
+    biostride_func:site_type "metal_binding" ;
+    biostride_func:source_database "pdbe" .
+
+biostride:p53-mut-001 a biostride_func:MutationEffect ;
+    biostride_func:allele_frequency "1e-05"^^xsd:float ;
+    biostride_func:clinical_significance "pathogenic" ;
+    biostride_func:delta_delta_g "3.8"^^xsd:float ;
+    biostride_func:disease_association "Li-Fraumeni syndrome, various cancers" ;
+    biostride_func:effect_on_function "loss_of_function" ;
+    biostride_func:effect_on_stability "highly_destabilizing" ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_impact_description "Loss of DNA binding ability" ;
+    biostride_func:mutation "R175H" ;
+    biostride_func:mutation_type "missense" ;
+    biostride_func:omim_id "191170" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:p53-mut-002 a biostride_func:MutationEffect ;
+    biostride_func:clinical_significance "pathogenic" ;
+    biostride_func:delta_delta_g "2.1"^^xsd:float ;
+    biostride_func:disease_association "Various cancers" ;
+    biostride_func:effect_on_function "loss_of_function" ;
+    biostride_func:effect_on_stability "destabilizing" ;
+    biostride_func:functional_impact_description "Impaired DNA binding and transcriptional activation" ;
+    biostride_func:mutation "R248Q" ;
+    biostride_func:mutation_type "missense" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:p53-mut-003 a biostride_func:MutationEffect ;
+    biostride_func:clinical_significance "pathogenic" ;
+    biostride_func:delta_delta_g "0.3"^^xsd:float ;
+    biostride_func:disease_association "Various cancers" ;
+    biostride_func:effect_on_function "altered_function" ;
+    biostride_func:effect_on_stability "neutral" ;
+    biostride_func:functional_impact_description "Altered DNA binding specificity" ;
+    biostride_func:mutation "R273H" ;
+    biostride_func:mutation_type "missense" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:p53-ppi-001 a biostride_func:ProteinProteinInteraction ;
+    biostride_func:binding_energy "-8.7"^^xsd:float ;
+    biostride_func:biological_assembly true ;
+    biostride_func:complex_stability "stable" ;
+    biostride_func:dissociation_constant "0.0001"^^xsd:float ;
+    biostride_func:interaction_evidence "experimental",
+        "physical" ;
+    biostride_func:interface_area "723.4"^^xsd:float ;
+    biostride_func:interface_residues "19",
+        "23",
+        "26",
+        "27" ;
+    biostride_func:partner_chain_id "B" ;
+    biostride_func:partner_interface_residues "54",
+        "56",
+        "58",
+        "62" ;
+    biostride_func:partner_protein_id "Q00987" ;
+    biostride_func:pdb_entry "1YCR" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "intact" .
+
+biostride:p53-ppi-002 a biostride_func:ProteinProteinInteraction ;
+    biostride_func:complex_stability "transient" ;
+    biostride_func:interaction_evidence "coexpression",
+        "experimental" ;
+    biostride_func:interface_area "456.2"^^xsd:float ;
+    biostride_func:interface_residues "183",
+        "184",
+        "185",
+        "186" ;
+    biostride_func:partner_protein_id "Q04206" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:p53-ptm-001 a biostride_func:PostTranslationalModification ;
+    biostride_func:enzyme "ATM, ATR" ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_effect "Stabilization, reduced MDM2 binding" ;
+    biostride_func:mass_shift "79.966"^^xsd:float ;
+    biostride_func:modification_group "phosphate" ;
+    biostride_func:modification_type "phosphorylation" ;
+    biostride_func:modified_residue "S15" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:regulatory_role "DNA damage response activation" ;
+    biostride_func:source_database "uniprot" .
+
+biostride:p53-ptm-002 a biostride_func:PostTranslationalModification ;
+    biostride_func:enzyme "p300/CBP" ;
+    biostride_func:functional_effect "Enhanced DNA binding and transcriptional activity" ;
+    biostride_func:mass_shift "42.011"^^xsd:float ;
+    biostride_func:modification_group "acetyl" ;
+    biostride_func:modification_type "acetylation" ;
+    biostride_func:modified_residue "K382" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:removal_enzyme "HDAC1" ;
+    biostride_func:source_database "uniprot" .
+
+biostride:p53-ptm-003 a biostride_func:PostTranslationalModification ;
+    biostride_func:enzyme "MDM2" ;
+    biostride_func:functional_effect "Proteasomal degradation signal" ;
+    biostride_func:modification_type "ubiquitination" ;
+    biostride_func:modified_residue "K370" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:source_database "uniprot" .
+
+biostride:p53-struct-001 a biostride_func:StructuralFeature ;
+    biostride_func:disorder_probability "0.75"^^xsd:float ;
+    biostride_func:domain_assignment "Pfam" ;
+    biostride_func:domain_id "PF00870" ;
+    biostride_func:feature_type "domain" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residue_range "1-93" ;
+    biostride_func:source_database "pfam" ;
+    biostride_func:structural_motif "Transactivation domain" .
+
+biostride:p53-struct-002 a biostride_func:StructuralFeature ;
+    biostride_func:domain_assignment "Pfam" ;
+    biostride_func:domain_id "PF00870" ;
+    biostride_func:feature_type "domain" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residue_range "94-292" ;
+    biostride_func:secondary_structure "sheet" ;
+    biostride_func:solvent_accessibility "0.35"^^xsd:float ;
+    biostride_func:source_database "pfam" ;
+    biostride_func:structural_motif "DNA-binding domain" .
+
+biostride:p53-struct-003 a biostride_func:StructuralFeature ;
+    biostride_func:conformational_state "disordered" ;
+    biostride_func:disorder_probability "0.82"^^xsd:float ;
+    biostride_func:feature_type "disordered_region" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residue_range "1-61" ;
+    biostride_func:source_database "mobi" .
+
+biostride:p53-struct-004 a biostride_func:StructuralFeature ;
+    biostride_func:backbone_flexibility "18.5"^^xsd:float ;
+    biostride_func:feature_type "beta_sheet" ;
+    biostride_func:protein_id "P04637" ;
+    biostride_func:residue_range "110-124" ;
+    biostride_func:secondary_structure "sheet" ;
+    biostride_func:source_database "pdbe" .
+

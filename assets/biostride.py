@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-18T19:22:34
+# Generation date: 2025-10-19T06:36:22
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -2517,8 +2517,8 @@ class AggregatedProteinView(NamedThing):
     mutations: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]] = empty_dict()
     ptms: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]] = empty_dict()
     biophysical_properties: Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]] = empty_list()
-    conformational_ensemble: Optional[Union[str, ConformationalEnsembleId]] = None
-    evolutionary_conservation: Optional[Union[str, EvolutionaryConservationId]] = None
+    conformational_ensemble: Optional[Union[dict, ConformationalEnsemble]] = None
+    evolutionary_conservation: Optional[Union[dict, EvolutionaryConservation]] = None
     cross_references: Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2565,11 +2565,11 @@ class AggregatedProteinView(NamedThing):
             self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
         self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
 
-        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsembleId):
-            self.conformational_ensemble = ConformationalEnsembleId(self.conformational_ensemble)
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
 
-        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservationId):
-            self.evolutionary_conservation = EvolutionaryConservationId(self.evolutionary_conservation)
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
 
         if not isinstance(self.cross_references, list):
             self.cross_references = [self.cross_references] if self.cross_references is not None else []
@@ -3177,6 +3177,9 @@ class StructuralFeatureTypeEnum(EnumDefinitionImpl):
     zinc_finger = PermissibleValue(
         text="zinc_finger",
         description="Zinc finger motif")
+    zinc_binding = PermissibleValue(
+        text="zinc_binding",
+        description="Zinc binding site")
     coiled_coil = PermissibleValue(
         text="coiled_coil",
         description="Coiled coil")
@@ -3278,6 +3281,9 @@ class ConformationalStateEnum(EnumDefinitionImpl):
     partially_closed = PermissibleValue(
         text="partially_closed",
         description="Partially closed")
+    disordered = PermissibleValue(
+        text="disordered",
+        description="Disordered state")
 
     _defn = EnumDefinition(
         name="ConformationalStateEnum",
@@ -3829,6 +3835,15 @@ class AnnotationSourceEnum(EnumDefinitionImpl):
     swiss_model = PermissibleValue(
         text="swiss_model",
         description="SWISS-MODEL")
+    intact = PermissibleValue(
+        text="intact",
+        description="IntAct")
+    cosmic = PermissibleValue(
+        text="cosmic",
+        description="COSMIC")
+    clinvar = PermissibleValue(
+        text="clinvar",
+        description="ClinVar")
 
     _defn = EnumDefinition(
         name="AnnotationSourceEnum",
@@ -4864,10 +4879,10 @@ slots.aggregatedProteinView__biophysical_properties = Slot(uri=BIOSTRIDE_FUNC.bi
                    model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
 
 slots.aggregatedProteinView__conformational_ensemble = Slot(uri=BIOSTRIDE_FUNC.conformational_ensemble, name="aggregatedProteinView__conformational_ensemble", curie=BIOSTRIDE_FUNC.curie('conformational_ensemble'),
-                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[str, ConformationalEnsembleId]])
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
 
 slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=BIOSTRIDE_FUNC.evolutionary_conservation, name="aggregatedProteinView__evolutionary_conservation", curie=BIOSTRIDE_FUNC.curie('evolutionary_conservation'),
-                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[str, EvolutionaryConservationId]])
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
 
 slots.aggregatedProteinView__cross_references = Slot(uri=BIOSTRIDE_FUNC.cross_references, name="aggregatedProteinView__cross_references", curie=BIOSTRIDE_FUNC.curie('cross_references'),
                    model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])

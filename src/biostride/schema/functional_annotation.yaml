@@ -485,9 +485,11 @@ classes:
       conformational_ensemble:
         description: "Conformational ensemble data"
         range: ConformationalEnsemble
+        inlined: true
       evolutionary_conservation:
         description: "Conservation analysis"
         range: EvolutionaryConservation
+        inlined: true
       cross_references:
         description: "Database cross-references"
         range: DatabaseCrossReference
@@ -566,6 +568,8 @@ enums:
         description: "Sequence repeat"
       zinc_finger:
         description: "Zinc finger motif"
+      zinc_binding:
+        description: "Zinc binding site"
       coiled_coil:
         description: "Coiled coil"
       motif:
@@ -628,6 +632,8 @@ enums:
         description: "Partially open"
       partially_closed:
         description: "Partially closed"
+      disordered:
+        description: "Disordered state"
 
   InteractionTypeEnum:
     description: "Types of molecular interactions"
@@ -962,6 +968,12 @@ enums:
         description: "ModBase"
       swiss_model:
         description: "SWISS-MODEL"
+      intact:
+        description: "IntAct"
+      cosmic:
+        description: "COSMIC"
+      clinvar:
+        description: "ClinVar"
 
   DatabaseNameEnum:
     description: "External database names"

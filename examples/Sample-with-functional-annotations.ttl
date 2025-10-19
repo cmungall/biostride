@@ -8,27 +8,23 @@
 biostride:sample-ALS-FUNC-001 a biostride_schema:Sample ;
     dcterms:title "Human ATP synthase F1 complex with functional annotations" ;
     biostride_schema:biophysical_properties [ a biostride_func:BiophysicalProperty ;
+            biostride_func:experimental_method "differential_scanning_calorimetry" ;
+            biostride_func:measurement_conditions "pH 7.4, 25°C, 150 mM NaCl" ;
+            biostride_func:property_type "stability" ;
+            biostride_func:unit "kcal/mol" ;
+            biostride_func:value "65.5"^^xsd:float ],
+        [ a biostride_func:BiophysicalProperty ;
             biostride_func:error "0.5"^^xsd:float ;
             biostride_func:experimental_method "circular_dichroism" ;
             biostride_func:ionic_strength "0.15"^^xsd:float ;
             biostride_func:ph "7.4"^^xsd:float ;
             biostride_func:property_type "melting_temperature" ;
             biostride_func:unit "K" ;
-            biostride_func:value "338.2"^^xsd:float ],
-        [ a biostride_func:BiophysicalProperty ;
-            biostride_func:experimental_method "differential_scanning_calorimetry" ;
-            biostride_func:measurement_conditions "pH 7.4, 25°C, 150 mM NaCl" ;
-            biostride_func:property_type "stability" ;
-            biostride_func:unit "kcal/mol" ;
-            biostride_func:value "65.5"^^xsd:float ] ;
+            biostride_func:value "338.2"^^xsd:float ] ;
     biostride_schema:concentration "10.0"^^xsd:float ;
     biostride_schema:concentration_unit "mg_per_ml" ;
     biostride_schema:conformational_ensemble biostride:confens-001 ;
     biostride_schema:database_cross_references [ a biostride_func:DatabaseCrossReference ;
-            biostride_func:database_id "6ZPO" ;
-            biostride_func:database_name "pdb" ;
-            biostride_func:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ],
-        [ a biostride_func:DatabaseCrossReference ;
             biostride_func:database_id "P25705" ;
             biostride_func:database_name "uniprot" ;
             biostride_func:database_url "https://www.uniprot.org/uniprot/P25705"^^xsd:anyURI ],
@@ -36,6 +32,10 @@ biostride:sample-ALS-FUNC-001 a biostride_schema:Sample ;
             biostride_func:database_id "GO:0005524" ;
             biostride_func:database_name "go" ;
             biostride_func:database_url "http://amigo.geneontology.org/amigo/term/GO:0005524"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "6ZPO" ;
+            biostride_func:database_name "pdb" ;
+            biostride_func:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ],
         [ a biostride_func:DatabaseCrossReference ;
             biostride_func:database_id "PF00006" ;
             biostride_func:database_name "pfam" ;
@@ -60,15 +60,6 @@ biostride:sample-ALS-FUNC-001 a biostride_schema:Sample ;
 biostride:confens-001 a biostride_func:ConformationalEnsemble ;
     biostride_func:clustering_method "RMSD-based hierarchical clustering" ;
     biostride_func:conformational_states [ a biostride_func:ConformationalState ;
-            biostride_func:characteristic_features "ATP binding site exposed",
-                "Wide nucleotide channel" ;
-            biostride_func:free_energy "0.0"^^xsd:float ;
-            biostride_func:pdb_entries "6ZPN",
-                "6ZPO" ;
-            biostride_func:population "0.3"^^xsd:float ;
-            biostride_func:state_id "state_1" ;
-            biostride_func:state_name "open" ],
-        [ a biostride_func:ConformationalState ;
             biostride_func:characteristic_features "ATP bound",
                 "Catalytic residues positioned" ;
             biostride_func:free_energy "-1.2"^^xsd:float ;
@@ -86,7 +77,16 @@ biostride:confens-001 a biostride_func:ConformationalEnsemble ;
             biostride_func:population "0.2"^^xsd:float ;
             biostride_func:rmsd_from_reference "1.8"^^xsd:float ;
             biostride_func:state_id "state_3" ;
-            biostride_func:state_name "intermediate" ] ;
+            biostride_func:state_name "intermediate" ],
+        [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "ATP binding site exposed",
+                "Wide nucleotide channel" ;
+            biostride_func:free_energy "0.0"^^xsd:float ;
+            biostride_func:pdb_entries "6ZPN",
+                "6ZPO" ;
+            biostride_func:population "0.3"^^xsd:float ;
+            biostride_func:state_id "state_1" ;
+            biostride_func:state_name "open" ] ;
     biostride_func:protein_id "P25705" ;
     biostride_func:rmsd_threshold "2.5"^^xsd:float ;
     biostride_func:transition_pathways "Open <-> Intermediate <-> Closed conformations during catalytic cycle" .

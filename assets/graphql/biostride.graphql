@@ -47,6 +47,9 @@ enum AnnotationSourceEnum
     alphafold
     modbase
     swiss_model
+    intact
+    cosmic
+    clinvar
   }
 
 enum BindingAffinityTypeEnum
@@ -143,6 +146,7 @@ enum ConformationalStateEnum
     inhibitor_bound
     partially_open
     partially_closed
+    disordered
   }
 
 enum CrystallizationMethodEnum
@@ -407,6 +411,7 @@ enum StructuralFeatureTypeEnum
     domain
     repeat
     zinc_finger
+    zinc_binding
     coiled_coil
     motif
     cavity

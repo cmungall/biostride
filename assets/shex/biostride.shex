@@ -709,7 +709,10 @@ biostride_func:ProteinAnnotation  (
                 <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#validation>
                 <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#alphafold>
                 <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#modbase>
-                <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#swiss_model> ] ? ;
+                <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#swiss_model>
+                <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#intact>
+                <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#cosmic>
+                <https://w3id.org/biostride/functional-annotation/AnnotationSourceEnum#clinvar> ] ? ;
              biostride_func:annotation_method @linkml:String ? ;
              biostride_func:publication_ids @linkml:String *
           ) ;
@@ -880,6 +883,7 @@ biostride_func:StructuralFeature CLOSED {
              <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#domain>
              <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#repeat>
              <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#zinc_finger>
+             <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#zinc_binding>
              <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#coiled_coil>
              <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#motif>
              <https://w3id.org/biostride/functional-annotation/StructuralFeatureTypeEnum#cavity>
@@ -909,7 +913,8 @@ biostride_func:StructuralFeature CLOSED {
              <https://w3id.org/biostride/functional-annotation/ConformationalStateEnum#product_bound>
              <https://w3id.org/biostride/functional-annotation/ConformationalStateEnum#inhibitor_bound>
              <https://w3id.org/biostride/functional-annotation/ConformationalStateEnum#partially_open>
-             <https://w3id.org/biostride/functional-annotation/ConformationalStateEnum#partially_closed> ] ? ;
+             <https://w3id.org/biostride/functional-annotation/ConformationalStateEnum#partially_closed>
+             <https://w3id.org/biostride/functional-annotation/ConformationalStateEnum#disordered> ] ? ;
           biostride_func:structural_motif @linkml:String ? ;
           biostride_func:domain_assignment @linkml:String ? ;
           biostride_func:domain_id @linkml:String ?

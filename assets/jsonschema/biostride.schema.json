@@ -27,11 +27,15 @@
                     ]
                 },
                 "conformational_ensemble": {
-                    "description": "Conformational ensemble data",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ConformationalEnsemble"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Conformational ensemble data"
                 },
                 "cross_references": {
                     "description": "Database cross-references",
@@ -50,11 +54,15 @@
                     ]
                 },
                 "evolutionary_conservation": {
-                    "description": "Conservation analysis",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EvolutionaryConservation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Conservation analysis"
                 },
                 "functional_sites": {
                     "description": "All functional site annotations",
@@ -206,7 +214,10 @@
                 "validation",
                 "alphafold",
                 "modbase",
-                "swiss_model"
+                "swiss_model",
+                "intact",
+                "cosmic",
+                "clinvar"
             ],
             "title": "AnnotationSourceEnum",
             "type": "string"
@@ -634,7 +645,8 @@
                 "product_bound",
                 "inhibitor_bound",
                 "partially_open",
-                "partially_closed"
+                "partially_closed",
+                "disordered"
             ],
             "title": "ConformationalStateEnum",
             "type": "string"
@@ -4057,6 +4069,7 @@
                 "domain",
                 "repeat",
                 "zinc_finger",
+                "zinc_binding",
                 "coiled_coil",
                 "motif",
                 "cavity",

@@ -1074,6 +1074,10 @@
           "description": "Zinc finger motif"
         },
         {
+          "text": "zinc_binding",
+          "description": "Zinc binding site"
+        },
+        {
           "text": "coiled_coil",
           "description": "Coiled coil"
         },
@@ -1196,6 +1200,10 @@
         {
           "text": "partially_closed",
           "description": "Partially closed"
+        },
+        {
+          "text": "disordered",
+          "description": "Disordered state"
         }
       ]
     },
@@ -1864,6 +1872,18 @@
         {
           "text": "swiss_model",
           "description": "SWISS-MODEL"
+        },
+        {
+          "text": "intact",
+          "description": "IntAct"
+        },
+        {
+          "text": "cosmic",
+          "description": "COSMIC"
+        },
+        {
+          "text": "clinvar",
+          "description": "ClinVar"
         }
       ]
     },
@@ -6254,6 +6274,7 @@
         "AggregatedProteinView"
       ],
       "range": "ConformationalEnsemble",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6267,6 +6288,7 @@
         "AggregatedProteinView"
       ],
       "range": "EvolutionaryConservation",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -9453,12 +9475,14 @@
           "name": "conformational_ensemble",
           "description": "Conformational ensemble data",
           "range": "ConformationalEnsemble",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "evolutionary_conservation",
           "description": "Conservation analysis",
           "range": "EvolutionaryConservation",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -9478,7 +9502,7 @@
   "source_file": "biostride.yaml",
   "source_file_date": "2025-10-18T19:21:03",
   "source_file_size": 39367,
-  "generation_date": "2025-10-18T19:22:32",
+  "generation_date": "2025-10-19T06:36:20",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",
