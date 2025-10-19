@@ -1,0 +1,220 @@
+@base <http://example.org/> .
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_func: <https://w3id.org/biostride/functional-annotation/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:sample-ALS-FUNC-001 a biostride_schema:Sample ;
+    dcterms:title "Human ATP synthase F1 complex with functional annotations" ;
+    biostride_schema:biophysical_properties [ a biostride_func:BiophysicalProperty ;
+            biostride_func:error "0.5"^^xsd:float ;
+            biostride_func:experimental_method "circular_dichroism" ;
+            biostride_func:ionic_strength "0.15"^^xsd:float ;
+            biostride_func:ph "7.4"^^xsd:float ;
+            biostride_func:property_type "melting_temperature" ;
+            biostride_func:unit "K" ;
+            biostride_func:value "338.2"^^xsd:float ],
+        [ a biostride_func:BiophysicalProperty ;
+            biostride_func:experimental_method "differential_scanning_calorimetry" ;
+            biostride_func:measurement_conditions "pH 7.4, 25°C, 150 mM NaCl" ;
+            biostride_func:property_type "stability" ;
+            biostride_func:unit "kcal/mol" ;
+            biostride_func:value "65.5"^^xsd:float ] ;
+    biostride_schema:concentration "10.0"^^xsd:float ;
+    biostride_schema:concentration_unit "mg_per_ml" ;
+    biostride_schema:conformational_ensemble biostride:confens-001 ;
+    biostride_schema:database_cross_references [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "6ZPO" ;
+            biostride_func:database_name "pdb" ;
+            biostride_func:database_url "https://www.rcsb.org/structure/6ZPO"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "P25705" ;
+            biostride_func:database_name "uniprot" ;
+            biostride_func:database_url "https://www.uniprot.org/uniprot/P25705"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "GO:0005524" ;
+            biostride_func:database_name "go" ;
+            biostride_func:database_url "http://amigo.geneontology.org/amigo/term/GO:0005524"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "PF00006" ;
+            biostride_func:database_name "pfam" ;
+            biostride_func:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00006"^^xsd:anyURI ] ;
+    biostride_schema:description "ATP synthase F1 complex with detailed functional site and structural annotations from PDBe-KB" ;
+    biostride_schema:evolutionary_conservation biostride:evol-001 ;
+    biostride_schema:functional_sites biostride:funcsite-001,
+        biostride:funcsite-002 ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:description "Human ATP synthase F1 complex - catalytic core" ;
+            biostride_schema:sequences "MAAAKFERQHMDSSTE...KVLDSGAPIKIPVGPETLGRIMNVIGEPIDERGPIKTKQFAPIH",
+                "MLGFVGRVAAAPSGAST...GSITSQAIYVPADDLTDPAPATTFAHLDATTVLSRAIA" ] ;
+    biostride_schema:molecular_weight "380.5"^^xsd:float ;
+    biostride_schema:mutation_effects biostride:mut-001 ;
+    biostride_schema:protein_interactions biostride:ppi-001 ;
+    biostride_schema:ptm_annotations biostride:ptm-001 ;
+    biostride_schema:sample_code "ALS-FUNC-001" ;
+    biostride_schema:sample_type "complex" ;
+    biostride_schema:structural_features biostride:structfeat-001,
+        biostride:structfeat-002 .
+
+biostride:confens-001 a biostride_func:ConformationalEnsemble ;
+    biostride_func:clustering_method "RMSD-based hierarchical clustering" ;
+    biostride_func:conformational_states [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "ATP binding site exposed",
+                "Wide nucleotide channel" ;
+            biostride_func:free_energy "0.0"^^xsd:float ;
+            biostride_func:pdb_entries "6ZPN",
+                "6ZPO" ;
+            biostride_func:population "0.3"^^xsd:float ;
+            biostride_func:state_id "state_1" ;
+            biostride_func:state_name "open" ],
+        [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "ATP bound",
+                "Catalytic residues positioned" ;
+            biostride_func:free_energy "-1.2"^^xsd:float ;
+            biostride_func:pdb_entries "6ZPP",
+                "6ZPQ" ;
+            biostride_func:population "0.5"^^xsd:float ;
+            biostride_func:rmsd_from_reference "3.4"^^xsd:float ;
+            biostride_func:state_id "state_2" ;
+            biostride_func:state_name "closed" ],
+        [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "ADP + Pi bound",
+                "Transitioning conformation" ;
+            biostride_func:free_energy "0.8"^^xsd:float ;
+            biostride_func:pdb_entries "6ZPR" ;
+            biostride_func:population "0.2"^^xsd:float ;
+            biostride_func:rmsd_from_reference "1.8"^^xsd:float ;
+            biostride_func:state_id "state_3" ;
+            biostride_func:state_name "intermediate" ] ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:rmsd_threshold "2.5"^^xsd:float ;
+    biostride_func:transition_pathways "Open <-> Intermediate <-> Closed conformations during catalytic cycle" .
+
+biostride:evol-001 a biostride_func:EvolutionaryConservation ;
+    biostride_func:alignment_depth 500 ;
+    biostride_func:conservation_method "ConSurf" ;
+    biostride_func:conservation_score "0.92"^^xsd:float ;
+    biostride_func:conserved_residues "168",
+        "169",
+        "170",
+        "188",
+        "256",
+        "340",
+        "341" ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:source_database "pdbe_kb" ;
+    biostride_func:taxonomic_range "Eukaryota" ;
+    biostride_func:variable_residues "123",
+        "234",
+        "45",
+        "67" .
+
+biostride:funcsite-001 a biostride_func:FunctionalSite ;
+    biostride_func:confidence_score "0.95"^^xsd:float ;
+    biostride_func:conservation_score "0.98"^^xsd:float ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_importance "Essential for ATP synthesis/hydrolysis" ;
+    biostride_func:go_terms "GO:0005524"^^xsd:anyURI,
+        "GO:0046933"^^xsd:anyURI ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:residues "168",
+        "169",
+        "170",
+        "340",
+        "341",
+        "373" ;
+    biostride_func:site_name "ATP binding site" ;
+    biostride_func:site_type "nucleotide_binding" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:funcsite-002 a biostride_func:FunctionalSite ;
+    biostride_func:confidence_score "1.0"^^xsd:float ;
+    biostride_func:conservation_score "1.0"^^xsd:float ;
+    biostride_func:ec_number "7.1.2.2" ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_importance "ATP synthesis active site" ;
+    biostride_func:ligand_interactions [ a biostride_func:LigandInteraction ;
+            biostride_func:binding_affinity "0.015"^^xsd:float ;
+            biostride_func:binding_affinity_type "km" ;
+            biostride_func:binding_affinity_unit "millimolar" ;
+            biostride_func:binding_site_residues "188",
+                "189",
+                "256" ;
+            biostride_func:interaction_type "hydrogen_bond" ;
+            biostride_func:is_cofactor false ;
+            biostride_func:ligand_id "CHEBI:30616" ;
+            biostride_func:ligand_name "ATP" ;
+            biostride_func:ligand_smiles "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N" ] ;
+    biostride_func:protein_id "P06576" ;
+    biostride_func:residues "188",
+        "189",
+        "256",
+        "337" ;
+    biostride_func:site_name "Catalytic site" ;
+    biostride_func:site_type "catalytic_site" ;
+    biostride_func:source_database "uniprot" .
+
+biostride:mut-001 a biostride_func:MutationEffect ;
+    biostride_func:delta_delta_g "0.2"^^xsd:float ;
+    biostride_func:effect_on_function "partial_loss" ;
+    biostride_func:effect_on_stability "neutral" ;
+    biostride_func:evidence_type "predicted" ;
+    biostride_func:functional_impact_description "Reduced ATP synthesis rate by 40%" ;
+    biostride_func:mutation "R341K" ;
+    biostride_func:mutation_type "missense" ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:source_database "missense3d" .
+
+biostride:ppi-001 a biostride_func:ProteinProteinInteraction ;
+    biostride_func:binding_energy "-12.5"^^xsd:float ;
+    biostride_func:biological_assembly true ;
+    biostride_func:complex_stability "stable" ;
+    biostride_func:interaction_evidence "experimental",
+        "physical" ;
+    biostride_func:interface_area "856.3"^^xsd:float ;
+    biostride_func:interface_residues "234",
+        "235",
+        "236",
+        "301",
+        "302" ;
+    biostride_func:partner_chain_id "B" ;
+    biostride_func:partner_interface_residues "112",
+        "113",
+        "178",
+        "179" ;
+    biostride_func:partner_protein_id "P06576" ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:source_database "pdbe_kb" .
+
+biostride:ptm-001 a biostride_func:PostTranslationalModification ;
+    biostride_func:enzyme "PKA" ;
+    biostride_func:evidence_type "experimental" ;
+    biostride_func:functional_effect "Regulates ATP synthesis activity" ;
+    biostride_func:mass_shift "79.966"^^xsd:float ;
+    biostride_func:modification_group "phosphate" ;
+    biostride_func:modification_type "phosphorylation" ;
+    biostride_func:modified_residue "S65" ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:regulatory_role "Activity regulation in response to cellular energy state" ;
+    biostride_func:source_database "uniprot" .
+
+biostride:structfeat-001 a biostride_func:StructuralFeature ;
+    biostride_func:backbone_flexibility "25.3"^^xsd:float ;
+    biostride_func:conformational_state "active" ;
+    biostride_func:feature_type "alpha_helix" ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:residue_range "120-145" ;
+    biostride_func:secondary_structure "helix" ;
+    biostride_func:solvent_accessibility "0.15"^^xsd:float ;
+    biostride_func:source_database "pdbe" .
+
+biostride:structfeat-002 a biostride_func:StructuralFeature ;
+    biostride_func:domain_assignment "Pfam" ;
+    biostride_func:domain_id "PF00006" ;
+    biostride_func:feature_type "domain" ;
+    biostride_func:protein_id "P25705" ;
+    biostride_func:residue_range "100-380" ;
+    biostride_func:source_database "pfam" ;
+    biostride_func:structural_motif "Walker motif" .
+

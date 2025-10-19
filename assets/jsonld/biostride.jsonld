@@ -2489,6 +2489,7 @@
         "Sample"
       ],
       "range": "EvolutionaryConservation",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2502,6 +2503,7 @@
         "Sample"
       ],
       "range": "ConformationalEnsemble",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6650,12 +6652,14 @@
           "name": "evolutionary_conservation",
           "description": "Evolutionary conservation data",
           "range": "EvolutionaryConservation",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "conformational_ensemble",
           "description": "Conformational states and dynamics",
           "range": "ConformationalEnsemble",
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -9472,9 +9476,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-10-12T17:37:04",
-  "source_file_size": 39323,
-  "generation_date": "2025-10-12T17:41:54",
+  "source_file_date": "2025-10-18T19:21:03",
+  "source_file_size": 39367,
+  "generation_date": "2025-10-18T19:22:32",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

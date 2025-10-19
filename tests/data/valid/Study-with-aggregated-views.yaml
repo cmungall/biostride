@@ -1,4 +1,5 @@
 # Example study with aggregated protein functional annotations
+id: "biostride:study-p53-interactions"
 title: "Structural basis of p53 tumor suppressor interactions"
 description: "Comprehensive structural and functional study of p53 and its interaction partners combining cryo-EM, crystallography, and knowledge base annotations"
 

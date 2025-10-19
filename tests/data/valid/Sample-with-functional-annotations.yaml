@@ -1,5 +1,5 @@
 # Example of a protein sample with comprehensive functional annotations
-id: "sample:ALS-FUNC-001"
+id: "biostride:sample-ALS-FUNC-001"
 sample_code: "ALS-FUNC-001"
 sample_type: complex
 title: "Human ATP synthase F1 complex with functional annotations"
@@ -8,12 +8,8 @@ description: "ATP synthase F1 complex with detailed functional site and structur
 molecular_composition:
   description: "Human ATP synthase F1 complex - catalytic core"
   sequences:
-    - sequence: "MAAAKFERQHMDSSTE...KVLDSGAPIKIPVGPETLGRIMNVIGEPIDERGPIKTKQFAPIH"
-      chain_id: "A"
-      description: "ATP synthase subunit alpha"
-    - sequence: "MLGFVGRVAAAPSGAST...GSITSQAIYVPADDLTDPAPATTFAHLDATTVLSRAIA"
-      chain_id: "B"
-      description: "ATP synthase subunit beta"
+    - "MAAAKFERQHMDSSTE...KVLDSGAPIKIPVGPETLGRIMNVIGEPIDERGPIKTKQFAPIH"
+    - "MLGFVGRVAAAPSGAST...GSITSQAIYVPADDLTDPAPATTFAHLDATTVLSRAIA"
 
 molecular_weight: 380.5
 concentration: 10.0
@@ -21,7 +17,7 @@ concentration_unit: mg_per_ml
 
 # Functional site annotations from PDBe-KB
 functional_sites:
-  - id: "funcsite:001"
+  - id: "biostride:funcsite-001"
     protein_id: "P25705"  # ATP synthase alpha
     site_type: nucleotide_binding
     site_name: "ATP binding site"
@@ -33,7 +29,7 @@ functional_sites:
     confidence_score: 0.95
     evidence_type: experimental
 
-  - id: "funcsite:002"
+  - id: "biostride:funcsite-002"
     protein_id: "P06576"  # ATP synthase beta
     site_type: catalytic_site
     site_name: "Catalytic site"
@@ -57,7 +53,7 @@ functional_sites:
 
 # Structural feature annotations
 structural_features:
-  - id: "structfeat:001"
+  - id: "biostride:structfeat-001"
     protein_id: "P25705"
     feature_type: alpha_helix
     secondary_structure: helix
@@ -67,7 +63,7 @@ structural_features:
     conformational_state: active
     source_database: pdbe
 
-  - id: "structfeat:002"
+  - id: "biostride:structfeat-002"
     protein_id: "P25705"
     feature_type: domain
     residue_range: "100-380"
@@ -78,7 +74,7 @@ structural_features:
 
 # Protein-protein interactions
 protein_interactions:
-  - id: "ppi:001"
+  - id: "biostride:ppi-001"
     protein_id: "P25705"
     partner_protein_id: "P06576"
     partner_chain_id: "B"
@@ -93,7 +89,7 @@ protein_interactions:
 
 # Mutation effects
 mutation_effects:
-  - id: "mut:001"
+  - id: "biostride:mut-001"
     protein_id: "P25705"
     mutation: "R341K"
     mutation_type: missense
@@ -106,7 +102,7 @@ mutation_effects:
 
 # Post-translational modifications
 ptm_annotations:
-  - id: "ptm:001"
+  - id: "biostride:ptm-001"
     protein_id: "P25705"
     modification_type: phosphorylation
     modified_residue: "S65"
@@ -136,7 +132,7 @@ biophysical_properties:
 
 # Evolutionary conservation
 evolutionary_conservation:
-  id: "evol:001"
+  id: "biostride:evol-001"
   protein_id: "P25705"
   conservation_score: 0.92
   conserved_residues: ["168", "169", "170", "188", "256", "340", "341"]
@@ -148,7 +144,7 @@ evolutionary_conservation:
 
 # Conformational ensemble
 conformational_ensemble:
-  id: "confens:001"
+  id: "biostride:confens-001"
   protein_id: "P25705"
   clustering_method: "RMSD-based hierarchical clustering"
   rmsd_threshold: 2.5

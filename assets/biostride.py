@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-12T17:41:56
+# Generation date: 2025-10-18T19:22:34
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -441,8 +441,8 @@ class Sample(NamedThing):
     mutation_effects: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, "MutationEffect"]], list[Union[dict, "MutationEffect"]]]] = empty_dict()
     ptm_annotations: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, "PostTranslationalModification"]], list[Union[dict, "PostTranslationalModification"]]]] = empty_dict()
     biophysical_properties: Optional[Union[Union[dict, "BiophysicalProperty"], list[Union[dict, "BiophysicalProperty"]]]] = empty_list()
-    evolutionary_conservation: Optional[Union[str, EvolutionaryConservationId]] = None
-    conformational_ensemble: Optional[Union[str, ConformationalEnsembleId]] = None
+    evolutionary_conservation: Optional[Union[dict, "EvolutionaryConservation"]] = None
+    conformational_ensemble: Optional[Union[dict, "ConformationalEnsemble"]] = None
     database_cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -518,11 +518,11 @@ class Sample(NamedThing):
             self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
         self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
 
-        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservationId):
-            self.evolutionary_conservation = EvolutionaryConservationId(self.evolutionary_conservation)
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
 
-        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsembleId):
-            self.conformational_ensemble = ConformationalEnsembleId(self.conformational_ensemble)
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
 
         if not isinstance(self.database_cross_references, list):
             self.database_cross_references = [self.database_cross_references] if self.database_cross_references is not None else []
@@ -4029,10 +4029,10 @@ slots.sample__biophysical_properties = Slot(uri=BIOSTRIDE_SCHEMA.biophysical_pro
                    model_uri=BIOSTRIDE_SCHEMA.sample__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
 
 slots.sample__evolutionary_conservation = Slot(uri=BIOSTRIDE_SCHEMA.evolutionary_conservation, name="sample__evolutionary_conservation", curie=BIOSTRIDE_SCHEMA.curie('evolutionary_conservation'),
-                   model_uri=BIOSTRIDE_SCHEMA.sample__evolutionary_conservation, domain=None, range=Optional[Union[str, EvolutionaryConservationId]])
+                   model_uri=BIOSTRIDE_SCHEMA.sample__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
 
 slots.sample__conformational_ensemble = Slot(uri=BIOSTRIDE_SCHEMA.conformational_ensemble, name="sample__conformational_ensemble", curie=BIOSTRIDE_SCHEMA.curie('conformational_ensemble'),
-                   model_uri=BIOSTRIDE_SCHEMA.sample__conformational_ensemble, domain=None, range=Optional[Union[str, ConformationalEnsembleId]])
+                   model_uri=BIOSTRIDE_SCHEMA.sample__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
 
 slots.sample__database_cross_references = Slot(uri=BIOSTRIDE_SCHEMA.database_cross_references, name="sample__database_cross_references", curie=BIOSTRIDE_SCHEMA.curie('database_cross_references'),
                    model_uri=BIOSTRIDE_SCHEMA.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])

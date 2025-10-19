@@ -3558,11 +3558,15 @@
                     "description": "Unit of concentration measurement"
                 },
                 "conformational_ensemble": {
-                    "description": "Conformational states and dynamics",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ConformationalEnsemble"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Conformational states and dynamics"
                 },
                 "database_cross_references": {
                     "description": "Cross-references to external databases",
@@ -3581,11 +3585,15 @@
                     ]
                 },
                 "evolutionary_conservation": {
-                    "description": "Evolutionary conservation data",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EvolutionaryConservation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Evolutionary conservation data"
                 },
                 "functional_sites": {
                     "description": "Functional site annotations for proteins in the sample",

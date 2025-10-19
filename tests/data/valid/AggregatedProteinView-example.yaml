@@ -1,4 +1,5 @@
 # Example of an aggregated protein view combining data from multiple PDB entries
+id: "biostride:protein-p53-view"
 uniprot_id: "P04637"
 protein_name: "Cellular tumor antigen p53"
 title: "Aggregated structural and functional data for human p53"

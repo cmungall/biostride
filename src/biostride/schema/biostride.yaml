@@ -270,9 +270,11 @@ classes:
       evolutionary_conservation:
         description: "Evolutionary conservation data"
         range: EvolutionaryConservation
+        inlined: true
       conformational_ensemble:
         description: "Conformational states and dynamics"
         range: ConformationalEnsemble
+        inlined: true
       database_cross_references:
         description: "Cross-references to external databases"
         range: DatabaseCrossReference
