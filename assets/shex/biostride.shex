@@ -260,7 +260,20 @@ biostride_func:DatabaseCrossReference CLOSED {
           <total_frames> @linkml:Integer ? ;
           <frame_rate> @linkml:Float ? ;
           <total_dose> @linkml:Float ? ;
-          <dose_per_frame> @linkml:Float ?
+          <dose_per_frame> @linkml:Float ? ;
+          <wavelength_a> @linkml:Float ? ;
+          <detector> @linkml:String ? ;
+          <detector_distance_mm> @linkml:Float ? ;
+          <beam_center_x_px> @linkml:Integer ? ;
+          <beam_center_y_px> @linkml:Integer ? ;
+          <beam_size_um> @linkml:Float ? ;
+          <flux_photons_per_s> @linkml:Float ? ;
+          <transmission_percent> @linkml:Float ? ;
+          <attenuator> @linkml:String ? ;
+          <temperature_k> @linkml:Float ? ;
+          <oscillation_per_image_deg> @linkml:Float ? ;
+          <total_rotation_deg> @linkml:Float ? ;
+          <strategy_notes> @linkml:String ?
        ) ;
        rdf:type [ <DataCollectionStrategy> ] ?
     )
@@ -346,6 +359,10 @@ biostride_func:EvolutionaryConservation CLOSED {
              <https://w3id.org/biostride/schema/TechniqueEnum#sans> <https://w3id.org/biostride/schema/TechniqueEnum#cryo_et>
              <https://w3id.org/biostride/schema/TechniqueEnum#electron_microscopy>
              <https://w3id.org/biostride/schema/TechniqueEnum#mass_spectrometry> ] ;
+          <experimental_method> [ <https://w3id.org/biostride/schema/ExperimentalMethodEnum#x_ray_diffraction>
+             <https://w3id.org/biostride/schema/ExperimentalMethodEnum#neutron_diffraction>
+             <https://w3id.org/biostride/schema/ExperimentalMethodEnum#electron_diffraction>
+             <https://w3id.org/biostride/schema/ExperimentalMethodEnum#fiber_diffraction> ] ? ;
           <experimental_conditions> @<ExperimentalConditions> ? ;
           <data_collection_strategy> @<DataCollectionStrategy> ? ;
           <quality_metrics> @<QualityMetrics> ? ;
@@ -583,8 +600,8 @@ biostride_func:MutationEffect CLOSED {
 
 <NamedThing>  (
     @biostride_func:AggregatedProteinView OR @biostride_func:ConformationalEnsemble OR @<DataFile> OR @<Dataset> OR
-    @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<OntologyTerm> OR @biostride_func:ProteinAnnotation OR @<Sample> OR
-    @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
+    @<ExperimentRun> OR @<Image> OR @<Instrument> OR @<OntologyTerm> OR @biostride_func:ProteinAnnotation OR @<ProteinConstruct> OR
+    @<Sample> OR @<SamplePreparation> OR @<Study> OR @<WorkflowRun>
 )
 
 <NamedThing_struct> {
@@ -722,6 +739,35 @@ biostride_func:ProteinAnnotation  (
     @biostride_func:PostTranslationalModification OR @biostride_func:ProteinProteinInteraction OR @biostride_func:StructuralFeature
 )
 
+<ProteinConstruct> CLOSED {
+    (  $<ProteinConstruct_tes> (  &<NamedThing_tes> ;
+          rdf:type [ <NamedThing> ] ? ;
+          <construct_id> @linkml:String ;
+          <uniprot_id> @linkml:String ? ;
+          <gene_name> @linkml:String ? ;
+          <ncbi_taxid> @linkml:String ? ;
+          <sequence_length_aa> @linkml:Integer ? ;
+          <construct_description> @linkml:String ? ;
+          <gene_synthesis_provider> @linkml:String ? ;
+          <codon_optimization_organism> @linkml:String ? ;
+          <vector_backbone> @linkml:String ? ;
+          <vector_name> @linkml:String ? ;
+          <promoter> @linkml:String ? ;
+          <tag_nterm> @linkml:String ? ;
+          <tag_cterm> @linkml:String ? ;
+          <cleavage_site> @linkml:String ? ;
+          <signal_peptide> @linkml:String ? ;
+          <selectable_marker> @linkml:String ? ;
+          <cloning_method> @linkml:String ? ;
+          <insert_boundaries> @linkml:String ? ;
+          <sequence_file_path> @linkml:String ? ;
+          <sequence_verified_by> @linkml:String ? ;
+          <verification_notes> @linkml:String ?
+       ) ;
+       rdf:type [ <ProteinConstruct> ]
+    )
+}
+
 biostride_func:ProteinProteinInteraction CLOSED {
     (  $biostride_func:ProteinProteinInteraction_tes (  &biostride_func:ProteinAnnotation_tes ;
           rdf:type [ biostride_func:ProteinAnnotation ] ? ;
@@ -757,11 +803,37 @@ biostride_func:ProteinProteinInteraction CLOSED {
     (  $<QualityMetrics_tes> (  &<AttributeGroup_tes> ;
           rdf:type [ <AttributeGroup> ] ? ;
           <resolution> @linkml:Float ? ;
+          <resolution_high_shell_a> @linkml:Float ? ;
+          <resolution_low_a> @linkml:Float ? ;
           <completeness> @linkml:Float ? ;
+          <completeness_high_res_shell_percent> @linkml:Float ? ;
           <signal_to_noise> @linkml:Float ? ;
-          <r_factor> @linkml:Float ? ;
+          <mean_i_over_sigma_i> @linkml:Float ? ;
+          <space_group> @linkml:String ? ;
+          <unit_cell_a> @linkml:Float ? ;
+          <unit_cell_b> @linkml:Float ? ;
+          <unit_cell_c> @linkml:Float ? ;
+          <unit_cell_alpha> @linkml:Float ? ;
+          <unit_cell_beta> @linkml:Float ? ;
+          <unit_cell_gamma> @linkml:Float ? ;
+          <multiplicity> @linkml:Float ? ;
+          <cc_half> @linkml:Float ? ;
+          <r_merge> @linkml:Float ? ;
+          <r_pim> @linkml:Float ? ;
+          <wilson_b_factor_a2> @linkml:Float ? ;
+          <anomalous_used> @linkml:Boolean ? ;
+          <anom_corr> @linkml:Float ? ;
+          <anom_sig_ano> @linkml:Float ? ;
+          <r_work> @linkml:Float ? ;
+          <r_free> @linkml:Float ? ;
+          <ramachandran_favored_percent> @linkml:Float ? ;
+          <ramachandran_outliers_percent> @linkml:Float ? ;
+          <clashscore> @linkml:Float ? ;
+          <molprobity_score> @linkml:Float ? ;
+          <average_b_factor_a2> @linkml:Float ? ;
           <i_zero> @linkml:Float ? ;
-          <rg> @linkml:Float ?
+          <rg> @linkml:Float ? ;
+          <r_factor> @linkml:Float ?
        ) ;
        rdf:type [ <QualityMetrics> ] ?
     )
@@ -821,7 +893,57 @@ biostride_func:ProteinProteinInteraction CLOSED {
           <sample_id> @linkml:String ;
           <preparation_date> @linkml:String ? ;
           <operator_id> @linkml:String ? ;
-          <protocol_description> @linkml:String ?
+          <protocol_description> @linkml:String ? ;
+          <expression_system> [ <https://w3id.org/biostride/schema/ExpressionSystemEnum#bacteria>
+             <https://w3id.org/biostride/schema/ExpressionSystemEnum#yeast>
+             <https://w3id.org/biostride/schema/ExpressionSystemEnum#insect>
+             <https://w3id.org/biostride/schema/ExpressionSystemEnum#mammalian>
+             <https://w3id.org/biostride/schema/ExpressionSystemEnum#cell_free> ] ? ;
+          <host_strain_or_cell_line> @linkml:String ? ;
+          <culture_volume_l> @linkml:Float ? ;
+          <medium> @linkml:String ? ;
+          <antibiotic_selection> @linkml:String ? ;
+          <growth_temperature_c> @linkml:Float ? ;
+          <induction_agent> @linkml:String ? ;
+          <inducer_concentration> @linkml:String ? ;
+          <induction_temperature_c> @linkml:Float ? ;
+          <induction_time_h> @linkml:Float ? ;
+          <od600_at_induction> @linkml:Float ? ;
+          <harvest_timepoint> @linkml:String ? ;
+          <lysis_method> @linkml:String ? ;
+          <protease_inhibitors> @linkml:String ? ;
+          <purification_steps> [ <https://w3id.org/biostride/schema/PurificationStepEnum#affinity_ni_nta>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#affinity_co_nta>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#affinity_strep>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#affinity_mbp>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#affinity_gst>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#tag_cleavage>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#ion_exchange>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#hydrophobic_interaction>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#size_exclusion>
+             <https://w3id.org/biostride/schema/PurificationStepEnum#dialysis> ] * ;
+          <affinity_type> @linkml:String ? ;
+          <affinity_column> @linkml:String ? ;
+          <lysis_buffer> @linkml:String ? ;
+          <wash_buffer> @linkml:String ? ;
+          <elution_buffer> @linkml:String ? ;
+          <tag_removal> @linkml:Boolean ? ;
+          <protease> @linkml:String ? ;
+          <protease_ratio> @linkml:String ? ;
+          <cleavage_time_h> @linkml:Float ? ;
+          <cleavage_temperature_c> @linkml:Float ? ;
+          <second_affinity_reverse> @linkml:String ? ;
+          <iex_column> @linkml:String ? ;
+          <hic_column> @linkml:String ? ;
+          <sec_column> @linkml:String ? ;
+          <sec_buffer> @linkml:String ? ;
+          <concentration_method> @linkml:String ? ;
+          <final_buffer> @linkml:String ? ;
+          <final_concentration_mg_per_ml> @linkml:Float ? ;
+          <yield_mg> @linkml:Float ? ;
+          <purity_by_sds_page_percent> @linkml:Float ? ;
+          <aggregation_assessment> @linkml:String ? ;
+          <aliquoting> @linkml:String ?
        ) ;
        rdf:type [ <SamplePreparation> ]
     )
@@ -926,6 +1048,7 @@ biostride_func:StructuralFeature CLOSED {
 <Study> CLOSED {
     (  $<Study_tes> (  &<NamedThing_tes> ;
           rdf:type [ <NamedThing> ] ? ;
+          <protein_constructs> @<ProteinConstruct> * ;
           <samples> @<Sample> * ;
           <sample_preparations> @<SamplePreparation> * ;
           <instrument_runs> @<ExperimentRun> * ;
@@ -971,7 +1094,30 @@ biostride_func:StructuralFeature CLOSED {
           <processing_level> @linkml:Integer ? ;
           <software_name> @linkml:String ;
           <software_version> @linkml:String ? ;
+          <additional_software> @linkml:String ? ;
           <processing_parameters> @linkml:String ? ;
+          <parameters_file_path> @linkml:String ? ;
+          <indexer_module> @linkml:String ? ;
+          <integrator_module> @linkml:String ? ;
+          <scaler_module> @linkml:String ? ;
+          <outlier_rejection_method> @linkml:String ? ;
+          <phasing_method> [ <https://w3id.org/biostride/schema/PhasingMethodEnum#molecular_replacement>
+             <https://w3id.org/biostride/schema/PhasingMethodEnum#sad> <https://w3id.org/biostride/schema/PhasingMethodEnum#mad>
+             <https://w3id.org/biostride/schema/PhasingMethodEnum#sir> <https://w3id.org/biostride/schema/PhasingMethodEnum#mir>
+             <https://w3id.org/biostride/schema/PhasingMethodEnum#siras>
+             <https://w3id.org/biostride/schema/PhasingMethodEnum#miras>
+             <https://w3id.org/biostride/schema/PhasingMethodEnum#fragile_mr> ] ? ;
+          <search_model_pdb_id> @linkml:String ? ;
+          <tls_used> @linkml:Boolean ? ;
+          <ncs_used> @linkml:Boolean ? ;
+          <restraints_other> @linkml:String ? ;
+          <ligands_cofactors> @linkml:String ? ;
+          <number_of_waters> @linkml:Integer ? ;
+          <refinement_resolution_a> @linkml:Float ? ;
+          <deposited_to_pdb> @linkml:Boolean ? ;
+          <pdb_id> @linkml:String ? ;
+          <validation_report_path> @linkml:String ? ;
+          <processing_notes> @linkml:String ? ;
           <compute_resources> @<ComputeResources> ? ;
           <started_at> @linkml:String ? ;
           <completed_at> @linkml:String ? ;
@@ -1004,17 +1150,35 @@ biostride_func:StructuralFeature CLOSED {
 <XRayPreparation> CLOSED {
     (  $<XRayPreparation_tes> (  &<TechniqueSpecificPreparation_tes> ;
           rdf:type [ <TechniqueSpecificPreparation> ] ? ;
+          <protein_concentration_mg_per_ml> @linkml:Float ? ;
+          <protein_buffer> @linkml:String ? ;
+          <additives> @linkml:String ? ;
           <crystallization_method> [ <https://w3id.org/biostride/schema/CrystallizationMethodEnum#vapor_diffusion_hanging>
              <https://w3id.org/biostride/schema/CrystallizationMethodEnum#vapor_diffusion_sitting>
+             <https://w3id.org/biostride/schema/CrystallizationMethodEnum#batch>
              <https://w3id.org/biostride/schema/CrystallizationMethodEnum#microbatch>
+             <https://w3id.org/biostride/schema/CrystallizationMethodEnum#lcp>
              <https://w3id.org/biostride/schema/CrystallizationMethodEnum#dialysis>
              <https://w3id.org/biostride/schema/CrystallizationMethodEnum#free_interface_diffusion> ] ? ;
+          <screen_name> @linkml:String ? ;
+          <temperature_c> @linkml:Float ? ;
+          <drop_ratio_protein_to_reservoir> @linkml:String ? ;
+          <drop_volume_nl> @linkml:Float ? ;
+          <reservoir_volume_ul> @linkml:Float ? ;
+          <seeding_type> @linkml:String ? ;
+          <seed_stock_dilution> @linkml:String ? ;
+          <initial_hit_condition> @linkml:String ? ;
+          <optimization_strategy> @linkml:String ? ;
+          <optimized_condition> @linkml:String ? ;
           <crystallization_conditions> @linkml:String ? ;
-          <crystal_size> @linkml:String ? ;
+          <crystal_size_um> @linkml:String ? ;
           <cryoprotectant> @linkml:String ? ;
           <cryoprotectant_concentration> @linkml:Float ? ;
+          <soak_compound> @linkml:String ? ;
+          <soak_conditions> @linkml:String ? ;
           <mounting_method> @linkml:String ? ;
-          <flash_cooling_method> @linkml:String ?
+          <flash_cooling_method> @linkml:String ? ;
+          <crystal_notes> @linkml:String ?
        ) ;
        rdf:type [ <XRayPreparation> ] ?
     )

@@ -546,8 +546,16 @@
           "description": "Vapor diffusion sitting drop"
         },
         {
+          "text": "batch",
+          "description": "Batch crystallization"
+        },
+        {
           "text": "microbatch",
           "description": "Microbatch under oil"
+        },
+        {
+          "text": "lcp",
+          "description": "Lipidic cubic phase (LCP)"
         },
         {
           "text": "dialysis",
@@ -932,6 +940,146 @@
         {
           "text": "oblique",
           "description": "Oblique illumination"
+        }
+      ]
+    },
+    {
+      "name": "ExpressionSystemEnum",
+      "definition_uri": "https://w3id.org/biostride/schema/ExpressionSystemEnum",
+      "description": "Expression systems for recombinant protein production",
+      "from_schema": "https://w3id.org/biostride/",
+      "permissible_values": [
+        {
+          "text": "bacteria",
+          "description": "Bacterial expression (e.g., E. coli)"
+        },
+        {
+          "text": "yeast",
+          "description": "Yeast expression (e.g., S. cerevisiae, P. pastoris)"
+        },
+        {
+          "text": "insect",
+          "description": "Insect cell expression (e.g., Sf9, High Five)"
+        },
+        {
+          "text": "mammalian",
+          "description": "Mammalian cell expression (e.g., HEK293, CHO)"
+        },
+        {
+          "text": "cell_free",
+          "description": "Cell-free expression system"
+        }
+      ]
+    },
+    {
+      "name": "PurificationStepEnum",
+      "definition_uri": "https://w3id.org/biostride/schema/PurificationStepEnum",
+      "description": "Protein purification steps and methods",
+      "from_schema": "https://w3id.org/biostride/",
+      "permissible_values": [
+        {
+          "text": "affinity_ni_nta",
+          "description": "Affinity chromatography using Ni-NTA resin"
+        },
+        {
+          "text": "affinity_co_nta",
+          "description": "Affinity chromatography using Co-NTA resin"
+        },
+        {
+          "text": "affinity_strep",
+          "description": "Affinity chromatography using Strep-tag"
+        },
+        {
+          "text": "affinity_mbp",
+          "description": "Affinity chromatography using maltose-binding protein (MBP)"
+        },
+        {
+          "text": "affinity_gst",
+          "description": "Affinity chromatography using glutathione S-transferase (GST)"
+        },
+        {
+          "text": "tag_cleavage",
+          "description": "Proteolytic cleavage of purification tags"
+        },
+        {
+          "text": "ion_exchange",
+          "description": "Ion-exchange chromatography (IEX)"
+        },
+        {
+          "text": "hydrophobic_interaction",
+          "description": "Hydrophobic interaction chromatography (HIC)"
+        },
+        {
+          "text": "size_exclusion",
+          "description": "Size-exclusion chromatography (SEC)"
+        },
+        {
+          "text": "dialysis",
+          "description": "Dialysis or buffer exchange"
+        }
+      ]
+    },
+    {
+      "name": "PhasingMethodEnum",
+      "definition_uri": "https://w3id.org/biostride/schema/PhasingMethodEnum",
+      "description": "Methods for phase determination in X-ray crystallography",
+      "from_schema": "https://w3id.org/biostride/",
+      "permissible_values": [
+        {
+          "text": "molecular_replacement",
+          "description": "Molecular replacement (MR)"
+        },
+        {
+          "text": "sad",
+          "description": "Single-wavelength anomalous diffraction (SAD)"
+        },
+        {
+          "text": "mad",
+          "description": "Multi-wavelength anomalous diffraction (MAD)"
+        },
+        {
+          "text": "sir",
+          "description": "Single isomorphous replacement (SIR)"
+        },
+        {
+          "text": "mir",
+          "description": "Multiple isomorphous replacement (MIR)"
+        },
+        {
+          "text": "siras",
+          "description": "Single isomorphous replacement with anomalous scattering (SIRAS)"
+        },
+        {
+          "text": "miras",
+          "description": "Multiple isomorphous replacement with anomalous scattering (MIRAS)"
+        },
+        {
+          "text": "fragile_mr",
+          "description": "Fragile molecular replacement or ensemble-based MR"
+        }
+      ]
+    },
+    {
+      "name": "ExperimentalMethodEnum",
+      "definition_uri": "https://w3id.org/biostride/schema/ExperimentalMethodEnum",
+      "description": "Experimental methods for structure determination",
+      "from_schema": "https://w3id.org/biostride/",
+      "permissible_values": [
+        {
+          "text": "x_ray_diffraction",
+          "description": "X-ray diffraction"
+        },
+        {
+          "text": "neutron_diffraction",
+          "description": "Neutron diffraction"
+        },
+        {
+          "text": "electron_diffraction",
+          "description": "Electron diffraction (e.g., microED)"
+        },
+        {
+          "text": "fiber_diffraction",
+          "description": "Fiber diffraction"
         }
       ]
     },
@@ -2075,6 +2223,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "study__protein_constructs",
+      "description": "Protein constructs and cloning information",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/protein_constructs",
+      "alias": "protein_constructs",
+      "owner": "Study",
+      "domain_of": [
+        "Study"
+      ],
+      "range": "ProteinConstruct",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "study__samples",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/samples",
@@ -2543,6 +2707,280 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "proteinConstruct__construct_id",
+      "description": "Unique identifier for this construct",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/construct_id",
+      "alias": "construct_id",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__uniprot_id",
+      "description": "UniProt accession for the target protein",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/uniprot_id",
+      "alias": "uniprot_id",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__gene_name",
+      "description": "Gene name",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/gene_name",
+      "alias": "gene_name",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__ncbi_taxid",
+      "description": "NCBI Taxonomy ID for source organism",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ncbi_taxid",
+      "alias": "ncbi_taxid",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__sequence_length_aa",
+      "description": "Length of the protein sequence in amino acids",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/sequence_length_aa",
+      "alias": "sequence_length_aa",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__construct_description",
+      "description": "Human-readable description of the construct",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/construct_description",
+      "alias": "construct_description",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__gene_synthesis_provider",
+      "description": "Company or facility that synthesized the gene",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/gene_synthesis_provider",
+      "alias": "gene_synthesis_provider",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__codon_optimization_organism",
+      "description": "Organism for which codons were optimized",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/codon_optimization_organism",
+      "alias": "codon_optimization_organism",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__vector_backbone",
+      "description": "Base plasmid backbone used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/vector_backbone",
+      "alias": "vector_backbone",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__vector_name",
+      "description": "Complete vector name",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/vector_name",
+      "alias": "vector_name",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__promoter",
+      "description": "Promoter used for expression",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/promoter",
+      "alias": "promoter",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__tag_nterm",
+      "description": "N-terminal tag (e.g., His6, MBP, GST)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/tag_nterm",
+      "alias": "tag_nterm",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__tag_cterm",
+      "description": "C-terminal tag",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/tag_cterm",
+      "alias": "tag_cterm",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__cleavage_site",
+      "description": "Protease cleavage site sequence",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cleavage_site",
+      "alias": "cleavage_site",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__signal_peptide",
+      "description": "Signal peptide sequence if present",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/signal_peptide",
+      "alias": "signal_peptide",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__selectable_marker",
+      "description": "Antibiotic resistance or other selectable marker",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/selectable_marker",
+      "alias": "selectable_marker",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__cloning_method",
+      "description": "Method used for cloning (e.g., restriction digest, Gibson, InFusion)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cloning_method",
+      "alias": "cloning_method",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__insert_boundaries",
+      "description": "Start and end positions of insert in vector",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/insert_boundaries",
+      "alias": "insert_boundaries",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__sequence_file_path",
+      "description": "Path to sequence file",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/sequence_file_path",
+      "alias": "sequence_file_path",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__sequence_verified_by",
+      "description": "Method or person who verified the sequence",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/sequence_verified_by",
+      "alias": "sequence_verified_by",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinConstruct__verification_notes",
+      "description": "Notes from sequence verification",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/verification_notes",
+      "alias": "verification_notes",
+      "owner": "ProteinConstruct",
+      "domain_of": [
+        "ProteinConstruct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "samplePreparation__preparation_type",
       "description": "Type of sample preparation",
       "from_schema": "https://w3id.org/biostride/",
@@ -2602,6 +3040,488 @@
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/protocol_description",
       "alias": "protocol_description",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__expression_system",
+      "description": "Expression system used for recombinant protein production",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/expression_system",
+      "alias": "expression_system",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "ExpressionSystemEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__host_strain_or_cell_line",
+      "description": "Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/host_strain_or_cell_line",
+      "alias": "host_strain_or_cell_line",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__culture_volume_l",
+      "description": "Culture volume in liters",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/culture_volume_l",
+      "alias": "culture_volume_l",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__medium",
+      "description": "Growth medium used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/medium",
+      "alias": "medium",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__antibiotic_selection",
+      "description": "Antibiotic or selection agent used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/antibiotic_selection",
+      "alias": "antibiotic_selection",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__growth_temperature_c",
+      "description": "Growth temperature in Celsius",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/growth_temperature_c",
+      "alias": "growth_temperature_c",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__induction_agent",
+      "description": "Agent used to induce expression (e.g., IPTG, tetracycline)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/induction_agent",
+      "alias": "induction_agent",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__inducer_concentration",
+      "description": "Concentration of induction agent",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/inducer_concentration",
+      "alias": "inducer_concentration",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__induction_temperature_c",
+      "description": "Temperature during induction in Celsius",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/induction_temperature_c",
+      "alias": "induction_temperature_c",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__induction_time_h",
+      "description": "Duration of induction in hours",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/induction_time_h",
+      "alias": "induction_time_h",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__od600_at_induction",
+      "description": "Optical density at 600nm when induction was started",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/od600_at_induction",
+      "alias": "od600_at_induction",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__harvest_timepoint",
+      "description": "Time point when cells were harvested",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/harvest_timepoint",
+      "alias": "harvest_timepoint",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__lysis_method",
+      "description": "Method used for cell lysis",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/lysis_method",
+      "alias": "lysis_method",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__protease_inhibitors",
+      "description": "Protease inhibitors added",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/protease_inhibitors",
+      "alias": "protease_inhibitors",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__purification_steps",
+      "description": "Ordered list of purification steps performed",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/purification_steps",
+      "alias": "purification_steps",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "PurificationStepEnum",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__affinity_type",
+      "description": "Type of affinity chromatography",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/affinity_type",
+      "alias": "affinity_type",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__affinity_column",
+      "description": "Affinity column specifications",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/affinity_column",
+      "alias": "affinity_column",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__lysis_buffer",
+      "description": "Buffer composition for lysis",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/lysis_buffer",
+      "alias": "lysis_buffer",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__wash_buffer",
+      "description": "Buffer composition for washing",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/wash_buffer",
+      "alias": "wash_buffer",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__elution_buffer",
+      "description": "Buffer composition for elution",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/elution_buffer",
+      "alias": "elution_buffer",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__tag_removal",
+      "description": "Whether and how affinity tag was removed",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/tag_removal",
+      "alias": "tag_removal",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__protease",
+      "description": "Protease used for tag cleavage",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/protease",
+      "alias": "protease",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__protease_ratio",
+      "description": "Ratio of protease to protein",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/protease_ratio",
+      "alias": "protease_ratio",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__cleavage_time_h",
+      "description": "Duration of protease cleavage in hours",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cleavage_time_h",
+      "alias": "cleavage_time_h",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__cleavage_temperature_c",
+      "description": "Temperature during cleavage in Celsius",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cleavage_temperature_c",
+      "alias": "cleavage_temperature_c",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__second_affinity_reverse",
+      "description": "Second affinity or reverse affinity step",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/second_affinity_reverse",
+      "alias": "second_affinity_reverse",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__iex_column",
+      "description": "Ion-exchange column used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/iex_column",
+      "alias": "iex_column",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__hic_column",
+      "description": "Hydrophobic interaction column used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/hic_column",
+      "alias": "hic_column",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__sec_column",
+      "description": "Size-exclusion column used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/sec_column",
+      "alias": "sec_column",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__sec_buffer",
+      "description": "Buffer for size-exclusion chromatography",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/sec_buffer",
+      "alias": "sec_buffer",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__concentration_method",
+      "description": "Method used to concentrate protein",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/concentration_method",
+      "alias": "concentration_method",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__final_buffer",
+      "description": "Final buffer composition after purification",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/final_buffer",
+      "alias": "final_buffer",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__final_concentration_mg_per_ml",
+      "description": "Final protein concentration in mg/mL",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/final_concentration_mg_per_ml",
+      "alias": "final_concentration_mg_per_ml",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__yield_mg",
+      "description": "Total yield in milligrams",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/yield_mg",
+      "alias": "yield_mg",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__purity_by_sds_page_percent",
+      "description": "Purity percentage by SDS-PAGE",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/purity_by_sds_page_percent",
+      "alias": "purity_by_sds_page_percent",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__aggregation_assessment",
+      "description": "Assessment of protein aggregation state",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/aggregation_assessment",
+      "alias": "aggregation_assessment",
+      "owner": "SamplePreparation",
+      "domain_of": [
+        "SamplePreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samplePreparation__aliquoting",
+      "description": "How the protein was aliquoted for storage",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/aliquoting",
+      "alias": "aliquoting",
       "owner": "SamplePreparation",
       "domain_of": [
         "SamplePreparation"
@@ -3071,6 +3991,19 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentRun__experimental_method",
+      "description": "Specific experimental method for structure determination (particularly for diffraction techniques)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/experimental_method",
+      "alias": "experimental_method",
+      "owner": "ExperimentRun",
+      "domain_of": [
+        "ExperimentRun"
+      ],
+      "range": "ExperimentalMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentRun__experimental_conditions",
       "description": "Environmental and experimental conditions",
       "from_schema": "https://w3id.org/biostride/",
@@ -3223,11 +4156,245 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "workflowRun__additional_software",
+      "description": "Additional software used in pipeline",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/additional_software",
+      "alias": "additional_software",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "workflowRun__processing_parameters",
       "description": "Parameters used in processing",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/processing_parameters",
       "alias": "processing_parameters",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__parameters_file_path",
+      "description": "Path to parameters file or text of key parameters",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/parameters_file_path",
+      "alias": "parameters_file_path",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__indexer_module",
+      "description": "Indexing module used (e.g., MOSFLM, XDS)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/indexer_module",
+      "alias": "indexer_module",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__integrator_module",
+      "description": "Integration module used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/integrator_module",
+      "alias": "integrator_module",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__scaler_module",
+      "description": "Scaling module used (e.g., AIMLESS, SCALA)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/scaler_module",
+      "alias": "scaler_module",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__outlier_rejection_method",
+      "description": "Method for rejecting outlier reflections",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/outlier_rejection_method",
+      "alias": "outlier_rejection_method",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__phasing_method",
+      "description": "Phasing method used for X-ray crystallography structure determination",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/phasing_method",
+      "alias": "phasing_method",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "PhasingMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__search_model_pdb_id",
+      "description": "PDB ID of search model for molecular replacement",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/search_model_pdb_id",
+      "alias": "search_model_pdb_id",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__tls_used",
+      "description": "Whether TLS (Translation/Libration/Screw) refinement was used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/tls_used",
+      "alias": "tls_used",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ncs_used",
+      "description": "Whether Non-Crystallographic Symmetry restraints were used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ncs_used",
+      "alias": "ncs_used",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__restraints_other",
+      "description": "Other restraints applied during refinement",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/restraints_other",
+      "alias": "restraints_other",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__ligands_cofactors",
+      "description": "Ligands or cofactors modeled in the structure",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ligands_cofactors",
+      "alias": "ligands_cofactors",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__number_of_waters",
+      "description": "Number of water molecules modeled",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/number_of_waters",
+      "alias": "number_of_waters",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__refinement_resolution_a",
+      "description": "Resolution cutoff used for refinement in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/refinement_resolution_a",
+      "alias": "refinement_resolution_a",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__deposited_to_pdb",
+      "description": "Whether structure was deposited to PDB",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/deposited_to_pdb",
+      "alias": "deposited_to_pdb",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__pdb_id",
+      "description": "PDB accession code if deposited",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/pdb_id",
+      "alias": "pdb_id",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__validation_report_path",
+      "description": "Path to validation report",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/validation_report_path",
+      "alias": "validation_report_path",
+      "owner": "WorkflowRun",
+      "domain_of": [
+        "WorkflowRun"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "workflowRun__processing_notes",
+      "description": "Additional notes about processing",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/processing_notes",
+      "alias": "processing_notes",
       "owner": "WorkflowRun",
       "domain_of": [
         "WorkflowRun"
@@ -4241,6 +5408,45 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "xRayPreparation__protein_concentration_mg_per_ml",
+      "description": "Protein concentration for crystallization in mg/mL",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/protein_concentration_mg_per_ml",
+      "alias": "protein_concentration_mg_per_ml",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__protein_buffer",
+      "description": "Buffer composition for protein solution",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/protein_buffer",
+      "alias": "protein_buffer",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__additives",
+      "description": "Additives mixed with protein before crystallization",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/additives",
+      "alias": "additives",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "xRayPreparation__crystallization_method",
       "description": "Method used for crystallization",
       "from_schema": "https://w3id.org/biostride/",
@@ -4251,6 +5457,136 @@
         "XRayPreparation"
       ],
       "range": "CrystallizationMethodEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__screen_name",
+      "description": "Name of crystallization screen used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/screen_name",
+      "alias": "screen_name",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__temperature_c",
+      "description": "Crystallization temperature in Celsius",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/temperature_c",
+      "alias": "temperature_c",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__drop_ratio_protein_to_reservoir",
+      "description": "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/drop_ratio_protein_to_reservoir",
+      "alias": "drop_ratio_protein_to_reservoir",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__drop_volume_nl",
+      "description": "Total drop volume in nanoliters",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/drop_volume_nl",
+      "alias": "drop_volume_nl",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__reservoir_volume_ul",
+      "description": "Reservoir volume in microliters",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/reservoir_volume_ul",
+      "alias": "reservoir_volume_ul",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__seeding_type",
+      "description": "Type of seeding used (micro, macro, streak)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/seeding_type",
+      "alias": "seeding_type",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__seed_stock_dilution",
+      "description": "Dilution factor for seed stock",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/seed_stock_dilution",
+      "alias": "seed_stock_dilution",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__initial_hit_condition",
+      "description": "Description of initial crystallization hit condition",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/initial_hit_condition",
+      "alias": "initial_hit_condition",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__optimization_strategy",
+      "description": "Strategy used to optimize crystals",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/optimization_strategy",
+      "alias": "optimization_strategy",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__optimized_condition",
+      "description": "Final optimized crystallization condition",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/optimized_condition",
+      "alias": "optimized_condition",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -4267,11 +5603,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "xRayPreparation__crystal_size",
+      "name": "xRayPreparation__crystal_size_um",
       "description": "Crystal dimensions in micrometers",
       "from_schema": "https://w3id.org/biostride/",
-      "slot_uri": "https://w3id.org/biostride/schema/crystal_size",
-      "alias": "crystal_size",
+      "slot_uri": "https://w3id.org/biostride/schema/crystal_size_um",
+      "alias": "crystal_size_um",
       "owner": "XRayPreparation",
       "domain_of": [
         "XRayPreparation"
@@ -4306,6 +5642,32 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "xRayPreparation__soak_compound",
+      "description": "Compound used for soaking (ligand, heavy atom)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/soak_compound",
+      "alias": "soak_compound",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__soak_conditions",
+      "description": "Conditions for crystal soaking",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/soak_conditions",
+      "alias": "soak_conditions",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "xRayPreparation__mounting_method",
       "description": "Crystal mounting method",
       "from_schema": "https://w3id.org/biostride/",
@@ -4324,6 +5686,19 @@
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/flash_cooling_method",
       "alias": "flash_cooling_method",
+      "owner": "XRayPreparation",
+      "domain_of": [
+        "XRayPreparation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "xRayPreparation__crystal_notes",
+      "description": "Additional notes about crystal quality and handling",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/crystal_notes",
+      "alias": "crystal_notes",
       "owner": "XRayPreparation",
       "domain_of": [
         "XRayPreparation"
@@ -4541,11 +5916,206 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataCollectionStrategy__wavelength_a",
+      "description": "X-ray wavelength in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/wavelength_a",
+      "alias": "wavelength_a",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__detector",
+      "description": "Detector model/type",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/detector",
+      "alias": "detector",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__detector_distance_mm",
+      "description": "Detector distance in millimeters",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/detector_distance_mm",
+      "alias": "detector_distance_mm",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__beam_center_x_px",
+      "description": "Beam center X coordinate in pixels",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/beam_center_x_px",
+      "alias": "beam_center_x_px",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__beam_center_y_px",
+      "description": "Beam center Y coordinate in pixels",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/beam_center_y_px",
+      "alias": "beam_center_y_px",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__beam_size_um",
+      "description": "Beam size in micrometers",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/beam_size_um",
+      "alias": "beam_size_um",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__flux_photons_per_s",
+      "description": "Photon flux in photons per second",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/flux_photons_per_s",
+      "alias": "flux_photons_per_s",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__transmission_percent",
+      "description": "Beam transmission percentage",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/transmission_percent",
+      "alias": "transmission_percent",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__attenuator",
+      "description": "Attenuator setting used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/attenuator",
+      "alias": "attenuator",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__temperature_k",
+      "description": "Data collection temperature in Kelvin",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/temperature_k",
+      "alias": "temperature_k",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__oscillation_per_image_deg",
+      "description": "Oscillation angle per image in degrees",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/oscillation_per_image_deg",
+      "alias": "oscillation_per_image_deg",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__total_rotation_deg",
+      "description": "Total rotation range in degrees",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/total_rotation_deg",
+      "alias": "total_rotation_deg",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataCollectionStrategy__strategy_notes",
+      "description": "Notes about data collection strategy",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/strategy_notes",
+      "alias": "strategy_notes",
+      "owner": "DataCollectionStrategy",
+      "domain_of": [
+        "DataCollectionStrategy"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "qualityMetrics__resolution",
       "description": "Resolution in Angstroms",
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/resolution",
       "alias": "resolution",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__resolution_high_shell_a",
+      "description": "High resolution shell limit in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/resolution_high_shell_a",
+      "alias": "resolution_high_shell_a",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__resolution_low_a",
+      "description": "Low resolution limit in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/resolution_low_a",
+      "alias": "resolution_low_a",
       "owner": "QualityMetrics",
       "domain_of": [
         "QualityMetrics"
@@ -4567,6 +6137,19 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "qualityMetrics__completeness_high_res_shell_percent",
+      "description": "Completeness in highest resolution shell",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/completeness_high_res_shell_percent",
+      "alias": "completeness_high_res_shell_percent",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "qualityMetrics__signal_to_noise",
       "description": "Signal to noise ratio",
       "from_schema": "https://w3id.org/biostride/",
@@ -4580,11 +6163,297 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "qualityMetrics__r_factor",
-      "description": "R-factor for crystallography",
+      "name": "qualityMetrics__mean_i_over_sigma_i",
+      "description": "Mean I/sigma(I)",
       "from_schema": "https://w3id.org/biostride/",
-      "slot_uri": "https://w3id.org/biostride/schema/r_factor",
-      "alias": "r_factor",
+      "slot_uri": "https://w3id.org/biostride/schema/mean_i_over_sigma_i",
+      "alias": "mean_i_over_sigma_i",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__space_group",
+      "description": "Crystallographic space group",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/space_group",
+      "alias": "space_group",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__unit_cell_a",
+      "description": "Unit cell parameter a in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/unit_cell_a",
+      "alias": "unit_cell_a",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__unit_cell_b",
+      "description": "Unit cell parameter b in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/unit_cell_b",
+      "alias": "unit_cell_b",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__unit_cell_c",
+      "description": "Unit cell parameter c in Angstroms",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/unit_cell_c",
+      "alias": "unit_cell_c",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__unit_cell_alpha",
+      "description": "Unit cell angle alpha in degrees",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/unit_cell_alpha",
+      "alias": "unit_cell_alpha",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__unit_cell_beta",
+      "description": "Unit cell angle beta in degrees",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/unit_cell_beta",
+      "alias": "unit_cell_beta",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__unit_cell_gamma",
+      "description": "Unit cell angle gamma in degrees",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/unit_cell_gamma",
+      "alias": "unit_cell_gamma",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__multiplicity",
+      "description": "Data multiplicity (redundancy)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/multiplicity",
+      "alias": "multiplicity",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__cc_half",
+      "description": "Half-set correlation coefficient CC(1/2)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/cc_half",
+      "alias": "cc_half",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__r_merge",
+      "description": "Rmerge - merge R-factor",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/r_merge",
+      "alias": "r_merge",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__r_pim",
+      "description": "Rpim - precision-indicating merging R-factor",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/r_pim",
+      "alias": "r_pim",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__wilson_b_factor_a2",
+      "description": "Wilson B-factor in Angstroms squared",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/wilson_b_factor_a2",
+      "alias": "wilson_b_factor_a2",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__anomalous_used",
+      "description": "Whether anomalous signal was used",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/anomalous_used",
+      "alias": "anomalous_used",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__anom_corr",
+      "description": "Anomalous correlation",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/anom_corr",
+      "alias": "anom_corr",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__anom_sig_ano",
+      "description": "Anomalous signal strength",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/anom_sig_ano",
+      "alias": "anom_sig_ano",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__r_work",
+      "description": "Refinement R-factor (working set)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/r_work",
+      "alias": "r_work",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__r_free",
+      "description": "R-free (test set)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/r_free",
+      "alias": "r_free",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__ramachandran_favored_percent",
+      "description": "Percentage of residues in favored Ramachandran regions",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ramachandran_favored_percent",
+      "alias": "ramachandran_favored_percent",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__ramachandran_outliers_percent",
+      "description": "Percentage of Ramachandran outliers",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/ramachandran_outliers_percent",
+      "alias": "ramachandran_outliers_percent",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__clashscore",
+      "description": "MolProbity clashscore",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/clashscore",
+      "alias": "clashscore",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__molprobity_score",
+      "description": "Overall MolProbity score",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/molprobity_score",
+      "alias": "molprobity_score",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__average_b_factor_a2",
+      "description": "Average B-factor in Angstroms squared",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/average_b_factor_a2",
+      "alias": "average_b_factor_a2",
       "owner": "QualityMetrics",
       "domain_of": [
         "QualityMetrics"
@@ -4611,6 +6480,19 @@
       "from_schema": "https://w3id.org/biostride/",
       "slot_uri": "https://w3id.org/biostride/schema/rg",
       "alias": "rg",
+      "owner": "QualityMetrics",
+      "domain_of": [
+        "QualityMetrics"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "qualityMetrics__r_factor",
+      "description": "R-factor for crystallography (deprecated, use r_work)",
+      "from_schema": "https://w3id.org/biostride/",
+      "slot_uri": "https://w3id.org/biostride/schema/r_factor",
+      "alias": "r_factor",
       "owner": "QualityMetrics",
       "domain_of": [
         "QualityMetrics"
@@ -6416,6 +8298,7 @@
         "namedThing__id",
         "namedThing__title",
         "namedThing__description",
+        "study__protein_constructs",
         "study__samples",
         "study__sample_preparations",
         "study__instrument_runs",
@@ -6426,6 +8309,14 @@
       ],
       "slot_usage": {},
       "attributes": [
+        {
+          "name": "protein_constructs",
+          "description": "Protein constructs and cloning information",
+          "range": "ProteinConstruct",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
         {
           "name": "samples",
           "range": "Sample",
@@ -6697,6 +8588,151 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "ProteinConstruct",
+      "definition_uri": "https://w3id.org/biostride/schema/ProteinConstruct",
+      "description": "Detailed information about a protein construct including cloning and sequence design",
+      "from_schema": "https://w3id.org/biostride/",
+      "is_a": "NamedThing",
+      "slots": [
+        "namedThing__id",
+        "namedThing__title",
+        "namedThing__description",
+        "proteinConstruct__construct_id",
+        "proteinConstruct__uniprot_id",
+        "proteinConstruct__gene_name",
+        "proteinConstruct__ncbi_taxid",
+        "proteinConstruct__sequence_length_aa",
+        "proteinConstruct__construct_description",
+        "proteinConstruct__gene_synthesis_provider",
+        "proteinConstruct__codon_optimization_organism",
+        "proteinConstruct__vector_backbone",
+        "proteinConstruct__vector_name",
+        "proteinConstruct__promoter",
+        "proteinConstruct__tag_nterm",
+        "proteinConstruct__tag_cterm",
+        "proteinConstruct__cleavage_site",
+        "proteinConstruct__signal_peptide",
+        "proteinConstruct__selectable_marker",
+        "proteinConstruct__cloning_method",
+        "proteinConstruct__insert_boundaries",
+        "proteinConstruct__sequence_file_path",
+        "proteinConstruct__sequence_verified_by",
+        "proteinConstruct__verification_notes"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "construct_id",
+          "description": "Unique identifier for this construct",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "uniprot_id",
+          "description": "UniProt accession for the target protein",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gene_name",
+          "description": "Gene name",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ncbi_taxid",
+          "description": "NCBI Taxonomy ID for source organism",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequence_length_aa",
+          "description": "Length of the protein sequence in amino acids",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "construct_description",
+          "description": "Human-readable description of the construct",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "gene_synthesis_provider",
+          "description": "Company or facility that synthesized the gene",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "codon_optimization_organism",
+          "description": "Organism for which codons were optimized",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "vector_backbone",
+          "description": "Base plasmid backbone used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "vector_name",
+          "description": "Complete vector name",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "promoter",
+          "description": "Promoter used for expression",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tag_nterm",
+          "description": "N-terminal tag (e.g., His6, MBP, GST)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tag_cterm",
+          "description": "C-terminal tag",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cleavage_site",
+          "description": "Protease cleavage site sequence",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "signal_peptide",
+          "description": "Signal peptide sequence if present",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "selectable_marker",
+          "description": "Antibiotic resistance or other selectable marker",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cloning_method",
+          "description": "Method used for cloning (e.g., restriction digest, Gibson, InFusion)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "insert_boundaries",
+          "description": "Start and end positions of insert in vector",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequence_file_path",
+          "description": "Path to sequence file",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequence_verified_by",
+          "description": "Method or person who verified the sequence",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "verification_notes",
+          "description": "Notes from sequence verification",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/biostride/schema/ProteinConstruct",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "SamplePreparation",
       "definition_uri": "https://w3id.org/biostride/schema/SamplePreparation",
       "description": "A process that prepares a sample for imaging",
@@ -6710,7 +8746,44 @@
         "samplePreparation__sample_id",
         "samplePreparation__preparation_date",
         "samplePreparation__operator_id",
-        "samplePreparation__protocol_description"
+        "samplePreparation__protocol_description",
+        "samplePreparation__expression_system",
+        "samplePreparation__host_strain_or_cell_line",
+        "samplePreparation__culture_volume_l",
+        "samplePreparation__medium",
+        "samplePreparation__antibiotic_selection",
+        "samplePreparation__growth_temperature_c",
+        "samplePreparation__induction_agent",
+        "samplePreparation__inducer_concentration",
+        "samplePreparation__induction_temperature_c",
+        "samplePreparation__induction_time_h",
+        "samplePreparation__od600_at_induction",
+        "samplePreparation__harvest_timepoint",
+        "samplePreparation__lysis_method",
+        "samplePreparation__protease_inhibitors",
+        "samplePreparation__purification_steps",
+        "samplePreparation__affinity_type",
+        "samplePreparation__affinity_column",
+        "samplePreparation__lysis_buffer",
+        "samplePreparation__wash_buffer",
+        "samplePreparation__elution_buffer",
+        "samplePreparation__tag_removal",
+        "samplePreparation__protease",
+        "samplePreparation__protease_ratio",
+        "samplePreparation__cleavage_time_h",
+        "samplePreparation__cleavage_temperature_c",
+        "samplePreparation__second_affinity_reverse",
+        "samplePreparation__iex_column",
+        "samplePreparation__hic_column",
+        "samplePreparation__sec_column",
+        "samplePreparation__sec_buffer",
+        "samplePreparation__concentration_method",
+        "samplePreparation__final_buffer",
+        "samplePreparation__final_concentration_mg_per_ml",
+        "samplePreparation__yield_mg",
+        "samplePreparation__purity_by_sds_page_percent",
+        "samplePreparation__aggregation_assessment",
+        "samplePreparation__aliquoting"
       ],
       "slot_usage": {},
       "attributes": [
@@ -6743,6 +8816,205 @@
         {
           "name": "protocol_description",
           "description": "Detailed protocol description",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "expression_system",
+          "description": "Expression system used for recombinant protein production",
+          "range": "ExpressionSystemEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "host_strain_or_cell_line",
+          "description": "Specific strain or cell line used (e.g., BL21(DE3), Sf9, HEK293F)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "culture_volume_l",
+          "description": "Culture volume in liters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "medium",
+          "description": "Growth medium used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "antibiotic_selection",
+          "description": "Antibiotic or selection agent used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "growth_temperature_c",
+          "description": "Growth temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "induction_agent",
+          "description": "Agent used to induce expression (e.g., IPTG, tetracycline)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "inducer_concentration",
+          "description": "Concentration of induction agent",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "induction_temperature_c",
+          "description": "Temperature during induction in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "induction_time_h",
+          "description": "Duration of induction in hours",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "od600_at_induction",
+          "description": "Optical density at 600nm when induction was started",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "harvest_timepoint",
+          "description": "Time point when cells were harvested",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "lysis_method",
+          "description": "Method used for cell lysis",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protease_inhibitors",
+          "description": "Protease inhibitors added",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "purification_steps",
+          "description": "Ordered list of purification steps performed",
+          "range": "PurificationStepEnum",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "affinity_type",
+          "description": "Type of affinity chromatography",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "affinity_column",
+          "description": "Affinity column specifications",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "lysis_buffer",
+          "description": "Buffer composition for lysis",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wash_buffer",
+          "description": "Buffer composition for washing",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "elution_buffer",
+          "description": "Buffer composition for elution",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tag_removal",
+          "description": "Whether and how affinity tag was removed",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protease",
+          "description": "Protease used for tag cleavage",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protease_ratio",
+          "description": "Ratio of protease to protein",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cleavage_time_h",
+          "description": "Duration of protease cleavage in hours",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cleavage_temperature_c",
+          "description": "Temperature during cleavage in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "second_affinity_reverse",
+          "description": "Second affinity or reverse affinity step",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "iex_column",
+          "description": "Ion-exchange column used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "hic_column",
+          "description": "Hydrophobic interaction column used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sec_column",
+          "description": "Size-exclusion column used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sec_buffer",
+          "description": "Buffer for size-exclusion chromatography",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "concentration_method",
+          "description": "Method used to concentrate protein",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "final_buffer",
+          "description": "Final buffer composition after purification",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "final_concentration_mg_per_ml",
+          "description": "Final protein concentration in mg/mL",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "yield_mg",
+          "description": "Total yield in milligrams",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "purity_by_sds_page_percent",
+          "description": "Purity percentage by SDS-PAGE",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "aggregation_assessment",
+          "description": "Assessment of protein aggregation state",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "aliquoting",
+          "description": "How the protein was aliquoted for storage",
           "@type": "SlotDefinition"
         }
       ],
@@ -7052,6 +9324,7 @@
         "experimentRun__experiment_date",
         "experimentRun__operator_id",
         "experimentRun__technique",
+        "experimentRun__experimental_method",
         "experimentRun__experimental_conditions",
         "experimentRun__data_collection_strategy",
         "experimentRun__quality_metrics",
@@ -7097,6 +9370,12 @@
           "description": "Technique used for data collection",
           "range": "TechniqueEnum",
           "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "experimental_method",
+          "description": "Specific experimental method for structure determination (particularly for diffraction techniques)",
+          "range": "ExperimentalMethodEnum",
           "@type": "SlotDefinition"
         },
         {
@@ -7148,7 +9427,25 @@
         "workflowRun__processing_level",
         "workflowRun__software_name",
         "workflowRun__software_version",
+        "workflowRun__additional_software",
         "workflowRun__processing_parameters",
+        "workflowRun__parameters_file_path",
+        "workflowRun__indexer_module",
+        "workflowRun__integrator_module",
+        "workflowRun__scaler_module",
+        "workflowRun__outlier_rejection_method",
+        "workflowRun__phasing_method",
+        "workflowRun__search_model_pdb_id",
+        "workflowRun__tls_used",
+        "workflowRun__ncs_used",
+        "workflowRun__restraints_other",
+        "workflowRun__ligands_cofactors",
+        "workflowRun__number_of_waters",
+        "workflowRun__refinement_resolution_a",
+        "workflowRun__deposited_to_pdb",
+        "workflowRun__pdb_id",
+        "workflowRun__validation_report_path",
+        "workflowRun__processing_notes",
         "workflowRun__compute_resources",
         "workflowRun__started_at",
         "workflowRun__completed_at",
@@ -7196,8 +9493,104 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "additional_software",
+          "description": "Additional software used in pipeline",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "processing_parameters",
           "description": "Parameters used in processing",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "parameters_file_path",
+          "description": "Path to parameters file or text of key parameters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "indexer_module",
+          "description": "Indexing module used (e.g., MOSFLM, XDS)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "integrator_module",
+          "description": "Integration module used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "scaler_module",
+          "description": "Scaling module used (e.g., AIMLESS, SCALA)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "outlier_rejection_method",
+          "description": "Method for rejecting outlier reflections",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "phasing_method",
+          "description": "Phasing method used for X-ray crystallography structure determination",
+          "range": "PhasingMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "search_model_pdb_id",
+          "description": "PDB ID of search model for molecular replacement",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "tls_used",
+          "description": "Whether TLS (Translation/Libration/Screw) refinement was used",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ncs_used",
+          "description": "Whether Non-Crystallographic Symmetry restraints were used",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "restraints_other",
+          "description": "Other restraints applied during refinement",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ligands_cofactors",
+          "description": "Ligands or cofactors modeled in the structure",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "number_of_waters",
+          "description": "Number of water molecules modeled",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "refinement_resolution_a",
+          "description": "Resolution cutoff used for refinement in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "deposited_to_pdb",
+          "description": "Whether structure was deposited to PDB",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "pdb_id",
+          "description": "PDB accession code if deposited",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "validation_report_path",
+          "description": "Path to validation report",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "processing_notes",
+          "description": "Additional notes about processing",
           "@type": "SlotDefinition"
         },
         {
@@ -8039,20 +10432,105 @@
       "is_a": "TechniqueSpecificPreparation",
       "slots": [
         "attributeGroup__description",
+        "xRayPreparation__protein_concentration_mg_per_ml",
+        "xRayPreparation__protein_buffer",
+        "xRayPreparation__additives",
         "xRayPreparation__crystallization_method",
+        "xRayPreparation__screen_name",
+        "xRayPreparation__temperature_c",
+        "xRayPreparation__drop_ratio_protein_to_reservoir",
+        "xRayPreparation__drop_volume_nl",
+        "xRayPreparation__reservoir_volume_ul",
+        "xRayPreparation__seeding_type",
+        "xRayPreparation__seed_stock_dilution",
+        "xRayPreparation__initial_hit_condition",
+        "xRayPreparation__optimization_strategy",
+        "xRayPreparation__optimized_condition",
         "xRayPreparation__crystallization_conditions",
-        "xRayPreparation__crystal_size",
+        "xRayPreparation__crystal_size_um",
         "xRayPreparation__cryoprotectant",
         "xRayPreparation__cryoprotectant_concentration",
+        "xRayPreparation__soak_compound",
+        "xRayPreparation__soak_conditions",
         "xRayPreparation__mounting_method",
-        "xRayPreparation__flash_cooling_method"
+        "xRayPreparation__flash_cooling_method",
+        "xRayPreparation__crystal_notes"
       ],
       "slot_usage": {},
       "attributes": [
         {
+          "name": "protein_concentration_mg_per_ml",
+          "description": "Protein concentration for crystallization in mg/mL",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "protein_buffer",
+          "description": "Buffer composition for protein solution",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "additives",
+          "description": "Additives mixed with protein before crystallization",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "crystallization_method",
           "description": "Method used for crystallization",
           "range": "CrystallizationMethodEnum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "screen_name",
+          "description": "Name of crystallization screen used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_c",
+          "description": "Crystallization temperature in Celsius",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "drop_ratio_protein_to_reservoir",
+          "description": "Ratio of protein to reservoir solution in drop (e.g., 1:1, 2:1)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "drop_volume_nl",
+          "description": "Total drop volume in nanoliters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "reservoir_volume_ul",
+          "description": "Reservoir volume in microliters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "seeding_type",
+          "description": "Type of seeding used (micro, macro, streak)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "seed_stock_dilution",
+          "description": "Dilution factor for seed stock",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "initial_hit_condition",
+          "description": "Description of initial crystallization hit condition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "optimization_strategy",
+          "description": "Strategy used to optimize crystals",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "optimized_condition",
+          "description": "Final optimized crystallization condition",
           "@type": "SlotDefinition"
         },
         {
@@ -8061,7 +10539,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "crystal_size",
+          "name": "crystal_size_um",
           "description": "Crystal dimensions in micrometers",
           "@type": "SlotDefinition"
         },
@@ -8078,6 +10556,16 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "soak_compound",
+          "description": "Compound used for soaking (ligand, heavy atom)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "soak_conditions",
+          "description": "Conditions for crystal soaking",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "mounting_method",
           "description": "Crystal mounting method",
           "@type": "SlotDefinition"
@@ -8085,6 +10573,11 @@
         {
           "name": "flash_cooling_method",
           "description": "Flash cooling protocol",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "crystal_notes",
+          "description": "Additional notes about crystal quality and handling",
           "@type": "SlotDefinition"
         }
       ],
@@ -8207,7 +10700,20 @@
         "dataCollectionStrategy__total_frames",
         "dataCollectionStrategy__frame_rate",
         "dataCollectionStrategy__total_dose",
-        "dataCollectionStrategy__dose_per_frame"
+        "dataCollectionStrategy__dose_per_frame",
+        "dataCollectionStrategy__wavelength_a",
+        "dataCollectionStrategy__detector",
+        "dataCollectionStrategy__detector_distance_mm",
+        "dataCollectionStrategy__beam_center_x_px",
+        "dataCollectionStrategy__beam_center_y_px",
+        "dataCollectionStrategy__beam_size_um",
+        "dataCollectionStrategy__flux_photons_per_s",
+        "dataCollectionStrategy__transmission_percent",
+        "dataCollectionStrategy__attenuator",
+        "dataCollectionStrategy__temperature_k",
+        "dataCollectionStrategy__oscillation_per_image_deg",
+        "dataCollectionStrategy__total_rotation_deg",
+        "dataCollectionStrategy__strategy_notes"
       ],
       "slot_usage": {},
       "attributes": [
@@ -8240,6 +10746,81 @@
           "description": "Dose per frame",
           "range": "float",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "wavelength_a",
+          "description": "X-ray wavelength in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector",
+          "description": "Detector model/type",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "detector_distance_mm",
+          "description": "Detector distance in millimeters",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_center_x_px",
+          "description": "Beam center X coordinate in pixels",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_center_y_px",
+          "description": "Beam center Y coordinate in pixels",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "beam_size_um",
+          "description": "Beam size in micrometers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "flux_photons_per_s",
+          "description": "Photon flux in photons per second",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "transmission_percent",
+          "description": "Beam transmission percentage",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "attenuator",
+          "description": "Attenuator setting used",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "temperature_k",
+          "description": "Data collection temperature in Kelvin",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "oscillation_per_image_deg",
+          "description": "Oscillation angle per image in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "total_rotation_deg",
+          "description": "Total rotation range in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "strategy_notes",
+          "description": "Notes about data collection strategy",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "https://w3id.org/biostride/schema/DataCollectionStrategy",
@@ -8254,11 +10835,37 @@
       "slots": [
         "attributeGroup__description",
         "qualityMetrics__resolution",
+        "qualityMetrics__resolution_high_shell_a",
+        "qualityMetrics__resolution_low_a",
         "qualityMetrics__completeness",
+        "qualityMetrics__completeness_high_res_shell_percent",
         "qualityMetrics__signal_to_noise",
-        "qualityMetrics__r_factor",
+        "qualityMetrics__mean_i_over_sigma_i",
+        "qualityMetrics__space_group",
+        "qualityMetrics__unit_cell_a",
+        "qualityMetrics__unit_cell_b",
+        "qualityMetrics__unit_cell_c",
+        "qualityMetrics__unit_cell_alpha",
+        "qualityMetrics__unit_cell_beta",
+        "qualityMetrics__unit_cell_gamma",
+        "qualityMetrics__multiplicity",
+        "qualityMetrics__cc_half",
+        "qualityMetrics__r_merge",
+        "qualityMetrics__r_pim",
+        "qualityMetrics__wilson_b_factor_a2",
+        "qualityMetrics__anomalous_used",
+        "qualityMetrics__anom_corr",
+        "qualityMetrics__anom_sig_ano",
+        "qualityMetrics__r_work",
+        "qualityMetrics__r_free",
+        "qualityMetrics__ramachandran_favored_percent",
+        "qualityMetrics__ramachandran_outliers_percent",
+        "qualityMetrics__clashscore",
+        "qualityMetrics__molprobity_score",
+        "qualityMetrics__average_b_factor_a2",
         "qualityMetrics__i_zero",
-        "qualityMetrics__rg"
+        "qualityMetrics__rg",
+        "qualityMetrics__r_factor"
       ],
       "slot_usage": {},
       "attributes": [
@@ -8269,8 +10876,26 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "resolution_high_shell_a",
+          "description": "High resolution shell limit in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resolution_low_a",
+          "description": "Low resolution limit in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "completeness",
           "description": "Data completeness percentage",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "completeness_high_res_shell_percent",
+          "description": "Completeness in highest resolution shell",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -8281,8 +10906,139 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "r_factor",
-          "description": "R-factor for crystallography",
+          "name": "mean_i_over_sigma_i",
+          "description": "Mean I/sigma(I)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "space_group",
+          "description": "Crystallographic space group",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_a",
+          "description": "Unit cell parameter a in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_b",
+          "description": "Unit cell parameter b in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_c",
+          "description": "Unit cell parameter c in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_alpha",
+          "description": "Unit cell angle alpha in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_beta",
+          "description": "Unit cell angle beta in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "unit_cell_gamma",
+          "description": "Unit cell angle gamma in degrees",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "multiplicity",
+          "description": "Data multiplicity (redundancy)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cc_half",
+          "description": "Half-set correlation coefficient CC(1/2)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_merge",
+          "description": "Rmerge - merge R-factor",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_pim",
+          "description": "Rpim - precision-indicating merging R-factor",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "wilson_b_factor_a2",
+          "description": "Wilson B-factor in Angstroms squared",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anomalous_used",
+          "description": "Whether anomalous signal was used",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anom_corr",
+          "description": "Anomalous correlation",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "anom_sig_ano",
+          "description": "Anomalous signal strength",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_work",
+          "description": "Refinement R-factor (working set)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_free",
+          "description": "R-free (test set)",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ramachandran_favored_percent",
+          "description": "Percentage of residues in favored Ramachandran regions",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ramachandran_outliers_percent",
+          "description": "Percentage of Ramachandran outliers",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "clashscore",
+          "description": "MolProbity clashscore",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "molprobity_score",
+          "description": "Overall MolProbity score",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "average_b_factor_a2",
+          "description": "Average B-factor in Angstroms squared",
           "range": "float",
           "@type": "SlotDefinition"
         },
@@ -8295,6 +11051,12 @@
         {
           "name": "rg",
           "description": "Radius of gyration in Angstroms",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "r_factor",
+          "description": "R-factor for crystallography (deprecated, use r_work)",
           "range": "float",
           "@type": "SlotDefinition"
         }
@@ -9500,9 +12262,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biostride.yaml",
-  "source_file_date": "2025-10-18T19:21:03",
-  "source_file_size": 39367,
-  "generation_date": "2025-10-19T06:36:20",
+  "source_file_date": "2025-10-23T12:54:05",
+  "source_file_size": 55493,
+  "generation_date": "2025-10-29T09:12:09",
   "@type": "SchemaDefinition",
   "@context": [
     "assets/jsonld/biostride.context.jsonld",

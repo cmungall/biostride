@@ -153,7 +153,9 @@ enum CrystallizationMethodEnum
   {
     vapor_diffusion_hanging
     vapor_diffusion_sitting
+    batch
     microbatch
+    lcp
     dialysis
     free_interface_diffusion
   }
@@ -211,6 +213,23 @@ enum EvidenceTypeEnum
     literature
     author_statement
     curator_inference
+  }
+
+enum ExperimentalMethodEnum
+  {
+    x_ray_diffraction
+    neutron_diffraction
+    electron_diffraction
+    fiber_diffraction
+  }
+
+enum ExpressionSystemEnum
+  {
+    bacteria
+    yeast
+    insect
+    mammalian
+    cell_free
   }
 
 enum FileFormatEnum
@@ -327,6 +346,18 @@ enum MutationTypeEnum
     substitution
   }
 
+enum PhasingMethodEnum
+  {
+    molecular_replacement
+    sad
+    mad
+    sir
+    mir
+    siras
+    miras
+    fragile_mr
+  }
+
 enum PreparationTypeEnum
   {
     cryo_em
@@ -364,6 +395,20 @@ enum PTMTypeEnum
     proteolysis
     deamidation
     adp_ribosylation
+  }
+
+enum PurificationStepEnum
+  {
+    affinity_ni_nta
+    affinity_co_nta
+    affinity_strep
+    affinity_mbp
+    affinity_gst
+    tag_cleavage
+    ion_exchange
+    hydrophobic_interaction
+    size_exclusion
+    dialysis
   }
 
 enum SampleTypeEnum
@@ -607,6 +652,19 @@ type DataCollectionStrategy
     frameRate: Float
     totalDose: Float
     dosePerFrame: Float
+    wavelengthA: Float
+    detector: String
+    detectorDistanceMm: Float
+    beamCenterXPx: Integer
+    beamCenterYPx: Integer
+    beamSizeUm: Float
+    fluxPhotonsPerS: Float
+    transmissionPercent: Float
+    attenuator: String
+    temperatureK: Float
+    oscillationPerImageDeg: Float
+    totalRotationDeg: Float
+    strategyNotes: String
   }
 
 type DataFile
@@ -679,6 +737,7 @@ type ExperimentRun
     experimentDate: String
     operatorId: String
     technique: TechniqueEnum!
+    experimentalMethod: ExperimentalMethodEnum
     experimentalConditions: ExperimentalConditions
     dataCollectionStrategy: DataCollectionStrategy
     qualityMetrics: QualityMetrics
@@ -955,6 +1014,34 @@ type ProteinAnnotation
     publicationIds: [String]
   }
 
+type ProteinConstruct
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    constructId: String!
+    uniprotId: String
+    geneName: String
+    ncbiTaxid: String
+    sequenceLengthAa: Integer
+    constructDescription: String
+    geneSynthesisProvider: String
+    codonOptimizationOrganism: String
+    vectorBackbone: String
+    vectorName: String
+    promoter: String
+    tagNterm: String
+    tagCterm: String
+    cleavageSite: String
+    signalPeptide: String
+    selectableMarker: String
+    cloningMethod: String
+    insertBoundaries: String
+    sequenceFilePath: String
+    sequenceVerifiedBy: String
+    verificationNotes: String
+  }
+
 type ProteinProteinInteraction
   {
     id: Uriorcurie!
@@ -986,11 +1073,37 @@ type QualityMetrics
   {
     description: String
     resolution: Float
+    resolutionHighShellA: Float
+    resolutionLowA: Float
     completeness: Float
+    completenessHighResShellPercent: Float
     signalToNoise: Float
-    rFactor: Float
+    meanIOverSigmaI: Float
+    spaceGroup: String
+    unitCellA: Float
+    unitCellB: Float
+    unitCellC: Float
+    unitCellAlpha: Float
+    unitCellBeta: Float
+    unitCellGamma: Float
+    multiplicity: Float
+    ccHalf: Float
+    rMerge: Float
+    rPim: Float
+    wilsonBFactorA2: Float
+    anomalousUsed: Boolean
+    anomCorr: Float
+    anomSigAno: Float
+    rWork: Float
+    rFree: Float
+    ramachandranFavoredPercent: Float
+    ramachandranOutliersPercent: Float
+    clashscore: Float
+    molprobityScore: Float
+    averageBFactorA2: Float
     iZero: Float
     rg: Float
+    rFactor: Float
   }
 
 type Sample
@@ -1035,6 +1148,43 @@ type SamplePreparation
     preparationDate: String
     operatorId: String
     protocolDescription: String
+    expressionSystem: ExpressionSystemEnum
+    hostStrainOrCellLine: String
+    cultureVolumeL: Float
+    medium: String
+    antibioticSelection: String
+    growthTemperatureC: Float
+    inductionAgent: String
+    inducerConcentration: String
+    inductionTemperatureC: Float
+    inductionTimeH: Float
+    od600AtInduction: Float
+    harvestTimepoint: String
+    lysisMethod: String
+    proteaseInhibitors: String
+    purificationSteps: [PurificationStepEnum]
+    affinityType: String
+    affinityColumn: String
+    lysisBuffer: String
+    washBuffer: String
+    elutionBuffer: String
+    tagRemoval: Boolean
+    protease: String
+    proteaseRatio: String
+    cleavageTimeH: Float
+    cleavageTemperatureC: Float
+    secondAffinityReverse: String
+    iexColumn: String
+    hicColumn: String
+    secColumn: String
+    secBuffer: String
+    concentrationMethod: String
+    finalBuffer: String
+    finalConcentrationMgPerMl: Float
+    yieldMg: Float
+    purityBySdsPagePercent: Float
+    aggregationAssessment: String
+    aliquoting: String
   }
 
 type SAXSInstrument
@@ -1105,6 +1255,7 @@ type Study
     id: Uriorcurie!
     title: String
     description: String
+    proteinConstructs: [ProteinConstruct]
     samples: [Sample]
     samplePreparations: [SamplePreparation]
     instrumentRuns: [ExperimentRun]
@@ -1130,7 +1281,25 @@ type WorkflowRun
     processingLevel: Integer
     softwareName: String!
     softwareVersion: String
+    additionalSoftware: String
     processingParameters: String
+    parametersFilePath: String
+    indexerModule: String
+    integratorModule: String
+    scalerModule: String
+    outlierRejectionMethod: String
+    phasingMethod: PhasingMethodEnum
+    searchModelPdbId: String
+    tlsUsed: Boolean
+    ncsUsed: Boolean
+    restraintsOther: String
+    ligandsCofactors: String
+    numberOfWaters: Integer
+    refinementResolutionA: Float
+    depositedToPdb: Boolean
+    pdbId: String
+    validationReportPath: String
+    processingNotes: String
     computeResources: ComputeResources
     startedAt: String
     completedAt: String
@@ -1161,13 +1330,29 @@ type XRayInstrument
 type XRayPreparation
   {
     description: String
+    proteinConcentrationMgPerMl: Float
+    proteinBuffer: String
+    additives: String
     crystallizationMethod: CrystallizationMethodEnum
+    screenName: String
+    temperatureC: Float
+    dropRatioProteinToReservoir: String
+    dropVolumeNl: Float
+    reservoirVolumeUl: Float
+    seedingType: String
+    seedStockDilution: String
+    initialHitCondition: String
+    optimizationStrategy: String
+    optimizedCondition: String
     crystallizationConditions: String
-    crystalSize: String
+    crystalSizeUm: String
     cryoprotectant: String
     cryoprotectantConcentration: Float
+    soakCompound: String
+    soakConditions: String
     mountingMethod: String
     flashCoolingMethod: String
+    crystalNotes: String
   }
 
 type XRFImage

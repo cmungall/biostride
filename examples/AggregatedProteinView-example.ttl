@@ -8,11 +8,6 @@
 biostride:protein-p53-view a biostride_func:AggregatedProteinView ;
     dcterms:title "Aggregated structural and functional data for human p53" ;
     biostride_func:biophysical_properties [ a biostride_func:BiophysicalProperty ;
-            biostride_func:measurement_conditions "Predicted for unfolded state" ;
-            biostride_func:property_type "aggregation_propensity" ;
-            biostride_func:unit "probability" ;
-            biostride_func:value "0.68"^^xsd:float ],
-        [ a biostride_func:BiophysicalProperty ;
             biostride_func:experimental_method "differential_scanning_calorimetry" ;
             biostride_func:measurement_conditions "DNA-binding domain, pH 7.0, 20°C" ;
             biostride_func:property_type "stability" ;
@@ -25,12 +20,25 @@ biostride:protein-p53-view a biostride_func:AggregatedProteinView ;
             biostride_func:ph "7.4"^^xsd:float ;
             biostride_func:property_type "melting_temperature" ;
             biostride_func:unit "K" ;
-            biostride_func:value "315.8"^^xsd:float ] ;
+            biostride_func:value "315.8"^^xsd:float ],
+        [ a biostride_func:BiophysicalProperty ;
+            biostride_func:measurement_conditions "Predicted for unfolded state" ;
+            biostride_func:property_type "aggregation_propensity" ;
+            biostride_func:unit "probability" ;
+            biostride_func:value "0.68"^^xsd:float ] ;
     biostride_func:conformational_ensemble biostride:p53-confens-001 ;
     biostride_func:cross_references [ a biostride_func:DatabaseCrossReference ;
             biostride_func:database_id "191170" ;
             biostride_func:database_name "omim" ;
             biostride_func:database_url "https://omim.org/entry/191170"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "PF00870" ;
+            biostride_func:database_name "pfam" ;
+            biostride_func:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ],
+        [ a biostride_func:DatabaseCrossReference ;
+            biostride_func:database_id "COSM10662" ;
+            biostride_func:database_name "cosmic" ;
+            biostride_func:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
         [ a biostride_func:DatabaseCrossReference ;
             biostride_func:database_id "CHEMBL4096" ;
             biostride_func:database_name "chembl" ;
@@ -39,15 +47,7 @@ biostride:protein-p53-view a biostride_func:AggregatedProteinView ;
             biostride_func:database_id "P04637" ;
             biostride_func:database_name "uniprot" ;
             biostride_func:database_url "https://www.uniprot.org/uniprot/P04637"^^xsd:anyURI ;
-            biostride_func:last_updated "2024-01-15" ],
-        [ a biostride_func:DatabaseCrossReference ;
-            biostride_func:database_id "COSM10662" ;
-            biostride_func:database_name "cosmic" ;
-            biostride_func:database_url "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=TP53"^^xsd:anyURI ],
-        [ a biostride_func:DatabaseCrossReference ;
-            biostride_func:database_id "PF00870" ;
-            biostride_func:database_name "pfam" ;
-            biostride_func:database_url "https://www.ebi.ac.uk/interpro/entry/pfam/PF00870"^^xsd:anyURI ] ;
+            biostride_func:last_updated "2024-01-15" ] ;
     biostride_func:evolutionary_conservation biostride:p53-evol-001 ;
     biostride_func:functional_sites biostride:p53-func-001,
         biostride:p53-func-002,
@@ -108,6 +108,15 @@ biostride:protein-p53-view a biostride_func:AggregatedProteinView ;
 biostride:p53-confens-001 a biostride_func:ConformationalEnsemble ;
     biostride_func:clustering_method "Structure-based clustering of DNA-binding domain" ;
     biostride_func:conformational_states [ a biostride_func:ConformationalState ;
+            biostride_func:characteristic_features "DNA-binding surface exposed",
+                "L1 loop flexible" ;
+            biostride_func:free_energy "0.0"^^xsd:float ;
+            biostride_func:pdb_entries "2AC0",
+                "2ADY" ;
+            biostride_func:population "0.4"^^xsd:float ;
+            biostride_func:state_id "dna_free" ;
+            biostride_func:state_name "DNA-free" ],
+        [ a biostride_func:ConformationalState ;
             biostride_func:characteristic_features "DNA contacts formed",
                 "L1 loop ordered" ;
             biostride_func:free_energy "-2.3"^^xsd:float ;
@@ -116,16 +125,7 @@ biostride:p53-confens-001 a biostride_func:ConformationalEnsemble ;
             biostride_func:population "0.6"^^xsd:float ;
             biostride_func:rmsd_from_reference "2.1"^^xsd:float ;
             biostride_func:state_id "dna_bound" ;
-            biostride_func:state_name "DNA-bound" ],
-        [ a biostride_func:ConformationalState ;
-            biostride_func:characteristic_features "DNA-binding surface exposed",
-                "L1 loop flexible" ;
-            biostride_func:free_energy "0.0"^^xsd:float ;
-            biostride_func:pdb_entries "2AC0",
-                "2ADY" ;
-            biostride_func:population "0.4"^^xsd:float ;
-            biostride_func:state_id "dna_free" ;
-            biostride_func:state_name "DNA-free" ] ;
+            biostride_func:state_name "DNA-bound" ] ;
     biostride_func:protein_id "P04637" ;
     biostride_func:rmsd_threshold "1.5"^^xsd:float ;
     biostride_func:transition_pathways "DNA-free <-> DNA-bound conformations" .
