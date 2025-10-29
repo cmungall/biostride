@@ -3,6 +3,7 @@
    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
    "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
    "biostride": "https://w3id.org/biostride/",
+   "biostride_func": "https://w3id.org/biostride/functional-annotation/",
    "biostride_schema": "https://w3id.org/biostride/schema/",
    "dcterms": "http://purl.org/dc/terms/",
    "linkml": "https://w3id.org/linkml/",
@@ -10,5 +11,44 @@
    "prov": "http://www.w3.org/ns/prov#",
    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
    "sio": "http://semanticscience.org/resource/",
-   "skos": "http://www.w3.org/2004/02/skos/core#"
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "AggregatedProteinView": {
+      "@id": "biostride_func:AggregatedProteinView"
+   },
+   "BiophysicalProperty": {
+      "@id": "biostride_func:BiophysicalProperty"
+   },
+   "ConformationalEnsemble": {
+      "@id": "biostride_func:ConformationalEnsemble"
+   },
+   "ConformationalState": {
+      "@id": "biostride_func:ConformationalState"
+   },
+   "DatabaseCrossReference": {
+      "@id": "biostride_func:DatabaseCrossReference"
+   },
+   "EvolutionaryConservation": {
+      "@id": "biostride_func:EvolutionaryConservation"
+   },
+   "FunctionalSite": {
+      "@id": "biostride_func:FunctionalSite"
+   },
+   "LigandInteraction": {
+      "@id": "biostride_func:LigandInteraction"
+   },
+   "MutationEffect": {
+      "@id": "biostride_func:MutationEffect"
+   },
+   "PostTranslationalModification": {
+      "@id": "biostride_func:PostTranslationalModification"
+   },
+   "ProteinAnnotation": {
+      "@id": "biostride_func:ProteinAnnotation"
+   },
+   "ProteinProteinInteraction": {
+      "@id": "biostride_func:ProteinProteinInteraction"
+   },
+   "StructuralFeature": {
+      "@id": "biostride_func:StructuralFeature"
+   }
 }

@@ -1,5 +1,5 @@
 # Auto generated from biostride.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-18T19:58:13
+# Generation date: 2025-10-29T09:12:11
 # Schema: biostride-schema
 #
 # id: https://w3id.org/biostride/
@@ -133,8 +133,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, Uri, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
 version = None
@@ -144,6 +144,7 @@ CL = CurieNamespace('CL', 'http://purl.obolibrary.org/obo/CL_')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 BIOSTRIDE = CurieNamespace('biostride', 'https://w3id.org/biostride/')
+BIOSTRIDE_FUNC = CurieNamespace('biostride_func', 'https://w3id.org/biostride/functional-annotation/')
 BIOSTRIDE_SCHEMA = CurieNamespace('biostride_schema', 'https://w3id.org/biostride/schema/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -171,6 +172,10 @@ class StudyId(NamedThingId):
 
 
 class SampleId(NamedThingId):
+    pass
+
+
+class ProteinConstructId(NamedThingId):
     pass
 
 
@@ -235,6 +240,42 @@ class XRFImageId(Image2DId):
 
 
 class OntologyTermId(NamedThingId):
+    pass
+
+
+class ProteinAnnotationId(NamedThingId):
+    pass
+
+
+class FunctionalSiteId(ProteinAnnotationId):
+    pass
+
+
+class StructuralFeatureId(ProteinAnnotationId):
+    pass
+
+
+class ProteinProteinInteractionId(ProteinAnnotationId):
+    pass
+
+
+class MutationEffectId(ProteinAnnotationId):
+    pass
+
+
+class ConformationalEnsembleId(NamedThingId):
+    pass
+
+
+class PostTranslationalModificationId(ProteinAnnotationId):
+    pass
+
+
+class EvolutionaryConservationId(ProteinAnnotationId):
+    pass
+
+
+class AggregatedProteinViewId(NamedThingId):
     pass
 
 
@@ -338,18 +379,22 @@ class Study(NamedThing):
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.Study
 
     id: Union[str, StudyId] = None
+    protein_constructs: Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, "ProteinConstruct"]], list[Union[dict, "ProteinConstruct"]]]] = empty_dict()
     samples: Optional[Union[dict[Union[str, SampleId], Union[dict, "Sample"]], list[Union[dict, "Sample"]]]] = empty_dict()
     sample_preparations: Optional[Union[dict[Union[str, SamplePreparationId], Union[dict, "SamplePreparation"]], list[Union[dict, "SamplePreparation"]]]] = empty_dict()
     instrument_runs: Optional[Union[dict[Union[str, ExperimentRunId], Union[dict, "ExperimentRun"]], list[Union[dict, "ExperimentRun"]]]] = empty_dict()
     workflow_runs: Optional[Union[dict[Union[str, WorkflowRunId], Union[dict, "WorkflowRun"]], list[Union[dict, "WorkflowRun"]]]] = empty_dict()
     data_files: Optional[Union[dict[Union[str, DataFileId], Union[dict, "DataFile"]], list[Union[dict, "DataFile"]]]] = empty_dict()
     images: Optional[Union[dict[Union[str, ImageId], Union[dict, "Image"]], list[Union[dict, "Image"]]]] = empty_dict()
+    aggregated_protein_views: Optional[Union[dict[Union[str, AggregatedProteinViewId], Union[dict, "AggregatedProteinView"]], list[Union[dict, "AggregatedProteinView"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
+
+        self._normalize_inlined_as_list(slot_name="protein_constructs", slot_type=ProteinConstruct, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
 
@@ -362,6 +407,8 @@ class Study(NamedThing):
         self._normalize_inlined_as_list(slot_name="data_files", slot_type=DataFile, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="images", slot_type=Image, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aggregated_protein_views", slot_type=AggregatedProteinView, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -394,6 +441,16 @@ class Sample(NamedThing):
     parent_sample_id: Optional[Union[str, SampleId]] = None
     purity_percentage: Optional[float] = None
     quality_metrics: Optional[str] = None
+    functional_sites: Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, "FunctionalSite"]], list[Union[dict, "FunctionalSite"]]]] = empty_dict()
+    structural_features: Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, "StructuralFeature"]], list[Union[dict, "StructuralFeature"]]]] = empty_dict()
+    protein_interactions: Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, "ProteinProteinInteraction"]], list[Union[dict, "ProteinProteinInteraction"]]]] = empty_dict()
+    ligand_interactions: Optional[Union[Union[dict, "LigandInteraction"], list[Union[dict, "LigandInteraction"]]]] = empty_list()
+    mutation_effects: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, "MutationEffect"]], list[Union[dict, "MutationEffect"]]]] = empty_dict()
+    ptm_annotations: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, "PostTranslationalModification"]], list[Union[dict, "PostTranslationalModification"]]]] = empty_dict()
+    biophysical_properties: Optional[Union[Union[dict, "BiophysicalProperty"], list[Union[dict, "BiophysicalProperty"]]]] = empty_list()
+    evolutionary_conservation: Optional[Union[dict, "EvolutionaryConservation"]] = None
+    conformational_ensemble: Optional[Union[dict, "ConformationalEnsemble"]] = None
+    database_cross_references: Optional[Union[Union[dict, "DatabaseCrossReference"], list[Union[dict, "DatabaseCrossReference"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -450,6 +507,143 @@ class Sample(NamedThing):
         if self.quality_metrics is not None and not isinstance(self.quality_metrics, str):
             self.quality_metrics = str(self.quality_metrics)
 
+        self._normalize_inlined_as_list(slot_name="functional_sites", slot_type=FunctionalSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="structural_features", slot_type=StructuralFeature, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="protein_interactions", slot_type=ProteinProteinInteraction, key_name="id", keyed=True)
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        self._normalize_inlined_as_list(slot_name="mutation_effects", slot_type=MutationEffect, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="ptm_annotations", slot_type=PostTranslationalModification, key_name="id", keyed=True)
+
+        if not isinstance(self.biophysical_properties, list):
+            self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
+        self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
+
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
+
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
+
+        if not isinstance(self.database_cross_references, list):
+            self.database_cross_references = [self.database_cross_references] if self.database_cross_references is not None else []
+        self.database_cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.database_cross_references]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinConstruct(NamedThing):
+    """
+    Detailed information about a protein construct including cloning and sequence design
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA["ProteinConstruct"]
+    class_class_curie: ClassVar[str] = "biostride_schema:ProteinConstruct"
+    class_name: ClassVar[str] = "ProteinConstruct"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.ProteinConstruct
+
+    id: Union[str, ProteinConstructId] = None
+    construct_id: str = None
+    uniprot_id: Optional[str] = None
+    gene_name: Optional[str] = None
+    ncbi_taxid: Optional[str] = None
+    sequence_length_aa: Optional[int] = None
+    construct_description: Optional[str] = None
+    gene_synthesis_provider: Optional[str] = None
+    codon_optimization_organism: Optional[str] = None
+    vector_backbone: Optional[str] = None
+    vector_name: Optional[str] = None
+    promoter: Optional[str] = None
+    tag_nterm: Optional[str] = None
+    tag_cterm: Optional[str] = None
+    cleavage_site: Optional[str] = None
+    signal_peptide: Optional[str] = None
+    selectable_marker: Optional[str] = None
+    cloning_method: Optional[str] = None
+    insert_boundaries: Optional[str] = None
+    sequence_file_path: Optional[str] = None
+    sequence_verified_by: Optional[str] = None
+    verification_notes: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinConstructId):
+            self.id = ProteinConstructId(self.id)
+
+        if self._is_empty(self.construct_id):
+            self.MissingRequiredField("construct_id")
+        if not isinstance(self.construct_id, str):
+            self.construct_id = str(self.construct_id)
+
+        if self.uniprot_id is not None and not isinstance(self.uniprot_id, str):
+            self.uniprot_id = str(self.uniprot_id)
+
+        if self.gene_name is not None and not isinstance(self.gene_name, str):
+            self.gene_name = str(self.gene_name)
+
+        if self.ncbi_taxid is not None and not isinstance(self.ncbi_taxid, str):
+            self.ncbi_taxid = str(self.ncbi_taxid)
+
+        if self.sequence_length_aa is not None and not isinstance(self.sequence_length_aa, int):
+            self.sequence_length_aa = int(self.sequence_length_aa)
+
+        if self.construct_description is not None and not isinstance(self.construct_description, str):
+            self.construct_description = str(self.construct_description)
+
+        if self.gene_synthesis_provider is not None and not isinstance(self.gene_synthesis_provider, str):
+            self.gene_synthesis_provider = str(self.gene_synthesis_provider)
+
+        if self.codon_optimization_organism is not None and not isinstance(self.codon_optimization_organism, str):
+            self.codon_optimization_organism = str(self.codon_optimization_organism)
+
+        if self.vector_backbone is not None and not isinstance(self.vector_backbone, str):
+            self.vector_backbone = str(self.vector_backbone)
+
+        if self.vector_name is not None and not isinstance(self.vector_name, str):
+            self.vector_name = str(self.vector_name)
+
+        if self.promoter is not None and not isinstance(self.promoter, str):
+            self.promoter = str(self.promoter)
+
+        if self.tag_nterm is not None and not isinstance(self.tag_nterm, str):
+            self.tag_nterm = str(self.tag_nterm)
+
+        if self.tag_cterm is not None and not isinstance(self.tag_cterm, str):
+            self.tag_cterm = str(self.tag_cterm)
+
+        if self.cleavage_site is not None and not isinstance(self.cleavage_site, str):
+            self.cleavage_site = str(self.cleavage_site)
+
+        if self.signal_peptide is not None and not isinstance(self.signal_peptide, str):
+            self.signal_peptide = str(self.signal_peptide)
+
+        if self.selectable_marker is not None and not isinstance(self.selectable_marker, str):
+            self.selectable_marker = str(self.selectable_marker)
+
+        if self.cloning_method is not None and not isinstance(self.cloning_method, str):
+            self.cloning_method = str(self.cloning_method)
+
+        if self.insert_boundaries is not None and not isinstance(self.insert_boundaries, str):
+            self.insert_boundaries = str(self.insert_boundaries)
+
+        if self.sequence_file_path is not None and not isinstance(self.sequence_file_path, str):
+            self.sequence_file_path = str(self.sequence_file_path)
+
+        if self.sequence_verified_by is not None and not isinstance(self.sequence_verified_by, str):
+            self.sequence_verified_by = str(self.sequence_verified_by)
+
+        if self.verification_notes is not None and not isinstance(self.verification_notes, str):
+            self.verification_notes = str(self.verification_notes)
+
         super().__post_init__(**kwargs)
 
 
@@ -471,6 +665,43 @@ class SamplePreparation(NamedThing):
     preparation_date: Optional[str] = None
     operator_id: Optional[str] = None
     protocol_description: Optional[str] = None
+    expression_system: Optional[Union[str, "ExpressionSystemEnum"]] = None
+    host_strain_or_cell_line: Optional[str] = None
+    culture_volume_l: Optional[float] = None
+    medium: Optional[str] = None
+    antibiotic_selection: Optional[str] = None
+    growth_temperature_c: Optional[float] = None
+    induction_agent: Optional[str] = None
+    inducer_concentration: Optional[str] = None
+    induction_temperature_c: Optional[float] = None
+    induction_time_h: Optional[float] = None
+    od600_at_induction: Optional[float] = None
+    harvest_timepoint: Optional[str] = None
+    lysis_method: Optional[str] = None
+    protease_inhibitors: Optional[str] = None
+    purification_steps: Optional[Union[Union[str, "PurificationStepEnum"], list[Union[str, "PurificationStepEnum"]]]] = empty_list()
+    affinity_type: Optional[str] = None
+    affinity_column: Optional[str] = None
+    lysis_buffer: Optional[str] = None
+    wash_buffer: Optional[str] = None
+    elution_buffer: Optional[str] = None
+    tag_removal: Optional[Union[bool, Bool]] = None
+    protease: Optional[str] = None
+    protease_ratio: Optional[str] = None
+    cleavage_time_h: Optional[float] = None
+    cleavage_temperature_c: Optional[float] = None
+    second_affinity_reverse: Optional[str] = None
+    iex_column: Optional[str] = None
+    hic_column: Optional[str] = None
+    sec_column: Optional[str] = None
+    sec_buffer: Optional[str] = None
+    concentration_method: Optional[str] = None
+    final_buffer: Optional[str] = None
+    final_concentration_mg_per_ml: Optional[float] = None
+    yield_mg: Optional[float] = None
+    purity_by_sds_page_percent: Optional[float] = None
+    aggregation_assessment: Optional[str] = None
+    aliquoting: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -496,6 +727,118 @@ class SamplePreparation(NamedThing):
 
         if self.protocol_description is not None and not isinstance(self.protocol_description, str):
             self.protocol_description = str(self.protocol_description)
+
+        if self.expression_system is not None and not isinstance(self.expression_system, ExpressionSystemEnum):
+            self.expression_system = ExpressionSystemEnum(self.expression_system)
+
+        if self.host_strain_or_cell_line is not None and not isinstance(self.host_strain_or_cell_line, str):
+            self.host_strain_or_cell_line = str(self.host_strain_or_cell_line)
+
+        if self.culture_volume_l is not None and not isinstance(self.culture_volume_l, float):
+            self.culture_volume_l = float(self.culture_volume_l)
+
+        if self.medium is not None and not isinstance(self.medium, str):
+            self.medium = str(self.medium)
+
+        if self.antibiotic_selection is not None and not isinstance(self.antibiotic_selection, str):
+            self.antibiotic_selection = str(self.antibiotic_selection)
+
+        if self.growth_temperature_c is not None and not isinstance(self.growth_temperature_c, float):
+            self.growth_temperature_c = float(self.growth_temperature_c)
+
+        if self.induction_agent is not None and not isinstance(self.induction_agent, str):
+            self.induction_agent = str(self.induction_agent)
+
+        if self.inducer_concentration is not None and not isinstance(self.inducer_concentration, str):
+            self.inducer_concentration = str(self.inducer_concentration)
+
+        if self.induction_temperature_c is not None and not isinstance(self.induction_temperature_c, float):
+            self.induction_temperature_c = float(self.induction_temperature_c)
+
+        if self.induction_time_h is not None and not isinstance(self.induction_time_h, float):
+            self.induction_time_h = float(self.induction_time_h)
+
+        if self.od600_at_induction is not None and not isinstance(self.od600_at_induction, float):
+            self.od600_at_induction = float(self.od600_at_induction)
+
+        if self.harvest_timepoint is not None and not isinstance(self.harvest_timepoint, str):
+            self.harvest_timepoint = str(self.harvest_timepoint)
+
+        if self.lysis_method is not None and not isinstance(self.lysis_method, str):
+            self.lysis_method = str(self.lysis_method)
+
+        if self.protease_inhibitors is not None and not isinstance(self.protease_inhibitors, str):
+            self.protease_inhibitors = str(self.protease_inhibitors)
+
+        if not isinstance(self.purification_steps, list):
+            self.purification_steps = [self.purification_steps] if self.purification_steps is not None else []
+        self.purification_steps = [v if isinstance(v, PurificationStepEnum) else PurificationStepEnum(v) for v in self.purification_steps]
+
+        if self.affinity_type is not None and not isinstance(self.affinity_type, str):
+            self.affinity_type = str(self.affinity_type)
+
+        if self.affinity_column is not None and not isinstance(self.affinity_column, str):
+            self.affinity_column = str(self.affinity_column)
+
+        if self.lysis_buffer is not None and not isinstance(self.lysis_buffer, str):
+            self.lysis_buffer = str(self.lysis_buffer)
+
+        if self.wash_buffer is not None and not isinstance(self.wash_buffer, str):
+            self.wash_buffer = str(self.wash_buffer)
+
+        if self.elution_buffer is not None and not isinstance(self.elution_buffer, str):
+            self.elution_buffer = str(self.elution_buffer)
+
+        if self.tag_removal is not None and not isinstance(self.tag_removal, Bool):
+            self.tag_removal = Bool(self.tag_removal)
+
+        if self.protease is not None and not isinstance(self.protease, str):
+            self.protease = str(self.protease)
+
+        if self.protease_ratio is not None and not isinstance(self.protease_ratio, str):
+            self.protease_ratio = str(self.protease_ratio)
+
+        if self.cleavage_time_h is not None and not isinstance(self.cleavage_time_h, float):
+            self.cleavage_time_h = float(self.cleavage_time_h)
+
+        if self.cleavage_temperature_c is not None and not isinstance(self.cleavage_temperature_c, float):
+            self.cleavage_temperature_c = float(self.cleavage_temperature_c)
+
+        if self.second_affinity_reverse is not None and not isinstance(self.second_affinity_reverse, str):
+            self.second_affinity_reverse = str(self.second_affinity_reverse)
+
+        if self.iex_column is not None and not isinstance(self.iex_column, str):
+            self.iex_column = str(self.iex_column)
+
+        if self.hic_column is not None and not isinstance(self.hic_column, str):
+            self.hic_column = str(self.hic_column)
+
+        if self.sec_column is not None and not isinstance(self.sec_column, str):
+            self.sec_column = str(self.sec_column)
+
+        if self.sec_buffer is not None and not isinstance(self.sec_buffer, str):
+            self.sec_buffer = str(self.sec_buffer)
+
+        if self.concentration_method is not None and not isinstance(self.concentration_method, str):
+            self.concentration_method = str(self.concentration_method)
+
+        if self.final_buffer is not None and not isinstance(self.final_buffer, str):
+            self.final_buffer = str(self.final_buffer)
+
+        if self.final_concentration_mg_per_ml is not None and not isinstance(self.final_concentration_mg_per_ml, float):
+            self.final_concentration_mg_per_ml = float(self.final_concentration_mg_per_ml)
+
+        if self.yield_mg is not None and not isinstance(self.yield_mg, float):
+            self.yield_mg = float(self.yield_mg)
+
+        if self.purity_by_sds_page_percent is not None and not isinstance(self.purity_by_sds_page_percent, float):
+            self.purity_by_sds_page_percent = float(self.purity_by_sds_page_percent)
+
+        if self.aggregation_assessment is not None and not isinstance(self.aggregation_assessment, str):
+            self.aggregation_assessment = str(self.aggregation_assessment)
+
+        if self.aliquoting is not None and not isinstance(self.aliquoting, str):
+            self.aliquoting = str(self.aliquoting)
 
         super().__post_init__(**kwargs)
 
@@ -728,6 +1071,7 @@ class ExperimentRun(NamedThing):
     technique: Union[str, "TechniqueEnum"] = None
     experiment_date: Optional[str] = None
     operator_id: Optional[str] = None
+    experimental_method: Optional[Union[str, "ExperimentalMethodEnum"]] = None
     experimental_conditions: Optional[Union[dict, "ExperimentalConditions"]] = None
     data_collection_strategy: Optional[Union[dict, "DataCollectionStrategy"]] = None
     quality_metrics: Optional[Union[dict, "QualityMetrics"]] = None
@@ -766,6 +1110,9 @@ class ExperimentRun(NamedThing):
         if self.operator_id is not None and not isinstance(self.operator_id, str):
             self.operator_id = str(self.operator_id)
 
+        if self.experimental_method is not None and not isinstance(self.experimental_method, ExperimentalMethodEnum):
+            self.experimental_method = ExperimentalMethodEnum(self.experimental_method)
+
         if self.experimental_conditions is not None and not isinstance(self.experimental_conditions, ExperimentalConditions):
             self.experimental_conditions = ExperimentalConditions(**as_dict(self.experimental_conditions))
 
@@ -803,7 +1150,25 @@ class WorkflowRun(NamedThing):
     software_name: str = None
     processing_level: Optional[int] = None
     software_version: Optional[str] = None
+    additional_software: Optional[str] = None
     processing_parameters: Optional[str] = None
+    parameters_file_path: Optional[str] = None
+    indexer_module: Optional[str] = None
+    integrator_module: Optional[str] = None
+    scaler_module: Optional[str] = None
+    outlier_rejection_method: Optional[str] = None
+    phasing_method: Optional[Union[str, "PhasingMethodEnum"]] = None
+    search_model_pdb_id: Optional[str] = None
+    tls_used: Optional[Union[bool, Bool]] = None
+    ncs_used: Optional[Union[bool, Bool]] = None
+    restraints_other: Optional[str] = None
+    ligands_cofactors: Optional[str] = None
+    number_of_waters: Optional[int] = None
+    refinement_resolution_a: Optional[float] = None
+    deposited_to_pdb: Optional[Union[bool, Bool]] = None
+    pdb_id: Optional[str] = None
+    validation_report_path: Optional[str] = None
+    processing_notes: Optional[str] = None
     compute_resources: Optional[Union[dict, "ComputeResources"]] = None
     started_at: Optional[str] = None
     completed_at: Optional[str] = None
@@ -841,8 +1206,62 @@ class WorkflowRun(NamedThing):
         if self.software_version is not None and not isinstance(self.software_version, str):
             self.software_version = str(self.software_version)
 
+        if self.additional_software is not None and not isinstance(self.additional_software, str):
+            self.additional_software = str(self.additional_software)
+
         if self.processing_parameters is not None and not isinstance(self.processing_parameters, str):
             self.processing_parameters = str(self.processing_parameters)
+
+        if self.parameters_file_path is not None and not isinstance(self.parameters_file_path, str):
+            self.parameters_file_path = str(self.parameters_file_path)
+
+        if self.indexer_module is not None and not isinstance(self.indexer_module, str):
+            self.indexer_module = str(self.indexer_module)
+
+        if self.integrator_module is not None and not isinstance(self.integrator_module, str):
+            self.integrator_module = str(self.integrator_module)
+
+        if self.scaler_module is not None and not isinstance(self.scaler_module, str):
+            self.scaler_module = str(self.scaler_module)
+
+        if self.outlier_rejection_method is not None and not isinstance(self.outlier_rejection_method, str):
+            self.outlier_rejection_method = str(self.outlier_rejection_method)
+
+        if self.phasing_method is not None and not isinstance(self.phasing_method, PhasingMethodEnum):
+            self.phasing_method = PhasingMethodEnum(self.phasing_method)
+
+        if self.search_model_pdb_id is not None and not isinstance(self.search_model_pdb_id, str):
+            self.search_model_pdb_id = str(self.search_model_pdb_id)
+
+        if self.tls_used is not None and not isinstance(self.tls_used, Bool):
+            self.tls_used = Bool(self.tls_used)
+
+        if self.ncs_used is not None and not isinstance(self.ncs_used, Bool):
+            self.ncs_used = Bool(self.ncs_used)
+
+        if self.restraints_other is not None and not isinstance(self.restraints_other, str):
+            self.restraints_other = str(self.restraints_other)
+
+        if self.ligands_cofactors is not None and not isinstance(self.ligands_cofactors, str):
+            self.ligands_cofactors = str(self.ligands_cofactors)
+
+        if self.number_of_waters is not None and not isinstance(self.number_of_waters, int):
+            self.number_of_waters = int(self.number_of_waters)
+
+        if self.refinement_resolution_a is not None and not isinstance(self.refinement_resolution_a, float):
+            self.refinement_resolution_a = float(self.refinement_resolution_a)
+
+        if self.deposited_to_pdb is not None and not isinstance(self.deposited_to_pdb, Bool):
+            self.deposited_to_pdb = Bool(self.deposited_to_pdb)
+
+        if self.pdb_id is not None and not isinstance(self.pdb_id, str):
+            self.pdb_id = str(self.pdb_id)
+
+        if self.validation_report_path is not None and not isinstance(self.validation_report_path, str):
+            self.validation_report_path = str(self.validation_report_path)
+
+        if self.processing_notes is not None and not isinstance(self.processing_notes, str):
+            self.processing_notes = str(self.processing_notes)
 
         if self.compute_resources is not None and not isinstance(self.compute_resources, ComputeResources):
             self.compute_resources = ComputeResources(**as_dict(self.compute_resources))
@@ -1482,23 +1901,78 @@ class XRayPreparation(TechniqueSpecificPreparation):
     class_name: ClassVar[str] = "XRayPreparation"
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.XRayPreparation
 
+    protein_concentration_mg_per_ml: Optional[float] = None
+    protein_buffer: Optional[str] = None
+    additives: Optional[str] = None
     crystallization_method: Optional[Union[str, "CrystallizationMethodEnum"]] = None
+    screen_name: Optional[str] = None
+    temperature_c: Optional[float] = None
+    drop_ratio_protein_to_reservoir: Optional[str] = None
+    drop_volume_nl: Optional[float] = None
+    reservoir_volume_ul: Optional[float] = None
+    seeding_type: Optional[str] = None
+    seed_stock_dilution: Optional[str] = None
+    initial_hit_condition: Optional[str] = None
+    optimization_strategy: Optional[str] = None
+    optimized_condition: Optional[str] = None
     crystallization_conditions: Optional[str] = None
-    crystal_size: Optional[str] = None
+    crystal_size_um: Optional[str] = None
     cryoprotectant: Optional[str] = None
     cryoprotectant_concentration: Optional[float] = None
+    soak_compound: Optional[str] = None
+    soak_conditions: Optional[str] = None
     mounting_method: Optional[str] = None
     flash_cooling_method: Optional[str] = None
+    crystal_notes: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self.protein_concentration_mg_per_ml is not None and not isinstance(self.protein_concentration_mg_per_ml, float):
+            self.protein_concentration_mg_per_ml = float(self.protein_concentration_mg_per_ml)
+
+        if self.protein_buffer is not None and not isinstance(self.protein_buffer, str):
+            self.protein_buffer = str(self.protein_buffer)
+
+        if self.additives is not None and not isinstance(self.additives, str):
+            self.additives = str(self.additives)
+
         if self.crystallization_method is not None and not isinstance(self.crystallization_method, CrystallizationMethodEnum):
             self.crystallization_method = CrystallizationMethodEnum(self.crystallization_method)
+
+        if self.screen_name is not None and not isinstance(self.screen_name, str):
+            self.screen_name = str(self.screen_name)
+
+        if self.temperature_c is not None and not isinstance(self.temperature_c, float):
+            self.temperature_c = float(self.temperature_c)
+
+        if self.drop_ratio_protein_to_reservoir is not None and not isinstance(self.drop_ratio_protein_to_reservoir, str):
+            self.drop_ratio_protein_to_reservoir = str(self.drop_ratio_protein_to_reservoir)
+
+        if self.drop_volume_nl is not None and not isinstance(self.drop_volume_nl, float):
+            self.drop_volume_nl = float(self.drop_volume_nl)
+
+        if self.reservoir_volume_ul is not None and not isinstance(self.reservoir_volume_ul, float):
+            self.reservoir_volume_ul = float(self.reservoir_volume_ul)
+
+        if self.seeding_type is not None and not isinstance(self.seeding_type, str):
+            self.seeding_type = str(self.seeding_type)
+
+        if self.seed_stock_dilution is not None and not isinstance(self.seed_stock_dilution, str):
+            self.seed_stock_dilution = str(self.seed_stock_dilution)
+
+        if self.initial_hit_condition is not None and not isinstance(self.initial_hit_condition, str):
+            self.initial_hit_condition = str(self.initial_hit_condition)
+
+        if self.optimization_strategy is not None and not isinstance(self.optimization_strategy, str):
+            self.optimization_strategy = str(self.optimization_strategy)
+
+        if self.optimized_condition is not None and not isinstance(self.optimized_condition, str):
+            self.optimized_condition = str(self.optimized_condition)
 
         if self.crystallization_conditions is not None and not isinstance(self.crystallization_conditions, str):
             self.crystallization_conditions = str(self.crystallization_conditions)
 
-        if self.crystal_size is not None and not isinstance(self.crystal_size, str):
-            self.crystal_size = str(self.crystal_size)
+        if self.crystal_size_um is not None and not isinstance(self.crystal_size_um, str):
+            self.crystal_size_um = str(self.crystal_size_um)
 
         if self.cryoprotectant is not None and not isinstance(self.cryoprotectant, str):
             self.cryoprotectant = str(self.cryoprotectant)
@@ -1506,11 +1980,20 @@ class XRayPreparation(TechniqueSpecificPreparation):
         if self.cryoprotectant_concentration is not None and not isinstance(self.cryoprotectant_concentration, float):
             self.cryoprotectant_concentration = float(self.cryoprotectant_concentration)
 
+        if self.soak_compound is not None and not isinstance(self.soak_compound, str):
+            self.soak_compound = str(self.soak_compound)
+
+        if self.soak_conditions is not None and not isinstance(self.soak_conditions, str):
+            self.soak_conditions = str(self.soak_conditions)
+
         if self.mounting_method is not None and not isinstance(self.mounting_method, str):
             self.mounting_method = str(self.mounting_method)
 
         if self.flash_cooling_method is not None and not isinstance(self.flash_cooling_method, str):
             self.flash_cooling_method = str(self.flash_cooling_method)
+
+        if self.crystal_notes is not None and not isinstance(self.crystal_notes, str):
+            self.crystal_notes = str(self.crystal_notes)
 
         super().__post_init__(**kwargs)
 
@@ -1611,6 +2094,19 @@ class DataCollectionStrategy(AttributeGroup):
     frame_rate: Optional[float] = None
     total_dose: Optional[float] = None
     dose_per_frame: Optional[float] = None
+    wavelength_a: Optional[float] = None
+    detector: Optional[str] = None
+    detector_distance_mm: Optional[float] = None
+    beam_center_x_px: Optional[int] = None
+    beam_center_y_px: Optional[int] = None
+    beam_size_um: Optional[float] = None
+    flux_photons_per_s: Optional[float] = None
+    transmission_percent: Optional[float] = None
+    attenuator: Optional[str] = None
+    temperature_k: Optional[float] = None
+    oscillation_per_image_deg: Optional[float] = None
+    total_rotation_deg: Optional[float] = None
+    strategy_notes: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.collection_mode is not None and not isinstance(self.collection_mode, CollectionModeEnum):
@@ -1628,6 +2124,45 @@ class DataCollectionStrategy(AttributeGroup):
         if self.dose_per_frame is not None and not isinstance(self.dose_per_frame, float):
             self.dose_per_frame = float(self.dose_per_frame)
 
+        if self.wavelength_a is not None and not isinstance(self.wavelength_a, float):
+            self.wavelength_a = float(self.wavelength_a)
+
+        if self.detector is not None and not isinstance(self.detector, str):
+            self.detector = str(self.detector)
+
+        if self.detector_distance_mm is not None and not isinstance(self.detector_distance_mm, float):
+            self.detector_distance_mm = float(self.detector_distance_mm)
+
+        if self.beam_center_x_px is not None and not isinstance(self.beam_center_x_px, int):
+            self.beam_center_x_px = int(self.beam_center_x_px)
+
+        if self.beam_center_y_px is not None and not isinstance(self.beam_center_y_px, int):
+            self.beam_center_y_px = int(self.beam_center_y_px)
+
+        if self.beam_size_um is not None and not isinstance(self.beam_size_um, float):
+            self.beam_size_um = float(self.beam_size_um)
+
+        if self.flux_photons_per_s is not None and not isinstance(self.flux_photons_per_s, float):
+            self.flux_photons_per_s = float(self.flux_photons_per_s)
+
+        if self.transmission_percent is not None and not isinstance(self.transmission_percent, float):
+            self.transmission_percent = float(self.transmission_percent)
+
+        if self.attenuator is not None and not isinstance(self.attenuator, str):
+            self.attenuator = str(self.attenuator)
+
+        if self.temperature_k is not None and not isinstance(self.temperature_k, float):
+            self.temperature_k = float(self.temperature_k)
+
+        if self.oscillation_per_image_deg is not None and not isinstance(self.oscillation_per_image_deg, float):
+            self.oscillation_per_image_deg = float(self.oscillation_per_image_deg)
+
+        if self.total_rotation_deg is not None and not isinstance(self.total_rotation_deg, float):
+            self.total_rotation_deg = float(self.total_rotation_deg)
+
+        if self.strategy_notes is not None and not isinstance(self.strategy_notes, str):
+            self.strategy_notes = str(self.strategy_notes)
+
         super().__post_init__(**kwargs)
 
 
@@ -1644,30 +2179,134 @@ class QualityMetrics(AttributeGroup):
     class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.QualityMetrics
 
     resolution: Optional[float] = None
+    resolution_high_shell_a: Optional[float] = None
+    resolution_low_a: Optional[float] = None
     completeness: Optional[float] = None
+    completeness_high_res_shell_percent: Optional[float] = None
     signal_to_noise: Optional[float] = None
-    r_factor: Optional[float] = None
+    mean_i_over_sigma_i: Optional[float] = None
+    space_group: Optional[str] = None
+    unit_cell_a: Optional[float] = None
+    unit_cell_b: Optional[float] = None
+    unit_cell_c: Optional[float] = None
+    unit_cell_alpha: Optional[float] = None
+    unit_cell_beta: Optional[float] = None
+    unit_cell_gamma: Optional[float] = None
+    multiplicity: Optional[float] = None
+    cc_half: Optional[float] = None
+    r_merge: Optional[float] = None
+    r_pim: Optional[float] = None
+    wilson_b_factor_a2: Optional[float] = None
+    anomalous_used: Optional[Union[bool, Bool]] = None
+    anom_corr: Optional[float] = None
+    anom_sig_ano: Optional[float] = None
+    r_work: Optional[float] = None
+    r_free: Optional[float] = None
+    ramachandran_favored_percent: Optional[float] = None
+    ramachandran_outliers_percent: Optional[float] = None
+    clashscore: Optional[float] = None
+    molprobity_score: Optional[float] = None
+    average_b_factor_a2: Optional[float] = None
     i_zero: Optional[float] = None
     rg: Optional[float] = None
+    r_factor: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.resolution is not None and not isinstance(self.resolution, float):
             self.resolution = float(self.resolution)
 
+        if self.resolution_high_shell_a is not None and not isinstance(self.resolution_high_shell_a, float):
+            self.resolution_high_shell_a = float(self.resolution_high_shell_a)
+
+        if self.resolution_low_a is not None and not isinstance(self.resolution_low_a, float):
+            self.resolution_low_a = float(self.resolution_low_a)
+
         if self.completeness is not None and not isinstance(self.completeness, float):
             self.completeness = float(self.completeness)
+
+        if self.completeness_high_res_shell_percent is not None and not isinstance(self.completeness_high_res_shell_percent, float):
+            self.completeness_high_res_shell_percent = float(self.completeness_high_res_shell_percent)
 
         if self.signal_to_noise is not None and not isinstance(self.signal_to_noise, float):
             self.signal_to_noise = float(self.signal_to_noise)
 
-        if self.r_factor is not None and not isinstance(self.r_factor, float):
-            self.r_factor = float(self.r_factor)
+        if self.mean_i_over_sigma_i is not None and not isinstance(self.mean_i_over_sigma_i, float):
+            self.mean_i_over_sigma_i = float(self.mean_i_over_sigma_i)
+
+        if self.space_group is not None and not isinstance(self.space_group, str):
+            self.space_group = str(self.space_group)
+
+        if self.unit_cell_a is not None and not isinstance(self.unit_cell_a, float):
+            self.unit_cell_a = float(self.unit_cell_a)
+
+        if self.unit_cell_b is not None and not isinstance(self.unit_cell_b, float):
+            self.unit_cell_b = float(self.unit_cell_b)
+
+        if self.unit_cell_c is not None and not isinstance(self.unit_cell_c, float):
+            self.unit_cell_c = float(self.unit_cell_c)
+
+        if self.unit_cell_alpha is not None and not isinstance(self.unit_cell_alpha, float):
+            self.unit_cell_alpha = float(self.unit_cell_alpha)
+
+        if self.unit_cell_beta is not None and not isinstance(self.unit_cell_beta, float):
+            self.unit_cell_beta = float(self.unit_cell_beta)
+
+        if self.unit_cell_gamma is not None and not isinstance(self.unit_cell_gamma, float):
+            self.unit_cell_gamma = float(self.unit_cell_gamma)
+
+        if self.multiplicity is not None and not isinstance(self.multiplicity, float):
+            self.multiplicity = float(self.multiplicity)
+
+        if self.cc_half is not None and not isinstance(self.cc_half, float):
+            self.cc_half = float(self.cc_half)
+
+        if self.r_merge is not None and not isinstance(self.r_merge, float):
+            self.r_merge = float(self.r_merge)
+
+        if self.r_pim is not None and not isinstance(self.r_pim, float):
+            self.r_pim = float(self.r_pim)
+
+        if self.wilson_b_factor_a2 is not None and not isinstance(self.wilson_b_factor_a2, float):
+            self.wilson_b_factor_a2 = float(self.wilson_b_factor_a2)
+
+        if self.anomalous_used is not None and not isinstance(self.anomalous_used, Bool):
+            self.anomalous_used = Bool(self.anomalous_used)
+
+        if self.anom_corr is not None and not isinstance(self.anom_corr, float):
+            self.anom_corr = float(self.anom_corr)
+
+        if self.anom_sig_ano is not None and not isinstance(self.anom_sig_ano, float):
+            self.anom_sig_ano = float(self.anom_sig_ano)
+
+        if self.r_work is not None and not isinstance(self.r_work, float):
+            self.r_work = float(self.r_work)
+
+        if self.r_free is not None and not isinstance(self.r_free, float):
+            self.r_free = float(self.r_free)
+
+        if self.ramachandran_favored_percent is not None and not isinstance(self.ramachandran_favored_percent, float):
+            self.ramachandran_favored_percent = float(self.ramachandran_favored_percent)
+
+        if self.ramachandran_outliers_percent is not None and not isinstance(self.ramachandran_outliers_percent, float):
+            self.ramachandran_outliers_percent = float(self.ramachandran_outliers_percent)
+
+        if self.clashscore is not None and not isinstance(self.clashscore, float):
+            self.clashscore = float(self.clashscore)
+
+        if self.molprobity_score is not None and not isinstance(self.molprobity_score, float):
+            self.molprobity_score = float(self.molprobity_score)
+
+        if self.average_b_factor_a2 is not None and not isinstance(self.average_b_factor_a2, float):
+            self.average_b_factor_a2 = float(self.average_b_factor_a2)
 
         if self.i_zero is not None and not isinstance(self.i_zero, float):
             self.i_zero = float(self.i_zero)
 
         if self.rg is not None and not isinstance(self.rg, float):
             self.rg = float(self.rg)
+
+        if self.r_factor is not None and not isinstance(self.r_factor, float):
+            self.r_factor = float(self.r_factor)
 
         super().__post_init__(**kwargs)
 
@@ -1701,6 +2340,801 @@ class ComputeResources(AttributeGroup):
 
         if self.storage_gb is not None and not isinstance(self.storage_gb, float):
             self.storage_gb = float(self.storage_gb)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinAnnotation(NamedThing):
+    """
+    Base class for all protein-related functional and structural annotations
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["ProteinAnnotation"]
+    class_class_curie: ClassVar[str] = "biostride_func:ProteinAnnotation"
+    class_name: ClassVar[str] = "ProteinAnnotation"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.ProteinAnnotation
+
+    id: Union[str, ProteinAnnotationId] = None
+    protein_id: str = None
+    pdb_entry: Optional[str] = None
+    chain_id: Optional[str] = None
+    residue_range: Optional[str] = None
+    confidence_score: Optional[float] = None
+    evidence_type: Optional[Union[str, "EvidenceTypeEnum"]] = None
+    evidence_code: Optional[Union[str, URIorCURIE]] = None
+    source_database: Optional[Union[str, "AnnotationSourceEnum"]] = None
+    annotation_method: Optional[str] = None
+    publication_ids: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinAnnotationId):
+            self.id = ProteinAnnotationId(self.id)
+
+        if self._is_empty(self.protein_id):
+            self.MissingRequiredField("protein_id")
+        if not isinstance(self.protein_id, str):
+            self.protein_id = str(self.protein_id)
+
+        if self.pdb_entry is not None and not isinstance(self.pdb_entry, str):
+            self.pdb_entry = str(self.pdb_entry)
+
+        if self.chain_id is not None and not isinstance(self.chain_id, str):
+            self.chain_id = str(self.chain_id)
+
+        if self.residue_range is not None and not isinstance(self.residue_range, str):
+            self.residue_range = str(self.residue_range)
+
+        if self.confidence_score is not None and not isinstance(self.confidence_score, float):
+            self.confidence_score = float(self.confidence_score)
+
+        if self.evidence_type is not None and not isinstance(self.evidence_type, EvidenceTypeEnum):
+            self.evidence_type = EvidenceTypeEnum(self.evidence_type)
+
+        if self.evidence_code is not None and not isinstance(self.evidence_code, URIorCURIE):
+            self.evidence_code = URIorCURIE(self.evidence_code)
+
+        if self.source_database is not None and not isinstance(self.source_database, AnnotationSourceEnum):
+            self.source_database = AnnotationSourceEnum(self.source_database)
+
+        if self.annotation_method is not None and not isinstance(self.annotation_method, str):
+            self.annotation_method = str(self.annotation_method)
+
+        if not isinstance(self.publication_ids, list):
+            self.publication_ids = [self.publication_ids] if self.publication_ids is not None else []
+        self.publication_ids = [v if isinstance(v, str) else str(v) for v in self.publication_ids]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class FunctionalSite(ProteinAnnotation):
+    """
+    Functional sites including catalytic, binding, and regulatory sites
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["FunctionalSite"]
+    class_class_curie: ClassVar[str] = "biostride_func:FunctionalSite"
+    class_name: ClassVar[str] = "FunctionalSite"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.FunctionalSite
+
+    id: Union[str, FunctionalSiteId] = None
+    protein_id: str = None
+    site_type: Union[str, "FunctionalSiteTypeEnum"] = None
+    site_name: Optional[str] = None
+    residues: Optional[Union[str, list[str]]] = empty_list()
+    ligand_interactions: Optional[Union[Union[dict, "LigandInteraction"], list[Union[dict, "LigandInteraction"]]]] = empty_list()
+    conservation_score: Optional[float] = None
+    functional_importance: Optional[str] = None
+    go_terms: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
+    ec_number: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FunctionalSiteId):
+            self.id = FunctionalSiteId(self.id)
+
+        if self._is_empty(self.site_type):
+            self.MissingRequiredField("site_type")
+        if not isinstance(self.site_type, FunctionalSiteTypeEnum):
+            self.site_type = FunctionalSiteTypeEnum(self.site_type)
+
+        if self.site_name is not None and not isinstance(self.site_name, str):
+            self.site_name = str(self.site_name)
+
+        if not isinstance(self.residues, list):
+            self.residues = [self.residues] if self.residues is not None else []
+        self.residues = [v if isinstance(v, str) else str(v) for v in self.residues]
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        if self.conservation_score is not None and not isinstance(self.conservation_score, float):
+            self.conservation_score = float(self.conservation_score)
+
+        if self.functional_importance is not None and not isinstance(self.functional_importance, str):
+            self.functional_importance = str(self.functional_importance)
+
+        if not isinstance(self.go_terms, list):
+            self.go_terms = [self.go_terms] if self.go_terms is not None else []
+        self.go_terms = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.go_terms]
+
+        if self.ec_number is not None and not isinstance(self.ec_number, str):
+            self.ec_number = str(self.ec_number)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class StructuralFeature(ProteinAnnotation):
+    """
+    Structural features and properties of protein regions
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["StructuralFeature"]
+    class_class_curie: ClassVar[str] = "biostride_func:StructuralFeature"
+    class_name: ClassVar[str] = "StructuralFeature"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.StructuralFeature
+
+    id: Union[str, StructuralFeatureId] = None
+    protein_id: str = None
+    feature_type: Union[str, "StructuralFeatureTypeEnum"] = None
+    secondary_structure: Optional[Union[str, "SecondaryStructureEnum"]] = None
+    solvent_accessibility: Optional[float] = None
+    backbone_flexibility: Optional[float] = None
+    disorder_probability: Optional[float] = None
+    conformational_state: Optional[Union[str, "ConformationalStateEnum"]] = None
+    structural_motif: Optional[str] = None
+    domain_assignment: Optional[str] = None
+    domain_id: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, StructuralFeatureId):
+            self.id = StructuralFeatureId(self.id)
+
+        if self._is_empty(self.feature_type):
+            self.MissingRequiredField("feature_type")
+        if not isinstance(self.feature_type, StructuralFeatureTypeEnum):
+            self.feature_type = StructuralFeatureTypeEnum(self.feature_type)
+
+        if self.secondary_structure is not None and not isinstance(self.secondary_structure, SecondaryStructureEnum):
+            self.secondary_structure = SecondaryStructureEnum(self.secondary_structure)
+
+        if self.solvent_accessibility is not None and not isinstance(self.solvent_accessibility, float):
+            self.solvent_accessibility = float(self.solvent_accessibility)
+
+        if self.backbone_flexibility is not None and not isinstance(self.backbone_flexibility, float):
+            self.backbone_flexibility = float(self.backbone_flexibility)
+
+        if self.disorder_probability is not None and not isinstance(self.disorder_probability, float):
+            self.disorder_probability = float(self.disorder_probability)
+
+        if self.conformational_state is not None and not isinstance(self.conformational_state, ConformationalStateEnum):
+            self.conformational_state = ConformationalStateEnum(self.conformational_state)
+
+        if self.structural_motif is not None and not isinstance(self.structural_motif, str):
+            self.structural_motif = str(self.structural_motif)
+
+        if self.domain_assignment is not None and not isinstance(self.domain_assignment, str):
+            self.domain_assignment = str(self.domain_assignment)
+
+        if self.domain_id is not None and not isinstance(self.domain_id, str):
+            self.domain_id = str(self.domain_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class LigandInteraction(AttributeGroup):
+    """
+    Small molecule/ligand interactions with proteins
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["LigandInteraction"]
+    class_class_curie: ClassVar[str] = "biostride_func:LigandInteraction"
+    class_name: ClassVar[str] = "LigandInteraction"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.LigandInteraction
+
+    ligand_id: str = None
+    ligand_name: str = None
+    ligand_smiles: Optional[str] = None
+    binding_affinity: Optional[float] = None
+    binding_affinity_type: Optional[Union[str, "BindingAffinityTypeEnum"]] = None
+    binding_affinity_unit: Optional[Union[str, "AffinityUnitEnum"]] = None
+    interaction_type: Optional[Union[str, "InteractionTypeEnum"]] = None
+    binding_site_residues: Optional[Union[str, list[str]]] = empty_list()
+    is_cofactor: Optional[Union[bool, Bool]] = None
+    is_drug_like: Optional[Union[bool, Bool]] = None
+    druggability_score: Optional[float] = None
+    interaction_distance: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.ligand_id):
+            self.MissingRequiredField("ligand_id")
+        if not isinstance(self.ligand_id, str):
+            self.ligand_id = str(self.ligand_id)
+
+        if self._is_empty(self.ligand_name):
+            self.MissingRequiredField("ligand_name")
+        if not isinstance(self.ligand_name, str):
+            self.ligand_name = str(self.ligand_name)
+
+        if self.ligand_smiles is not None and not isinstance(self.ligand_smiles, str):
+            self.ligand_smiles = str(self.ligand_smiles)
+
+        if self.binding_affinity is not None and not isinstance(self.binding_affinity, float):
+            self.binding_affinity = float(self.binding_affinity)
+
+        if self.binding_affinity_type is not None and not isinstance(self.binding_affinity_type, BindingAffinityTypeEnum):
+            self.binding_affinity_type = BindingAffinityTypeEnum(self.binding_affinity_type)
+
+        if self.binding_affinity_unit is not None and not isinstance(self.binding_affinity_unit, AffinityUnitEnum):
+            self.binding_affinity_unit = AffinityUnitEnum(self.binding_affinity_unit)
+
+        if self.interaction_type is not None and not isinstance(self.interaction_type, InteractionTypeEnum):
+            self.interaction_type = InteractionTypeEnum(self.interaction_type)
+
+        if not isinstance(self.binding_site_residues, list):
+            self.binding_site_residues = [self.binding_site_residues] if self.binding_site_residues is not None else []
+        self.binding_site_residues = [v if isinstance(v, str) else str(v) for v in self.binding_site_residues]
+
+        if self.is_cofactor is not None and not isinstance(self.is_cofactor, Bool):
+            self.is_cofactor = Bool(self.is_cofactor)
+
+        if self.is_drug_like is not None and not isinstance(self.is_drug_like, Bool):
+            self.is_drug_like = Bool(self.is_drug_like)
+
+        if self.druggability_score is not None and not isinstance(self.druggability_score, float):
+            self.druggability_score = float(self.druggability_score)
+
+        if self.interaction_distance is not None and not isinstance(self.interaction_distance, float):
+            self.interaction_distance = float(self.interaction_distance)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProteinProteinInteraction(ProteinAnnotation):
+    """
+    Protein-protein interactions and interfaces
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["ProteinProteinInteraction"]
+    class_class_curie: ClassVar[str] = "biostride_func:ProteinProteinInteraction"
+    class_name: ClassVar[str] = "ProteinProteinInteraction"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.ProteinProteinInteraction
+
+    id: Union[str, ProteinProteinInteractionId] = None
+    protein_id: str = None
+    partner_protein_id: str = None
+    partner_chain_id: Optional[str] = None
+    interface_residues: Optional[Union[str, list[str]]] = empty_list()
+    partner_interface_residues: Optional[Union[str, list[str]]] = empty_list()
+    interface_area: Optional[float] = None
+    binding_energy: Optional[float] = None
+    dissociation_constant: Optional[float] = None
+    complex_stability: Optional[Union[str, "ComplexStabilityEnum"]] = None
+    biological_assembly: Optional[Union[bool, Bool]] = None
+    interaction_evidence: Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ProteinProteinInteractionId):
+            self.id = ProteinProteinInteractionId(self.id)
+
+        if self._is_empty(self.partner_protein_id):
+            self.MissingRequiredField("partner_protein_id")
+        if not isinstance(self.partner_protein_id, str):
+            self.partner_protein_id = str(self.partner_protein_id)
+
+        if self.partner_chain_id is not None and not isinstance(self.partner_chain_id, str):
+            self.partner_chain_id = str(self.partner_chain_id)
+
+        if not isinstance(self.interface_residues, list):
+            self.interface_residues = [self.interface_residues] if self.interface_residues is not None else []
+        self.interface_residues = [v if isinstance(v, str) else str(v) for v in self.interface_residues]
+
+        if not isinstance(self.partner_interface_residues, list):
+            self.partner_interface_residues = [self.partner_interface_residues] if self.partner_interface_residues is not None else []
+        self.partner_interface_residues = [v if isinstance(v, str) else str(v) for v in self.partner_interface_residues]
+
+        if self.interface_area is not None and not isinstance(self.interface_area, float):
+            self.interface_area = float(self.interface_area)
+
+        if self.binding_energy is not None and not isinstance(self.binding_energy, float):
+            self.binding_energy = float(self.binding_energy)
+
+        if self.dissociation_constant is not None and not isinstance(self.dissociation_constant, float):
+            self.dissociation_constant = float(self.dissociation_constant)
+
+        if self.complex_stability is not None and not isinstance(self.complex_stability, ComplexStabilityEnum):
+            self.complex_stability = ComplexStabilityEnum(self.complex_stability)
+
+        if self.biological_assembly is not None and not isinstance(self.biological_assembly, Bool):
+            self.biological_assembly = Bool(self.biological_assembly)
+
+        if not isinstance(self.interaction_evidence, list):
+            self.interaction_evidence = [self.interaction_evidence] if self.interaction_evidence is not None else []
+        self.interaction_evidence = [v if isinstance(v, InteractionEvidenceEnum) else InteractionEvidenceEnum(v) for v in self.interaction_evidence]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MutationEffect(ProteinAnnotation):
+    """
+    Effects of mutations and variants on protein structure and function
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["MutationEffect"]
+    class_class_curie: ClassVar[str] = "biostride_func:MutationEffect"
+    class_name: ClassVar[str] = "MutationEffect"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.MutationEffect
+
+    id: Union[str, MutationEffectId] = None
+    protein_id: str = None
+    mutation: str = None
+    mutation_type: Optional[Union[str, "MutationTypeEnum"]] = None
+    effect_on_stability: Optional[Union[str, "StabilityEffectEnum"]] = None
+    delta_delta_g: Optional[float] = None
+    effect_on_function: Optional[Union[str, "FunctionalEffectEnum"]] = None
+    functional_impact_description: Optional[str] = None
+    disease_association: Optional[str] = None
+    omim_id: Optional[str] = None
+    clinical_significance: Optional[Union[str, "ClinicalSignificanceEnum"]] = None
+    allele_frequency: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MutationEffectId):
+            self.id = MutationEffectId(self.id)
+
+        if self._is_empty(self.mutation):
+            self.MissingRequiredField("mutation")
+        if not isinstance(self.mutation, str):
+            self.mutation = str(self.mutation)
+
+        if self.mutation_type is not None and not isinstance(self.mutation_type, MutationTypeEnum):
+            self.mutation_type = MutationTypeEnum(self.mutation_type)
+
+        if self.effect_on_stability is not None and not isinstance(self.effect_on_stability, StabilityEffectEnum):
+            self.effect_on_stability = StabilityEffectEnum(self.effect_on_stability)
+
+        if self.delta_delta_g is not None and not isinstance(self.delta_delta_g, float):
+            self.delta_delta_g = float(self.delta_delta_g)
+
+        if self.effect_on_function is not None and not isinstance(self.effect_on_function, FunctionalEffectEnum):
+            self.effect_on_function = FunctionalEffectEnum(self.effect_on_function)
+
+        if self.functional_impact_description is not None and not isinstance(self.functional_impact_description, str):
+            self.functional_impact_description = str(self.functional_impact_description)
+
+        if self.disease_association is not None and not isinstance(self.disease_association, str):
+            self.disease_association = str(self.disease_association)
+
+        if self.omim_id is not None and not isinstance(self.omim_id, str):
+            self.omim_id = str(self.omim_id)
+
+        if self.clinical_significance is not None and not isinstance(self.clinical_significance, ClinicalSignificanceEnum):
+            self.clinical_significance = ClinicalSignificanceEnum(self.clinical_significance)
+
+        if self.allele_frequency is not None and not isinstance(self.allele_frequency, float):
+            self.allele_frequency = float(self.allele_frequency)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BiophysicalProperty(AttributeGroup):
+    """
+    Measured or calculated biophysical properties
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["BiophysicalProperty"]
+    class_class_curie: ClassVar[str] = "biostride_func:BiophysicalProperty"
+    class_name: ClassVar[str] = "BiophysicalProperty"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.BiophysicalProperty
+
+    property_type: Union[str, "BiophysicalPropertyEnum"] = None
+    value: float = None
+    unit: str = None
+    error: Optional[float] = None
+    measurement_conditions: Optional[str] = None
+    temperature: Optional[float] = None
+    ph: Optional[float] = None
+    ionic_strength: Optional[float] = None
+    experimental_method: Optional[Union[str, "BiophysicalMethodEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.property_type):
+            self.MissingRequiredField("property_type")
+        if not isinstance(self.property_type, BiophysicalPropertyEnum):
+            self.property_type = BiophysicalPropertyEnum(self.property_type)
+
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, float):
+            self.value = float(self.value)
+
+        if self._is_empty(self.unit):
+            self.MissingRequiredField("unit")
+        if not isinstance(self.unit, str):
+            self.unit = str(self.unit)
+
+        if self.error is not None and not isinstance(self.error, float):
+            self.error = float(self.error)
+
+        if self.measurement_conditions is not None and not isinstance(self.measurement_conditions, str):
+            self.measurement_conditions = str(self.measurement_conditions)
+
+        if self.temperature is not None and not isinstance(self.temperature, float):
+            self.temperature = float(self.temperature)
+
+        if self.ph is not None and not isinstance(self.ph, float):
+            self.ph = float(self.ph)
+
+        if self.ionic_strength is not None and not isinstance(self.ionic_strength, float):
+            self.ionic_strength = float(self.ionic_strength)
+
+        if self.experimental_method is not None and not isinstance(self.experimental_method, BiophysicalMethodEnum):
+            self.experimental_method = BiophysicalMethodEnum(self.experimental_method)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ConformationalEnsemble(NamedThing):
+    """
+    Ensemble of conformational states for a protein
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["ConformationalEnsemble"]
+    class_class_curie: ClassVar[str] = "biostride_func:ConformationalEnsemble"
+    class_name: ClassVar[str] = "ConformationalEnsemble"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.ConformationalEnsemble
+
+    id: Union[str, ConformationalEnsembleId] = None
+    protein_id: str = None
+    conformational_states: Optional[Union[Union[dict, "ConformationalState"], list[Union[dict, "ConformationalState"]]]] = empty_list()
+    clustering_method: Optional[str] = None
+    rmsd_threshold: Optional[float] = None
+    transition_pathways: Optional[str] = None
+    energy_landscape: Optional[str] = None
+    principal_motions: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ConformationalEnsembleId):
+            self.id = ConformationalEnsembleId(self.id)
+
+        if self._is_empty(self.protein_id):
+            self.MissingRequiredField("protein_id")
+        if not isinstance(self.protein_id, str):
+            self.protein_id = str(self.protein_id)
+
+        if not isinstance(self.conformational_states, list):
+            self.conformational_states = [self.conformational_states] if self.conformational_states is not None else []
+        self.conformational_states = [v if isinstance(v, ConformationalState) else ConformationalState(**as_dict(v)) for v in self.conformational_states]
+
+        if self.clustering_method is not None and not isinstance(self.clustering_method, str):
+            self.clustering_method = str(self.clustering_method)
+
+        if self.rmsd_threshold is not None and not isinstance(self.rmsd_threshold, float):
+            self.rmsd_threshold = float(self.rmsd_threshold)
+
+        if self.transition_pathways is not None and not isinstance(self.transition_pathways, str):
+            self.transition_pathways = str(self.transition_pathways)
+
+        if self.energy_landscape is not None and not isinstance(self.energy_landscape, str):
+            self.energy_landscape = str(self.energy_landscape)
+
+        if not isinstance(self.principal_motions, list):
+            self.principal_motions = [self.principal_motions] if self.principal_motions is not None else []
+        self.principal_motions = [v if isinstance(v, str) else str(v) for v in self.principal_motions]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ConformationalState(AttributeGroup):
+    """
+    Individual conformational state
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["ConformationalState"]
+    class_class_curie: ClassVar[str] = "biostride_func:ConformationalState"
+    class_name: ClassVar[str] = "ConformationalState"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.ConformationalState
+
+    state_id: str = None
+    state_name: Optional[str] = None
+    pdb_entries: Optional[Union[str, list[str]]] = empty_list()
+    population: Optional[float] = None
+    free_energy: Optional[float] = None
+    rmsd_from_reference: Optional[float] = None
+    characteristic_features: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.state_id):
+            self.MissingRequiredField("state_id")
+        if not isinstance(self.state_id, str):
+            self.state_id = str(self.state_id)
+
+        if self.state_name is not None and not isinstance(self.state_name, str):
+            self.state_name = str(self.state_name)
+
+        if not isinstance(self.pdb_entries, list):
+            self.pdb_entries = [self.pdb_entries] if self.pdb_entries is not None else []
+        self.pdb_entries = [v if isinstance(v, str) else str(v) for v in self.pdb_entries]
+
+        if self.population is not None and not isinstance(self.population, float):
+            self.population = float(self.population)
+
+        if self.free_energy is not None and not isinstance(self.free_energy, float):
+            self.free_energy = float(self.free_energy)
+
+        if self.rmsd_from_reference is not None and not isinstance(self.rmsd_from_reference, float):
+            self.rmsd_from_reference = float(self.rmsd_from_reference)
+
+        if not isinstance(self.characteristic_features, list):
+            self.characteristic_features = [self.characteristic_features] if self.characteristic_features is not None else []
+        self.characteristic_features = [v if isinstance(v, str) else str(v) for v in self.characteristic_features]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PostTranslationalModification(ProteinAnnotation):
+    """
+    Post-translational modifications observed or predicted
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["PostTranslationalModification"]
+    class_class_curie: ClassVar[str] = "biostride_func:PostTranslationalModification"
+    class_name: ClassVar[str] = "PostTranslationalModification"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.PostTranslationalModification
+
+    id: Union[str, PostTranslationalModificationId] = None
+    protein_id: str = None
+    modification_type: Union[str, "PTMTypeEnum"] = None
+    modified_residue: str = None
+    modification_group: Optional[str] = None
+    mass_shift: Optional[float] = None
+    functional_effect: Optional[str] = None
+    regulatory_role: Optional[str] = None
+    enzyme: Optional[str] = None
+    removal_enzyme: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PostTranslationalModificationId):
+            self.id = PostTranslationalModificationId(self.id)
+
+        if self._is_empty(self.modification_type):
+            self.MissingRequiredField("modification_type")
+        if not isinstance(self.modification_type, PTMTypeEnum):
+            self.modification_type = PTMTypeEnum(self.modification_type)
+
+        if self._is_empty(self.modified_residue):
+            self.MissingRequiredField("modified_residue")
+        if not isinstance(self.modified_residue, str):
+            self.modified_residue = str(self.modified_residue)
+
+        if self.modification_group is not None and not isinstance(self.modification_group, str):
+            self.modification_group = str(self.modification_group)
+
+        if self.mass_shift is not None and not isinstance(self.mass_shift, float):
+            self.mass_shift = float(self.mass_shift)
+
+        if self.functional_effect is not None and not isinstance(self.functional_effect, str):
+            self.functional_effect = str(self.functional_effect)
+
+        if self.regulatory_role is not None and not isinstance(self.regulatory_role, str):
+            self.regulatory_role = str(self.regulatory_role)
+
+        if self.enzyme is not None and not isinstance(self.enzyme, str):
+            self.enzyme = str(self.enzyme)
+
+        if self.removal_enzyme is not None and not isinstance(self.removal_enzyme, str):
+            self.removal_enzyme = str(self.removal_enzyme)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DatabaseCrossReference(AttributeGroup):
+    """
+    Cross-references to external databases
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["DatabaseCrossReference"]
+    class_class_curie: ClassVar[str] = "biostride_func:DatabaseCrossReference"
+    class_name: ClassVar[str] = "DatabaseCrossReference"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.DatabaseCrossReference
+
+    database_name: Union[str, "DatabaseNameEnum"] = None
+    database_id: str = None
+    database_url: Optional[Union[str, URI]] = None
+    last_updated: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.database_name):
+            self.MissingRequiredField("database_name")
+        if not isinstance(self.database_name, DatabaseNameEnum):
+            self.database_name = DatabaseNameEnum(self.database_name)
+
+        if self._is_empty(self.database_id):
+            self.MissingRequiredField("database_id")
+        if not isinstance(self.database_id, str):
+            self.database_id = str(self.database_id)
+
+        if self.database_url is not None and not isinstance(self.database_url, URI):
+            self.database_url = URI(self.database_url)
+
+        if self.last_updated is not None and not isinstance(self.last_updated, str):
+            self.last_updated = str(self.last_updated)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class EvolutionaryConservation(ProteinAnnotation):
+    """
+    Evolutionary conservation information
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["EvolutionaryConservation"]
+    class_class_curie: ClassVar[str] = "biostride_func:EvolutionaryConservation"
+    class_name: ClassVar[str] = "EvolutionaryConservation"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.EvolutionaryConservation
+
+    id: Union[str, EvolutionaryConservationId] = None
+    protein_id: str = None
+    conservation_score: Optional[float] = None
+    conserved_residues: Optional[Union[str, list[str]]] = empty_list()
+    variable_residues: Optional[Union[str, list[str]]] = empty_list()
+    conservation_method: Optional[str] = None
+    alignment_depth: Optional[int] = None
+    taxonomic_range: Optional[str] = None
+    coevolved_residues: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EvolutionaryConservationId):
+            self.id = EvolutionaryConservationId(self.id)
+
+        if self.conservation_score is not None and not isinstance(self.conservation_score, float):
+            self.conservation_score = float(self.conservation_score)
+
+        if not isinstance(self.conserved_residues, list):
+            self.conserved_residues = [self.conserved_residues] if self.conserved_residues is not None else []
+        self.conserved_residues = [v if isinstance(v, str) else str(v) for v in self.conserved_residues]
+
+        if not isinstance(self.variable_residues, list):
+            self.variable_residues = [self.variable_residues] if self.variable_residues is not None else []
+        self.variable_residues = [v if isinstance(v, str) else str(v) for v in self.variable_residues]
+
+        if self.conservation_method is not None and not isinstance(self.conservation_method, str):
+            self.conservation_method = str(self.conservation_method)
+
+        if self.alignment_depth is not None and not isinstance(self.alignment_depth, int):
+            self.alignment_depth = int(self.alignment_depth)
+
+        if self.taxonomic_range is not None and not isinstance(self.taxonomic_range, str):
+            self.taxonomic_range = str(self.taxonomic_range)
+
+        if not isinstance(self.coevolved_residues, list):
+            self.coevolved_residues = [self.coevolved_residues] if self.coevolved_residues is not None else []
+        self.coevolved_residues = [v if isinstance(v, str) else str(v) for v in self.coevolved_residues]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AggregatedProteinView(NamedThing):
+    """
+    Aggregated view of all structural and functional data for a protein
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSTRIDE_FUNC["AggregatedProteinView"]
+    class_class_curie: ClassVar[str] = "biostride_func:AggregatedProteinView"
+    class_name: ClassVar[str] = "AggregatedProteinView"
+    class_model_uri: ClassVar[URIRef] = BIOSTRIDE_SCHEMA.AggregatedProteinView
+
+    id: Union[str, AggregatedProteinViewId] = None
+    uniprot_id: str = None
+    protein_name: str = None
+    organism: Optional[str] = None
+    organism_id: Optional[int] = None
+    pdb_entries: Optional[Union[str, list[str]]] = empty_list()
+    functional_sites: Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]] = empty_dict()
+    structural_features: Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]] = empty_dict()
+    protein_interactions: Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]] = empty_dict()
+    ligand_interactions: Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]] = empty_list()
+    mutations: Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]] = empty_dict()
+    ptms: Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]] = empty_dict()
+    biophysical_properties: Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]] = empty_list()
+    conformational_ensemble: Optional[Union[dict, ConformationalEnsemble]] = None
+    evolutionary_conservation: Optional[Union[dict, EvolutionaryConservation]] = None
+    cross_references: Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AggregatedProteinViewId):
+            self.id = AggregatedProteinViewId(self.id)
+
+        if self._is_empty(self.uniprot_id):
+            self.MissingRequiredField("uniprot_id")
+        if not isinstance(self.uniprot_id, str):
+            self.uniprot_id = str(self.uniprot_id)
+
+        if self._is_empty(self.protein_name):
+            self.MissingRequiredField("protein_name")
+        if not isinstance(self.protein_name, str):
+            self.protein_name = str(self.protein_name)
+
+        if self.organism is not None and not isinstance(self.organism, str):
+            self.organism = str(self.organism)
+
+        if self.organism_id is not None and not isinstance(self.organism_id, int):
+            self.organism_id = int(self.organism_id)
+
+        if not isinstance(self.pdb_entries, list):
+            self.pdb_entries = [self.pdb_entries] if self.pdb_entries is not None else []
+        self.pdb_entries = [v if isinstance(v, str) else str(v) for v in self.pdb_entries]
+
+        self._normalize_inlined_as_list(slot_name="functional_sites", slot_type=FunctionalSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="structural_features", slot_type=StructuralFeature, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="protein_interactions", slot_type=ProteinProteinInteraction, key_name="id", keyed=True)
+
+        if not isinstance(self.ligand_interactions, list):
+            self.ligand_interactions = [self.ligand_interactions] if self.ligand_interactions is not None else []
+        self.ligand_interactions = [v if isinstance(v, LigandInteraction) else LigandInteraction(**as_dict(v)) for v in self.ligand_interactions]
+
+        self._normalize_inlined_as_list(slot_name="mutations", slot_type=MutationEffect, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="ptms", slot_type=PostTranslationalModification, key_name="id", keyed=True)
+
+        if not isinstance(self.biophysical_properties, list):
+            self.biophysical_properties = [self.biophysical_properties] if self.biophysical_properties is not None else []
+        self.biophysical_properties = [v if isinstance(v, BiophysicalProperty) else BiophysicalProperty(**as_dict(v)) for v in self.biophysical_properties]
+
+        if self.conformational_ensemble is not None and not isinstance(self.conformational_ensemble, ConformationalEnsemble):
+            self.conformational_ensemble = ConformationalEnsemble(**as_dict(self.conformational_ensemble))
+
+        if self.evolutionary_conservation is not None and not isinstance(self.evolutionary_conservation, EvolutionaryConservation):
+            self.evolutionary_conservation = EvolutionaryConservation(**as_dict(self.evolutionary_conservation))
+
+        if not isinstance(self.cross_references, list):
+            self.cross_references = [self.cross_references] if self.cross_references is not None else []
+        self.cross_references = [v if isinstance(v, DatabaseCrossReference) else DatabaseCrossReference(**as_dict(v)) for v in self.cross_references]
 
         super().__post_init__(**kwargs)
 
@@ -1860,9 +3294,15 @@ class CrystallizationMethodEnum(EnumDefinitionImpl):
     vapor_diffusion_sitting = PermissibleValue(
         text="vapor_diffusion_sitting",
         description="Vapor diffusion sitting drop")
+    batch = PermissibleValue(
+        text="batch",
+        description="Batch crystallization")
     microbatch = PermissibleValue(
         text="microbatch",
         description="Microbatch under oil")
+    lcp = PermissibleValue(
+        text="lcp",
+        description="Lipidic cubic phase (LCP)")
     dialysis = PermissibleValue(
         text="dialysis",
         description="Dialysis method")
@@ -2197,6 +3637,988 @@ class IlluminationTypeEnum(EnumDefinitionImpl):
         description="Types of illumination for optical microscopy",
     )
 
+class ExpressionSystemEnum(EnumDefinitionImpl):
+    """
+    Expression systems for recombinant protein production
+    """
+    bacteria = PermissibleValue(
+        text="bacteria",
+        description="Bacterial expression (e.g., E. coli)")
+    yeast = PermissibleValue(
+        text="yeast",
+        description="Yeast expression (e.g., S. cerevisiae, P. pastoris)")
+    insect = PermissibleValue(
+        text="insect",
+        description="Insect cell expression (e.g., Sf9, High Five)")
+    mammalian = PermissibleValue(
+        text="mammalian",
+        description="Mammalian cell expression (e.g., HEK293, CHO)")
+    cell_free = PermissibleValue(
+        text="cell_free",
+        description="Cell-free expression system")
+
+    _defn = EnumDefinition(
+        name="ExpressionSystemEnum",
+        description="Expression systems for recombinant protein production",
+    )
+
+class PurificationStepEnum(EnumDefinitionImpl):
+    """
+    Protein purification steps and methods
+    """
+    affinity_ni_nta = PermissibleValue(
+        text="affinity_ni_nta",
+        description="Affinity chromatography using Ni-NTA resin")
+    affinity_co_nta = PermissibleValue(
+        text="affinity_co_nta",
+        description="Affinity chromatography using Co-NTA resin")
+    affinity_strep = PermissibleValue(
+        text="affinity_strep",
+        description="Affinity chromatography using Strep-tag")
+    affinity_mbp = PermissibleValue(
+        text="affinity_mbp",
+        description="Affinity chromatography using maltose-binding protein (MBP)")
+    affinity_gst = PermissibleValue(
+        text="affinity_gst",
+        description="Affinity chromatography using glutathione S-transferase (GST)")
+    tag_cleavage = PermissibleValue(
+        text="tag_cleavage",
+        description="Proteolytic cleavage of purification tags")
+    ion_exchange = PermissibleValue(
+        text="ion_exchange",
+        description="Ion-exchange chromatography (IEX)")
+    hydrophobic_interaction = PermissibleValue(
+        text="hydrophobic_interaction",
+        description="Hydrophobic interaction chromatography (HIC)")
+    size_exclusion = PermissibleValue(
+        text="size_exclusion",
+        description="Size-exclusion chromatography (SEC)")
+    dialysis = PermissibleValue(
+        text="dialysis",
+        description="Dialysis or buffer exchange")
+
+    _defn = EnumDefinition(
+        name="PurificationStepEnum",
+        description="Protein purification steps and methods",
+    )
+
+class PhasingMethodEnum(EnumDefinitionImpl):
+    """
+    Methods for phase determination in X-ray crystallography
+    """
+    molecular_replacement = PermissibleValue(
+        text="molecular_replacement",
+        description="Molecular replacement (MR)")
+    sad = PermissibleValue(
+        text="sad",
+        description="Single-wavelength anomalous diffraction (SAD)")
+    mad = PermissibleValue(
+        text="mad",
+        description="Multi-wavelength anomalous diffraction (MAD)")
+    sir = PermissibleValue(
+        text="sir",
+        description="Single isomorphous replacement (SIR)")
+    mir = PermissibleValue(
+        text="mir",
+        description="Multiple isomorphous replacement (MIR)")
+    siras = PermissibleValue(
+        text="siras",
+        description="Single isomorphous replacement with anomalous scattering (SIRAS)")
+    miras = PermissibleValue(
+        text="miras",
+        description="Multiple isomorphous replacement with anomalous scattering (MIRAS)")
+    fragile_mr = PermissibleValue(
+        text="fragile_mr",
+        description="Fragile molecular replacement or ensemble-based MR")
+
+    _defn = EnumDefinition(
+        name="PhasingMethodEnum",
+        description="Methods for phase determination in X-ray crystallography",
+    )
+
+class ExperimentalMethodEnum(EnumDefinitionImpl):
+    """
+    Experimental methods for structure determination
+    """
+    x_ray_diffraction = PermissibleValue(
+        text="x_ray_diffraction",
+        description="X-ray diffraction")
+    neutron_diffraction = PermissibleValue(
+        text="neutron_diffraction",
+        description="Neutron diffraction")
+    electron_diffraction = PermissibleValue(
+        text="electron_diffraction",
+        description="Electron diffraction (e.g., microED)")
+    fiber_diffraction = PermissibleValue(
+        text="fiber_diffraction",
+        description="Fiber diffraction")
+
+    _defn = EnumDefinition(
+        name="ExperimentalMethodEnum",
+        description="Experimental methods for structure determination",
+    )
+
+class FunctionalSiteTypeEnum(EnumDefinitionImpl):
+    """
+    Types of functional sites in proteins
+    """
+    active_site = PermissibleValue(
+        text="active_site",
+        description="Enzyme active site")
+    catalytic_site = PermissibleValue(
+        text="catalytic_site",
+        description="Catalytic residues")
+    binding_site = PermissibleValue(
+        text="binding_site",
+        description="General binding site")
+    allosteric_site = PermissibleValue(
+        text="allosteric_site",
+        description="Allosteric regulation site")
+    substrate_binding = PermissibleValue(
+        text="substrate_binding",
+        description="Substrate binding site")
+    cofactor_binding = PermissibleValue(
+        text="cofactor_binding",
+        description="Cofactor binding site")
+    inhibitor_binding = PermissibleValue(
+        text="inhibitor_binding",
+        description="Inhibitor binding site")
+    metal_binding = PermissibleValue(
+        text="metal_binding",
+        description="Metal ion binding site")
+    nucleotide_binding = PermissibleValue(
+        text="nucleotide_binding",
+        description="Nucleotide binding site")
+    phosphorylation_site = PermissibleValue(
+        text="phosphorylation_site",
+        description="Phosphorylation site")
+    glycosylation_site = PermissibleValue(
+        text="glycosylation_site",
+        description="Glycosylation site")
+    ubiquitination_site = PermissibleValue(
+        text="ubiquitination_site",
+        description="Ubiquitination site")
+    sumoylation_site = PermissibleValue(
+        text="sumoylation_site",
+        description="SUMOylation site")
+    acetylation_site = PermissibleValue(
+        text="acetylation_site",
+        description="Acetylation site")
+    methylation_site = PermissibleValue(
+        text="methylation_site",
+        description="Methylation site")
+    protein_binding = PermissibleValue(
+        text="protein_binding",
+        description="Protein-protein interaction site")
+    dna_binding = PermissibleValue(
+        text="dna_binding",
+        description="DNA binding site")
+    rna_binding = PermissibleValue(
+        text="rna_binding",
+        description="RNA binding site")
+    lipid_binding = PermissibleValue(
+        text="lipid_binding",
+        description="Lipid binding site")
+
+    _defn = EnumDefinition(
+        name="FunctionalSiteTypeEnum",
+        description="Types of functional sites in proteins",
+    )
+
+class StructuralFeatureTypeEnum(EnumDefinitionImpl):
+    """
+    Types of structural features
+    """
+    alpha_helix = PermissibleValue(
+        text="alpha_helix",
+        description="Alpha helix")
+    beta_sheet = PermissibleValue(
+        text="beta_sheet",
+        description="Beta sheet")
+    beta_strand = PermissibleValue(
+        text="beta_strand",
+        description="Beta strand")
+    turn = PermissibleValue(
+        text="turn",
+        description="Turn structure")
+    coil = PermissibleValue(
+        text="coil",
+        description="Random coil")
+    disordered_region = PermissibleValue(
+        text="disordered_region",
+        description="Intrinsically disordered region")
+    transmembrane_helix = PermissibleValue(
+        text="transmembrane_helix",
+        description="Transmembrane helix")
+    signal_peptide = PermissibleValue(
+        text="signal_peptide",
+        description="Signal peptide")
+    transit_peptide = PermissibleValue(
+        text="transit_peptide",
+        description="Transit peptide")
+    domain = PermissibleValue(
+        text="domain",
+        description="Protein domain")
+    repeat = PermissibleValue(
+        text="repeat",
+        description="Sequence repeat")
+    zinc_finger = PermissibleValue(
+        text="zinc_finger",
+        description="Zinc finger motif")
+    zinc_binding = PermissibleValue(
+        text="zinc_binding",
+        description="Zinc binding site")
+    coiled_coil = PermissibleValue(
+        text="coiled_coil",
+        description="Coiled coil")
+    motif = PermissibleValue(
+        text="motif",
+        description="Structural motif")
+    cavity = PermissibleValue(
+        text="cavity",
+        description="Structural cavity")
+    channel = PermissibleValue(
+        text="channel",
+        description="Molecular channel")
+    pore = PermissibleValue(
+        text="pore",
+        description="Molecular pore")
+    hinge = PermissibleValue(
+        text="hinge",
+        description="Hinge region")
+    linker = PermissibleValue(
+        text="linker",
+        description="Linker region")
+
+    _defn = EnumDefinition(
+        name="StructuralFeatureTypeEnum",
+        description="Types of structural features",
+    )
+
+class SecondaryStructureEnum(EnumDefinitionImpl):
+    """
+    Secondary structure types
+    """
+    helix = PermissibleValue(
+        text="helix",
+        description="Helix structure")
+    sheet = PermissibleValue(
+        text="sheet",
+        description="Beta sheet")
+    turn = PermissibleValue(
+        text="turn",
+        description="Turn")
+    coil = PermissibleValue(
+        text="coil",
+        description="Random coil")
+    helix_310 = PermissibleValue(
+        text="helix_310",
+        description="3-10 helix")
+    helix_pi = PermissibleValue(
+        text="helix_pi",
+        description="Pi helix")
+    bend = PermissibleValue(
+        text="bend",
+        description="Bend")
+    bridge = PermissibleValue(
+        text="bridge",
+        description="Beta bridge")
+
+    _defn = EnumDefinition(
+        name="SecondaryStructureEnum",
+        description="Secondary structure types",
+    )
+
+class ConformationalStateEnum(EnumDefinitionImpl):
+    """
+    Conformational states
+    """
+    open = PermissibleValue(
+        text="open",
+        description="Open conformation")
+    closed = PermissibleValue(
+        text="closed",
+        description="Closed conformation")
+    intermediate = PermissibleValue(
+        text="intermediate",
+        description="Intermediate state")
+    active = PermissibleValue(
+        text="active",
+        description="Active conformation")
+    inactive = PermissibleValue(
+        text="inactive",
+        description="Inactive conformation")
+    apo = PermissibleValue(
+        text="apo",
+        description="Apo form")
+    holo = PermissibleValue(
+        text="holo",
+        description="Holo form")
+    substrate_bound = PermissibleValue(
+        text="substrate_bound",
+        description="Substrate-bound")
+    product_bound = PermissibleValue(
+        text="product_bound",
+        description="Product-bound")
+    inhibitor_bound = PermissibleValue(
+        text="inhibitor_bound",
+        description="Inhibitor-bound")
+    partially_open = PermissibleValue(
+        text="partially_open",
+        description="Partially open")
+    partially_closed = PermissibleValue(
+        text="partially_closed",
+        description="Partially closed")
+    disordered = PermissibleValue(
+        text="disordered",
+        description="Disordered state")
+
+    _defn = EnumDefinition(
+        name="ConformationalStateEnum",
+        description="Conformational states",
+    )
+
+class InteractionTypeEnum(EnumDefinitionImpl):
+    """
+    Types of molecular interactions
+    """
+    covalent = PermissibleValue(
+        text="covalent",
+        description="Covalent bond")
+    hydrogen_bond = PermissibleValue(
+        text="hydrogen_bond",
+        description="Hydrogen bond")
+    ionic = PermissibleValue(
+        text="ionic",
+        description="Ionic interaction")
+    van_der_waals = PermissibleValue(
+        text="van_der_waals",
+        description="Van der Waals interaction")
+    hydrophobic = PermissibleValue(
+        text="hydrophobic",
+        description="Hydrophobic interaction")
+    aromatic = PermissibleValue(
+        text="aromatic",
+        description="Aromatic interaction")
+    pi_stacking = PermissibleValue(
+        text="pi_stacking",
+        description="Pi-pi stacking")
+    cation_pi = PermissibleValue(
+        text="cation_pi",
+        description="Cation-pi interaction")
+    metal_coordination = PermissibleValue(
+        text="metal_coordination",
+        description="Metal coordination")
+    disulfide = PermissibleValue(
+        text="disulfide",
+        description="Disulfide bond")
+
+    _defn = EnumDefinition(
+        name="InteractionTypeEnum",
+        description="Types of molecular interactions",
+    )
+
+class BindingAffinityTypeEnum(EnumDefinitionImpl):
+    """
+    Types of binding affinity measurements
+    """
+    kd = PermissibleValue(
+        text="kd",
+        description="Dissociation constant")
+    ki = PermissibleValue(
+        text="ki",
+        description="Inhibition constant")
+    ic50 = PermissibleValue(
+        text="ic50",
+        description="Half maximal inhibitory concentration")
+    ec50 = PermissibleValue(
+        text="ec50",
+        description="Half maximal effective concentration")
+    ka = PermissibleValue(
+        text="ka",
+        description="Association constant")
+    km = PermissibleValue(
+        text="km",
+        description="Michaelis constant")
+
+    _defn = EnumDefinition(
+        name="BindingAffinityTypeEnum",
+        description="Types of binding affinity measurements",
+    )
+
+class AffinityUnitEnum(EnumDefinitionImpl):
+    """
+    Units for affinity measurements
+    """
+    molar = PermissibleValue(
+        text="molar",
+        description="Molar (M)")
+    millimolar = PermissibleValue(
+        text="millimolar",
+        description="Millimolar (mM)")
+    micromolar = PermissibleValue(
+        text="micromolar",
+        description="Micromolar (µM)")
+    nanomolar = PermissibleValue(
+        text="nanomolar",
+        description="Nanomolar (nM)")
+    picomolar = PermissibleValue(
+        text="picomolar",
+        description="Picomolar (pM)")
+
+    _defn = EnumDefinition(
+        name="AffinityUnitEnum",
+        description="Units for affinity measurements",
+    )
+
+class ComplexStabilityEnum(EnumDefinitionImpl):
+    """
+    Stability of protein complexes
+    """
+    stable = PermissibleValue(
+        text="stable",
+        description="Stable complex")
+    transient = PermissibleValue(
+        text="transient",
+        description="Transient interaction")
+    weak = PermissibleValue(
+        text="weak",
+        description="Weak interaction")
+    strong = PermissibleValue(
+        text="strong",
+        description="Strong interaction")
+    obligate = PermissibleValue(
+        text="obligate",
+        description="Obligate complex")
+    non_obligate = PermissibleValue(
+        text="non_obligate",
+        description="Non-obligate complex")
+
+    _defn = EnumDefinition(
+        name="ComplexStabilityEnum",
+        description="Stability of protein complexes",
+    )
+
+class InteractionEvidenceEnum(EnumDefinitionImpl):
+    """
+    Evidence for interactions
+    """
+    experimental = PermissibleValue(
+        text="experimental",
+        description="Experimental evidence")
+    predicted = PermissibleValue(
+        text="predicted",
+        description="Computational prediction")
+    homology = PermissibleValue(
+        text="homology",
+        description="Homology-based")
+    coexpression = PermissibleValue(
+        text="coexpression",
+        description="Co-expression data")
+    colocalization = PermissibleValue(
+        text="colocalization",
+        description="Co-localization")
+    genetic = PermissibleValue(
+        text="genetic",
+        description="Genetic evidence")
+    physical = PermissibleValue(
+        text="physical",
+        description="Physical interaction")
+    functional = PermissibleValue(
+        text="functional",
+        description="Functional association")
+
+    _defn = EnumDefinition(
+        name="InteractionEvidenceEnum",
+        description="Evidence for interactions",
+    )
+
+class MutationTypeEnum(EnumDefinitionImpl):
+    """
+    Types of mutations
+    """
+    missense = PermissibleValue(
+        text="missense",
+        description="Missense mutation")
+    nonsense = PermissibleValue(
+        text="nonsense",
+        description="Nonsense mutation")
+    frameshift = PermissibleValue(
+        text="frameshift",
+        description="Frameshift mutation")
+    deletion = PermissibleValue(
+        text="deletion",
+        description="Deletion")
+    insertion = PermissibleValue(
+        text="insertion",
+        description="Insertion")
+    duplication = PermissibleValue(
+        text="duplication",
+        description="Duplication")
+    substitution = PermissibleValue(
+        text="substitution",
+        description="Substitution")
+
+    _defn = EnumDefinition(
+        name="MutationTypeEnum",
+        description="Types of mutations",
+    )
+
+class StabilityEffectEnum(EnumDefinitionImpl):
+    """
+    Effect on protein stability
+    """
+    stabilizing = PermissibleValue(
+        text="stabilizing",
+        description="Increases stability")
+    destabilizing = PermissibleValue(
+        text="destabilizing",
+        description="Decreases stability")
+    neutral = PermissibleValue(
+        text="neutral",
+        description="No significant effect")
+    highly_stabilizing = PermissibleValue(
+        text="highly_stabilizing",
+        description="Strongly increases stability")
+    highly_destabilizing = PermissibleValue(
+        text="highly_destabilizing",
+        description="Strongly decreases stability")
+
+    _defn = EnumDefinition(
+        name="StabilityEffectEnum",
+        description="Effect on protein stability",
+    )
+
+class FunctionalEffectEnum(EnumDefinitionImpl):
+    """
+    Effect on protein function
+    """
+    loss_of_function = PermissibleValue(
+        text="loss_of_function",
+        description="Loss of function")
+    gain_of_function = PermissibleValue(
+        text="gain_of_function",
+        description="Gain of function")
+    altered_function = PermissibleValue(
+        text="altered_function",
+        description="Altered function")
+    no_effect = PermissibleValue(
+        text="no_effect",
+        description="No functional effect")
+    partial_loss = PermissibleValue(
+        text="partial_loss",
+        description="Partial loss of function")
+    enhanced_function = PermissibleValue(
+        text="enhanced_function",
+        description="Enhanced function")
+
+    _defn = EnumDefinition(
+        name="FunctionalEffectEnum",
+        description="Effect on protein function",
+    )
+
+class ClinicalSignificanceEnum(EnumDefinitionImpl):
+    """
+    Clinical significance of variants
+    """
+    pathogenic = PermissibleValue(
+        text="pathogenic",
+        description="Pathogenic")
+    likely_pathogenic = PermissibleValue(
+        text="likely_pathogenic",
+        description="Likely pathogenic")
+    benign = PermissibleValue(
+        text="benign",
+        description="Benign")
+    likely_benign = PermissibleValue(
+        text="likely_benign",
+        description="Likely benign")
+    uncertain_significance = PermissibleValue(
+        text="uncertain_significance",
+        description="Uncertain significance")
+
+    _defn = EnumDefinition(
+        name="ClinicalSignificanceEnum",
+        description="Clinical significance of variants",
+    )
+
+class BiophysicalPropertyEnum(EnumDefinitionImpl):
+    """
+    Types of biophysical properties
+    """
+    melting_temperature = PermissibleValue(
+        text="melting_temperature",
+        description="Melting temperature (Tm)")
+    stability = PermissibleValue(
+        text="stability",
+        description="Thermodynamic stability")
+    folding_rate = PermissibleValue(
+        text="folding_rate",
+        description="Folding rate")
+    unfolding_rate = PermissibleValue(
+        text="unfolding_rate",
+        description="Unfolding rate")
+    aggregation_propensity = PermissibleValue(
+        text="aggregation_propensity",
+        description="Aggregation propensity")
+    solubility = PermissibleValue(
+        text="solubility",
+        description="Solubility")
+    hydrophobicity = PermissibleValue(
+        text="hydrophobicity",
+        description="Hydrophobicity")
+    isoelectric_point = PermissibleValue(
+        text="isoelectric_point",
+        description="Isoelectric point (pI)")
+    extinction_coefficient = PermissibleValue(
+        text="extinction_coefficient",
+        description="Extinction coefficient")
+    molecular_weight = PermissibleValue(
+        text="molecular_weight",
+        description="Molecular weight")
+    diffusion_coefficient = PermissibleValue(
+        text="diffusion_coefficient",
+        description="Diffusion coefficient")
+    sedimentation_coefficient = PermissibleValue(
+        text="sedimentation_coefficient",
+        description="Sedimentation coefficient")
+    radius_of_gyration = PermissibleValue(
+        text="radius_of_gyration",
+        description="Radius of gyration")
+    hydrodynamic_radius = PermissibleValue(
+        text="hydrodynamic_radius",
+        description="Hydrodynamic radius")
+
+    _defn = EnumDefinition(
+        name="BiophysicalPropertyEnum",
+        description="Types of biophysical properties",
+    )
+
+class BiophysicalMethodEnum(EnumDefinitionImpl):
+    """
+    Methods for biophysical measurements
+    """
+    differential_scanning_calorimetry = PermissibleValue(
+        text="differential_scanning_calorimetry",
+        description="DSC")
+    isothermal_titration_calorimetry = PermissibleValue(
+        text="isothermal_titration_calorimetry",
+        description="ITC")
+    circular_dichroism = PermissibleValue(
+        text="circular_dichroism",
+        description="CD spectroscopy")
+    fluorescence_spectroscopy = PermissibleValue(
+        text="fluorescence_spectroscopy",
+        description="Fluorescence")
+    surface_plasmon_resonance = PermissibleValue(
+        text="surface_plasmon_resonance",
+        description="SPR")
+    dynamic_light_scattering = PermissibleValue(
+        text="dynamic_light_scattering",
+        description="DLS")
+    analytical_ultracentrifugation = PermissibleValue(
+        text="analytical_ultracentrifugation",
+        description="AUC")
+    nuclear_magnetic_resonance = PermissibleValue(
+        text="nuclear_magnetic_resonance",
+        description="NMR")
+    mass_spectrometry = PermissibleValue(
+        text="mass_spectrometry",
+        description="MS")
+
+    _defn = EnumDefinition(
+        name="BiophysicalMethodEnum",
+        description="Methods for biophysical measurements",
+    )
+
+class PTMTypeEnum(EnumDefinitionImpl):
+    """
+    Types of post-translational modifications
+    """
+    phosphorylation = PermissibleValue(
+        text="phosphorylation",
+        description="Phosphorylation")
+    acetylation = PermissibleValue(
+        text="acetylation",
+        description="Acetylation")
+    methylation = PermissibleValue(
+        text="methylation",
+        description="Methylation")
+    ubiquitination = PermissibleValue(
+        text="ubiquitination",
+        description="Ubiquitination")
+    sumoylation = PermissibleValue(
+        text="sumoylation",
+        description="SUMOylation")
+    glycosylation = PermissibleValue(
+        text="glycosylation",
+        description="Glycosylation")
+    palmitoylation = PermissibleValue(
+        text="palmitoylation",
+        description="Palmitoylation")
+    myristoylation = PermissibleValue(
+        text="myristoylation",
+        description="Myristoylation")
+    prenylation = PermissibleValue(
+        text="prenylation",
+        description="Prenylation")
+    nitrosylation = PermissibleValue(
+        text="nitrosylation",
+        description="Nitrosylation")
+    oxidation = PermissibleValue(
+        text="oxidation",
+        description="Oxidation")
+    hydroxylation = PermissibleValue(
+        text="hydroxylation",
+        description="Hydroxylation")
+    proteolysis = PermissibleValue(
+        text="proteolysis",
+        description="Proteolytic cleavage")
+    deamidation = PermissibleValue(
+        text="deamidation",
+        description="Deamidation")
+    adp_ribosylation = PermissibleValue(
+        text="adp_ribosylation",
+        description="ADP-ribosylation")
+
+    _defn = EnumDefinition(
+        name="PTMTypeEnum",
+        description="Types of post-translational modifications",
+    )
+
+class EvidenceTypeEnum(EnumDefinitionImpl):
+    """
+    Types of evidence
+    """
+    experimental = PermissibleValue(
+        text="experimental",
+        description="Direct experimental evidence")
+    predicted = PermissibleValue(
+        text="predicted",
+        description="Computational prediction")
+    inferred = PermissibleValue(
+        text="inferred",
+        description="Inferred from homology")
+    literature = PermissibleValue(
+        text="literature",
+        description="Literature curation")
+    author_statement = PermissibleValue(
+        text="author_statement",
+        description="Author statement")
+    curator_inference = PermissibleValue(
+        text="curator_inference",
+        description="Curator inference")
+
+    _defn = EnumDefinition(
+        name="EvidenceTypeEnum",
+        description="Types of evidence",
+    )
+
+class AnnotationSourceEnum(EnumDefinitionImpl):
+    """
+    Sources of functional annotations
+    """
+    pdbe = PermissibleValue(
+        text="pdbe",
+        description="PDBe")
+    pdbe_kb = PermissibleValue(
+        text="pdbe_kb",
+        description="PDBe-KB")
+    uniprot = PermissibleValue(
+        text="uniprot",
+        description="UniProt")
+    pfam = PermissibleValue(
+        text="pfam",
+        description="Pfam")
+    cath = PermissibleValue(
+        text="cath",
+        description="CATH")
+    scop = PermissibleValue(
+        text="scop",
+        description="SCOP")
+    interpro = PermissibleValue(
+        text="interpro",
+        description="InterPro")
+    channelsdb = PermissibleValue(
+        text="channelsdb",
+        description="ChannelsDB")
+    dynamine = PermissibleValue(
+        text="dynamine",
+        description="DynaMine")
+    foldx = PermissibleValue(
+        text="foldx",
+        description="FoldX")
+    p2rank = PermissibleValue(
+        text="p2rank",
+        description="P2rank")
+    arpeggio = PermissibleValue(
+        text="arpeggio",
+        description="Arpeggio")
+    covalentizer = PermissibleValue(
+        text="covalentizer",
+        description="Covalentizer")
+    depth = PermissibleValue(
+        text="depth",
+        description="DEPTH")
+    elmpdb = PermissibleValue(
+        text="elmpdb",
+        description="ELM-PDB")
+    frustration = PermissibleValue(
+        text="frustration",
+        description="Frustration")
+    kincore = PermissibleValue(
+        text="kincore",
+        description="KinCore")
+    membranome = PermissibleValue(
+        text="membranome",
+        description="Membranome")
+    missense3d = PermissibleValue(
+        text="missense3d",
+        description="Missense3D")
+    mobi = PermissibleValue(
+        text="mobi",
+        description="MobiDB")
+    nucleos = PermissibleValue(
+        text="nucleos",
+        description="Nucleos")
+    akid = PermissibleValue(
+        text="akid",
+        description="AKID")
+    camkinet = PermissibleValue(
+        text="camkinet",
+        description="CamKiNet")
+    cansar = PermissibleValue(
+        text="cansar",
+        description="canSAR")
+    credo = PermissibleValue(
+        text="credo",
+        description="CREDO")
+    klifs = PermissibleValue(
+        text="klifs",
+        description="KLIFS")
+    m_csm = PermissibleValue(
+        text="m_csm",
+        description="mCSM")
+    moondb = PermissibleValue(
+        text="moondb",
+        description="MoonDB")
+    pocketome = PermissibleValue(
+        text="pocketome",
+        description="Pocketome")
+    propka = PermissibleValue(
+        text="propka",
+        description="PROPKA")
+    proteins_api = PermissibleValue(
+        text="proteins_api",
+        description="Proteins API")
+    validation = PermissibleValue(
+        text="validation",
+        description="Validation")
+    alphafold = PermissibleValue(
+        text="alphafold",
+        description="AlphaFold")
+    modbase = PermissibleValue(
+        text="modbase",
+        description="ModBase")
+    swiss_model = PermissibleValue(
+        text="swiss_model",
+        description="SWISS-MODEL")
+    intact = PermissibleValue(
+        text="intact",
+        description="IntAct")
+    cosmic = PermissibleValue(
+        text="cosmic",
+        description="COSMIC")
+    clinvar = PermissibleValue(
+        text="clinvar",
+        description="ClinVar")
+
+    _defn = EnumDefinition(
+        name="AnnotationSourceEnum",
+        description="Sources of functional annotations",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "3dligandsite",
+            PermissibleValue(
+                text="3dligandsite",
+                description="3D-LigandSite"))
+        setattr(cls, "14_3_3_pred",
+            PermissibleValue(
+                text="14_3_3_pred",
+                description="14-3-3-Pred"))
+
+class DatabaseNameEnum(EnumDefinitionImpl):
+    """
+    External database names
+    """
+    uniprot = PermissibleValue(
+        text="uniprot",
+        description="UniProt")
+    pdb = PermissibleValue(
+        text="pdb",
+        description="Protein Data Bank")
+    pfam = PermissibleValue(
+        text="pfam",
+        description="Pfam")
+    cath = PermissibleValue(
+        text="cath",
+        description="CATH")
+    scop = PermissibleValue(
+        text="scop",
+        description="SCOP")
+    interpro = PermissibleValue(
+        text="interpro",
+        description="InterPro")
+    chembl = PermissibleValue(
+        text="chembl",
+        description="ChEMBL")
+    chebi = PermissibleValue(
+        text="chebi",
+        description="ChEBI")
+    pubchem = PermissibleValue(
+        text="pubchem",
+        description="PubChem")
+    drugbank = PermissibleValue(
+        text="drugbank",
+        description="DrugBank")
+    omim = PermissibleValue(
+        text="omim",
+        description="OMIM")
+    clinvar = PermissibleValue(
+        text="clinvar",
+        description="ClinVar")
+    cosmic = PermissibleValue(
+        text="cosmic",
+        description="COSMIC")
+    gnomad = PermissibleValue(
+        text="gnomad",
+        description="gnomAD")
+    intact = PermissibleValue(
+        text="intact",
+        description="IntAct")
+    string = PermissibleValue(
+        text="string",
+        description="STRING")
+    biogrid = PermissibleValue(
+        text="biogrid",
+        description="BioGRID")
+    reactome = PermissibleValue(
+        text="reactome",
+        description="Reactome")
+    kegg = PermissibleValue(
+        text="kegg",
+        description="KEGG")
+    go = PermissibleValue(
+        text="go",
+        description="Gene Ontology")
+
+    _defn = EnumDefinition(
+        name="DatabaseNameEnum",
+        description="External database names",
+    )
+
 # Slots
 class slots:
     pass
@@ -2222,6 +4644,9 @@ slots.dataset__instruments = Slot(uri=BIOSTRIDE_SCHEMA.instruments, name="datase
 slots.dataset__studies = Slot(uri=BIOSTRIDE_SCHEMA.studies, name="dataset__studies", curie=BIOSTRIDE_SCHEMA.curie('studies'),
                    model_uri=BIOSTRIDE_SCHEMA.dataset__studies, domain=None, range=Optional[Union[dict[Union[str, StudyId], Union[dict, Study]], list[Union[dict, Study]]]])
 
+slots.study__protein_constructs = Slot(uri=BIOSTRIDE_SCHEMA.protein_constructs, name="study__protein_constructs", curie=BIOSTRIDE_SCHEMA.curie('protein_constructs'),
+                   model_uri=BIOSTRIDE_SCHEMA.study__protein_constructs, domain=None, range=Optional[Union[dict[Union[str, ProteinConstructId], Union[dict, ProteinConstruct]], list[Union[dict, ProteinConstruct]]]])
+
 slots.study__samples = Slot(uri=BIOSTRIDE_SCHEMA.samples, name="study__samples", curie=BIOSTRIDE_SCHEMA.curie('samples'),
                    model_uri=BIOSTRIDE_SCHEMA.study__samples, domain=None, range=Optional[Union[dict[Union[str, SampleId], Union[dict, Sample]], list[Union[dict, Sample]]]])
 
@@ -2239,6 +4664,9 @@ slots.study__data_files = Slot(uri=BIOSTRIDE_SCHEMA.data_files, name="study__dat
 
 slots.study__images = Slot(uri=BIOSTRIDE_SCHEMA.images, name="study__images", curie=BIOSTRIDE_SCHEMA.curie('images'),
                    model_uri=BIOSTRIDE_SCHEMA.study__images, domain=None, range=Optional[Union[dict[Union[str, ImageId], Union[dict, Image]], list[Union[dict, Image]]]])
+
+slots.study__aggregated_protein_views = Slot(uri=BIOSTRIDE_SCHEMA.aggregated_protein_views, name="study__aggregated_protein_views", curie=BIOSTRIDE_SCHEMA.curie('aggregated_protein_views'),
+                   model_uri=BIOSTRIDE_SCHEMA.study__aggregated_protein_views, domain=None, range=Optional[Union[dict[Union[str, AggregatedProteinViewId], Union[dict, AggregatedProteinView]], list[Union[dict, AggregatedProteinView]]]])
 
 slots.sample__sample_code = Slot(uri=BIOSTRIDE_SCHEMA.sample_code, name="sample__sample_code", curie=BIOSTRIDE_SCHEMA.curie('sample_code'),
                    model_uri=BIOSTRIDE_SCHEMA.sample__sample_code, domain=None, range=str)
@@ -2285,6 +4713,99 @@ slots.sample__purity_percentage = Slot(uri=BIOSTRIDE_SCHEMA.purity_percentage, n
 slots.sample__quality_metrics = Slot(uri=BIOSTRIDE_SCHEMA.quality_metrics, name="sample__quality_metrics", curie=BIOSTRIDE_SCHEMA.curie('quality_metrics'),
                    model_uri=BIOSTRIDE_SCHEMA.sample__quality_metrics, domain=None, range=Optional[str])
 
+slots.sample__functional_sites = Slot(uri=BIOSTRIDE_SCHEMA.functional_sites, name="sample__functional_sites", curie=BIOSTRIDE_SCHEMA.curie('functional_sites'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+
+slots.sample__structural_features = Slot(uri=BIOSTRIDE_SCHEMA.structural_features, name="sample__structural_features", curie=BIOSTRIDE_SCHEMA.curie('structural_features'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+
+slots.sample__protein_interactions = Slot(uri=BIOSTRIDE_SCHEMA.protein_interactions, name="sample__protein_interactions", curie=BIOSTRIDE_SCHEMA.curie('protein_interactions'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+
+slots.sample__ligand_interactions = Slot(uri=BIOSTRIDE_SCHEMA.ligand_interactions, name="sample__ligand_interactions", curie=BIOSTRIDE_SCHEMA.curie('ligand_interactions'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.sample__mutation_effects = Slot(uri=BIOSTRIDE_SCHEMA.mutation_effects, name="sample__mutation_effects", curie=BIOSTRIDE_SCHEMA.curie('mutation_effects'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__mutation_effects, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+
+slots.sample__ptm_annotations = Slot(uri=BIOSTRIDE_SCHEMA.ptm_annotations, name="sample__ptm_annotations", curie=BIOSTRIDE_SCHEMA.curie('ptm_annotations'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__ptm_annotations, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+
+slots.sample__biophysical_properties = Slot(uri=BIOSTRIDE_SCHEMA.biophysical_properties, name="sample__biophysical_properties", curie=BIOSTRIDE_SCHEMA.curie('biophysical_properties'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+
+slots.sample__evolutionary_conservation = Slot(uri=BIOSTRIDE_SCHEMA.evolutionary_conservation, name="sample__evolutionary_conservation", curie=BIOSTRIDE_SCHEMA.curie('evolutionary_conservation'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+
+slots.sample__conformational_ensemble = Slot(uri=BIOSTRIDE_SCHEMA.conformational_ensemble, name="sample__conformational_ensemble", curie=BIOSTRIDE_SCHEMA.curie('conformational_ensemble'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+
+slots.sample__database_cross_references = Slot(uri=BIOSTRIDE_SCHEMA.database_cross_references, name="sample__database_cross_references", curie=BIOSTRIDE_SCHEMA.curie('database_cross_references'),
+                   model_uri=BIOSTRIDE_SCHEMA.sample__database_cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])
+
+slots.proteinConstruct__construct_id = Slot(uri=BIOSTRIDE_SCHEMA.construct_id, name="proteinConstruct__construct_id", curie=BIOSTRIDE_SCHEMA.curie('construct_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__construct_id, domain=None, range=str)
+
+slots.proteinConstruct__uniprot_id = Slot(uri=BIOSTRIDE_SCHEMA.uniprot_id, name="proteinConstruct__uniprot_id", curie=BIOSTRIDE_SCHEMA.curie('uniprot_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__uniprot_id, domain=None, range=Optional[str])
+
+slots.proteinConstruct__gene_name = Slot(uri=BIOSTRIDE_SCHEMA.gene_name, name="proteinConstruct__gene_name", curie=BIOSTRIDE_SCHEMA.curie('gene_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__gene_name, domain=None, range=Optional[str])
+
+slots.proteinConstruct__ncbi_taxid = Slot(uri=BIOSTRIDE_SCHEMA.ncbi_taxid, name="proteinConstruct__ncbi_taxid", curie=BIOSTRIDE_SCHEMA.curie('ncbi_taxid'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__ncbi_taxid, domain=None, range=Optional[str])
+
+slots.proteinConstruct__sequence_length_aa = Slot(uri=BIOSTRIDE_SCHEMA.sequence_length_aa, name="proteinConstruct__sequence_length_aa", curie=BIOSTRIDE_SCHEMA.curie('sequence_length_aa'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__sequence_length_aa, domain=None, range=Optional[int])
+
+slots.proteinConstruct__construct_description = Slot(uri=BIOSTRIDE_SCHEMA.construct_description, name="proteinConstruct__construct_description", curie=BIOSTRIDE_SCHEMA.curie('construct_description'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__construct_description, domain=None, range=Optional[str])
+
+slots.proteinConstruct__gene_synthesis_provider = Slot(uri=BIOSTRIDE_SCHEMA.gene_synthesis_provider, name="proteinConstruct__gene_synthesis_provider", curie=BIOSTRIDE_SCHEMA.curie('gene_synthesis_provider'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__gene_synthesis_provider, domain=None, range=Optional[str])
+
+slots.proteinConstruct__codon_optimization_organism = Slot(uri=BIOSTRIDE_SCHEMA.codon_optimization_organism, name="proteinConstruct__codon_optimization_organism", curie=BIOSTRIDE_SCHEMA.curie('codon_optimization_organism'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__codon_optimization_organism, domain=None, range=Optional[str])
+
+slots.proteinConstruct__vector_backbone = Slot(uri=BIOSTRIDE_SCHEMA.vector_backbone, name="proteinConstruct__vector_backbone", curie=BIOSTRIDE_SCHEMA.curie('vector_backbone'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__vector_backbone, domain=None, range=Optional[str])
+
+slots.proteinConstruct__vector_name = Slot(uri=BIOSTRIDE_SCHEMA.vector_name, name="proteinConstruct__vector_name", curie=BIOSTRIDE_SCHEMA.curie('vector_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__vector_name, domain=None, range=Optional[str])
+
+slots.proteinConstruct__promoter = Slot(uri=BIOSTRIDE_SCHEMA.promoter, name="proteinConstruct__promoter", curie=BIOSTRIDE_SCHEMA.curie('promoter'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__promoter, domain=None, range=Optional[str])
+
+slots.proteinConstruct__tag_nterm = Slot(uri=BIOSTRIDE_SCHEMA.tag_nterm, name="proteinConstruct__tag_nterm", curie=BIOSTRIDE_SCHEMA.curie('tag_nterm'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__tag_nterm, domain=None, range=Optional[str])
+
+slots.proteinConstruct__tag_cterm = Slot(uri=BIOSTRIDE_SCHEMA.tag_cterm, name="proteinConstruct__tag_cterm", curie=BIOSTRIDE_SCHEMA.curie('tag_cterm'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__tag_cterm, domain=None, range=Optional[str])
+
+slots.proteinConstruct__cleavage_site = Slot(uri=BIOSTRIDE_SCHEMA.cleavage_site, name="proteinConstruct__cleavage_site", curie=BIOSTRIDE_SCHEMA.curie('cleavage_site'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__cleavage_site, domain=None, range=Optional[str])
+
+slots.proteinConstruct__signal_peptide = Slot(uri=BIOSTRIDE_SCHEMA.signal_peptide, name="proteinConstruct__signal_peptide", curie=BIOSTRIDE_SCHEMA.curie('signal_peptide'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__signal_peptide, domain=None, range=Optional[str])
+
+slots.proteinConstruct__selectable_marker = Slot(uri=BIOSTRIDE_SCHEMA.selectable_marker, name="proteinConstruct__selectable_marker", curie=BIOSTRIDE_SCHEMA.curie('selectable_marker'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__selectable_marker, domain=None, range=Optional[str])
+
+slots.proteinConstruct__cloning_method = Slot(uri=BIOSTRIDE_SCHEMA.cloning_method, name="proteinConstruct__cloning_method", curie=BIOSTRIDE_SCHEMA.curie('cloning_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__cloning_method, domain=None, range=Optional[str])
+
+slots.proteinConstruct__insert_boundaries = Slot(uri=BIOSTRIDE_SCHEMA.insert_boundaries, name="proteinConstruct__insert_boundaries", curie=BIOSTRIDE_SCHEMA.curie('insert_boundaries'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__insert_boundaries, domain=None, range=Optional[str])
+
+slots.proteinConstruct__sequence_file_path = Slot(uri=BIOSTRIDE_SCHEMA.sequence_file_path, name="proteinConstruct__sequence_file_path", curie=BIOSTRIDE_SCHEMA.curie('sequence_file_path'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__sequence_file_path, domain=None, range=Optional[str])
+
+slots.proteinConstruct__sequence_verified_by = Slot(uri=BIOSTRIDE_SCHEMA.sequence_verified_by, name="proteinConstruct__sequence_verified_by", curie=BIOSTRIDE_SCHEMA.curie('sequence_verified_by'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__sequence_verified_by, domain=None, range=Optional[str])
+
+slots.proteinConstruct__verification_notes = Slot(uri=BIOSTRIDE_SCHEMA.verification_notes, name="proteinConstruct__verification_notes", curie=BIOSTRIDE_SCHEMA.curie('verification_notes'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinConstruct__verification_notes, domain=None, range=Optional[str])
+
 slots.samplePreparation__preparation_type = Slot(uri=BIOSTRIDE_SCHEMA.preparation_type, name="samplePreparation__preparation_type", curie=BIOSTRIDE_SCHEMA.curie('preparation_type'),
                    model_uri=BIOSTRIDE_SCHEMA.samplePreparation__preparation_type, domain=None, range=Union[str, "PreparationTypeEnum"])
 
@@ -2299,6 +4820,117 @@ slots.samplePreparation__operator_id = Slot(uri=BIOSTRIDE_SCHEMA.operator_id, na
 
 slots.samplePreparation__protocol_description = Slot(uri=BIOSTRIDE_SCHEMA.protocol_description, name="samplePreparation__protocol_description", curie=BIOSTRIDE_SCHEMA.curie('protocol_description'),
                    model_uri=BIOSTRIDE_SCHEMA.samplePreparation__protocol_description, domain=None, range=Optional[str])
+
+slots.samplePreparation__expression_system = Slot(uri=BIOSTRIDE_SCHEMA.expression_system, name="samplePreparation__expression_system", curie=BIOSTRIDE_SCHEMA.curie('expression_system'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__expression_system, domain=None, range=Optional[Union[str, "ExpressionSystemEnum"]])
+
+slots.samplePreparation__host_strain_or_cell_line = Slot(uri=BIOSTRIDE_SCHEMA.host_strain_or_cell_line, name="samplePreparation__host_strain_or_cell_line", curie=BIOSTRIDE_SCHEMA.curie('host_strain_or_cell_line'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__host_strain_or_cell_line, domain=None, range=Optional[str])
+
+slots.samplePreparation__culture_volume_l = Slot(uri=BIOSTRIDE_SCHEMA.culture_volume_l, name="samplePreparation__culture_volume_l", curie=BIOSTRIDE_SCHEMA.curie('culture_volume_l'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__culture_volume_l, domain=None, range=Optional[float])
+
+slots.samplePreparation__medium = Slot(uri=BIOSTRIDE_SCHEMA.medium, name="samplePreparation__medium", curie=BIOSTRIDE_SCHEMA.curie('medium'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__medium, domain=None, range=Optional[str])
+
+slots.samplePreparation__antibiotic_selection = Slot(uri=BIOSTRIDE_SCHEMA.antibiotic_selection, name="samplePreparation__antibiotic_selection", curie=BIOSTRIDE_SCHEMA.curie('antibiotic_selection'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__antibiotic_selection, domain=None, range=Optional[str])
+
+slots.samplePreparation__growth_temperature_c = Slot(uri=BIOSTRIDE_SCHEMA.growth_temperature_c, name="samplePreparation__growth_temperature_c", curie=BIOSTRIDE_SCHEMA.curie('growth_temperature_c'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__growth_temperature_c, domain=None, range=Optional[float])
+
+slots.samplePreparation__induction_agent = Slot(uri=BIOSTRIDE_SCHEMA.induction_agent, name="samplePreparation__induction_agent", curie=BIOSTRIDE_SCHEMA.curie('induction_agent'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__induction_agent, domain=None, range=Optional[str])
+
+slots.samplePreparation__inducer_concentration = Slot(uri=BIOSTRIDE_SCHEMA.inducer_concentration, name="samplePreparation__inducer_concentration", curie=BIOSTRIDE_SCHEMA.curie('inducer_concentration'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__inducer_concentration, domain=None, range=Optional[str])
+
+slots.samplePreparation__induction_temperature_c = Slot(uri=BIOSTRIDE_SCHEMA.induction_temperature_c, name="samplePreparation__induction_temperature_c", curie=BIOSTRIDE_SCHEMA.curie('induction_temperature_c'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__induction_temperature_c, domain=None, range=Optional[float])
+
+slots.samplePreparation__induction_time_h = Slot(uri=BIOSTRIDE_SCHEMA.induction_time_h, name="samplePreparation__induction_time_h", curie=BIOSTRIDE_SCHEMA.curie('induction_time_h'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__induction_time_h, domain=None, range=Optional[float])
+
+slots.samplePreparation__od600_at_induction = Slot(uri=BIOSTRIDE_SCHEMA.od600_at_induction, name="samplePreparation__od600_at_induction", curie=BIOSTRIDE_SCHEMA.curie('od600_at_induction'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__od600_at_induction, domain=None, range=Optional[float])
+
+slots.samplePreparation__harvest_timepoint = Slot(uri=BIOSTRIDE_SCHEMA.harvest_timepoint, name="samplePreparation__harvest_timepoint", curie=BIOSTRIDE_SCHEMA.curie('harvest_timepoint'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__harvest_timepoint, domain=None, range=Optional[str])
+
+slots.samplePreparation__lysis_method = Slot(uri=BIOSTRIDE_SCHEMA.lysis_method, name="samplePreparation__lysis_method", curie=BIOSTRIDE_SCHEMA.curie('lysis_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__lysis_method, domain=None, range=Optional[str])
+
+slots.samplePreparation__protease_inhibitors = Slot(uri=BIOSTRIDE_SCHEMA.protease_inhibitors, name="samplePreparation__protease_inhibitors", curie=BIOSTRIDE_SCHEMA.curie('protease_inhibitors'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__protease_inhibitors, domain=None, range=Optional[str])
+
+slots.samplePreparation__purification_steps = Slot(uri=BIOSTRIDE_SCHEMA.purification_steps, name="samplePreparation__purification_steps", curie=BIOSTRIDE_SCHEMA.curie('purification_steps'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__purification_steps, domain=None, range=Optional[Union[Union[str, "PurificationStepEnum"], list[Union[str, "PurificationStepEnum"]]]])
+
+slots.samplePreparation__affinity_type = Slot(uri=BIOSTRIDE_SCHEMA.affinity_type, name="samplePreparation__affinity_type", curie=BIOSTRIDE_SCHEMA.curie('affinity_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__affinity_type, domain=None, range=Optional[str])
+
+slots.samplePreparation__affinity_column = Slot(uri=BIOSTRIDE_SCHEMA.affinity_column, name="samplePreparation__affinity_column", curie=BIOSTRIDE_SCHEMA.curie('affinity_column'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__affinity_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__lysis_buffer = Slot(uri=BIOSTRIDE_SCHEMA.lysis_buffer, name="samplePreparation__lysis_buffer", curie=BIOSTRIDE_SCHEMA.curie('lysis_buffer'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__lysis_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__wash_buffer = Slot(uri=BIOSTRIDE_SCHEMA.wash_buffer, name="samplePreparation__wash_buffer", curie=BIOSTRIDE_SCHEMA.curie('wash_buffer'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__wash_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__elution_buffer = Slot(uri=BIOSTRIDE_SCHEMA.elution_buffer, name="samplePreparation__elution_buffer", curie=BIOSTRIDE_SCHEMA.curie('elution_buffer'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__elution_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__tag_removal = Slot(uri=BIOSTRIDE_SCHEMA.tag_removal, name="samplePreparation__tag_removal", curie=BIOSTRIDE_SCHEMA.curie('tag_removal'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__tag_removal, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.samplePreparation__protease = Slot(uri=BIOSTRIDE_SCHEMA.protease, name="samplePreparation__protease", curie=BIOSTRIDE_SCHEMA.curie('protease'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__protease, domain=None, range=Optional[str])
+
+slots.samplePreparation__protease_ratio = Slot(uri=BIOSTRIDE_SCHEMA.protease_ratio, name="samplePreparation__protease_ratio", curie=BIOSTRIDE_SCHEMA.curie('protease_ratio'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__protease_ratio, domain=None, range=Optional[str])
+
+slots.samplePreparation__cleavage_time_h = Slot(uri=BIOSTRIDE_SCHEMA.cleavage_time_h, name="samplePreparation__cleavage_time_h", curie=BIOSTRIDE_SCHEMA.curie('cleavage_time_h'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__cleavage_time_h, domain=None, range=Optional[float])
+
+slots.samplePreparation__cleavage_temperature_c = Slot(uri=BIOSTRIDE_SCHEMA.cleavage_temperature_c, name="samplePreparation__cleavage_temperature_c", curie=BIOSTRIDE_SCHEMA.curie('cleavage_temperature_c'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__cleavage_temperature_c, domain=None, range=Optional[float])
+
+slots.samplePreparation__second_affinity_reverse = Slot(uri=BIOSTRIDE_SCHEMA.second_affinity_reverse, name="samplePreparation__second_affinity_reverse", curie=BIOSTRIDE_SCHEMA.curie('second_affinity_reverse'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__second_affinity_reverse, domain=None, range=Optional[str])
+
+slots.samplePreparation__iex_column = Slot(uri=BIOSTRIDE_SCHEMA.iex_column, name="samplePreparation__iex_column", curie=BIOSTRIDE_SCHEMA.curie('iex_column'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__iex_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__hic_column = Slot(uri=BIOSTRIDE_SCHEMA.hic_column, name="samplePreparation__hic_column", curie=BIOSTRIDE_SCHEMA.curie('hic_column'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__hic_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__sec_column = Slot(uri=BIOSTRIDE_SCHEMA.sec_column, name="samplePreparation__sec_column", curie=BIOSTRIDE_SCHEMA.curie('sec_column'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__sec_column, domain=None, range=Optional[str])
+
+slots.samplePreparation__sec_buffer = Slot(uri=BIOSTRIDE_SCHEMA.sec_buffer, name="samplePreparation__sec_buffer", curie=BIOSTRIDE_SCHEMA.curie('sec_buffer'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__sec_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__concentration_method = Slot(uri=BIOSTRIDE_SCHEMA.concentration_method, name="samplePreparation__concentration_method", curie=BIOSTRIDE_SCHEMA.curie('concentration_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__concentration_method, domain=None, range=Optional[str])
+
+slots.samplePreparation__final_buffer = Slot(uri=BIOSTRIDE_SCHEMA.final_buffer, name="samplePreparation__final_buffer", curie=BIOSTRIDE_SCHEMA.curie('final_buffer'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__final_buffer, domain=None, range=Optional[str])
+
+slots.samplePreparation__final_concentration_mg_per_ml = Slot(uri=BIOSTRIDE_SCHEMA.final_concentration_mg_per_ml, name="samplePreparation__final_concentration_mg_per_ml", curie=BIOSTRIDE_SCHEMA.curie('final_concentration_mg_per_ml'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__final_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.samplePreparation__yield_mg = Slot(uri=BIOSTRIDE_SCHEMA.yield_mg, name="samplePreparation__yield_mg", curie=BIOSTRIDE_SCHEMA.curie('yield_mg'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__yield_mg, domain=None, range=Optional[float])
+
+slots.samplePreparation__purity_by_sds_page_percent = Slot(uri=BIOSTRIDE_SCHEMA.purity_by_sds_page_percent, name="samplePreparation__purity_by_sds_page_percent", curie=BIOSTRIDE_SCHEMA.curie('purity_by_sds_page_percent'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__purity_by_sds_page_percent, domain=None, range=Optional[float])
+
+slots.samplePreparation__aggregation_assessment = Slot(uri=BIOSTRIDE_SCHEMA.aggregation_assessment, name="samplePreparation__aggregation_assessment", curie=BIOSTRIDE_SCHEMA.curie('aggregation_assessment'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__aggregation_assessment, domain=None, range=Optional[str])
+
+slots.samplePreparation__aliquoting = Slot(uri=BIOSTRIDE_SCHEMA.aliquoting, name="samplePreparation__aliquoting", curie=BIOSTRIDE_SCHEMA.curie('aliquoting'),
+                   model_uri=BIOSTRIDE_SCHEMA.samplePreparation__aliquoting, domain=None, range=Optional[str])
 
 slots.instrument__instrument_code = Slot(uri=BIOSTRIDE_SCHEMA.instrument_code, name="instrument__instrument_code", curie=BIOSTRIDE_SCHEMA.curie('instrument_code'),
                    model_uri=BIOSTRIDE_SCHEMA.instrument__instrument_code, domain=None, range=str)
@@ -2402,6 +5034,9 @@ slots.experimentRun__operator_id = Slot(uri=BIOSTRIDE_SCHEMA.operator_id, name="
 slots.experimentRun__technique = Slot(uri=BIOSTRIDE_SCHEMA.technique, name="experimentRun__technique", curie=BIOSTRIDE_SCHEMA.curie('technique'),
                    model_uri=BIOSTRIDE_SCHEMA.experimentRun__technique, domain=None, range=Union[str, "TechniqueEnum"])
 
+slots.experimentRun__experimental_method = Slot(uri=BIOSTRIDE_SCHEMA.experimental_method, name="experimentRun__experimental_method", curie=BIOSTRIDE_SCHEMA.curie('experimental_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.experimentRun__experimental_method, domain=None, range=Optional[Union[str, "ExperimentalMethodEnum"]])
+
 slots.experimentRun__experimental_conditions = Slot(uri=BIOSTRIDE_SCHEMA.experimental_conditions, name="experimentRun__experimental_conditions", curie=BIOSTRIDE_SCHEMA.curie('experimental_conditions'),
                    model_uri=BIOSTRIDE_SCHEMA.experimentRun__experimental_conditions, domain=None, range=Optional[Union[dict, ExperimentalConditions]])
 
@@ -2435,8 +5070,62 @@ slots.workflowRun__software_name = Slot(uri=BIOSTRIDE_SCHEMA.software_name, name
 slots.workflowRun__software_version = Slot(uri=BIOSTRIDE_SCHEMA.software_version, name="workflowRun__software_version", curie=BIOSTRIDE_SCHEMA.curie('software_version'),
                    model_uri=BIOSTRIDE_SCHEMA.workflowRun__software_version, domain=None, range=Optional[str])
 
+slots.workflowRun__additional_software = Slot(uri=BIOSTRIDE_SCHEMA.additional_software, name="workflowRun__additional_software", curie=BIOSTRIDE_SCHEMA.curie('additional_software'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__additional_software, domain=None, range=Optional[str])
+
 slots.workflowRun__processing_parameters = Slot(uri=BIOSTRIDE_SCHEMA.processing_parameters, name="workflowRun__processing_parameters", curie=BIOSTRIDE_SCHEMA.curie('processing_parameters'),
                    model_uri=BIOSTRIDE_SCHEMA.workflowRun__processing_parameters, domain=None, range=Optional[str])
+
+slots.workflowRun__parameters_file_path = Slot(uri=BIOSTRIDE_SCHEMA.parameters_file_path, name="workflowRun__parameters_file_path", curie=BIOSTRIDE_SCHEMA.curie('parameters_file_path'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__parameters_file_path, domain=None, range=Optional[str])
+
+slots.workflowRun__indexer_module = Slot(uri=BIOSTRIDE_SCHEMA.indexer_module, name="workflowRun__indexer_module", curie=BIOSTRIDE_SCHEMA.curie('indexer_module'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__indexer_module, domain=None, range=Optional[str])
+
+slots.workflowRun__integrator_module = Slot(uri=BIOSTRIDE_SCHEMA.integrator_module, name="workflowRun__integrator_module", curie=BIOSTRIDE_SCHEMA.curie('integrator_module'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__integrator_module, domain=None, range=Optional[str])
+
+slots.workflowRun__scaler_module = Slot(uri=BIOSTRIDE_SCHEMA.scaler_module, name="workflowRun__scaler_module", curie=BIOSTRIDE_SCHEMA.curie('scaler_module'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__scaler_module, domain=None, range=Optional[str])
+
+slots.workflowRun__outlier_rejection_method = Slot(uri=BIOSTRIDE_SCHEMA.outlier_rejection_method, name="workflowRun__outlier_rejection_method", curie=BIOSTRIDE_SCHEMA.curie('outlier_rejection_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__outlier_rejection_method, domain=None, range=Optional[str])
+
+slots.workflowRun__phasing_method = Slot(uri=BIOSTRIDE_SCHEMA.phasing_method, name="workflowRun__phasing_method", curie=BIOSTRIDE_SCHEMA.curie('phasing_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__phasing_method, domain=None, range=Optional[Union[str, "PhasingMethodEnum"]])
+
+slots.workflowRun__search_model_pdb_id = Slot(uri=BIOSTRIDE_SCHEMA.search_model_pdb_id, name="workflowRun__search_model_pdb_id", curie=BIOSTRIDE_SCHEMA.curie('search_model_pdb_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__search_model_pdb_id, domain=None, range=Optional[str])
+
+slots.workflowRun__tls_used = Slot(uri=BIOSTRIDE_SCHEMA.tls_used, name="workflowRun__tls_used", curie=BIOSTRIDE_SCHEMA.curie('tls_used'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__tls_used, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.workflowRun__ncs_used = Slot(uri=BIOSTRIDE_SCHEMA.ncs_used, name="workflowRun__ncs_used", curie=BIOSTRIDE_SCHEMA.curie('ncs_used'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__ncs_used, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.workflowRun__restraints_other = Slot(uri=BIOSTRIDE_SCHEMA.restraints_other, name="workflowRun__restraints_other", curie=BIOSTRIDE_SCHEMA.curie('restraints_other'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__restraints_other, domain=None, range=Optional[str])
+
+slots.workflowRun__ligands_cofactors = Slot(uri=BIOSTRIDE_SCHEMA.ligands_cofactors, name="workflowRun__ligands_cofactors", curie=BIOSTRIDE_SCHEMA.curie('ligands_cofactors'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__ligands_cofactors, domain=None, range=Optional[str])
+
+slots.workflowRun__number_of_waters = Slot(uri=BIOSTRIDE_SCHEMA.number_of_waters, name="workflowRun__number_of_waters", curie=BIOSTRIDE_SCHEMA.curie('number_of_waters'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__number_of_waters, domain=None, range=Optional[int])
+
+slots.workflowRun__refinement_resolution_a = Slot(uri=BIOSTRIDE_SCHEMA.refinement_resolution_a, name="workflowRun__refinement_resolution_a", curie=BIOSTRIDE_SCHEMA.curie('refinement_resolution_a'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__refinement_resolution_a, domain=None, range=Optional[float])
+
+slots.workflowRun__deposited_to_pdb = Slot(uri=BIOSTRIDE_SCHEMA.deposited_to_pdb, name="workflowRun__deposited_to_pdb", curie=BIOSTRIDE_SCHEMA.curie('deposited_to_pdb'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__deposited_to_pdb, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.workflowRun__pdb_id = Slot(uri=BIOSTRIDE_SCHEMA.pdb_id, name="workflowRun__pdb_id", curie=BIOSTRIDE_SCHEMA.curie('pdb_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__pdb_id, domain=None, range=Optional[str])
+
+slots.workflowRun__validation_report_path = Slot(uri=BIOSTRIDE_SCHEMA.validation_report_path, name="workflowRun__validation_report_path", curie=BIOSTRIDE_SCHEMA.curie('validation_report_path'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__validation_report_path, domain=None, range=Optional[str])
+
+slots.workflowRun__processing_notes = Slot(uri=BIOSTRIDE_SCHEMA.processing_notes, name="workflowRun__processing_notes", curie=BIOSTRIDE_SCHEMA.curie('processing_notes'),
+                   model_uri=BIOSTRIDE_SCHEMA.workflowRun__processing_notes, domain=None, range=Optional[str])
 
 slots.workflowRun__compute_resources = Slot(uri=BIOSTRIDE_SCHEMA.compute_resources, name="workflowRun__compute_resources", curie=BIOSTRIDE_SCHEMA.curie('compute_resources'),
                    model_uri=BIOSTRIDE_SCHEMA.workflowRun__compute_resources, domain=None, range=Optional[Union[dict, ComputeResources]])
@@ -2666,14 +5355,53 @@ slots.cryoEMPreparation__chamber_temperature = Slot(uri=BIOSTRIDE_SCHEMA.chamber
 slots.cryoEMPreparation__plasma_treatment = Slot(uri=BIOSTRIDE_SCHEMA.plasma_treatment, name="cryoEMPreparation__plasma_treatment", curie=BIOSTRIDE_SCHEMA.curie('plasma_treatment'),
                    model_uri=BIOSTRIDE_SCHEMA.cryoEMPreparation__plasma_treatment, domain=None, range=Optional[str])
 
+slots.xRayPreparation__protein_concentration_mg_per_ml = Slot(uri=BIOSTRIDE_SCHEMA.protein_concentration_mg_per_ml, name="xRayPreparation__protein_concentration_mg_per_ml", curie=BIOSTRIDE_SCHEMA.curie('protein_concentration_mg_per_ml'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__protein_concentration_mg_per_ml, domain=None, range=Optional[float])
+
+slots.xRayPreparation__protein_buffer = Slot(uri=BIOSTRIDE_SCHEMA.protein_buffer, name="xRayPreparation__protein_buffer", curie=BIOSTRIDE_SCHEMA.curie('protein_buffer'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__protein_buffer, domain=None, range=Optional[str])
+
+slots.xRayPreparation__additives = Slot(uri=BIOSTRIDE_SCHEMA.additives, name="xRayPreparation__additives", curie=BIOSTRIDE_SCHEMA.curie('additives'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__additives, domain=None, range=Optional[str])
+
 slots.xRayPreparation__crystallization_method = Slot(uri=BIOSTRIDE_SCHEMA.crystallization_method, name="xRayPreparation__crystallization_method", curie=BIOSTRIDE_SCHEMA.curie('crystallization_method'),
                    model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__crystallization_method, domain=None, range=Optional[Union[str, "CrystallizationMethodEnum"]])
+
+slots.xRayPreparation__screen_name = Slot(uri=BIOSTRIDE_SCHEMA.screen_name, name="xRayPreparation__screen_name", curie=BIOSTRIDE_SCHEMA.curie('screen_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__screen_name, domain=None, range=Optional[str])
+
+slots.xRayPreparation__temperature_c = Slot(uri=BIOSTRIDE_SCHEMA.temperature_c, name="xRayPreparation__temperature_c", curie=BIOSTRIDE_SCHEMA.curie('temperature_c'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__temperature_c, domain=None, range=Optional[float])
+
+slots.xRayPreparation__drop_ratio_protein_to_reservoir = Slot(uri=BIOSTRIDE_SCHEMA.drop_ratio_protein_to_reservoir, name="xRayPreparation__drop_ratio_protein_to_reservoir", curie=BIOSTRIDE_SCHEMA.curie('drop_ratio_protein_to_reservoir'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__drop_ratio_protein_to_reservoir, domain=None, range=Optional[str])
+
+slots.xRayPreparation__drop_volume_nl = Slot(uri=BIOSTRIDE_SCHEMA.drop_volume_nl, name="xRayPreparation__drop_volume_nl", curie=BIOSTRIDE_SCHEMA.curie('drop_volume_nl'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__drop_volume_nl, domain=None, range=Optional[float])
+
+slots.xRayPreparation__reservoir_volume_ul = Slot(uri=BIOSTRIDE_SCHEMA.reservoir_volume_ul, name="xRayPreparation__reservoir_volume_ul", curie=BIOSTRIDE_SCHEMA.curie('reservoir_volume_ul'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__reservoir_volume_ul, domain=None, range=Optional[float])
+
+slots.xRayPreparation__seeding_type = Slot(uri=BIOSTRIDE_SCHEMA.seeding_type, name="xRayPreparation__seeding_type", curie=BIOSTRIDE_SCHEMA.curie('seeding_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__seeding_type, domain=None, range=Optional[str])
+
+slots.xRayPreparation__seed_stock_dilution = Slot(uri=BIOSTRIDE_SCHEMA.seed_stock_dilution, name="xRayPreparation__seed_stock_dilution", curie=BIOSTRIDE_SCHEMA.curie('seed_stock_dilution'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__seed_stock_dilution, domain=None, range=Optional[str])
+
+slots.xRayPreparation__initial_hit_condition = Slot(uri=BIOSTRIDE_SCHEMA.initial_hit_condition, name="xRayPreparation__initial_hit_condition", curie=BIOSTRIDE_SCHEMA.curie('initial_hit_condition'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__initial_hit_condition, domain=None, range=Optional[str])
+
+slots.xRayPreparation__optimization_strategy = Slot(uri=BIOSTRIDE_SCHEMA.optimization_strategy, name="xRayPreparation__optimization_strategy", curie=BIOSTRIDE_SCHEMA.curie('optimization_strategy'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__optimization_strategy, domain=None, range=Optional[str])
+
+slots.xRayPreparation__optimized_condition = Slot(uri=BIOSTRIDE_SCHEMA.optimized_condition, name="xRayPreparation__optimized_condition", curie=BIOSTRIDE_SCHEMA.curie('optimized_condition'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__optimized_condition, domain=None, range=Optional[str])
 
 slots.xRayPreparation__crystallization_conditions = Slot(uri=BIOSTRIDE_SCHEMA.crystallization_conditions, name="xRayPreparation__crystallization_conditions", curie=BIOSTRIDE_SCHEMA.curie('crystallization_conditions'),
                    model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__crystallization_conditions, domain=None, range=Optional[str])
 
-slots.xRayPreparation__crystal_size = Slot(uri=BIOSTRIDE_SCHEMA.crystal_size, name="xRayPreparation__crystal_size", curie=BIOSTRIDE_SCHEMA.curie('crystal_size'),
-                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__crystal_size, domain=None, range=Optional[str])
+slots.xRayPreparation__crystal_size_um = Slot(uri=BIOSTRIDE_SCHEMA.crystal_size_um, name="xRayPreparation__crystal_size_um", curie=BIOSTRIDE_SCHEMA.curie('crystal_size_um'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__crystal_size_um, domain=None, range=Optional[str])
 
 slots.xRayPreparation__cryoprotectant = Slot(uri=BIOSTRIDE_SCHEMA.cryoprotectant, name="xRayPreparation__cryoprotectant", curie=BIOSTRIDE_SCHEMA.curie('cryoprotectant'),
                    model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__cryoprotectant, domain=None, range=Optional[str])
@@ -2681,11 +5409,20 @@ slots.xRayPreparation__cryoprotectant = Slot(uri=BIOSTRIDE_SCHEMA.cryoprotectant
 slots.xRayPreparation__cryoprotectant_concentration = Slot(uri=BIOSTRIDE_SCHEMA.cryoprotectant_concentration, name="xRayPreparation__cryoprotectant_concentration", curie=BIOSTRIDE_SCHEMA.curie('cryoprotectant_concentration'),
                    model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__cryoprotectant_concentration, domain=None, range=Optional[float])
 
+slots.xRayPreparation__soak_compound = Slot(uri=BIOSTRIDE_SCHEMA.soak_compound, name="xRayPreparation__soak_compound", curie=BIOSTRIDE_SCHEMA.curie('soak_compound'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__soak_compound, domain=None, range=Optional[str])
+
+slots.xRayPreparation__soak_conditions = Slot(uri=BIOSTRIDE_SCHEMA.soak_conditions, name="xRayPreparation__soak_conditions", curie=BIOSTRIDE_SCHEMA.curie('soak_conditions'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__soak_conditions, domain=None, range=Optional[str])
+
 slots.xRayPreparation__mounting_method = Slot(uri=BIOSTRIDE_SCHEMA.mounting_method, name="xRayPreparation__mounting_method", curie=BIOSTRIDE_SCHEMA.curie('mounting_method'),
                    model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__mounting_method, domain=None, range=Optional[str])
 
 slots.xRayPreparation__flash_cooling_method = Slot(uri=BIOSTRIDE_SCHEMA.flash_cooling_method, name="xRayPreparation__flash_cooling_method", curie=BIOSTRIDE_SCHEMA.curie('flash_cooling_method'),
                    model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__flash_cooling_method, domain=None, range=Optional[str])
+
+slots.xRayPreparation__crystal_notes = Slot(uri=BIOSTRIDE_SCHEMA.crystal_notes, name="xRayPreparation__crystal_notes", curie=BIOSTRIDE_SCHEMA.curie('crystal_notes'),
+                   model_uri=BIOSTRIDE_SCHEMA.xRayPreparation__crystal_notes, domain=None, range=Optional[str])
 
 slots.sAXSPreparation__concentration_series = Slot(uri=BIOSTRIDE_SCHEMA.concentration_series, name="sAXSPreparation__concentration_series", curie=BIOSTRIDE_SCHEMA.curie('concentration_series'),
                    model_uri=BIOSTRIDE_SCHEMA.sAXSPreparation__concentration_series, domain=None, range=Optional[Union[float, list[float]]])
@@ -2735,23 +5472,140 @@ slots.dataCollectionStrategy__total_dose = Slot(uri=BIOSTRIDE_SCHEMA.total_dose,
 slots.dataCollectionStrategy__dose_per_frame = Slot(uri=BIOSTRIDE_SCHEMA.dose_per_frame, name="dataCollectionStrategy__dose_per_frame", curie=BIOSTRIDE_SCHEMA.curie('dose_per_frame'),
                    model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__dose_per_frame, domain=None, range=Optional[float])
 
+slots.dataCollectionStrategy__wavelength_a = Slot(uri=BIOSTRIDE_SCHEMA.wavelength_a, name="dataCollectionStrategy__wavelength_a", curie=BIOSTRIDE_SCHEMA.curie('wavelength_a'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__wavelength_a, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__detector = Slot(uri=BIOSTRIDE_SCHEMA.detector, name="dataCollectionStrategy__detector", curie=BIOSTRIDE_SCHEMA.curie('detector'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__detector, domain=None, range=Optional[str])
+
+slots.dataCollectionStrategy__detector_distance_mm = Slot(uri=BIOSTRIDE_SCHEMA.detector_distance_mm, name="dataCollectionStrategy__detector_distance_mm", curie=BIOSTRIDE_SCHEMA.curie('detector_distance_mm'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__detector_distance_mm, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__beam_center_x_px = Slot(uri=BIOSTRIDE_SCHEMA.beam_center_x_px, name="dataCollectionStrategy__beam_center_x_px", curie=BIOSTRIDE_SCHEMA.curie('beam_center_x_px'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__beam_center_x_px, domain=None, range=Optional[int])
+
+slots.dataCollectionStrategy__beam_center_y_px = Slot(uri=BIOSTRIDE_SCHEMA.beam_center_y_px, name="dataCollectionStrategy__beam_center_y_px", curie=BIOSTRIDE_SCHEMA.curie('beam_center_y_px'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__beam_center_y_px, domain=None, range=Optional[int])
+
+slots.dataCollectionStrategy__beam_size_um = Slot(uri=BIOSTRIDE_SCHEMA.beam_size_um, name="dataCollectionStrategy__beam_size_um", curie=BIOSTRIDE_SCHEMA.curie('beam_size_um'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__beam_size_um, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__flux_photons_per_s = Slot(uri=BIOSTRIDE_SCHEMA.flux_photons_per_s, name="dataCollectionStrategy__flux_photons_per_s", curie=BIOSTRIDE_SCHEMA.curie('flux_photons_per_s'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__flux_photons_per_s, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__transmission_percent = Slot(uri=BIOSTRIDE_SCHEMA.transmission_percent, name="dataCollectionStrategy__transmission_percent", curie=BIOSTRIDE_SCHEMA.curie('transmission_percent'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__transmission_percent, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__attenuator = Slot(uri=BIOSTRIDE_SCHEMA.attenuator, name="dataCollectionStrategy__attenuator", curie=BIOSTRIDE_SCHEMA.curie('attenuator'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__attenuator, domain=None, range=Optional[str])
+
+slots.dataCollectionStrategy__temperature_k = Slot(uri=BIOSTRIDE_SCHEMA.temperature_k, name="dataCollectionStrategy__temperature_k", curie=BIOSTRIDE_SCHEMA.curie('temperature_k'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__temperature_k, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__oscillation_per_image_deg = Slot(uri=BIOSTRIDE_SCHEMA.oscillation_per_image_deg, name="dataCollectionStrategy__oscillation_per_image_deg", curie=BIOSTRIDE_SCHEMA.curie('oscillation_per_image_deg'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__oscillation_per_image_deg, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__total_rotation_deg = Slot(uri=BIOSTRIDE_SCHEMA.total_rotation_deg, name="dataCollectionStrategy__total_rotation_deg", curie=BIOSTRIDE_SCHEMA.curie('total_rotation_deg'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__total_rotation_deg, domain=None, range=Optional[float])
+
+slots.dataCollectionStrategy__strategy_notes = Slot(uri=BIOSTRIDE_SCHEMA.strategy_notes, name="dataCollectionStrategy__strategy_notes", curie=BIOSTRIDE_SCHEMA.curie('strategy_notes'),
+                   model_uri=BIOSTRIDE_SCHEMA.dataCollectionStrategy__strategy_notes, domain=None, range=Optional[str])
+
 slots.qualityMetrics__resolution = Slot(uri=BIOSTRIDE_SCHEMA.resolution, name="qualityMetrics__resolution", curie=BIOSTRIDE_SCHEMA.curie('resolution'),
                    model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__resolution, domain=None, range=Optional[float])
+
+slots.qualityMetrics__resolution_high_shell_a = Slot(uri=BIOSTRIDE_SCHEMA.resolution_high_shell_a, name="qualityMetrics__resolution_high_shell_a", curie=BIOSTRIDE_SCHEMA.curie('resolution_high_shell_a'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__resolution_high_shell_a, domain=None, range=Optional[float])
+
+slots.qualityMetrics__resolution_low_a = Slot(uri=BIOSTRIDE_SCHEMA.resolution_low_a, name="qualityMetrics__resolution_low_a", curie=BIOSTRIDE_SCHEMA.curie('resolution_low_a'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__resolution_low_a, domain=None, range=Optional[float])
 
 slots.qualityMetrics__completeness = Slot(uri=BIOSTRIDE_SCHEMA.completeness, name="qualityMetrics__completeness", curie=BIOSTRIDE_SCHEMA.curie('completeness'),
                    model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__completeness, domain=None, range=Optional[float])
 
+slots.qualityMetrics__completeness_high_res_shell_percent = Slot(uri=BIOSTRIDE_SCHEMA.completeness_high_res_shell_percent, name="qualityMetrics__completeness_high_res_shell_percent", curie=BIOSTRIDE_SCHEMA.curie('completeness_high_res_shell_percent'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__completeness_high_res_shell_percent, domain=None, range=Optional[float])
+
 slots.qualityMetrics__signal_to_noise = Slot(uri=BIOSTRIDE_SCHEMA.signal_to_noise, name="qualityMetrics__signal_to_noise", curie=BIOSTRIDE_SCHEMA.curie('signal_to_noise'),
                    model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__signal_to_noise, domain=None, range=Optional[float])
 
-slots.qualityMetrics__r_factor = Slot(uri=BIOSTRIDE_SCHEMA.r_factor, name="qualityMetrics__r_factor", curie=BIOSTRIDE_SCHEMA.curie('r_factor'),
-                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_factor, domain=None, range=Optional[float])
+slots.qualityMetrics__mean_i_over_sigma_i = Slot(uri=BIOSTRIDE_SCHEMA.mean_i_over_sigma_i, name="qualityMetrics__mean_i_over_sigma_i", curie=BIOSTRIDE_SCHEMA.curie('mean_i_over_sigma_i'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__mean_i_over_sigma_i, domain=None, range=Optional[float])
+
+slots.qualityMetrics__space_group = Slot(uri=BIOSTRIDE_SCHEMA.space_group, name="qualityMetrics__space_group", curie=BIOSTRIDE_SCHEMA.curie('space_group'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__space_group, domain=None, range=Optional[str])
+
+slots.qualityMetrics__unit_cell_a = Slot(uri=BIOSTRIDE_SCHEMA.unit_cell_a, name="qualityMetrics__unit_cell_a", curie=BIOSTRIDE_SCHEMA.curie('unit_cell_a'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__unit_cell_a, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_b = Slot(uri=BIOSTRIDE_SCHEMA.unit_cell_b, name="qualityMetrics__unit_cell_b", curie=BIOSTRIDE_SCHEMA.curie('unit_cell_b'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__unit_cell_b, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_c = Slot(uri=BIOSTRIDE_SCHEMA.unit_cell_c, name="qualityMetrics__unit_cell_c", curie=BIOSTRIDE_SCHEMA.curie('unit_cell_c'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__unit_cell_c, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_alpha = Slot(uri=BIOSTRIDE_SCHEMA.unit_cell_alpha, name="qualityMetrics__unit_cell_alpha", curie=BIOSTRIDE_SCHEMA.curie('unit_cell_alpha'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__unit_cell_alpha, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_beta = Slot(uri=BIOSTRIDE_SCHEMA.unit_cell_beta, name="qualityMetrics__unit_cell_beta", curie=BIOSTRIDE_SCHEMA.curie('unit_cell_beta'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__unit_cell_beta, domain=None, range=Optional[float])
+
+slots.qualityMetrics__unit_cell_gamma = Slot(uri=BIOSTRIDE_SCHEMA.unit_cell_gamma, name="qualityMetrics__unit_cell_gamma", curie=BIOSTRIDE_SCHEMA.curie('unit_cell_gamma'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__unit_cell_gamma, domain=None, range=Optional[float])
+
+slots.qualityMetrics__multiplicity = Slot(uri=BIOSTRIDE_SCHEMA.multiplicity, name="qualityMetrics__multiplicity", curie=BIOSTRIDE_SCHEMA.curie('multiplicity'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__multiplicity, domain=None, range=Optional[float])
+
+slots.qualityMetrics__cc_half = Slot(uri=BIOSTRIDE_SCHEMA.cc_half, name="qualityMetrics__cc_half", curie=BIOSTRIDE_SCHEMA.curie('cc_half'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__cc_half, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_merge = Slot(uri=BIOSTRIDE_SCHEMA.r_merge, name="qualityMetrics__r_merge", curie=BIOSTRIDE_SCHEMA.curie('r_merge'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_merge, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_pim = Slot(uri=BIOSTRIDE_SCHEMA.r_pim, name="qualityMetrics__r_pim", curie=BIOSTRIDE_SCHEMA.curie('r_pim'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_pim, domain=None, range=Optional[float])
+
+slots.qualityMetrics__wilson_b_factor_a2 = Slot(uri=BIOSTRIDE_SCHEMA.wilson_b_factor_a2, name="qualityMetrics__wilson_b_factor_a2", curie=BIOSTRIDE_SCHEMA.curie('wilson_b_factor_a2'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__wilson_b_factor_a2, domain=None, range=Optional[float])
+
+slots.qualityMetrics__anomalous_used = Slot(uri=BIOSTRIDE_SCHEMA.anomalous_used, name="qualityMetrics__anomalous_used", curie=BIOSTRIDE_SCHEMA.curie('anomalous_used'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__anomalous_used, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.qualityMetrics__anom_corr = Slot(uri=BIOSTRIDE_SCHEMA.anom_corr, name="qualityMetrics__anom_corr", curie=BIOSTRIDE_SCHEMA.curie('anom_corr'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__anom_corr, domain=None, range=Optional[float])
+
+slots.qualityMetrics__anom_sig_ano = Slot(uri=BIOSTRIDE_SCHEMA.anom_sig_ano, name="qualityMetrics__anom_sig_ano", curie=BIOSTRIDE_SCHEMA.curie('anom_sig_ano'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__anom_sig_ano, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_work = Slot(uri=BIOSTRIDE_SCHEMA.r_work, name="qualityMetrics__r_work", curie=BIOSTRIDE_SCHEMA.curie('r_work'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_work, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_free = Slot(uri=BIOSTRIDE_SCHEMA.r_free, name="qualityMetrics__r_free", curie=BIOSTRIDE_SCHEMA.curie('r_free'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_free, domain=None, range=Optional[float])
+
+slots.qualityMetrics__ramachandran_favored_percent = Slot(uri=BIOSTRIDE_SCHEMA.ramachandran_favored_percent, name="qualityMetrics__ramachandran_favored_percent", curie=BIOSTRIDE_SCHEMA.curie('ramachandran_favored_percent'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__ramachandran_favored_percent, domain=None, range=Optional[float])
+
+slots.qualityMetrics__ramachandran_outliers_percent = Slot(uri=BIOSTRIDE_SCHEMA.ramachandran_outliers_percent, name="qualityMetrics__ramachandran_outliers_percent", curie=BIOSTRIDE_SCHEMA.curie('ramachandran_outliers_percent'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__ramachandran_outliers_percent, domain=None, range=Optional[float])
+
+slots.qualityMetrics__clashscore = Slot(uri=BIOSTRIDE_SCHEMA.clashscore, name="qualityMetrics__clashscore", curie=BIOSTRIDE_SCHEMA.curie('clashscore'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__clashscore, domain=None, range=Optional[float])
+
+slots.qualityMetrics__molprobity_score = Slot(uri=BIOSTRIDE_SCHEMA.molprobity_score, name="qualityMetrics__molprobity_score", curie=BIOSTRIDE_SCHEMA.curie('molprobity_score'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__molprobity_score, domain=None, range=Optional[float])
+
+slots.qualityMetrics__average_b_factor_a2 = Slot(uri=BIOSTRIDE_SCHEMA.average_b_factor_a2, name="qualityMetrics__average_b_factor_a2", curie=BIOSTRIDE_SCHEMA.curie('average_b_factor_a2'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__average_b_factor_a2, domain=None, range=Optional[float])
 
 slots.qualityMetrics__i_zero = Slot(uri=BIOSTRIDE_SCHEMA.i_zero, name="qualityMetrics__i_zero", curie=BIOSTRIDE_SCHEMA.curie('i_zero'),
                    model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__i_zero, domain=None, range=Optional[float])
 
 slots.qualityMetrics__rg = Slot(uri=BIOSTRIDE_SCHEMA.rg, name="qualityMetrics__rg", curie=BIOSTRIDE_SCHEMA.curie('rg'),
                    model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__rg, domain=None, range=Optional[float])
+
+slots.qualityMetrics__r_factor = Slot(uri=BIOSTRIDE_SCHEMA.r_factor, name="qualityMetrics__r_factor", curie=BIOSTRIDE_SCHEMA.curie('r_factor'),
+                   model_uri=BIOSTRIDE_SCHEMA.qualityMetrics__r_factor, domain=None, range=Optional[float])
 
 slots.computeResources__cpu_hours = Slot(uri=BIOSTRIDE_SCHEMA.cpu_hours, name="computeResources__cpu_hours", curie=BIOSTRIDE_SCHEMA.curie('cpu_hours'),
                    model_uri=BIOSTRIDE_SCHEMA.computeResources__cpu_hours, domain=None, range=Optional[float])
@@ -2764,3 +5618,358 @@ slots.computeResources__memory_gb = Slot(uri=BIOSTRIDE_SCHEMA.memory_gb, name="c
 
 slots.computeResources__storage_gb = Slot(uri=BIOSTRIDE_SCHEMA.storage_gb, name="computeResources__storage_gb", curie=BIOSTRIDE_SCHEMA.curie('storage_gb'),
                    model_uri=BIOSTRIDE_SCHEMA.computeResources__storage_gb, domain=None, range=Optional[float])
+
+slots.proteinAnnotation__protein_id = Slot(uri=BIOSTRIDE_FUNC.protein_id, name="proteinAnnotation__protein_id", curie=BIOSTRIDE_FUNC.curie('protein_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__protein_id, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Z][0-9][A-Z0-9]{3}[0-9]|[A-Z][0-9][A-Z0-9]{3}[0-9]-[0-9]+$'))
+
+slots.proteinAnnotation__pdb_entry = Slot(uri=BIOSTRIDE_FUNC.pdb_entry, name="proteinAnnotation__pdb_entry", curie=BIOSTRIDE_FUNC.curie('pdb_entry'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__pdb_entry, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9][A-Za-z0-9]{3}$'))
+
+slots.proteinAnnotation__chain_id = Slot(uri=BIOSTRIDE_FUNC.chain_id, name="proteinAnnotation__chain_id", curie=BIOSTRIDE_FUNC.curie('chain_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__chain_id, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-Za-z0-9]+$'))
+
+slots.proteinAnnotation__residue_range = Slot(uri=BIOSTRIDE_FUNC.residue_range, name="proteinAnnotation__residue_range", curie=BIOSTRIDE_FUNC.curie('residue_range'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__residue_range, domain=None, range=Optional[str])
+
+slots.proteinAnnotation__confidence_score = Slot(uri=BIOSTRIDE_FUNC.confidence_score, name="proteinAnnotation__confidence_score", curie=BIOSTRIDE_FUNC.curie('confidence_score'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__confidence_score, domain=None, range=Optional[float])
+
+slots.proteinAnnotation__evidence_type = Slot(uri=BIOSTRIDE_FUNC.evidence_type, name="proteinAnnotation__evidence_type", curie=BIOSTRIDE_FUNC.curie('evidence_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__evidence_type, domain=None, range=Optional[Union[str, "EvidenceTypeEnum"]])
+
+slots.proteinAnnotation__evidence_code = Slot(uri=BIOSTRIDE_FUNC.evidence_code, name="proteinAnnotation__evidence_code", curie=BIOSTRIDE_FUNC.curie('evidence_code'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__evidence_code, domain=None, range=Optional[Union[str, URIorCURIE]])
+
+slots.proteinAnnotation__source_database = Slot(uri=BIOSTRIDE_FUNC.source_database, name="proteinAnnotation__source_database", curie=BIOSTRIDE_FUNC.curie('source_database'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__source_database, domain=None, range=Optional[Union[str, "AnnotationSourceEnum"]])
+
+slots.proteinAnnotation__annotation_method = Slot(uri=BIOSTRIDE_FUNC.annotation_method, name="proteinAnnotation__annotation_method", curie=BIOSTRIDE_FUNC.curie('annotation_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__annotation_method, domain=None, range=Optional[str])
+
+slots.proteinAnnotation__publication_ids = Slot(uri=BIOSTRIDE_FUNC.publication_ids, name="proteinAnnotation__publication_ids", curie=BIOSTRIDE_FUNC.curie('publication_ids'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinAnnotation__publication_ids, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^PMID:[0-9]+$'))
+
+slots.functionalSite__site_type = Slot(uri=BIOSTRIDE_FUNC.site_type, name="functionalSite__site_type", curie=BIOSTRIDE_FUNC.curie('site_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__site_type, domain=None, range=Union[str, "FunctionalSiteTypeEnum"])
+
+slots.functionalSite__site_name = Slot(uri=BIOSTRIDE_FUNC.site_name, name="functionalSite__site_name", curie=BIOSTRIDE_FUNC.curie('site_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__site_name, domain=None, range=Optional[str])
+
+slots.functionalSite__residues = Slot(uri=BIOSTRIDE_FUNC.residues, name="functionalSite__residues", curie=BIOSTRIDE_FUNC.curie('residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.functionalSite__ligand_interactions = Slot(uri=BIOSTRIDE_FUNC.ligand_interactions, name="functionalSite__ligand_interactions", curie=BIOSTRIDE_FUNC.curie('ligand_interactions'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.functionalSite__conservation_score = Slot(uri=BIOSTRIDE_FUNC.conservation_score, name="functionalSite__conservation_score", curie=BIOSTRIDE_FUNC.curie('conservation_score'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__conservation_score, domain=None, range=Optional[float])
+
+slots.functionalSite__functional_importance = Slot(uri=BIOSTRIDE_FUNC.functional_importance, name="functionalSite__functional_importance", curie=BIOSTRIDE_FUNC.curie('functional_importance'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__functional_importance, domain=None, range=Optional[str])
+
+slots.functionalSite__go_terms = Slot(uri=BIOSTRIDE_FUNC.go_terms, name="functionalSite__go_terms", curie=BIOSTRIDE_FUNC.curie('go_terms'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__go_terms, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
+
+slots.functionalSite__ec_number = Slot(uri=BIOSTRIDE_FUNC.ec_number, name="functionalSite__ec_number", curie=BIOSTRIDE_FUNC.curie('ec_number'),
+                   model_uri=BIOSTRIDE_SCHEMA.functionalSite__ec_number, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'))
+
+slots.structuralFeature__feature_type = Slot(uri=BIOSTRIDE_FUNC.feature_type, name="structuralFeature__feature_type", curie=BIOSTRIDE_FUNC.curie('feature_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__feature_type, domain=None, range=Union[str, "StructuralFeatureTypeEnum"])
+
+slots.structuralFeature__secondary_structure = Slot(uri=BIOSTRIDE_FUNC.secondary_structure, name="structuralFeature__secondary_structure", curie=BIOSTRIDE_FUNC.curie('secondary_structure'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__secondary_structure, domain=None, range=Optional[Union[str, "SecondaryStructureEnum"]])
+
+slots.structuralFeature__solvent_accessibility = Slot(uri=BIOSTRIDE_FUNC.solvent_accessibility, name="structuralFeature__solvent_accessibility", curie=BIOSTRIDE_FUNC.curie('solvent_accessibility'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__solvent_accessibility, domain=None, range=Optional[float])
+
+slots.structuralFeature__backbone_flexibility = Slot(uri=BIOSTRIDE_FUNC.backbone_flexibility, name="structuralFeature__backbone_flexibility", curie=BIOSTRIDE_FUNC.curie('backbone_flexibility'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__backbone_flexibility, domain=None, range=Optional[float])
+
+slots.structuralFeature__disorder_probability = Slot(uri=BIOSTRIDE_FUNC.disorder_probability, name="structuralFeature__disorder_probability", curie=BIOSTRIDE_FUNC.curie('disorder_probability'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__disorder_probability, domain=None, range=Optional[float])
+
+slots.structuralFeature__conformational_state = Slot(uri=BIOSTRIDE_FUNC.conformational_state, name="structuralFeature__conformational_state", curie=BIOSTRIDE_FUNC.curie('conformational_state'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__conformational_state, domain=None, range=Optional[Union[str, "ConformationalStateEnum"]])
+
+slots.structuralFeature__structural_motif = Slot(uri=BIOSTRIDE_FUNC.structural_motif, name="structuralFeature__structural_motif", curie=BIOSTRIDE_FUNC.curie('structural_motif'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__structural_motif, domain=None, range=Optional[str])
+
+slots.structuralFeature__domain_assignment = Slot(uri=BIOSTRIDE_FUNC.domain_assignment, name="structuralFeature__domain_assignment", curie=BIOSTRIDE_FUNC.curie('domain_assignment'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__domain_assignment, domain=None, range=Optional[str])
+
+slots.structuralFeature__domain_id = Slot(uri=BIOSTRIDE_FUNC.domain_id, name="structuralFeature__domain_id", curie=BIOSTRIDE_FUNC.curie('domain_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.structuralFeature__domain_id, domain=None, range=Optional[str])
+
+slots.ligandInteraction__ligand_id = Slot(uri=BIOSTRIDE_FUNC.ligand_id, name="ligandInteraction__ligand_id", curie=BIOSTRIDE_FUNC.curie('ligand_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__ligand_id, domain=None, range=str)
+
+slots.ligandInteraction__ligand_name = Slot(uri=BIOSTRIDE_FUNC.ligand_name, name="ligandInteraction__ligand_name", curie=BIOSTRIDE_FUNC.curie('ligand_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__ligand_name, domain=None, range=str)
+
+slots.ligandInteraction__ligand_smiles = Slot(uri=BIOSTRIDE_FUNC.ligand_smiles, name="ligandInteraction__ligand_smiles", curie=BIOSTRIDE_FUNC.curie('ligand_smiles'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__ligand_smiles, domain=None, range=Optional[str])
+
+slots.ligandInteraction__binding_affinity = Slot(uri=BIOSTRIDE_FUNC.binding_affinity, name="ligandInteraction__binding_affinity", curie=BIOSTRIDE_FUNC.curie('binding_affinity'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__binding_affinity, domain=None, range=Optional[float])
+
+slots.ligandInteraction__binding_affinity_type = Slot(uri=BIOSTRIDE_FUNC.binding_affinity_type, name="ligandInteraction__binding_affinity_type", curie=BIOSTRIDE_FUNC.curie('binding_affinity_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__binding_affinity_type, domain=None, range=Optional[Union[str, "BindingAffinityTypeEnum"]])
+
+slots.ligandInteraction__binding_affinity_unit = Slot(uri=BIOSTRIDE_FUNC.binding_affinity_unit, name="ligandInteraction__binding_affinity_unit", curie=BIOSTRIDE_FUNC.curie('binding_affinity_unit'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__binding_affinity_unit, domain=None, range=Optional[Union[str, "AffinityUnitEnum"]])
+
+slots.ligandInteraction__interaction_type = Slot(uri=BIOSTRIDE_FUNC.interaction_type, name="ligandInteraction__interaction_type", curie=BIOSTRIDE_FUNC.curie('interaction_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__interaction_type, domain=None, range=Optional[Union[str, "InteractionTypeEnum"]])
+
+slots.ligandInteraction__binding_site_residues = Slot(uri=BIOSTRIDE_FUNC.binding_site_residues, name="ligandInteraction__binding_site_residues", curie=BIOSTRIDE_FUNC.curie('binding_site_residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__binding_site_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.ligandInteraction__is_cofactor = Slot(uri=BIOSTRIDE_FUNC.is_cofactor, name="ligandInteraction__is_cofactor", curie=BIOSTRIDE_FUNC.curie('is_cofactor'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__is_cofactor, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.ligandInteraction__is_drug_like = Slot(uri=BIOSTRIDE_FUNC.is_drug_like, name="ligandInteraction__is_drug_like", curie=BIOSTRIDE_FUNC.curie('is_drug_like'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__is_drug_like, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.ligandInteraction__druggability_score = Slot(uri=BIOSTRIDE_FUNC.druggability_score, name="ligandInteraction__druggability_score", curie=BIOSTRIDE_FUNC.curie('druggability_score'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__druggability_score, domain=None, range=Optional[float])
+
+slots.ligandInteraction__interaction_distance = Slot(uri=BIOSTRIDE_FUNC.interaction_distance, name="ligandInteraction__interaction_distance", curie=BIOSTRIDE_FUNC.curie('interaction_distance'),
+                   model_uri=BIOSTRIDE_SCHEMA.ligandInteraction__interaction_distance, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__partner_protein_id = Slot(uri=BIOSTRIDE_FUNC.partner_protein_id, name="proteinProteinInteraction__partner_protein_id", curie=BIOSTRIDE_FUNC.curie('partner_protein_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__partner_protein_id, domain=None, range=str)
+
+slots.proteinProteinInteraction__partner_chain_id = Slot(uri=BIOSTRIDE_FUNC.partner_chain_id, name="proteinProteinInteraction__partner_chain_id", curie=BIOSTRIDE_FUNC.curie('partner_chain_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__partner_chain_id, domain=None, range=Optional[str])
+
+slots.proteinProteinInteraction__interface_residues = Slot(uri=BIOSTRIDE_FUNC.interface_residues, name="proteinProteinInteraction__interface_residues", curie=BIOSTRIDE_FUNC.curie('interface_residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__interface_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.proteinProteinInteraction__partner_interface_residues = Slot(uri=BIOSTRIDE_FUNC.partner_interface_residues, name="proteinProteinInteraction__partner_interface_residues", curie=BIOSTRIDE_FUNC.curie('partner_interface_residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__partner_interface_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.proteinProteinInteraction__interface_area = Slot(uri=BIOSTRIDE_FUNC.interface_area, name="proteinProteinInteraction__interface_area", curie=BIOSTRIDE_FUNC.curie('interface_area'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__interface_area, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__binding_energy = Slot(uri=BIOSTRIDE_FUNC.binding_energy, name="proteinProteinInteraction__binding_energy", curie=BIOSTRIDE_FUNC.curie('binding_energy'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__binding_energy, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__dissociation_constant = Slot(uri=BIOSTRIDE_FUNC.dissociation_constant, name="proteinProteinInteraction__dissociation_constant", curie=BIOSTRIDE_FUNC.curie('dissociation_constant'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__dissociation_constant, domain=None, range=Optional[float])
+
+slots.proteinProteinInteraction__complex_stability = Slot(uri=BIOSTRIDE_FUNC.complex_stability, name="proteinProteinInteraction__complex_stability", curie=BIOSTRIDE_FUNC.curie('complex_stability'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__complex_stability, domain=None, range=Optional[Union[str, "ComplexStabilityEnum"]])
+
+slots.proteinProteinInteraction__biological_assembly = Slot(uri=BIOSTRIDE_FUNC.biological_assembly, name="proteinProteinInteraction__biological_assembly", curie=BIOSTRIDE_FUNC.curie('biological_assembly'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__biological_assembly, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.proteinProteinInteraction__interaction_evidence = Slot(uri=BIOSTRIDE_FUNC.interaction_evidence, name="proteinProteinInteraction__interaction_evidence", curie=BIOSTRIDE_FUNC.curie('interaction_evidence'),
+                   model_uri=BIOSTRIDE_SCHEMA.proteinProteinInteraction__interaction_evidence, domain=None, range=Optional[Union[Union[str, "InteractionEvidenceEnum"], list[Union[str, "InteractionEvidenceEnum"]]]])
+
+slots.mutationEffect__mutation = Slot(uri=BIOSTRIDE_FUNC.mutation, name="mutationEffect__mutation", curie=BIOSTRIDE_FUNC.curie('mutation'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__mutation, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Z][0-9]+[A-Z]$'))
+
+slots.mutationEffect__mutation_type = Slot(uri=BIOSTRIDE_FUNC.mutation_type, name="mutationEffect__mutation_type", curie=BIOSTRIDE_FUNC.curie('mutation_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__mutation_type, domain=None, range=Optional[Union[str, "MutationTypeEnum"]])
+
+slots.mutationEffect__effect_on_stability = Slot(uri=BIOSTRIDE_FUNC.effect_on_stability, name="mutationEffect__effect_on_stability", curie=BIOSTRIDE_FUNC.curie('effect_on_stability'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__effect_on_stability, domain=None, range=Optional[Union[str, "StabilityEffectEnum"]])
+
+slots.mutationEffect__delta_delta_g = Slot(uri=BIOSTRIDE_FUNC.delta_delta_g, name="mutationEffect__delta_delta_g", curie=BIOSTRIDE_FUNC.curie('delta_delta_g'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__delta_delta_g, domain=None, range=Optional[float])
+
+slots.mutationEffect__effect_on_function = Slot(uri=BIOSTRIDE_FUNC.effect_on_function, name="mutationEffect__effect_on_function", curie=BIOSTRIDE_FUNC.curie('effect_on_function'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__effect_on_function, domain=None, range=Optional[Union[str, "FunctionalEffectEnum"]])
+
+slots.mutationEffect__functional_impact_description = Slot(uri=BIOSTRIDE_FUNC.functional_impact_description, name="mutationEffect__functional_impact_description", curie=BIOSTRIDE_FUNC.curie('functional_impact_description'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__functional_impact_description, domain=None, range=Optional[str])
+
+slots.mutationEffect__disease_association = Slot(uri=BIOSTRIDE_FUNC.disease_association, name="mutationEffect__disease_association", curie=BIOSTRIDE_FUNC.curie('disease_association'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__disease_association, domain=None, range=Optional[str])
+
+slots.mutationEffect__omim_id = Slot(uri=BIOSTRIDE_FUNC.omim_id, name="mutationEffect__omim_id", curie=BIOSTRIDE_FUNC.curie('omim_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__omim_id, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[0-9]{6}$'))
+
+slots.mutationEffect__clinical_significance = Slot(uri=BIOSTRIDE_FUNC.clinical_significance, name="mutationEffect__clinical_significance", curie=BIOSTRIDE_FUNC.curie('clinical_significance'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__clinical_significance, domain=None, range=Optional[Union[str, "ClinicalSignificanceEnum"]])
+
+slots.mutationEffect__allele_frequency = Slot(uri=BIOSTRIDE_FUNC.allele_frequency, name="mutationEffect__allele_frequency", curie=BIOSTRIDE_FUNC.curie('allele_frequency'),
+                   model_uri=BIOSTRIDE_SCHEMA.mutationEffect__allele_frequency, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__property_type = Slot(uri=BIOSTRIDE_FUNC.property_type, name="biophysicalProperty__property_type", curie=BIOSTRIDE_FUNC.curie('property_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__property_type, domain=None, range=Union[str, "BiophysicalPropertyEnum"])
+
+slots.biophysicalProperty__value = Slot(uri=BIOSTRIDE_FUNC.value, name="biophysicalProperty__value", curie=BIOSTRIDE_FUNC.curie('value'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__value, domain=None, range=float)
+
+slots.biophysicalProperty__unit = Slot(uri=BIOSTRIDE_FUNC.unit, name="biophysicalProperty__unit", curie=BIOSTRIDE_FUNC.curie('unit'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__unit, domain=None, range=str)
+
+slots.biophysicalProperty__error = Slot(uri=BIOSTRIDE_FUNC.error, name="biophysicalProperty__error", curie=BIOSTRIDE_FUNC.curie('error'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__error, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__measurement_conditions = Slot(uri=BIOSTRIDE_FUNC.measurement_conditions, name="biophysicalProperty__measurement_conditions", curie=BIOSTRIDE_FUNC.curie('measurement_conditions'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__measurement_conditions, domain=None, range=Optional[str])
+
+slots.biophysicalProperty__temperature = Slot(uri=BIOSTRIDE_FUNC.temperature, name="biophysicalProperty__temperature", curie=BIOSTRIDE_FUNC.curie('temperature'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__temperature, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__ph = Slot(uri=BIOSTRIDE_FUNC.ph, name="biophysicalProperty__ph", curie=BIOSTRIDE_FUNC.curie('ph'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__ph, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__ionic_strength = Slot(uri=BIOSTRIDE_FUNC.ionic_strength, name="biophysicalProperty__ionic_strength", curie=BIOSTRIDE_FUNC.curie('ionic_strength'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__ionic_strength, domain=None, range=Optional[float])
+
+slots.biophysicalProperty__experimental_method = Slot(uri=BIOSTRIDE_FUNC.experimental_method, name="biophysicalProperty__experimental_method", curie=BIOSTRIDE_FUNC.curie('experimental_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.biophysicalProperty__experimental_method, domain=None, range=Optional[Union[str, "BiophysicalMethodEnum"]])
+
+slots.conformationalEnsemble__protein_id = Slot(uri=BIOSTRIDE_FUNC.protein_id, name="conformationalEnsemble__protein_id", curie=BIOSTRIDE_FUNC.curie('protein_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__protein_id, domain=None, range=str)
+
+slots.conformationalEnsemble__conformational_states = Slot(uri=BIOSTRIDE_FUNC.conformational_states, name="conformationalEnsemble__conformational_states", curie=BIOSTRIDE_FUNC.curie('conformational_states'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__conformational_states, domain=None, range=Optional[Union[Union[dict, ConformationalState], list[Union[dict, ConformationalState]]]])
+
+slots.conformationalEnsemble__clustering_method = Slot(uri=BIOSTRIDE_FUNC.clustering_method, name="conformationalEnsemble__clustering_method", curie=BIOSTRIDE_FUNC.curie('clustering_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__clustering_method, domain=None, range=Optional[str])
+
+slots.conformationalEnsemble__rmsd_threshold = Slot(uri=BIOSTRIDE_FUNC.rmsd_threshold, name="conformationalEnsemble__rmsd_threshold", curie=BIOSTRIDE_FUNC.curie('rmsd_threshold'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__rmsd_threshold, domain=None, range=Optional[float])
+
+slots.conformationalEnsemble__transition_pathways = Slot(uri=BIOSTRIDE_FUNC.transition_pathways, name="conformationalEnsemble__transition_pathways", curie=BIOSTRIDE_FUNC.curie('transition_pathways'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__transition_pathways, domain=None, range=Optional[str])
+
+slots.conformationalEnsemble__energy_landscape = Slot(uri=BIOSTRIDE_FUNC.energy_landscape, name="conformationalEnsemble__energy_landscape", curie=BIOSTRIDE_FUNC.curie('energy_landscape'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__energy_landscape, domain=None, range=Optional[str])
+
+slots.conformationalEnsemble__principal_motions = Slot(uri=BIOSTRIDE_FUNC.principal_motions, name="conformationalEnsemble__principal_motions", curie=BIOSTRIDE_FUNC.curie('principal_motions'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalEnsemble__principal_motions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.conformationalState__state_id = Slot(uri=BIOSTRIDE_FUNC.state_id, name="conformationalState__state_id", curie=BIOSTRIDE_FUNC.curie('state_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__state_id, domain=None, range=str)
+
+slots.conformationalState__state_name = Slot(uri=BIOSTRIDE_FUNC.state_name, name="conformationalState__state_name", curie=BIOSTRIDE_FUNC.curie('state_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__state_name, domain=None, range=Optional[str])
+
+slots.conformationalState__pdb_entries = Slot(uri=BIOSTRIDE_FUNC.pdb_entries, name="conformationalState__pdb_entries", curie=BIOSTRIDE_FUNC.curie('pdb_entries'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.conformationalState__population = Slot(uri=BIOSTRIDE_FUNC.population, name="conformationalState__population", curie=BIOSTRIDE_FUNC.curie('population'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__population, domain=None, range=Optional[float])
+
+slots.conformationalState__free_energy = Slot(uri=BIOSTRIDE_FUNC.free_energy, name="conformationalState__free_energy", curie=BIOSTRIDE_FUNC.curie('free_energy'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__free_energy, domain=None, range=Optional[float])
+
+slots.conformationalState__rmsd_from_reference = Slot(uri=BIOSTRIDE_FUNC.rmsd_from_reference, name="conformationalState__rmsd_from_reference", curie=BIOSTRIDE_FUNC.curie('rmsd_from_reference'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__rmsd_from_reference, domain=None, range=Optional[float])
+
+slots.conformationalState__characteristic_features = Slot(uri=BIOSTRIDE_FUNC.characteristic_features, name="conformationalState__characteristic_features", curie=BIOSTRIDE_FUNC.curie('characteristic_features'),
+                   model_uri=BIOSTRIDE_SCHEMA.conformationalState__characteristic_features, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.postTranslationalModification__modification_type = Slot(uri=BIOSTRIDE_FUNC.modification_type, name="postTranslationalModification__modification_type", curie=BIOSTRIDE_FUNC.curie('modification_type'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__modification_type, domain=None, range=Union[str, "PTMTypeEnum"])
+
+slots.postTranslationalModification__modified_residue = Slot(uri=BIOSTRIDE_FUNC.modified_residue, name="postTranslationalModification__modified_residue", curie=BIOSTRIDE_FUNC.curie('modified_residue'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__modified_residue, domain=None, range=str)
+
+slots.postTranslationalModification__modification_group = Slot(uri=BIOSTRIDE_FUNC.modification_group, name="postTranslationalModification__modification_group", curie=BIOSTRIDE_FUNC.curie('modification_group'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__modification_group, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__mass_shift = Slot(uri=BIOSTRIDE_FUNC.mass_shift, name="postTranslationalModification__mass_shift", curie=BIOSTRIDE_FUNC.curie('mass_shift'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__mass_shift, domain=None, range=Optional[float])
+
+slots.postTranslationalModification__functional_effect = Slot(uri=BIOSTRIDE_FUNC.functional_effect, name="postTranslationalModification__functional_effect", curie=BIOSTRIDE_FUNC.curie('functional_effect'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__functional_effect, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__regulatory_role = Slot(uri=BIOSTRIDE_FUNC.regulatory_role, name="postTranslationalModification__regulatory_role", curie=BIOSTRIDE_FUNC.curie('regulatory_role'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__regulatory_role, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__enzyme = Slot(uri=BIOSTRIDE_FUNC.enzyme, name="postTranslationalModification__enzyme", curie=BIOSTRIDE_FUNC.curie('enzyme'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__enzyme, domain=None, range=Optional[str])
+
+slots.postTranslationalModification__removal_enzyme = Slot(uri=BIOSTRIDE_FUNC.removal_enzyme, name="postTranslationalModification__removal_enzyme", curie=BIOSTRIDE_FUNC.curie('removal_enzyme'),
+                   model_uri=BIOSTRIDE_SCHEMA.postTranslationalModification__removal_enzyme, domain=None, range=Optional[str])
+
+slots.databaseCrossReference__database_name = Slot(uri=BIOSTRIDE_FUNC.database_name, name="databaseCrossReference__database_name", curie=BIOSTRIDE_FUNC.curie('database_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.databaseCrossReference__database_name, domain=None, range=Union[str, "DatabaseNameEnum"])
+
+slots.databaseCrossReference__database_id = Slot(uri=BIOSTRIDE_FUNC.database_id, name="databaseCrossReference__database_id", curie=BIOSTRIDE_FUNC.curie('database_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.databaseCrossReference__database_id, domain=None, range=str)
+
+slots.databaseCrossReference__database_url = Slot(uri=BIOSTRIDE_FUNC.database_url, name="databaseCrossReference__database_url", curie=BIOSTRIDE_FUNC.curie('database_url'),
+                   model_uri=BIOSTRIDE_SCHEMA.databaseCrossReference__database_url, domain=None, range=Optional[Union[str, URI]])
+
+slots.databaseCrossReference__last_updated = Slot(uri=BIOSTRIDE_FUNC.last_updated, name="databaseCrossReference__last_updated", curie=BIOSTRIDE_FUNC.curie('last_updated'),
+                   model_uri=BIOSTRIDE_SCHEMA.databaseCrossReference__last_updated, domain=None, range=Optional[str])
+
+slots.evolutionaryConservation__conservation_score = Slot(uri=BIOSTRIDE_FUNC.conservation_score, name="evolutionaryConservation__conservation_score", curie=BIOSTRIDE_FUNC.curie('conservation_score'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__conservation_score, domain=None, range=Optional[float])
+
+slots.evolutionaryConservation__conserved_residues = Slot(uri=BIOSTRIDE_FUNC.conserved_residues, name="evolutionaryConservation__conserved_residues", curie=BIOSTRIDE_FUNC.curie('conserved_residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__conserved_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.evolutionaryConservation__variable_residues = Slot(uri=BIOSTRIDE_FUNC.variable_residues, name="evolutionaryConservation__variable_residues", curie=BIOSTRIDE_FUNC.curie('variable_residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__variable_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.evolutionaryConservation__conservation_method = Slot(uri=BIOSTRIDE_FUNC.conservation_method, name="evolutionaryConservation__conservation_method", curie=BIOSTRIDE_FUNC.curie('conservation_method'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__conservation_method, domain=None, range=Optional[str])
+
+slots.evolutionaryConservation__alignment_depth = Slot(uri=BIOSTRIDE_FUNC.alignment_depth, name="evolutionaryConservation__alignment_depth", curie=BIOSTRIDE_FUNC.curie('alignment_depth'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__alignment_depth, domain=None, range=Optional[int])
+
+slots.evolutionaryConservation__taxonomic_range = Slot(uri=BIOSTRIDE_FUNC.taxonomic_range, name="evolutionaryConservation__taxonomic_range", curie=BIOSTRIDE_FUNC.curie('taxonomic_range'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__taxonomic_range, domain=None, range=Optional[str])
+
+slots.evolutionaryConservation__coevolved_residues = Slot(uri=BIOSTRIDE_FUNC.coevolved_residues, name="evolutionaryConservation__coevolved_residues", curie=BIOSTRIDE_FUNC.curie('coevolved_residues'),
+                   model_uri=BIOSTRIDE_SCHEMA.evolutionaryConservation__coevolved_residues, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aggregatedProteinView__uniprot_id = Slot(uri=BIOSTRIDE_FUNC.uniprot_id, name="aggregatedProteinView__uniprot_id", curie=BIOSTRIDE_FUNC.curie('uniprot_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__uniprot_id, domain=None, range=str)
+
+slots.aggregatedProteinView__protein_name = Slot(uri=BIOSTRIDE_FUNC.protein_name, name="aggregatedProteinView__protein_name", curie=BIOSTRIDE_FUNC.curie('protein_name'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__protein_name, domain=None, range=str)
+
+slots.aggregatedProteinView__organism = Slot(uri=BIOSTRIDE_FUNC.organism, name="aggregatedProteinView__organism", curie=BIOSTRIDE_FUNC.curie('organism'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__organism, domain=None, range=Optional[str])
+
+slots.aggregatedProteinView__organism_id = Slot(uri=BIOSTRIDE_FUNC.organism_id, name="aggregatedProteinView__organism_id", curie=BIOSTRIDE_FUNC.curie('organism_id'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__organism_id, domain=None, range=Optional[int])
+
+slots.aggregatedProteinView__pdb_entries = Slot(uri=BIOSTRIDE_FUNC.pdb_entries, name="aggregatedProteinView__pdb_entries", curie=BIOSTRIDE_FUNC.curie('pdb_entries'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__pdb_entries, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aggregatedProteinView__functional_sites = Slot(uri=BIOSTRIDE_FUNC.functional_sites, name="aggregatedProteinView__functional_sites", curie=BIOSTRIDE_FUNC.curie('functional_sites'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__functional_sites, domain=None, range=Optional[Union[dict[Union[str, FunctionalSiteId], Union[dict, FunctionalSite]], list[Union[dict, FunctionalSite]]]])
+
+slots.aggregatedProteinView__structural_features = Slot(uri=BIOSTRIDE_FUNC.structural_features, name="aggregatedProteinView__structural_features", curie=BIOSTRIDE_FUNC.curie('structural_features'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__structural_features, domain=None, range=Optional[Union[dict[Union[str, StructuralFeatureId], Union[dict, StructuralFeature]], list[Union[dict, StructuralFeature]]]])
+
+slots.aggregatedProteinView__protein_interactions = Slot(uri=BIOSTRIDE_FUNC.protein_interactions, name="aggregatedProteinView__protein_interactions", curie=BIOSTRIDE_FUNC.curie('protein_interactions'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__protein_interactions, domain=None, range=Optional[Union[dict[Union[str, ProteinProteinInteractionId], Union[dict, ProteinProteinInteraction]], list[Union[dict, ProteinProteinInteraction]]]])
+
+slots.aggregatedProteinView__ligand_interactions = Slot(uri=BIOSTRIDE_FUNC.ligand_interactions, name="aggregatedProteinView__ligand_interactions", curie=BIOSTRIDE_FUNC.curie('ligand_interactions'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__ligand_interactions, domain=None, range=Optional[Union[Union[dict, LigandInteraction], list[Union[dict, LigandInteraction]]]])
+
+slots.aggregatedProteinView__mutations = Slot(uri=BIOSTRIDE_FUNC.mutations, name="aggregatedProteinView__mutations", curie=BIOSTRIDE_FUNC.curie('mutations'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__mutations, domain=None, range=Optional[Union[dict[Union[str, MutationEffectId], Union[dict, MutationEffect]], list[Union[dict, MutationEffect]]]])
+
+slots.aggregatedProteinView__ptms = Slot(uri=BIOSTRIDE_FUNC.ptms, name="aggregatedProteinView__ptms", curie=BIOSTRIDE_FUNC.curie('ptms'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__ptms, domain=None, range=Optional[Union[dict[Union[str, PostTranslationalModificationId], Union[dict, PostTranslationalModification]], list[Union[dict, PostTranslationalModification]]]])
+
+slots.aggregatedProteinView__biophysical_properties = Slot(uri=BIOSTRIDE_FUNC.biophysical_properties, name="aggregatedProteinView__biophysical_properties", curie=BIOSTRIDE_FUNC.curie('biophysical_properties'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__biophysical_properties, domain=None, range=Optional[Union[Union[dict, BiophysicalProperty], list[Union[dict, BiophysicalProperty]]]])
+
+slots.aggregatedProteinView__conformational_ensemble = Slot(uri=BIOSTRIDE_FUNC.conformational_ensemble, name="aggregatedProteinView__conformational_ensemble", curie=BIOSTRIDE_FUNC.curie('conformational_ensemble'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__conformational_ensemble, domain=None, range=Optional[Union[dict, ConformationalEnsemble]])
+
+slots.aggregatedProteinView__evolutionary_conservation = Slot(uri=BIOSTRIDE_FUNC.evolutionary_conservation, name="aggregatedProteinView__evolutionary_conservation", curie=BIOSTRIDE_FUNC.curie('evolutionary_conservation'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__evolutionary_conservation, domain=None, range=Optional[Union[dict, EvolutionaryConservation]])
+
+slots.aggregatedProteinView__cross_references = Slot(uri=BIOSTRIDE_FUNC.cross_references, name="aggregatedProteinView__cross_references", curie=BIOSTRIDE_FUNC.curie('cross_references'),
+                   model_uri=BIOSTRIDE_SCHEMA.aggregatedProteinView__cross_references, domain=None, range=Optional[Union[Union[dict, DatabaseCrossReference], list[Union[dict, DatabaseCrossReference]]]])

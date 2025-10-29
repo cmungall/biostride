@@ -1,0 +1,214 @@
+@base <http://example.org/> .
+@prefix biostride: <https://w3id.org/biostride/> .
+@prefix biostride_schema: <https://w3id.org/biostride/schema/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+biostride:dataset-loosenin-bioenergy a biostride_schema:Dataset ;
+    dcterms:title "Fungal Loosenins for Bioenergy Applications - Multi-facility Structural Biology Investigation" ;
+    biostride_schema:studies biostride:study-loosenin-2025 .
+
+biostride:df-cryoem-001 a biostride_schema:DataFile ;
+    dcterms:title "CryoEM particle stack" ;
+    biostride_schema:data_type "particles" ;
+    biostride_schema:file_format "star" ;
+    biostride_schema:file_name "loosenin_cellulose.star" ;
+    biostride_schema:file_path "/data/cryoem/2025/loosenin/" ;
+    biostride_schema:file_size_bytes 125000000000 .
+
+biostride:df-map-001 a biostride_schema:DataFile ;
+    dcterms:title "CryoEM density map" ;
+    biostride_schema:data_type "volume" ;
+    biostride_schema:file_format "mrc" ;
+    biostride_schema:file_name "loosenin_cellulose_map.mrc" ;
+    biostride_schema:file_path "/data/cryoem/2025/loosenin/" ;
+    biostride_schema:file_size_bytes 512000000 .
+
+biostride:df-mx-001 a biostride_schema:DataFile ;
+    dcterms:title "X-ray diffraction data" ;
+    biostride_schema:data_type "diffraction" ;
+    biostride_schema:file_format "mtz" ;
+    biostride_schema:file_name "loosenin_native.mtz" ;
+    biostride_schema:file_path "/data/mx/2025/loosenin/" ;
+    biostride_schema:file_size_bytes 45000000 .
+
+biostride:df-pdb-001 a biostride_schema:DataFile ;
+    dcterms:title "Refined crystal structure" ;
+    biostride_schema:data_type "model" ;
+    biostride_schema:file_format "pdb" ;
+    biostride_schema:file_name "loosenin_refined.pdb" ;
+    biostride_schema:file_path "/data/mx/2025/loosenin/" ;
+    biostride_schema:file_size_bytes 800000 .
+
+biostride:df-sans-001 a biostride_schema:DataFile ;
+    dcterms:title "SANS complex data" ;
+    biostride_schema:data_type "scattering" ;
+    biostride_schema:file_format "ascii" ;
+    biostride_schema:file_name "biosans_complex.dat" ;
+    biostride_schema:file_path "/data/sans/2025/loosenin/" ;
+    biostride_schema:file_size_bytes 1800000 .
+
+biostride:df-saxs-001 a biostride_schema:DataFile ;
+    dcterms:title "SAXS pH series data" ;
+    biostride_schema:data_type "scattering" ;
+    biostride_schema:file_format "ascii" ;
+    biostride_schema:file_name "loosenin_ph_series.dat" ;
+    biostride_schema:file_path "/data/saxs/2025/loosenin/" ;
+    biostride_schema:file_size_bytes 2500000 .
+
+biostride:img-sans-001 a biostride_schema:Image ;
+    dcterms:title "SANS model fit" ;
+    biostride_schema:acquisition_date "2025-02-25" ;
+    biostride_schema:file_name "sans_model_fit.png" .
+
+biostride:img-saxs-001 a biostride_schema:Image ;
+    dcterms:title "SAXS Guinier plots" ;
+    biostride_schema:acquisition_date "2025-02-12" ;
+    biostride_schema:file_name "saxs_guinier_plots.png" .
+
+biostride:prep-cryoem-001 a biostride_schema:SamplePreparation ;
+    dcterms:title "CryoEM grid preparation of complex" ;
+    biostride_schema:preparation_type "cryo_em" ;
+    biostride_schema:sample_id "biostride:sample-LOOS-004" .
+
+biostride:prep-crystal-001 a biostride_schema:SamplePreparation ;
+    dcterms:title "Crystal preparation for X-ray diffraction" ;
+    biostride_schema:preparation_type "xray_crystallography" ;
+    biostride_schema:sample_id "biostride:sample-LOOS-001" .
+
+biostride:prep-sans-001 a biostride_schema:SamplePreparation ;
+    dcterms:title "SANS contrast matching preparation" ;
+    biostride_schema:preparation_type "sans" ;
+    biostride_schema:sample_id "biostride:sample-LOOS-001" .
+
+biostride:prep-saxs-001 a biostride_schema:SamplePreparation ;
+    dcterms:title "SAXS sample preparation" ;
+    biostride_schema:preparation_type "saxs" ;
+    biostride_schema:sample_id "biostride:sample-LOOS-001" .
+
+biostride:sample-LOOS-001 a biostride_schema:Sample ;
+    dcterms:title "PcaLOOL12 wild-type protein" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:additives "1mM DTT",
+                "5% glycerol" ;
+            biostride_schema:components "150mM NaCl",
+                "50mM MES buffer" ;
+            biostride_schema:ph "6.0"^^xsd:float ] ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:ligands "calcium ions" ;
+            biostride_schema:modifications "N-glycosylation at positions 45, 78, 156" ;
+            biostride_schema:sequences """MKVLSFAIAAALALATAPAAAEDGTVVDCTNYQGRCGSQCGPTGLCCSKYGWCGNTDHYCGDGCQSQCP YGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGQPGTPGGNSYTTTTTSSSGGGGSGGSGGSTTNAGAGPS TPSAPSAPSAPAAPSAPSTPSAPSTPSAPSTPSAPSTPSAPGNYTLQCDPATGWLSCNGGPCNPGSCCS QFGYCGSGAAYCGAGCQGGPCQPPC
+""" ] ;
+    biostride_schema:sample_code "LOOS-001" ;
+    biostride_schema:sample_type "protein" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:atmosphere "argon-purged" ;
+            biostride_schema:duration "7 days" ;
+            biostride_schema:temperature "4.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+
+biostride:sample-LOOS-002 a biostride_schema:Sample ;
+    dcterms:title "PcaLOOL12 pH stress series" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:components "100mM NaCl",
+                "Universal buffer system" ;
+            biostride_schema:ph "5.0"^^xsd:float ] ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:modifications "N-glycosylation" ;
+            biostride_schema:sequences "Same as LOOS-001" ] ;
+    biostride_schema:sample_code "LOOS-002" ;
+    biostride_schema:sample_type "protein" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:temperature "4.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+
+biostride:sample-LOOS-003 a biostride_schema:Sample ;
+    dcterms:title "TrLOOL1 from Trichoderma reesei" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:components "200mM NaCl",
+                "50mM sodium acetate" ;
+            biostride_schema:ph "5.5"^^xsd:float ] ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:ligands "calcium ions" ;
+            biostride_schema:sequences "TrLOOL1 sequence - homolog from T. reesei" ] ;
+    biostride_schema:sample_code "LOOS-003" ;
+    biostride_schema:sample_type "protein" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:temperature "4.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+
+biostride:sample-LOOS-004 a biostride_schema:Sample ;
+    dcterms:title "PcaLOOL12-cellulose complex" ;
+    biostride_schema:buffer_composition [ a biostride_schema:BufferComposition ;
+            biostride_schema:additives "10mg/mL Avicel cellulose" ;
+            biostride_schema:components "150mM NaCl",
+                "50mM MES buffer" ;
+            biostride_schema:ph "6.0"^^xsd:float ] ;
+    biostride_schema:molecular_composition [ a biostride_schema:MolecularComposition ;
+            biostride_schema:ligands "microcrystalline cellulose (Avicel PH-101)" ;
+            biostride_schema:sequences "PcaLOOL12 protein sequence" ] ;
+    biostride_schema:sample_code "LOOS-004" ;
+    biostride_schema:sample_type "complex" ;
+    biostride_schema:storage_conditions [ a biostride_schema:StorageConditions ;
+            biostride_schema:temperature "4.0"^^xsd:float ;
+            biostride_schema:temperature_unit "celsius" ] .
+
+biostride:study-loosenin-2025 a biostride_schema:Study ;
+    dcterms:title "Structural and functional characterization of fungal loosenins" ;
+    biostride_schema:data_files biostride:df-cryoem-001,
+        biostride:df-map-001,
+        biostride:df-mx-001,
+        biostride:df-pdb-001,
+        biostride:df-sans-001,
+        biostride:df-saxs-001 ;
+    biostride_schema:images biostride:img-sans-001,
+        biostride:img-saxs-001 ;
+    biostride_schema:sample_preparations biostride:prep-cryoem-001,
+        biostride:prep-crystal-001,
+        biostride:prep-sans-001,
+        biostride:prep-saxs-001 ;
+    biostride_schema:samples biostride:sample-LOOS-001,
+        biostride:sample-LOOS-002,
+        biostride:sample-LOOS-003,
+        biostride:sample-LOOS-004 ;
+    biostride_schema:workflow_runs biostride:wf-cryoem-001,
+        biostride:wf-integrative-001,
+        biostride:wf-mx-001,
+        biostride:wf-saxs-001 .
+
+biostride:wf-cryoem-001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Single particle reconstruction" ;
+    biostride_schema:experiment_id "biostride:exp-cryoem-001" ;
+    biostride_schema:processing_level 3 ;
+    biostride_schema:software_name "RELION" ;
+    biostride_schema:software_version "4.0" ;
+    biostride_schema:workflow_code "CryoEM-SPA" ;
+    biostride_schema:workflow_type "refinement" .
+
+biostride:wf-integrative-001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Integrative modeling" ;
+    biostride_schema:experiment_id "biostride:exp-saxs-001" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:software_name "IMP" ;
+    biostride_schema:software_version "2.18" ;
+    biostride_schema:workflow_code "IMP-modeling" ;
+    biostride_schema:workflow_type "model_building" .
+
+biostride:wf-mx-001 a biostride_schema:WorkflowRun ;
+    dcterms:title "Crystal structure determination" ;
+    biostride_schema:experiment_id "biostride:exp-mx-001" ;
+    biostride_schema:processing_level 3 ;
+    biostride_schema:software_name "PHENIX" ;
+    biostride_schema:software_version "1.20.1" ;
+    biostride_schema:workflow_code "MX-structure" ;
+    biostride_schema:workflow_type "phasing" .
+
+biostride:wf-saxs-001 a biostride_schema:WorkflowRun ;
+    dcterms:title "SAXS pH series analysis" ;
+    biostride_schema:experiment_id "biostride:exp-saxs-001" ;
+    biostride_schema:processing_level 2 ;
+    biostride_schema:software_name "ATSAS" ;
+    biostride_schema:software_version "3.2.1" ;
+    biostride_schema:workflow_code "SAXS-pH-analysis" ;
+    biostride_schema:workflow_type "saxs_analysis" .
+
